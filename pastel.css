@@ -1,0 +1,479 @@
+@namespace html url(http://www.w3.org/1999/xhtml);
+@namespace xul url(http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul);
+/*
+    Author: Twily
+    Description: Minimal flat styled tabs for Australis
+    Compitability: Firefox Nightly v31.0a1 - v32.0a1 (Australis)
+       CSS Variables were introduced to Firefox in v29.0a1
+    Website: http://twily.info/
+*/
+
+/*
+    Modified by: Koekeishiya
+    Compatibility: Firefox 48.0.2
+*/
+
+:root {
+    /* TAB VARIABLES */
+    --bg-nav: #232c33;
+    --bg-light: #232c33; --bg-dark: #232c33; --bg-selected: #232c33;
+    --fg-light: #b1b1b1; --fg-dark: #b1b1b1; --fg-selected: #ffffff /*--fg-selected: #FF456F*/;
+    --tab-triangle-correction: 0px; --tab-triangle-height: 16px;
+    --tab-selected-border: #69f0ae;
+    --tab-height: 20px; --tab-icon-size: 10px; --tab-strip-margin: -11px; --tab-overlap: -5px;
+    --tab-fonts: "Roboto Mono", "Courier New", "Lemon", "monospace"," Dejavu Sans"; --tab-font-size: 6.75pt;
+    --tab-triangle: block; /* block | none */
+
+    /* URL VARIABLES */
+    --url-background: var(--bg-nav); --url-color: var(--fg-light);
+    --url-focus: #1f1f1f;
+    --url-height: 18px; --url-right-margin: 6px;
+    --url-fonts: "Roboto Mono","Courier New", "Lemon",monospace,"Dejavu Sans"; --url-font-size: 5.75pt;
+    --url-text-align: center; /* left | center | right */
+    --url-position: absolute; /* absolute == top (under tabs) || fixed == bottom of browser */
+
+    margin-bottom: 0 /* var(--url-height) */ !important;
+}
+
+    #sidebar-search-container { display: none !important; }
+    #sidebar-header, #bookmarksPanel, #bookmarks-view
+    {
+        color: var(--fg-light) !important;
+        background-color: var(--bg-dark) !important;
+        border-color: var(--bg-dark) !important;
+        -moz-appearance:none!important;
+    }
+
+@-moz-document url(chrome://browser/content/browser.xul) {
+    /* URL-BAR */
+    #PanelUI-button, #bookmarks-menu-button, #downloads-button, #home-button, #stylish-toolbar-button, #abp-toolbarbutton,
+    #back-button, #forward-button, #identity-box, #urlbar-reload-button, #urlbar-stop-button, #urlbar-go-button,
+    #notification-popup-box, #new-tab-button, #private-browsing-indicator, #search-container, #nav-bar-overflow-button,
+    .tabs-newtab-button, .tab-close-button, .tab-close, .tab-throbber, .tab-background-start, .tab-background-end
+    /*, #alltabs-button, #tabview-button, .tab-icon-image*/, .tab-icon-image:not([pinned]) { display: none !important; }
+
+    .tab-drop-indicator { margin-bottom: 0 !important; }
+
+    .autocomplete-richlistbox {
+        background: var(--url-focus) !important;/**/
+        color: var(--bg-selected) !important;/**/
+    }
+
+    .autocomplete-richlistbox > scrollbox {
+        overflow: hidden !important;
+        background: var(--url-focus) !important;/**/
+        color: var(--bg-selected) !important;/**/
+    }
+
+    .autocomplete-richlistbox > richlistitem {
+        overflow: hidden !important;
+        color : var(--fg-dark) !important;
+        background: var(--bg-selected) !important;/**/
+    }
+
+    #nav-bar {
+        position: var(--url-position) !important; bottom: 0 !important;
+        width: 100% !important; height: var(--url-height) !important;
+        min-height: var(--url-height) !important; max-height: var(--url-height) !important;
+        margin: 0 0 0 0 !important;
+        overflow: hidden !important;
+        /* --- Uncomment the section below to attach the url-bar to the tab-bar [EXPERIMENTAL] (Require a line in "#TabsToolbar" below) --- */
+
+        position: fixed !important; top: 0px !important; left: 6px !important;
+        width: 300px !important; max-width: 300px !important;
+        z-index: 100 !important;
+        /**/
+    }
+       #nav-bar-customization-target { width: 100% !important; }
+          #urlbar-wrapper {
+              width: 101% !important; margin-top: 0px !important; /* adjust margin-top to ~ -5px if you experience gap */
+              position: absolute !important; top: 0px !important; left: 0 !important;
+              border-bottom: 0px solid var(--bg-light) !important;
+          }
+             #urlbar {
+                 border: none !important; border-radius: 0 !important;
+                 margin: 0 0 0 0 !important; padding: 0 2px 0 9px !important;
+                 width: calc(100% + var(--url-right-margin)) !important;
+                 height: var(--url-height) !important; min-height: var(--url-height) !important;
+                 background: var(--url-background) !important; color: var(--url-color) !important;
+                 font-family: var(--url-fonts) !important; font-size: var(--url-font-size) !important;
+                 text-align: var(--url-text-align) !important;
+             }
+             #urlbar[focused="true"] {
+                 background: var(--url-focus) !important;
+                 overflow: hidden !important;
+             }
+
+    /* TABS */
+    .tabbrowser-tab[fadein]:not([pinned]) { min-width: 50px !important; max-width: /*180px*/ 100% !important; }
+    tab {
+        font-family: var(--tab-fonts) !important;
+        height: var(--tab-height) !important; min-height: var(--tab-height) !important;
+        background: var(--bg-dark) !important; color: var(--fg-dark) !important;
+        font-size: var(--tab-font-size) !important; text-shadow: none !important; text-align: center /* center | left */ !important;
+    }
+
+    .tabbrowser-tab label { padding: 0 14px 0 14px !important; }
+
+    #tabbrowser-tabs .tabbrowser-tab[pinned]            { width: 38px !important; }
+    #tabbrowser-tabs .tabbrowser-tab[pinned] label      { display: none !important; }
+
+    #tabbrowser-tabs .tabbrowser-tab .tab-icon-image {
+        margin: 0 -10px 0 14px !important;
+        width: var(--tab-icon-size) !important;
+        height: var(--tab-icon-size) !important;
+    }
+
+    .tabbrowser-tab *, .tabs-newtab-button * {
+        background: none !important; list-style-image: none !important;
+        margin: 0 0 0 0 !important; padding: 0 0 0 0 !important;
+        -moz-appearance: none !important;
+    }
+
+    #tabbrowser-tabs .tabbrowser-tab[pinned] .tab-stack { height: var(--tab-height) !important; width: 100% !important; }
+    #tabbrowser-tabs .tabbrowser-arrowscrollbox .box-inherit.scrollbox-innerbox { max-height: var(--tab-height) !important; }
+    .scrollbutton-up, .scrollbutton-down { border: none !important; }
+
+    #tabbrowser-tabs[overflow]:not([positionpinnedtabs]) { -moz-padding-start: 20px !important; }
+
+    .tabbrowser-tab[selected="true"] .tab-stack {
+        background: var(--bg-selected) !important; color: var(--fg-selected) !important;
+        border-radius: 0px !important; position: relative !important;
+        margin-top: 2px !important;
+        margin-bottom: 2px !important;
+        /* border-bottom: 2px solid var(--tab-selected-border) !important; */
+    }
+
+    .tabbrowser-tab[selected="true"]:before { /* Left Triangle (of selected tab) */
+        /*
+        content: '' !important; display: var(--tab-triangle);
+        position: absolute !important; top: 2px !important; left: var(--tab-overlap) !important;
+        width: 0 !important; height: 0 !important;
+        border: none !important; z-index: 2 !important;
+
+        border-left: calc(var(--tab-triangle-height)/2) solid var(--bg-dark) !important;
+        border-top: calc((var(--tab-triangle-height)/2) - var(--tab-triangle-correction)) solid var(--bg-selected) !important;
+        border-bottom: calc((var(--tab-triangle-height)/2) + var(--tab-triangle-correction)) solid var(--bg-selected) !important;
+        */
+    }
+    .tabbrowser-tab[selected="true"]:after { /* Right Triangle (of selected tab) */
+        content: '' !important; display: var(--tab-triangle);
+        position: absolute !important; top: 2px !important; right: var(--tab-overlap) !important;
+        width: 0 !important; height: 0 !important;
+        border: none !important; z-index: 2 !important;
+        border-right: calc(var(--tab-triangle-height)/2) solid var(--bg-dark) !important;
+        border-top: calc((var(--tab-triangle-height)/2) - var(--tab-triangle-correction)) solid var(--bg-selected) !important;
+        border-bottom: calc((var(--tab-triangle-height)/2) + var(--tab-triangle-correction)) solid var(--bg-selected) !important;
+    }
+
+    #TabsToolbar, #tabbrowser-tabs {
+        -moz-appearance: none !important;
+        height: var(--tab-height) !important; min-height: var(--tab-height)!important;
+        margin: 0 var(--tab-strip-margin) !important;
+        background: var(--bg-dark) !important;
+
+        margin-bottom: 2px !important;
+        /* --- Uncomment the line below to attach the url-bar to the tab-bar [EXPERIMENTAL] (Require a line in "#nav-bar" above) --- */
+        margin-left: 160px !important;/**/
+    }
+    #TabsToolbar::after { display: none !important; }
+    .tabbrowser-tab::before, .tabbrowser-tab::after { background: none !important; opacity: 1 !important; }
+
+    /*browser, #navigator-toolbox { -moz-appearance: none !important; background: transparent !important; }*/
+
+    #navigator-toolbox::after { height: 0px !important; background: var(--bg-light) !important; }
+    #liberator-separator { height: 0px !important; background: var(--bg-light) !important; }
+
+    /* MENUS */
+    menuitem + menuseparator, menu + menuseparator/*, .menu-iconic-left*/  { display: none !important; }
+    /*menuitem > label { margin-left: var(--tab-height) !important; }*/
+    menubar, menubutton, menulist, menu, menuitem {
+        font-family: var(--tab-fonts) !important; font-size: var(--tab-font-size) !important;
+        height: var(--tab-height) !important;
+    }
+
+    /* HIDE ORANGE MENU BUTTON */
+    #appmenu-toolbar-button, #appmenu-button-container { display: none !important; }
+
+    /* HIDE STATUS BAR */
+    /*#status-bar, #statusbar-display, statuspanel { display: none !important; }*/
+
+    .statuspanel-label {
+       background: var(--bg-dark) !important;
+       color: var(--fg-dark) !important;
+       border: none !important;
+    }
+
+    #titlebar {
+      display: none !important;
+    }
+
+    /* PRIVATE BROWSING ICON HIDE */
+    #main-window[privatebrowsingmode=temporary] #private-browsing-indicator,
+    #main-window[privatebrowsingmode=temporary] #private-browsing-indicator-titlebar { display: none !important; }
+
+    /* Vimperator icon style */
+    #liberator-statusline:not([customizing="true"]) { margin: -2px -2px !important; padding: 0 0 !important; height: 24px !important; }
+    #liberator-statusline:not([customizing="true"]) :-moz-any(toolbarbutton) { height: 100% !important; }
+    #tabview-button {
+        list-style-image: url(http://twily.info/img/tabview-button.png?v=2) /* 16x16 px image */ !important;
+        -moz-image-region: rect(0, 0, 0, 0) !important;
+    }
+
+    #liberator-completions { background: var(--bg-dark) !important; }
+
+    /* Tabgroup margin top fix */
+    #tab-view-deck #tab-view { margin-top: 11px !important; }
+    #tab-view-deck { background: var(--bg-dark) !important; }
+}
+
+/* AGENT_SHEET */
+@-moz-document url-prefix(http://), url-prefix(https://), url-prefix(chrome://liberator/) {
+    /* SCROLLBAR */
+    scrollbar[orient="vertical"], scrollbar thumb[orient="vertical"],
+    scrollbar[orient="horizontal"], scrollbar thumb[orient="horizontal"] {
+        display: none !important; /* none = hide || block = show */
+    }
+}
+
+/* background color around/behind pictures opened in firefox (require html namespace on top) */
+@-moz-document regexp("(https?://|file:///)(.*)\\.(jpeg|jpg|gif|png|apng|svg|bmp|webm|webp)") {
+    body { background: var(--bg-light) !important; }
+    img.decoded { background-color: transparent !important; }
+}
+
+
+/* About:Blank background */
+@-moz-document url(about:blank) {
+    html,body { background: var(--bg-dark) !important; }
+}
+
+/* about:stylish-edit toolbar style */
+@-moz-document regexp("about:stylish-edit.*") {
+    #main-area, textbox { background: var(--bg-light) !important; }
+    textbox, grid, columns, rows, separator { border: 0 !important; }
+
+    .devtools-toolbarbutton { background: var(--bg-dark) !important; color: var(--fg-light) !important; }
+}
+
+/*----- Fix for white flash on new tab -----*/
+tabbrowser tabpanels, #appcontent > #content { background: var(--bg-light) !important; }
+
+
+ Home
+ Products
+ Open Source
+ Web Tech
+   WWW FAQs
+     Creating Websites
+       Page Design Questions
+         How do I make my pages more accessible?
+         How do I include one HTML file in another?
+         Can I write web pages in my language?
+         Can I use non-latin characters in my web pages?
+         How do I put page breaks in a web page?
+         How do I create a collapsible outline?
+         How do I make my website cross-browser compatible?
+         What web browsers should I design for?
+         What screen resolution should I design for?
+         How do I make links with no underline?
+         How do I create rollovers?
+         How do I link to another web page or file?
+         How do I link to a specific part of a page?
+         How do I change the appearance of links in my pages?
+         Exactly what does the border-color CSS attribute do?
+         How do I create a template for all of my pages?
+         How do I open a new window of a certain size?
+         How do I center a new browser window on the screen?
+         How can a link in one window send another window or frame to a new page?
+         How do I force a minimum width for my page?
+         How can I ask the user to confirm before submitting a form?
+         How do I stop users from printing out my web pages?
+         How do I keep people from copying my HTML, CSS and JavaScript code?
+         How do I resize the web browser window?
+         How do I get <, > and & to show up in a web page?
+         Should I use tables or CSS for page layout?
+         How do I test PHP, ASP, server side include and CGI pages offline or at home?
+         How do I let users pick the next page from a menu?
+         How do I change the color of the scroll bar?
+         How do I eliminate the border that shows up when I click on a link?
+         How do I make a background image fill the entire browser window?
+         How do I create a border around the browser window?
+         How do I make the window size match my layout?
+         How do I center an element horizontally with CSS?
+         How do I center the content of an element vertically with CSS?
+         How do I make a fixed-width layout that doesn't "reflow" when the browser is resized?
+         How do I add a scrollbar to part of a page?
+         How do I create a three-column CSS layout?
+         How do I make a link that opens a new window?
+         How do I eliminate the double line break before and after a ul list?
+         How do I make my site look good at any size and resolution?
+         Why do my Microsoft Publisher web pages look bad in Firefox?
+         How do I add roll-over drop-down menus to my HTML?
+         How do I control the space between lines and paragraphs?
+         How do I design web pages for the iPhone?
+         Should I use frames on my web site?
+         The images in my page only show up on my own computer. Why?
+ Online Store
+ Fun
+ Philadelphia
+ Advertising
+ Search
+ Privacy
+ About Us
+ Consulting
+ Contact
+Boutell.Com
+Format for Printing
+HomeWeb Tech WWW FAQs Creating Websites Page Design Questions How do I create a border around the browser window?
+WWW FAQs: How do I create a border around the browser window?
+
+2006-07-20: Creating a border around the browser window is done with CSS, of course. But you knew that much - you're asking for the details.
+
+Are you looking for a quick fix? I present a simple example at the end. But beware - there are issues to be aware of here. So I recommend you read carefully. And remember, I didn't create the patchwork of incompatible web browsers out there in the world. So don't blame me if the solution isn't as simple as you'd like!
+
+Ready? OK, here we go. There are two important groups of web browsers in the world today:
+
+1. Internet Explorer 5, 5.5 and 6.
+
+2. Firefox, Opera, Safari, and Internet Explorer 7.
+
+Older, pre-7.0 versions of Internet Explorer have their own nonstandard way of creating a border around the browser window. It's simple, but it's not correct CSS, and it stops working if you try to use a standards-compliant document type. Still, it's the only way to solve the problem for the most popular browser currently out there in the world: Internet Explorer 6.
+You'll notice I didn't mention Internet Explorer 4 or Netscape 4. That's because these represent well under 1% of users today, and those using them are generally well aware that they are not able to experience modern websites properly. I don't recommend crippling your web design to suit those who use web browser software from 1996, especially since Firefox is available free of charge as an upgrade path for Windows 95 and 98 users.
+The newer browsers, including Internet Explorer 7 and pretty much all of the alternatives, can do it in a more modern way. But that technique won't work for Internet Explorer 6. And with Internet Explorer 7, we must use a standards-compliant document type... which breaks the "old way" of drawing a window border in Internet Explorer 6.
+
+Are we stuck? Of course not. Conditional comments to the rescue!
+Conditional Comments and Internet Explorer
+Conditional comments are a simple way to write HTML, CSS and JavaScript code that is read only by certain versions of Internet Explorer. You can also decide whether the code should be visible to non-Microsoft browsers or not. This is a good thing because it allows us to work around the Internet Explorer 6 problem. For Internet Explorer 6, we'll set up our page in "quirks mode," without specifying a document type. But for all other browsers, and especially Internet Explorer 7 which requires it, we'll use the HTML 4.01 Strict document type definition (DTD). This tells Internet Explorer 7 that we're writing modern HTML and CSS, and that Internet Explorer 7 shouldn't pretend to be an out of date version of Internet Explorer.
+
+To write code that is visible only to Internet Explorer 7 or newer and all non-Microsoft browsers, we use a conditional comment like this:
+
+
+<![if gte IE 7]>
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"
+"http://www.w3.org/TR/html4/strict.dtd">
+<![endif]>
+
+What's happening here? The code inside the [ and ] is ignored by non-Microsoft browsers, but Microsoft browsers look here for special commands like if and endif. Everything between these commands is looked at only if the condition is true - in this case, only if the user has Internet Explorer version 7 or better.
+
+For complete information about conditional comments, se Microsoft's "About Conditional Comments" page.
+
+Note: the disadvantage of this approach is that you can't use Internet Explorer 6 in strict mode. Unfortunately the only alternatives involve JavaScript and unattractive "jumpy scrolling" of the border... which, for a mere window border, really isn't worth it! But if you're bound and determined to find a way to do this in IE6 in strict mode, you can find the relevant techniques in the article how do I make a background image fill the entire browser window?
+
+But the jumpy scrolling will look bad, and all you get for that considerable price is a window border. So think twice before going that road.
+Doing It The Right Way: Fixed Elements At The Window Edges
+The newer browsers, including Internet Explorer 7, support the CSS position:fixed attribute. They also let us size things in terms of the browser window size, regardless of how big the actual document content is. And that allows us to position our borders just the way we want.
+
+But Internet Explorer 6 doesn't support these, and will draw our border div elements in the wrong positions. So we'll set them up the right way... then hide them with another conditional comment if, and only if, we're in Internet Explorer 6 or older.
+
+Here's the CSS style information for the body element and the top border (don't worry, I'll present the whole thing at the end). Note that I'm using a 16-pixel border here, not to be attractive but simply to prove the point. Note also that I make the body element's padding 20 pixels wide, slightly larger than 16 pixels, so that text doesn't butt right up against the border - but you can set them identically if you want to. If you don't set the padding at least as large as the border, though, part of the document will be hidden behind the border.
+
+
+<style media="screen">
+body {
+margin:0;
+padding:20px;
+}
+
+#top {
+position:fixed;
+background:green;
+left:0;
+  top:0;
+width:100%;
+height:16px;
+}
+</style>
+
+That's the right way to set up the top border in the more modern browsers. But for Internet Explorer 6, we need to hide this border and set it up the old-fashioned, IE-specific way:
+
+
+<!--[if lte IE 6]>
+<style media="screen">
+body {
+border: solid green 100px;
+}
+#left,#right,#top,#bottom {
+display: none;
+}
+<![endif]-->
+
+What's going on here? In Internet Explorer 6 and below, a border attribute for the body element is drawn around the edges of the browser window - convenient, but not correct according to modern standards. So we take advantage of this only inside a conditional comment that is specific to old versions of Internet Explorer... and while we're at it, we set the display attribute of our more modern border div elements to none, so that Internet Explorer 6 doesn't show them incorrectly.
+
+Since this entire conditional comment is ignored by Internet Explorer 7 and all non-Microsoft browsers, it doesn't cause any problems for browsers that can handle doing it the "right" way.
+By specifying media="screen" we give browsers a chance to understand that this border isn't necessary when printing.
+Don't Forget The divs!
+One more detail: we need to include the actual div elements for our fancy borders in the page! We can place these anywhere in the body element. Here's the HTML for the top border's div element:
+
+
+<div id="top"></div>
+
+The Complete Solution
+Here's complete code for a simple page with a window border. Notice that the border surrounds the entire inner edge of the browser window regardless of whether the document's actual text is shorter than, equal to or taller than the browser window.
+
+This page renders correctly in Internet Explorer 6, Internet Explorer 7, Firefox, Safari, and Opera 9.
+
+
+<![if gte IE 7]>
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"
+"http://www.w3.org/TR/html4/strict.dtd">
+<![endif]>
+<html>
+<head>
+<title>Window Border Demo</title>
+<style media="screen">
+body {
+margin:0;
+padding:20px;
+}
+#top,#bottom,#left,#right {
+position:fixed;
+background:green;
+}
+#top,#bottom {
+left:0;
+width:100%;
+height:16px;
+}
+#top {
+top:0;
+}
+#bottom {
+bottom:0;
+}
+#left,#right {
+top:0;
+height:100%;
+width:16px;
+}
+#left {
+left:0;
+}
+#right {
+right:0;
+}
+</style>
+<!--[if lte IE 6]>
+<style media="screen">
+body {
+border: solid green 16px;
+}
+#left,#right,#top,#bottom {
+display: none;
+}
+<![endif]-->
+</style>
+</head>
+<body>
+<h1>Page With Borders</h1>
+Your Content Goes Here!
+<div id="top"></div>
+<div id="bottom"></div>
+<div id="left"></div>
+<div id="right"></div>
+
+
+/* Set dark text in light textareas
+@-moz-document regexp("https?://(?!(localhost|twily.info|.*.4chan.org|.*.youtube.com)).*") {
+    input, textarea { color: #222628 !important; -moz-appearance: none !important; }
+}*/
