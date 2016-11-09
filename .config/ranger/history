@@ -1,0 +1,21 @@
+open_with vim
+e custom.css
+$HOME
+<delet>
+<delete>
+delet
+color
+w
+p 
+cd 
+mv predawn.vim /users/joshuaervin/vim/runtime/colors
+m predawn.vim users/joshuaervin/vim/runtime/colors
+shel
+search 
+rename joshuaervin
+d
+delete
+-a
+open_with 
+e pastel.vim
+
