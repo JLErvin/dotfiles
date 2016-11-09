@@ -13,4 +13,8 @@
 * File Browser: `ranger`
 * Web Browser: `firefox`
 
+#Screenshots
+
 ![Screenshots](http://i.imgur.com/4OhCBX8.png "Dirty I")
+
+![Screenshots](http://i.imgur.com/L3smboR.jpg "Dirty II")
