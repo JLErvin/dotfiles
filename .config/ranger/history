@@ -13,9 +13,24 @@ m predawn.vim users/joshuaervin/vim/runtime/colors
 shel
 search 
 rename joshuaervin
-d
-delete
 -a
-open_with 
 e pastel.vim
+n
+vim 
+open_with preview
+git clone https://github.com/callahanrts/bar
+d
+delete bar
+del 
+open_with
+e mode.coffee
+delete
+sudo mode.coffee
+sudo coffee mode.coffee
 
+del
+e focused-window.coffee
+delete 
+open_with 
+copycmap 
+copycmap cpu.coffee

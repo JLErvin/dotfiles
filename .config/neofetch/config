@@ -200,7 +200,7 @@ birthday_format="+%a %d %b %Y %l:%M %p"
 # colors=(4 6 1 4 8 6)
 # You can also specify:
 # fg (foreground color)
-colors=(8 8 0 8 8 6)
+colors=(4 6 1 4 8 6)
 
 
 # }}}

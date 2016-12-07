@@ -58,10 +58,10 @@ cmd + alt + ctrl - j     :    kwmc window -mk south wrap
 cmd + alt + ctrl - k     :    kwmc window -mk north wrap
 
 # Give Focus To Window
-cmd + alt - h            :    kwmc window -f west
-cmd + alt - l            :    kwmc window -f east
-cmd + alt - j            :    kwmc window -f south
-cmd + alt - k            :    kwmc window -f north
+cmd + tab - h            :    kwmc window -f west
+cmd + tab - l            :    kwmc window -f east
+cmd + tab - j            :    kwmc window -f south
+cmd + tab - k            :    kwmc window -f north
 
 cmd + alt - n            :    kwmc window -fm prev
 cmd + alt - m            :    kwmc window -fm next
