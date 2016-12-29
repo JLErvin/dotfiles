@@ -24,7 +24,6 @@ delete bar
 del 
 open_with
 e mode.coffee
-delete
 sudo mode.coffee
 sudo coffee mode.coffee
 
@@ -34,3 +33,4 @@ delete
 open_with 
 copycmap 
 copycmap cpu.coffee
+delete
