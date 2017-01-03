@@ -8,6 +8,7 @@ filetype off                  " required
 
 colorscheme delek 
  
+ 
 set nocp
 execute pathogen#infect()
 
@@ -29,13 +30,16 @@ let g:syntastic_check_on_wq = 0
 "SETUP PLUGINS USING VUNDLE
 set rtp+=~/.config/nvim/bundle/Vundle.vim
 call vundle#begin()
-Plugin 'gmarik/Vundle.vim'
 
+Plugin 'gmarik/Vundle.vim'
 Bundle 'Valloric/YouCompleteMe'
 Plugin 'vim-airline/vim-airline-themes'
 Plugin 'pangloss/vim-javascript'
 Plugin 'flazz/vim-colorschemes'
 Bundle 'klen/python-mode'
+Plugin 'xolox/vim-misc'
+Plugin 'xolox/vim-notes'
+Plugin 'jalvesaq/Nvim-R'
 
 call vundle#end()
 filetype plugin indent on
@@ -44,8 +48,11 @@ filetype plugin indent on
 " Customize Appearance {{{
 set number
 
-highlight LineNr ctermfg=white ctermbg=none
-highlight VertSplit ctermfg=white ctermbg=none
+highlight LineNr ctermfg=grey ctermbg=black
+highlight VertSplit ctermfg=black ctermbg=none
+set fillchars+=vert:\ 
+
+set guifont=Robot\ Mono\ for\ Powerline\ 11 
 
 set nowrap
 
@@ -54,9 +61,13 @@ set nowrap
 
 imap jj <esc>
 
+vnoremap <silent> s //e<C-r>=&selection=='exclusive'?'+1':''<CR><CR>
+    \:<C-u>call histdel('search',-1)<Bar>let @/=histget('search',-1)<CR>gv
+omap s :normal vs<CR>
+
+
 " }}}
 " Configure Airline Plugin {{{
-set guifont=Robot\ Mono\ for\ Powerline\ 11 
 
 " air-line
 let g:airline_powerline_fonts = 1
@@ -93,7 +104,7 @@ if !exists('g:airline_symbols')
 endif
 let g:airline_symbols.space = "\ua0"
 
-let g:airlinetheme='badwolf'
+let g:airline_theme='base16_grayscale'
 
 " }}}
 " Configure R Plugin {{{
@@ -112,7 +123,7 @@ let g:vimrplugin_map_r = 1
 let vimrplugin_vimpager = "no"
 
 "Setup R Key Bindings""
-map F2 <Plug>RStart
+map F2 <Rstart>
 imap F2 <Plug>Rstart
 vmap F2 <Plug>Rstart
 
