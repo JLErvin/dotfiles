@@ -4,21 +4,23 @@
 
 set nocompatible              " be iMproved, required
 filetype off                  " required
-
-
-colorscheme delek 
- 
- 
 set nocp
-execute pathogen#infect()
-
 syntax on
 filetype plugin indent on
 
 set tabstop=2
 
+"display tabs and trailing spaces
+set list
+set listchars=tab:▷⋅,trail:⋅,nbsp:⋅
+
 let g:deoplete#enable_at_startup = 1
-" }}}
+
+"}}}
+" Pathogen {{{
+execute pathogen#infect()
+
+"}}}
 " Syntastic {{{
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
@@ -40,21 +42,27 @@ Bundle 'klen/python-mode'
 Plugin 'xolox/vim-misc'
 Plugin 'xolox/vim-notes'
 Plugin 'jalvesaq/Nvim-R'
+Plugin 'scrooloose/nerdcommenter'
 
 call vundle#end()
 filetype plugin indent on
 
 " }}}
 " Customize Appearance {{{
-set number
 
+" Configure colorscheme
+" Use Pmenu to configure drop-down menu for YouCompleteMe
+colorscheme delek
 highlight LineNr ctermfg=grey ctermbg=black
 highlight VertSplit ctermfg=black ctermbg=none
-set fillchars+=vert:\ 
+highlight Pmenu ctermfg=15 ctermbg=0 guifg=#ffffff guibg=#000000   
 
-set guifont=Robot\ Mono\ for\ Powerline\ 11 
-
+set fillchars+=vert:\
+set guifont=Robot\ Mono\ for\ Powerline\ 11
 set nowrap
+set number
+
+
 
 " }}}
 " Key Bindings {{{
@@ -65,6 +73,7 @@ vnoremap <silent> s //e<C-r>=&selection=='exclusive'?'+1':''<CR><CR>
     \:<C-u>call histdel('search',-1)<Bar>let @/=histget('search',-1)<CR>gv
 omap s :normal vs<CR>
 
+set backspace=indent,eol,start
 
 " }}}
 " Configure Airline Plugin {{{
@@ -134,4 +143,8 @@ let vimrplugin_applscript = 0
 let vimrplugin_screenplugin = 0
 
 " }}}
+" Configure Python Plugin {{{
 
+let g:pymode = 1
+
+" }}}
