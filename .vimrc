@@ -9,10 +9,11 @@ syntax on
 filetype plugin indent on
 
 set tabstop=2
+set shiftwidth=2
 
 "display tabs and trailing spaces
 set list
-set listchars=tab:▷⋅,trail:⋅,nbsp:⋅
+set listchars=tab:-⋅,trail:⋅,nbsp:⋅
 
 let g:deoplete#enable_at_startup = 1
 
@@ -26,6 +27,11 @@ let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
+let g:ycm_show_diagnostics_ui = 1
+
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
 
 "}}}
 " VUNDLE {{{
@@ -43,6 +49,9 @@ Plugin 'xolox/vim-misc'
 Plugin 'xolox/vim-notes'
 Plugin 'jalvesaq/Nvim-R'
 Plugin 'scrooloose/nerdcommenter'
+Plugin 'vim-syntastic/syntastic'
+Plugin 'tpope/vim-fugitive'
+Plugin 'davidhalter/jedi-vim'
 
 call vundle#end()
 filetype plugin indent on
@@ -146,5 +155,21 @@ let vimrplugin_screenplugin = 0
 " Configure Python Plugin {{{
 
 let g:pymode = 1
+
+" }}}
+" Configure Java Compiler {{{
+
+	" java compile
+map <F2> :call CompileJava()<CR>
+func! CompileJava()
+	:w
+	:!javac "%"
+endfunc
+" run class
+map <F5> :call RunClass()<CR>
+func! RunClass()
+	:!java -cp "%:p:h" "%:t:r"
+endfunc
+
 
 " }}}
