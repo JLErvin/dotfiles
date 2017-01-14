@@ -16,10 +16,10 @@
 
 #Screenshots
 
-![Screenshots](http://imgur.com/ieA2IcE)
+![Screenshots]([Imgur](http://i.imgur.com/ieA2IcE.png))
 
-![Screenshots](http://imgur.com/ahtdaDS)
+![Screenshots]([Imgur](http://i.imgur.com/ahtdaDS.png))
 
-![Screenshots](http://imgur.com/IA1F6rY)
+![Screenshots]([Imgur](http://i.imgur.com/IA1F6rY.png))
 
 
