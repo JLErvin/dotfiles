@@ -5,20 +5,21 @@
 * OS: `Mac OS X`
 * Window Manager: `kwm`
 * Terminal: `iTerm2`
-* Terminal Font: `roboto mono`
+* Terminal Font: `menlo`
 * Terminal color scheme: `ryuuko`
 * Text Editor: `neovim`
-* Editor Font: `roboto mono`
+* Editor Font: `menlo`
 * Music Player: `cmus`
 * File Browser: `ranger`
 * Web Browser: `firefox`
+* Bar: 'nerdbar'
 
 #Screenshots
 
-![Screenshots](http://i.imgur.com/4OhCBX8.png "Dirty I")
+![Screenshots](http://imgur.com/ieA2IcE)
 
-![Screenshots](http://i.imgur.com/L3smboR.jpg "Dirty II")
+![Screenshots](http://imgur.com/ahtdaDS)
 
-![Screenshots](http://i.imgur.com/cTfTrNe.png "Dirty II")
+![Screenshots](http://imgur.com/IA1F6rY)
 
 
