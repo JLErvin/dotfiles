@@ -12,13 +12,11 @@
 * Music Player: `cmus`
 * File Browser: `ranger`
 * Web Browser: `firefox`
-* Bar: 'nerdbar'
+* Bar: `nerdbar`
 
 #Screenshots
 
 ![Screenshots](http://i.imgur.com/ieA2IcE.png)
-
-![Screenshots](http://i.imgur.com/ahtdaDS.png)
 
 ![Screenshots](http://i.imgur.com/IA1F6rY.png)
 
