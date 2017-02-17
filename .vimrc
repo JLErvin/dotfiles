@@ -15,7 +15,6 @@ set shiftwidth=2
 set list
 set listchars=tab:-⋅,trail:⋅,nbsp:⋅
 
-let g:deoplete#enable_at_startup = 1
 
 "}}}
 " Pathogen {{{
@@ -27,7 +26,6 @@ let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
-let g:ycm_show_diagnostics_ui = 1
 
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
@@ -40,7 +38,6 @@ set rtp+=~/.config/nvim/bundle/Vundle.vim
 call vundle#begin()
 
 Plugin 'gmarik/Vundle.vim'
-Bundle 'Valloric/YouCompleteMe'
 Plugin 'vim-airline/vim-airline-themes'
 Plugin 'pangloss/vim-javascript'
 Plugin 'flazz/vim-colorschemes'
@@ -52,6 +49,14 @@ Plugin 'scrooloose/nerdcommenter'
 Plugin 'vim-syntastic/syntastic'
 Plugin 'tpope/vim-fugitive'
 Plugin 'davidhalter/jedi-vim'
+Plugin 'altercation/vim-colors-solarized'
+Plugin 'Shougo/deoplete.nvim'
+Plugin 'FredKSchott/CoVim'
+Plugin 'mhartington/oceanic-next'
+Plugin 'Valloric/YouCompleteMe'
+Plugin 'artur-shaik/vim-javacomplete2'
+Plugin 'ryanoasis/vim-devicons'
+Plugin 'tiagofumo/vim-nerdtree-syntax-highlight'
 
 call vundle#end()
 filetype plugin indent on
@@ -60,16 +65,30 @@ filetype plugin indent on
 " Customize Appearance {{{
 
 " Configure colorscheme
+"let $NVIM_TUI_ENABLE_TRUE_COLOR=1
+"if (has("termguicolors"))
+"	set termguicolors
+"endif
+
+syntax enable
+colorscheme OceanicNext
+set background=dark
+set cursorline
+
+
 " Use Pmenu to configure drop-down menu for YouCompleteMe
-colorscheme delek
-highlight LineNr ctermfg=grey ctermbg=black
+syntax enable
+highlight LineNr ctermfg=white ctermfg=black
 highlight VertSplit ctermfg=black ctermbg=none
 highlight Pmenu ctermfg=15 ctermbg=0 guifg=#ffffff guibg=#000000   
+highlight CursorLine guibg=#737385 gui=none
+highlight CursorLineNr term=bold ctermfg=White guifg=White
 
-set fillchars+=vert:\
-set guifont=Robot\ Mono\ for\ Powerline\ 11
+set fillchars+=vert:\ 
+set guifont=Sauce\ Code\ Pro\ Nerd\ Font\ Complete:h10
 set nowrap
 set number
+set relativenumber
 
 
 
@@ -77,6 +96,10 @@ set number
 " Key Bindings {{{
 
 imap jj <esc>
+noremap <Up> <NOP>
+noremap <Down> <NOP>
+noremap <Left> <NOP>
+noremap <Right> <NOP>
 
 vnoremap <silent> s //e<C-r>=&selection=='exclusive'?'+1':''<CR><CR>
     \:<C-u>call histdel('search',-1)<Bar>let @/=histget('search',-1)<CR>gv
@@ -122,8 +145,7 @@ if !exists('g:airline_symbols')
 endif
 let g:airline_symbols.space = "\ua0"
 
-let g:airline_theme='base16_grayscale'
-
+let g:airline_theme='oceanicnext'
 " }}}
 " Configure R Plugin {{{
 
@@ -171,5 +193,13 @@ func! RunClass()
 	:!java -cp "%:p:h" "%:t:r"
 endfunc
 
+
+" }}}
+" Configure Java AutoCompletion {{{
+	autocmd FileType java setlocal omnifunc=javacomplete#Complete
+
+" }}} 
+" {{{
+	let g:deoplete#enable_at_start = 1
 
 " }}}
