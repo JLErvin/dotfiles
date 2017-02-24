@@ -1,0 +1,1 @@
+echo "$(sh ~/.kwm/scripts/time_script)@$(sh ~/.kwm/scripts/date_script)@$(sh ~/.kwm/scripts/battery_percentage_script)%@$(sh ~/.kwm/scripts/battery_charging_script)@$(sh ~/.kwm/scripts/wifi_status_script)"

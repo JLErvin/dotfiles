@@ -19,7 +19,6 @@ set listchars=tab:-⋅,trail:⋅,nbsp:⋅
 "}}}
 " Pathogen {{{
 execute pathogen#infect()
-
 "}}}
 " Syntastic {{{
 let g:syntastic_always_populate_loc_list = 1

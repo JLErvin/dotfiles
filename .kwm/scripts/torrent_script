@@ -1,0 +1,40 @@
+#!/usr/bin/bash
+
+TOTAL=0
+COUNTER=0
+PERCENTAGES=( $(/usr/local/bin/transmission-remote -l | grep % | awk -F" " '{print $2}' | grep -o '[0-9]\+' ) )
+
+for i in "${PERCENTAGES[@]}"
+do
+  (( TOTAL= $TOTAL + $i ))
+  (( COUNTER=$COUNTER + 1 ))
+done
+
+if [ $COUNTER == 0 ];
+then
+  echo "no torrents downloading/seeding"
+  exit 0
+fi
+
+(( TOTAL_PER= $TOTAL / $COUNTER))
+
+if [ $TOTAL_PER == 100 ];
+then
+   echo "100"@$COUNTER@$COUNTER
+   exit 0
+fi
+
+SUBCOUNTER=0
+DOWNPER=0
+for j in "${PERCENTAGES[@]}"
+do
+  if [ $j -ne 100 ];
+  then
+    (( DOWNPER= $DOWNPER + $j ))
+    (( SUBCOUNTER= $SUBCOUNTER + 1 ))
+  fi
+done
+
+(( DOWNCOMB= $DOWNPER / $SUBCOUNTER ))
+
+echo $DOWNCOMB@$SUBCOUNTER@$COUNTER

@@ -1,0 +1,7 @@
+#!/usr/bin/bash
+# ps -A -o %mem | awk '{s+=$1} END {print "" s}'
+
+FREE=$(memory_pressure | grep "Pages free" | grep -o -E '[0-9]+');
+TOTAL=$(memory_pressure | grep system | awk -F" " '{print $5}' | grep -o -E '[0-9]+');
+USED=$((TOTAL - FREE))
+echo "scale=3;$USED/$TOTAL*100" | bc

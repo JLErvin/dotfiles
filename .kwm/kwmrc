@@ -37,7 +37,7 @@ e.g: window-rules in a separate file called 'rules'
 */
 
 # Set default values for screen padding
-kwmc config padding 40 40 40 40 
+kwmc config padding 40 60 40 40 
 
 # Set default values for container gaps
 kwmc config gap 20 20
@@ -87,15 +87,15 @@ kwmc config cycle-focus on
 /*
 Override default settings for space 1 on screen 0
    kwmc config space 0 1 mode monocle
-   kwmc config space 0 1 padding 100 100 100 100
+   kwmc config space 0 1 padding 400 100 100 100 
    kwmc config space 0 1 gap 40 40
 */
 
 /*
 Override default settings for screen 1
    kwmc config display 1 mode bsp
-   kwmc config display 1 padding 100 100 100 100
-   kwmc config display 1 gap 40 40
+   kwmc config display 1 padding 400 100 100 100
+   kwmc config display 1 gap 80 40
 */
 
 # Set default container split-ratio
@@ -131,7 +131,7 @@ if the screen exists.
 # Enable border for focused window
 kwmc config border focused on
 kwmc config border focused size 2 
-kwmc config border focused color 0xFFffcc00
+kwmc config border focused color 0xFF5fb3b3
 kwmc config border focused radius 6 
 
 # Enable border for marked window

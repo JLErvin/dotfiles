@@ -19,7 +19,6 @@ n
 vim 
 open_with preview
 git clone https://github.com/callahanrts/bar
-d
 delete bar
 del 
 open_with
@@ -29,8 +28,15 @@ sudo coffee mode.coffee
 
 del
 e focused-window.coffee
-delete 
 open_with 
 copycmap 
 copycmap cpu.coffee
 delete
+q
+d
+delete 
+rename LexicalParserrq.cs
+rename LexicalParserq.cs
+nvim spotify.coffee
+vim spotify.coffee
+mv mode.coffee ~/Desktop

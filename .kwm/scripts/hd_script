@@ -1,0 +1,3 @@
+#!/usr/bin/bash
+
+df -h | grep /disk1 | awk -F" " '{print $4}'
