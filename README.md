@@ -2,14 +2,14 @@
 
 
 
-* OS: `Mac OS X`
+* OS: `macOS Sierra`
 * Window Manager: `kwm`
 * Terminal: `iTerm2`
-* Terminal Font: `menlo`
-* Terminal color scheme: `ryuuko`
+* Terminal Font: `SauceCodePro`
+* Terminal color scheme: `OceanicNext`
 * Text Editor: `neovim`
-* Editor Font: `menlo`
-* Music Player: `cmus`
+* Editor Font: `SauceCodePro`
+* Music Player: `spotify`
 * File Browser: `ranger`
 * Web Browser: `firefox`
 * Bar: `nerdbar`
@@ -18,6 +18,8 @@
 
 ![Screenshots](http://i.imgur.com/2Y2dogj.jpg)
 
-![Screenshots](http://i.imgur.com/IA1F6rY.png)
+![Screenshots](http://i.imgur.com/1zmUc0j.png)
+
+![Screenshots](http://i.imgur.com/dptoUli.png)
 
 
