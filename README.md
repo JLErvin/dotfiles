@@ -16,7 +16,7 @@
 
 #Screenshots
 
-![Screenshots](http://i.imgur.com/ieA2IcE.png)
+![Screenshots](http://i.imgur.com/2Y2dogj.jpg)
 
 ![Screenshots](http://i.imgur.com/IA1F6rY.png)
 
