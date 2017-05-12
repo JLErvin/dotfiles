@@ -13,11 +13,14 @@ khd mode prefix color 0xFF458588
 # Activate prefix mode
 ctrl - s                 :    khd -e "mode activate prefix"
 
+# Activate switcher mode 
+ctrl - f                 :    khd -e "mode activate switcher"
+
+# Return to default mode from switcher mode
+switcher - return 			 :    khd -e "mode activate default"
+
 # Quit Kwm
 cmd + alt + ctrl - q     :    kwmc quit
-
-# Launch iTerm2
-cmd - return             :    open -na /Applications/iTerm2.app
 
 # Set Space Tiling Mode To BSP
 cmd + ctrl - a           :    kwmc space -t bsp
@@ -58,10 +61,16 @@ cmd + alt + ctrl - j     :    kwmc window -mk south wrap
 cmd + alt + ctrl - k     :    kwmc window -mk north wrap
 
 # Give Focus To Window
-cmd + tab - h            :    kwmc window -f west
-cmd + tab - l            :    kwmc window -f east
-cmd + tab - j            :    kwmc window -f south
-cmd + tab - k            :    kwmc window -f north
+switcher - h            :    kwmc window -f west
+switcher - l            :    kwmc window -f east
+switcher - j            :    kwmc window -f south 
+switcher - k            :    kwmc window -f north 
+
+
+ctrl + alt - h            :    kwmc window -f west
+ctrl + alt - l            :    kwmc window -f east
+ctrl + alt - j            :    kwmc window -f south
+ctrl + alt - k            :    kwmc window -f north
 
 cmd + alt - n            :    kwmc window -fm prev
 cmd + alt - m            :    kwmc window -fm next
@@ -72,11 +81,11 @@ cmd + alt - 2            :    kwmc display -f 1
 cmd + alt - 3            :    kwmc display -f 2
 
 # Swap Focused Window
-ctrl + alt - h           :    kwmc window -s west
-ctrl + alt - j           :    kwmc window -s south
-ctrl + alt - k           :    kwmc window -s north
-ctrl + alt - l           :    kwmc window -s east
-ctrl + alt - m           :    kwmc window -s mark
+#ctrl + alt - h           :    kwmc window -s west
+#ctrl + alt - j           :    kwmc window -s south
+#ctrl + alt - k           :    kwmc window -s north
+#ctrl + alt - l           :    kwmc window -s east
+#ctrl + alt - m           :    kwmc window -s mark
 
 # Pseudo containers
 cmd + ctrl + alt - p     :    kwmc tree -pseudo create
@@ -96,30 +105,30 @@ ctrl + shift - x         :    kwmc window -m mark
 # Move Focused Window To Space
 ctrl + alt - left        :    kwmc window -m space left
 ctrl + alt - right       :    kwmc window -m space right
+ctrl + alt - 1           :    kwmc window -m space 1 
+ctrl + alt - 2           :    kwmc window -m space 2 
+ctrl + alt - 3           :    kwmc window -m space 3 
+ctrl + alt - 4           :    kwmc window -m space 4 
+ctrl + alt - 5           :    kwmc window -m space 5 
+ctrl + alt - 6           :    kwmc window -m space 6 
+ctrl + alt - 7           :    kwmc window -m space 7 
+ctrl + alt - 8           :    kwmc window -m space 8 
+ctrl + alt - 9           :    kwmc window -m space 9 
+
 
 # Move Focused Window To Screen
 ctrl + alt - 1           :    kwmc window -m display 0
 ctrl + alt - 2           :    kwmc window -m display 1
 ctrl + alt - 3           :    kwmc window -m display 2
 
-# Increase Container Gaps
-prefix - x               :    kwmc space -g increase horizontal
-prefix - y               :    kwmc space -g increase vertical
+# Switch between different preset spaces
+switcher - 1            :   kwmc space -fExperimental 1
+switcher - 2            :   kwmc space -fExperimental 2
+switcher - 3            :   kwmc space -fExperimental 3
+switcher - 4            :   kwmc space -fExperimental 4
+switcher - 5            :   kwmc space -fExperimental 5
+switcher - 6            :   kwmc space -fExperimental 6
 
-# Decrease Container Gaps
-prefix + shift - x       :    kwmc space -g decrease horizontal
-prefix + shift - y       :    kwmc space -g decrease vertical
+#khd mode default color 0xdd5fb3b3
+#khd mode switcher color 0xddec5f67
 
-# Increase Screen Padding
-prefix - left            :    kwmc space -p increase left
-prefix - right           :    kwmc space -p increase right
-prefix - up              :    kwmc space -p increase top
-prefix - down            :    kwmc space -p increase bottom
-prefix - p               :    kwmc space -p increase all
-
-# Decrease Screen Padding
-prefix + shift - left    :    kwmc space -p decrease left
-prefix + shift - right   :    kwmc space -p decrease right
-prefix + shift - up      :    kwmc space -p decrease top
-prefix + shift - down    :    kwmc space -p decrease bottom
-prefix + shift - p : kwmc space -p decrease all
