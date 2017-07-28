@@ -24,10 +24,10 @@ If you want to know a bit about me, I am an undergraduate student at the Univers
 
 # Screenshots
 
+macOS
 ![Screenshots](http://i.imgur.com/2Y2dogj.jpg)
 
-![Screenshots](http://i.imgur.com/1zmUc0j.png)
-
-![Screenshots](http://i.imgur.com/dptoUli.png)
+blade
+![Imgur](http://i.imgur.com/t0bPUxP.jpg)
 
 
