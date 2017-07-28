@@ -1,7 +1,7 @@
 # Josh's dofiles
 ___
 
-Welcome to my dotfiles. I am currently running 3 main devices: a MacBook Pro 15' for school, a Razer Blade 2016 for work, and a desktop for my own personal use. Please explore and download what you would like. I most occasionaly to /r/unixporn, where you can find my setup in action. 
+Welcome to my dotfiles. I am currently running 3 main devices: a MacBook Pro 15' for school, a Razer Blade 2016 for work, and a desktop for my own personal use. Please explore and download what you would like. I post occasionaly to /r/unixporn, where you can find my setup in action. 
 
 Please note that my blade and desktop are both running at somewhat bizarre resolutions. My blade runs at 3200x1800, and my desktop runs at 3440x1440(21:0). Because of this, some configuration files like polybar might not scale well with other resolutions. 
 
