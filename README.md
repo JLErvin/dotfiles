@@ -1,18 +1,7 @@
 # Josh's dofiles
+___
 
-
-
-* OS: `macOS Sierra`
-* Window Manager: `kwm`
-* Terminal: `iTerm2`
-* Terminal Font: `SauceCodePro`
-* Terminal color scheme: `OceanicNext`
-* Text Editor: `neovim`
-* Editor Font: `SauceCodePro`
-* Music Player: `spotify`
-* File Browser: `ranger`
-* Web Browser: `firefox`
-* Bar: `nerdbar`
+Welcome to my dotfiles. I am currently running 3 main devices: a MacBook Pro 15' for school, a Razer Blade 2016 for work, and a desktop for my own personal use. 
 
 |              | macOS                | blade                 | Desktop                |
 :--------------|:---------------------|:----------------------|:-----------------------|
