@@ -19,6 +19,7 @@ If you want to know a bit about me, I am an undergraduate student at the Univers
 |**file-explorer** | ranger               | ranger                | ranger                 |
 |**bar**           | ubersicht            | polybar               | polybar                |
 |**colorscheme**   | oceanic next         | simplicity            | simplicity             |
+|**font**          | sauce code pro       | GohuFont              | GohuFont               |
 
 
 
