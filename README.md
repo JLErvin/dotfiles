@@ -21,6 +21,8 @@ If you want to know a bit about me, I am an undergraduate student at the Univers
 |**colorscheme**   | oceanic next         | simplicity            | simplicity             |
 |**font**          | sauce code pro       | GohuFont              | GohuFont               |
 
+Credit for my colorschemes (blade/desktop), goes to dkeg. Go check out his [github](https://github.com/dkeg/crayolo) for some great colorscheme 
+
 
 
 # Screenshots
