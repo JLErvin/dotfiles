@@ -14,18 +14,20 @@
 * Web Browser: `firefox`
 * Bar: `nerdbar`
 
+              | macOS                | blade                 | Desktop                |
+              | --------------------:|:---------------------:| ----------------------:|
+os            | macOS Sierra         | ubuntu 16.04          | ubuntu 16.04
+wm	          | kwm                  | bspwm                 | bspwm
+cpu           | intel i7             | intel i7              | amd ryzen 1700x
+gpu           | amd                  | nvidia 970m           | nvidia 970
+ram           | 16gb                 | 16gb                  | 32gb
+terminal      | iTerm2 Nightly       | xfce4                 | xfce4
+text editor   | neovim               | neovim                | neovim
+browser       | firefox              | firefox               | firefox
+file-explorer | ranger               | ranger                | ranger
+bar           | ubersicht            | polybar               | polybar
+colorscheme   | oceanic next         | simplicity            | simplicity
 
-| macOS                | blade                 | Desktop                |
-| --------------------:|:---------------------:| ----------------------:|
-| OS: macOS Sierra     | OS: ubuntu 16.04      | OS: ubuntu 16.04       | 
-| wm: kwm              | wm: bspwm             | wm: bspwm
-| cpu: Intel i7        | cpu: intel i7         | cpu: amd ryzen 1700x
-| gpu: amd             | gpu: nvidia 970m      | gpu: nvidia 970
-| ram: 16gb            | ram: 16gb             | ram: 32gb
-| terminal:            | terminal: xfce4       | terminal: xfce4
-| text editor: neovim  | text editor: neovim   | text editor: neovim
-| browser: firefox     | browser: firefox      | browser: firefox
-| file browser: ranger | file browser: ranger  | file browser: ranger
 
 
 # Screenshots
