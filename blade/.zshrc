@@ -24,7 +24,7 @@ antigen bundle heroku
 antigen bundle pip
 antigen bundle lein
 antigen bundle command-not-found
-antigen theme https://github.com/denysdovhan/spaceship-zsh-theme spaceship
+antigen theme https://github.com/denysdovhan/spaceship-zsh-theme
 #antigen theme https://github.com/bhilburn/powerlevel9k
 
 # Syntax highlighting bundle.
@@ -39,69 +39,19 @@ antigen apply
 
 alias tmux="TERM=screen-256color-bce tmux"
 
-#DISABLE_AUTO_TITLE="true"
-#
-#POWERLEVEL9K_MODE='awesome-fontconfig'
-
-#POWERLEVEL9K_BATTERY_CHARGING_BACKGROUND='yellow'
-#POWERLEVEL9K_BATTERY_BACKGROUND='yellow'
-#POWERLEVEL9K_BATTERY_CHARGED='green'
-#POWERLEVEL9K_BATTERY_DISCONNECTED='$DEFAULT_COLOR'
-#POWERLEVEL9K_BATTERY_LOW_THRESHOLD='10'
-#POWERLEVEL9K_BATTERY_LOW_COLOR='red'
-##POWERLEVEL9K_BATTERY_ICON='\uf1e6 '
-#POWERLEVEL9K_BATTERY_ICON='\uF17C'
-#POWERLEVEL9K_MULTILINE_FIRST_PROMPT_PREFIX=''
-#POWERLEVEL9K_MULTILINE_SECOND_PROMPT_PREFIX='\uf0da'
-##POWERLEVEL9K_VCS_GIT_ICON='\ue60a'
-
-#POWERLEVEL9K_VCS_MODIFIED_BACKGROUND='yellow'
-#POWERLEVEL9K_VCS_UNTRACKED_BACKGROUND='yellow'
-
-#POWERLEVEL9K_DIR_HOME_BACKGROUND='blue'
-#POWERLEVEL9K_DIR_HOME_SUBFOLDER_BACKGROUND='green'
-#POWERLEVEL9K_DIR_DEFAULT_BACKGROUND='green'
-##POWERLEVEL9K_VCS_UNTRACKED_ICON='?'
-#POWERLEVEl9K_OS_ICON_BACKGROUND="grey"
-#POWERLEVEl9K_OS_ICON_FOREGOURND="white"
-
-#POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(dir)
-#POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=()
-
-#POWERLEVEL9K_SHORTEN_STRATEGY="truncate_middle"
-#POWERLEVEL9K_SHORTEN_DIR_LENGTH=4
-
-##POWERLEVEL9K_CUSTOM_TIME_FORMAT="%D{\uf017 %H:%M:%S}"
-#POWERLEVEL9K_TIME_FORMAT="%D{\uf017 %H:%M \uf073 %d.%m.%y}"
-
-#POWERLEVEL9K_STATUS_VERBOSE=false
-
-#POWERLEVEL9K_PROMPT_ON_NEWLINE=false
-
-
 # ORDER
 SPACESHIP_PROMPT_ORDER=(
-  time
+	time
   user
   host
   dir
-  ruby
-  xcode
-  swift
-  golang
-  php
-  rust
-  julia
-  docker
-  venv
-  pyenv
   line_sep
   vi_mode
   char
 )
 
 # PROMPT
-SPACESHIP_PROMPT_SYMBOL=""
+SPACESHIP_PROMPT_SYMBOL=""
 SPACESHIP_PROMPT_ADD_NEWLINE=false
 SPACESHIP_PROMPT_SEPARATE_LINE=false
 SPACESHIP_PROMPT_PREFIXES_SHOW=true
