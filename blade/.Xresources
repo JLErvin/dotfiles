@@ -1,0 +1,93 @@
+!j------------------------------------------------------------------------------
+! Xft settings
+!-------------------------------------------------------------------------------
+
+Xft.dpi:                    96
+Xft.antialias:              false
+Xft.rgba:                   rgb
+Xft.hinting:                true
+Xft.hintstyle:              hintslight
+
+!-------------------------------------------------------------------------------
+! URxvt settings
+!-------------------------------------------------------------------------------
+
+URxvt.depth:                32
+URxvt.geometry:             90x30
+URxvt.transparent:          false
+URxvt.fading:               0
+! URxvt.urgentOnBell:         true
+! URxvt.visualBell:           true
+URxvt.loginShell:           true
+URxvt.saveLines:            50
+URxvt.internalBorder:       3
+URxvt.lineSpace:            0
+
+! Fonts
+URxvt.allow_bold:           false
+/* URxvt.font:                 -*-terminus-medium-r-normal-*-12-120-72-72-c-60-iso8859-1 */
+URxvt*font: xft:lemon:pixelsize=13
+URxvt*boldFont: xft:lemon:pixelsize=11
+
+! Fix font space
+URxvt*letterSpace:0 
+
+! Scrollbar
+URxvt.scrollStyle:          rxvt
+URxvt.scrollBar:            false
+
+! Add padding
+URxvt.internalBorder: 20 
+
+! Perl extensions
+URxvt.perl-ext-common:      default,matcher
+URxvt.matcher.button:       1
+URxvt.urlLauncher:          firefox
+
+! Cursor
+URxvt.cursorBlink:          true
+URxvt.cursorColor:          #657b83
+URxvt.cursorUnderline:      false
+
+! Pointer
+URxvt.pointerBlank:         true
+
+*background: #363334 
+*foreground: #EAEAED 
+!!*fading: 40
+*fadeColor: #073642
+*cursorColor: #93a1a1
+*pointerColorBackground: #586e75
+*pointerColorForeground: #93a1a1
+
+!! black dark/light
+*color0: #393638 
+*color8: #4A484B 
+
+!! red dark/light
+*color1: #97544D 
+*color9: #97544D
+
+!! green dark/light
+*color2: #97A293
+*color10: #97A293  
+
+!! yellow dark/light
+*color3: #C29F6F 
+*color11: #C29F6F
+
+!! blue dark/light
+*color4: #5E606C 
+*color12: #5E606C 
+
+!! magenta dark/light
+*color5: #7A6054 
+*color13: #7A6054
+
+!! cyan dark/light
+*color6: #78746C 
+*color14: #78746C 
+
+!! white dark/light
+*color7: #C3C1B8
+*color15: #C3C1B8 

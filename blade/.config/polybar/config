@@ -32,9 +32,9 @@ module-margin-right = 1
 
 font-N = <fontconfig pattern>;<vertical offset>
 ; font-0 = SauceCodePro NF:pixelsize=13;0
-font-0 = GohuFont\ Powerline:pixelsize=10;2
+font-0 = lemon:pixelsize=10;2
 font-1 = FontAwesome:size=8;2
-font-2 = GohuFont\ Powerline:pixelsize=10;2
+font-2 = lemon:pixelsize=10;2
 ; font-2 = SauceCodePro NF:pixelsize=11;0
 
 modules-left = bspwm padding xwindow
@@ -57,9 +57,9 @@ type = internal/bspwm
 
 pin-workspaces = true
 
-ws-icon-1 = I;
-ws-icon-2 = II;
-ws-icon-3 = III;
+ws-icon-1 = I;main
+ws-icon-2 = II;web
+ws-icon-3 = III;code
 ws-icon-4 = IV;main
 ws-icon-5 = V;web
 ws-icon-6 = VI;code
@@ -74,18 +74,19 @@ ws-icon-default =
 
 format = <label-state> <label-mode>
 
-label-focused = %icon%
+;label-focused = %icon%
+label-focused = 
 label-focused-foreground= #C3C1B8
 label-focused-padding = 2 
 
-label-occupied = %icon%
+label-occupied = 
 label-occupied-foreground = #5a5a5a
 label-occupied-padding = 2 
 
 label-urgent = %icon%
 label-urgent-padding = 2
 
-label-empty = %icon%
+label-empty = 
 label-empty-foreground = #4A484B 
 label-empty-padding = 2
 

@@ -2,6 +2,11 @@
 
 sxhkd &
 polybar top &
+polybar bspwm &
+polybar time &
+polybar battery &
+polybar volume &
+
 
 bspc monitor -d I II III
 bspc monitor HDMI-1 -d IV V VI VII VIII IX X
