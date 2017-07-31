@@ -12,7 +12,7 @@ Please note that my blade and desktop are both running at somewhat bizarre resol
 |**cpu**           | intel i7             | intel i7              | amd ryzen 1700x        |
 |**gpu**           | amd                  | nvidia 970m           | nvidia 970             |
 |**ram**           | 16gb                 | 16gb                  | 32gb                   |
-|**terminal**      | iTerm2 Nightly       | xfce4                 | xfce4                  |
+|**terminal**      | iTerm2 Nightly       | urxvt                 | urxvt                  |
 |**text editor**   | neovim               | neovim                | neovim                 |
 |**browser**       | firefox              | firefox               | firefox                |
 |**file-explorer** | ranger               | ranger                | ranger                 |
@@ -44,5 +44,7 @@ sudo rm -rf 70-no-bitmaps.conf
 sudo ln -s ../conf.avail/70-yes-bitmaps.conf .
 sudo dpkg-reconfigure fontconfig
 ```
+
+It may be necessary to restart your computer after for the chanes to take effect
 
 

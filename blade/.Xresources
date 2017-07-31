@@ -91,3 +91,14 @@ URxvt.pointerBlank:         true
 !! white dark/light
 *color7: #C3C1B8
 *color15: #C3C1B8 
+
+
+! ------------------------------------------------------------------------------
+! ROFI Color theme
+! ------------------------------------------------------------------------------
+rofi.color-enabled: true
+rofi.color-window: #eaeaed, #eaeaed, #eaeaed
+rofi.color-normal: #eaeaed, #4a484b, #eaeaed, #4a484b, #eaeaed
+rofi.color-active: #fdf6e3, #268bd2, #eee8d5, #268bd2, #fdf6e3
+rofi.color-urgent: #fdf6e3, #dc322f, #eee8d5, #dc322f, #fdf6e3
+rofi.font: lemon 12
