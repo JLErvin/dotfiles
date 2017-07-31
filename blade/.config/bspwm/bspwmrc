@@ -1,12 +1,11 @@
 #! /bin/sh
 
 sxhkd &
-polybar top &
 polybar bspwm &
 polybar time &
 polybar battery &
 polybar volume &
-
+xrandr --output eDP-1 --mode 1920x1080 &
 
 bspc monitor -d I II III
 bspc monitor HDMI-1 -d IV V VI VII VIII IX X

@@ -5,7 +5,7 @@ export PATH=$PATH:/home/joshuaervin/bspwm/examples/panel
 
 # Path to your oh-my-zsh installation.
 export ZSH=$HOME/.oh-my-zsh
-export TERM="xterm-256color"
+#export TERM="xterm-256color"
 
 
 # Uncomment these lines if you wish to use the powerline package
@@ -37,7 +37,7 @@ antigen apply
 
 #ZSH_THEME="powerline9k"
 
-alias tmux="TERM=screen-256color-bce tmux"
+#alias tmux="TERM=screen-256color-bce tmux"
 
 # ORDER
 SPACESHIP_PROMPT_ORDER=(
