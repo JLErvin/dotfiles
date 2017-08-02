@@ -1,14 +1,12 @@
 #! /bin/sh
 
 sxhkd &
-polybar bspwm &
-polybar time &
-polybar battery &
-polybar volume &
-xrandr --output eDP-1 --mode 1920x1080 &
+pbar &
+pkill -x xfce4-notify &
+dunst /home/joshuaervin/.config/dunst/dunstrc &
 
-bspc monitor -d I II III
-bspc monitor HDMI-1 -d IV V VI VII VIII IX X
+bspc monitor -d I II III IV V X
+bspc monitor HDMI-1 -d VI VII VIII IX 
 
 bspc config border_width         5
 bspc config window_gap         	0 
