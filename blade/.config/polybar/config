@@ -5,6 +5,12 @@
 ;---------------------------------------------
 
 
+[colors]
+background = #363334
+black = #4A484B
+white = #EAEAED
+
+
 ;---------------------------------------------
 ;                 B A R S                    ;
 ;     temp, volume, middle, battery, cpu     ;
@@ -17,36 +23,91 @@ width = 100%
 height = 30 
 offset-x = 0 
 offset-y = 0 
-
-background = #363334
-foreground = #C3C1B8
-
-underline-size = 2
-underline-color = #eee
-
+background = ${colors.background}
+foreground = ${colors.white}
 spacing = 1
-padding-left = 0 
+padding-left = 10 
 padding-right = 5 
-module-margin-left = 1 
+module-margin-left = 20 
 module-margin-right = 1  
-
 font-N = <fontconfig pattern>;<vertical offset>
-; font-0 = SauceCodePro NF:pixelsize=13;0
-font-0 = lemon:pixelsize=10;2
-font-1 = FontAwesome:size=8;2
-font-2 = lemon:pixelsize=10;2
-; font-2 = SauceCodePro NF:pixelsize=11;0
-
-modules-left = bspwm padding xwindow
-modules-center = date 
-modules-right = cpu padding temperature padding volume padding battery  
-
-
+font-0 = lemon:pixelsize=10;0
+font-1 = FontAwesome:size=8;0
+font-2 = lemon:pixelsize=10;0
+modules-left = padding 
+modules-center =
+modules-right =   
 wm-restack = bspwm
-
 scroll-up = bspwm-desknext
 scroll-down = bspwm-deskprev
 
+
+
+[bar/base]
+width = 100%
+height = 20 
+offset-x = 0 
+offset-y = 5 
+background = ${colors.black}
+foreground = ${colors.white}
+spacing = 1 
+padding-left = 0 
+padding-right = 5 
+module-margin-left = 0 
+module-margin-right = 0  
+font-N = <fontconfig pattern>;<vertical offset>
+font-0 = lemon:pixelsize=10;0
+font-1 = FontAwesome:size=8;0
+font-2 = lemon:pixelsize=10;0
+modules-left = 
+modules-center = 
+modules-right =   
+wm-restack = bspwm
+scroll-up = bspwm-desknext
+scroll-down = bspwm-deskprev
+inherit = bar/top
+
+
+
+;bspwm bar
+[bar/bspwm]
+inherit = bar/base
+offset-x = 10
+width = 125
+background = ${colors.background}
+modules-left = bspwm
+
+
+
+;time bar
+[bar/time]
+inherit = bar/base
+;offset-x=3090
+offset-x=1810
+background = ${colors.white}
+foreground = ${colors.black}
+width = 100
+modules-center = date
+
+
+
+;battery bar
+[bar/battery]
+inherit = bar/base
+;offset-x=3030
+offset-x=1750
+width = 50 
+modules-center = battery 
+
+
+
+;volume bar
+[bar/volume]
+inherit = bar/base
+;offset-x = 2970
+offset-x = 1690
+width = 50
+modules-center=volume
 
 ;---------------------------------------------
 ;        B S P W M   M O D U L E             ; 
@@ -57,30 +118,31 @@ type = internal/bspwm
 
 pin-workspaces = true
 
-ws-icon-1 = I;main
-ws-icon-2 = II;web
-ws-icon-3 = III;code
-ws-icon-4 = IV;main
-ws-icon-5 = V;web
-ws-icon-6 = VI;code
-ws-icon-7 = VII;
-ws-icon-8 = VIII;
-ws-icon-9 = IX;
-ws-icon-10 = X;music
+ws-icon-1 = I;1
+ws-icon-2 = II;2
+ws-icon-3 = III;3
+ws-icon-4 = IV;4
+ws-icon-5 = V;5
+ws-icon-6 = VI;6
+ws-icon-7 = VII;7
+ws-icon-8 = VIII;8
+ws-icon-9 = IX;9
+ws-icon-10 = X;0
 ws-icon-11 = 11;
 ws-icon-12 = 12;
 ws-icon-0 = 0:
 ws-icon-default = 
 
-format = <label-state> <label-mode>
+format =<label-state><label-mode>
 
-;label-focused = %icon%
-label-focused = 
-label-focused-foreground= #C3C1B8
+label-focused = %icon%
+label-focused-foreground = ${colors.black}
+label-focused-background = ${colors.white} 
 label-focused-padding = 2 
 
-label-occupied = 
-label-occupied-foreground = #5a5a5a
+label-occupied = %icon%
+label-occupied-foreground = ${colors.white}
+label-occupied-background = ${colors.black}
 label-occupied-padding = 2 
 
 label-urgent = %icon%
@@ -97,6 +159,7 @@ label-empty-padding = 2
 
 
 [module/xwindow]
+y-offset = 10
 type = internal/xwindow
 label = %title:0:120:...%
 label-padding = 2 
@@ -129,7 +192,7 @@ format-padding = 0
 
 [module/padding]
 type = custom/text
-content =|
+content = |
 content-foreground = #5a5a5a
 
 [module/battery]
@@ -164,11 +227,11 @@ ramp-capacity-2 = bat
 ramp-capacity-3 = bat
 ramp-capacity-4 = bat
 
-animation-charging-0 = 
-animation-charging-1 = 
-animation-charging-2 = 
-animation-charging-3 = 
-animation-charging-4 = 
+animation-charging-0 = ⮏
+animation-charging-1 = ⮏ 
+animation-charging-2 = ⮏
+animation-charging-3 = ⮏
+animation-charging-4 = ⮏
 animation-charging-framerate = 750
 
 [module/backlight]
@@ -197,10 +260,10 @@ label-muted-foreground = #aaa
 format-volume-padding = 0 
 format-muted-padding = 0 
 
-ramp-volume-0 = vol
-ramp-volume-1 = vol
-ramp-volume-2 = vol
-ramp-headphones-0 = vol
+ramp-volume-0 = ⮞ 
+ramp-volume-1 = ⮞ 
+ramp-volume-2 = ⮞ 
+ramp-headphones-0 = ⮞ 
 
 [module/spotify]
 type = custom/script
