@@ -1,4 +1,4 @@
-# Josh's dofiles
+# Josh's dotfiles
 
 Welcome to my dotfiles. I am currently running 3 main devices: a MacBook Pro 15' for school, a Razer Blade 2016 for work, and a desktop for my own personal use. Please explore and download what you would like. I post occasionaly to /r/unixporn, where you can find my setup in action. 
 
