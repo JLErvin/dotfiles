@@ -30,9 +30,8 @@ macOS
 ![Screenshots](http://i.imgur.com/2Y2dogj.jpg)
 
 blade
-![Imgur](http://i.imgur.com/t0bPUxP.jpg)
 
-![teknik](https://u.teknik.io/COt0g.png)
+![Screenshots](http://i.imgur.com/KDtdsHj.jpg)
 
 
 # Installing bitmap fonts on Ubuntu 16.04
