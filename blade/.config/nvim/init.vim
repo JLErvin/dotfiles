@@ -54,12 +54,10 @@ Plugin 'ryanoasis/vim-devicons'
 Plugin 'tiagofumo/vim-nerdtree-syntax-highlight'
 Plugin 'scrooloose/nerdtree'
 Plugin 'junegunn/goyo.vim'
+Plugin 'lervag/vimtex'
+Plugin 'chrisbra/csv.vim'
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
-Plugin 'lervag/vimtex'
-Bundle 'edkolev/tmuxline.vim'
-Plugin 'chrisbra/csv.vim'
-Plugin 'mjbrownie/hackertyper.vim'
 
 
 call vundle#end()
@@ -80,7 +78,7 @@ syntax enable
 highlight LineNr ctermfg=white ctermbg=black
 highlight VertSplit ctermfg=black ctermbg=none
 highlight Pmenu ctermfg=15 ctermbg=0 guifg=#ffffff guibg=#000000   
-highlight CursorLine ctermbg=black ctermfg=white guibg=blue gui=none
+highlight CursorLine ctermbg=black ctermfg=white guibg=black gui=none
 highlight CursorLine cterm=None ctermbg=black ctermfg=none
 highlight CursorLineNr term=bold ctermfg=White guifg=White
 highlight CursorLineNr term=bold ctermbg=black guifg=White
@@ -116,10 +114,10 @@ set backspace=indent,eol,start
 
 " air-line
 let g:airline_powerline_fonts = 1
-let g:airline#extensions#tabline#enabled=1
+"let g:airline#extensions#tabline#enabled=1
 
 if !exists('g:airline_symbols')
-    let g:airline_symbols = {}
+		let g:airline_symbols = {}
 endif
 
 " unicode symbols
@@ -137,13 +135,13 @@ let g:airline_symbols.paste = '∥'
 let g:airline_symbols.whitespace = 'Ξ'
 
 " airline symbols
-let g:airline_left_sep = ''
-let g:airline_left_alt_sep = ''
-let g:airline_right_sep = ''
-let g:airline_right_alt_sep = ''
-let g:airline_symbols.branch = ''
-let g:airline_symbols.readonly = ''
-let g:airline_symbols.linenr = ''
+let g:airline_left_sep = ''
+let g:airline_left_alt_sep = ''
+let g:airline_right_sep = ''
+let g:airline_right_alt_sep = ''
+let g:airline_symbols.branch = ''
+let g:airline_symbols.readonly = ''
+let g:airline_symbols.linenr = ''
 
 if !exists('g:airline_symbols')
 	let g:airline_symbols = {}

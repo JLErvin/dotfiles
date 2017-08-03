@@ -2,6 +2,7 @@
 export PATH=$HOME/bin:/usr/local/bin:$PATH
 export PATH=$PATH:/home/joshuaervin/wal
 export PATH=$PATH:/home/joshuaervin/bspwm/examples/panel
+export PATH=$PATH:/home/joshuaervin/scripts/
 
 # Path to your oh-my-zsh installation.
 export ZSH=$HOME/.oh-my-zsh
