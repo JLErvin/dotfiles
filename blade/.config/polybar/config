@@ -221,11 +221,11 @@ format-full-padding = 0
 ;ramp-capacity-3 = 
 ;ramp-capacity-4 = 
 
-ramp-capacity-0 = bat 
-ramp-capacity-1 = bat
-ramp-capacity-2 = bat
-ramp-capacity-3 = bat
-ramp-capacity-4 = bat
+ramp-capacity-0 = ⮏
+ramp-capacity-1 = ⮏
+ramp-capacity-2 = ⮏
+ramp-capacity-3 = ⮏
+ramp-capacity-4 = ⮏
 
 animation-charging-0 = ⮏
 animation-charging-1 = ⮏ 
