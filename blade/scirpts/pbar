@@ -9,3 +9,4 @@ sleep .1
 polybar battery &
 sleep .1
 polybar top &
+notify-send "polybar started successfully"
