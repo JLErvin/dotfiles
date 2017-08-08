@@ -72,7 +72,7 @@ inherit = bar/top
 ;bspwm bar
 [bar/bspwm]
 inherit = bar/base
-offset-x = 10
+offset-x = 5 
 width = 125
 background = ${colors.background}
 modules-left = bspwm
@@ -83,7 +83,7 @@ modules-left = bspwm
 [bar/time]
 inherit = bar/base
 ;offset-x=3090
-offset-x=1810
+offset-x=1815
 background = ${colors.white}
 foreground = ${colors.black}
 width = 100
@@ -95,7 +95,7 @@ modules-center = date
 [bar/battery]
 inherit = bar/base
 ;offset-x=3030
-offset-x=1750
+offset-x=1755
 width = 50 
 modules-center = battery 
 
@@ -105,7 +105,7 @@ modules-center = battery
 [bar/volume]
 inherit = bar/base
 ;offset-x = 2970
-offset-x = 1690
+offset-x = 1695
 width = 50
 modules-center=volume
 
