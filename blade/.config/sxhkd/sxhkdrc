@@ -13,6 +13,10 @@ super + d
 super + alt
 	pkill -USR1 -x sxhkd
 
+# bind lock screen with i3 lock
+super + x
+	lock.sh
+
 #
 # bspwm hotkeys
 #

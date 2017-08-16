@@ -2,7 +2,7 @@
 ! Xft settings
 !-------------------------------------------------------------------------------
 
-Xft.dpi:                    96
+Xft.dpi:                    96 
 Xft.antialias:              false
 Xft.rgba:                   rgb
 Xft.hinting:                true
@@ -52,8 +52,8 @@ URxvt.cursorUnderline:      false
 ! Pointer
 URxvt.pointerBlank:         true
 
-*background: #363334 
-*foreground: #EAEAED 
+*background: #2F2B2C 
+*foreground: #DEDEDE
 !!*fading: 40
 *fadeColor: #073642
 *cursorColor: #93a1a1
@@ -61,36 +61,36 @@ URxvt.pointerBlank:         true
 *pointerColorForeground: #93a1a1
 
 !! black dark/light
-*color0: #393638 
-*color8: #4A484B 
+*color0: #302C2C 
+*color8: #404040 
 
 !! red dark/light
-*color1: #97544D 
-*color9: #97544D
+*color1: #5A5A5A 
+*color9: #404040 
 
 !! green dark/light
-*color2: #97A293
-*color10: #97A293  
+*color2: #F9C168 
+*color10: #989898  
 
 !! yellow dark/light
-*color3: #C29F6F 
-*color11: #C29F6F
+*color3: #CACACA 
+*color11: #CACACA
 
 !! blue dark/light
-*color4: #5E606C 
-*color12: #5E606C 
+*color4: #B1B1B1 
+*color12: #B1B1B1 
 
 !! magenta dark/light
 *color5: #7A6054 
 *color13: #7A6054
 
 !! cyan dark/light
-*color6: #78746C 
-*color14: #78746C 
+*color6: #7F7F7F 
+*color14: #7F7F7F 
 
 !! white dark/light
-*color7: #C3C1B8
-*color15: #EAEAED 
+*color7: #DEDEDE
+*color15: #C3C1B8 
 
 
 ! ------------------------------------------------------------------------------

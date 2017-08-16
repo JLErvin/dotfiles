@@ -45,7 +45,6 @@ Plugin 'jalvesaq/Nvim-R'
 Plugin 'scrooloose/nerdcommenter'
 Plugin 'vim-syntastic/syntastic'
 Plugin 'tpope/vim-fugitive'
-Plugin 'davidhalter/jedi-vim'
 Plugin 'altercation/vim-colors-solarized'
 Plugin 'Shougo/deoplete.nvim'
 Plugin 'mhartington/oceanic-next'
@@ -58,6 +57,8 @@ Plugin 'lervag/vimtex'
 Plugin 'chrisbra/csv.vim'
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
+Plugin 'hdima/python-syntax'
+Plugin 'Valloric/YouCompleteMe'
 
 
 call vundle#end()
