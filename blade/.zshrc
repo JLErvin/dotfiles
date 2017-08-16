@@ -1,3 +1,10 @@
+#             __             
+# ____  _____/ /_  __________
+#/_  / / ___/ __ \/ ___/ ___/
+# / /_(__  ) / / / /  / /__  
+#/___/____/_/ /_/_/   \___/  
+#                            
+
 #if you come from bash you might have to change your $PATH.
 export PATH=$HOME/bin:/usr/local/bin:$PATH
 export PATH=$PATH:/home/joshuaervin/wal
