@@ -1,0 +1,404 @@
+;---------------------------------------------
+;         Polybar Configuration              ;
+;                 BSPWM                      ;
+;           github.com/JLErvin               ;
+;---------------------------------------------
+
+
+[colors]
+background = #363334
+black = #4A484B
+white = #EAEAED
+
+
+;---------------------------------------------
+;                 B A R S                    ;
+;     temp, volume, middle, battery, cpu     ;
+;                 bottom                     ;
+;---------------------------------------------
+
+;---------------------------------------------
+[bar/top]
+width = 100%
+height = 30 
+offset-x = 0 
+offset-y = 0 
+background = ${colors.background}
+foreground = ${colors.white}
+spacing = 0 
+padding-left = 10 
+padding-right = 5 
+module-margin-left = 0 
+module-margin-right = 0  
+font-N = <fontconfig pattern>;<vertical offset>
+font-0 = GohuFont:pixelsize=10;0
+font-1 = FontAwesome:size=8;0
+font-2 = lemon:pixelsize=10;0
+modules-left = padding 
+modules-center =
+modules-right =   
+wm-restack = bspwm
+scroll-up = bspwm-desknext
+scroll-down = bspwm-deskprev
+
+
+
+[bar/base]
+width = 100%
+height = 20 
+offset-x = 0 
+offset-y = 5 
+foreground = ${colors.white} 
+spacing = 0 
+padding-left = 1 
+padding-right = 1 
+module-margin-left = 0 
+module-margin-right = 0  
+font-N = <fontconfig pattern>;<vertical offset>
+font-0 = GohuFont:pixelsize=10;2
+font-1 = FontAwesome:size=8;0
+font-2 = GohuFont:pixelsize=10;0
+modules-left = bspwm 
+modules-center = 
+modules-right = volume battery date 
+wm-restack = bspwm
+scroll-up = bspwm-desknext
+scroll-down = bspwm-deskprev
+inherit = bar/top
+
+[bar/volfix]
+inherit=bar/top
+height=20
+background=${colors.black}
+width=30
+offset-x=1650
+offset-y=5
+
+;---------------------------------------------
+;        B S P W M   M O D U L E             ; 
+;---------------------------------------------
+
+[module/bspwm]
+type = internal/bspwm
+
+pin-workspaces = true
+
+ws-icon-1 = I;1
+ws-icon-2 = II;2
+ws-icon-3 = III;3
+ws-icon-4 = IV;4
+ws-icon-5 = V;5
+ws-icon-6 = VI;6
+ws-icon-7 = VII;7
+ws-icon-8 = VIII;8
+ws-icon-9 = IX;9
+ws-icon-10 = X;0
+ws-icon-11 = 11;
+ws-icon-12 = 12;
+ws-icon-0 = 0:
+ws-icon-default = 
+
+format =<label-state><label-mode>
+
+label-focused = %icon%
+label-focused-foreground = ${colors.black}
+label-focused-background = ${colors.white} 
+label-focused-padding = 1 
+
+label-occupied = %icon%
+label-occupied-foreground = ${colors.white}
+label-occupied-background = ${colors.black}
+label-occupied-padding = 1 
+
+label-urgent = %icon%
+label-urgent-padding = 1 
+
+label-empty = 
+label-empty-foreground = #4A484B 
+label-empty-padding = 1 
+
+
+;---------------------------------------------
+;        O T H E R   M O D U L E S           ;
+;---------------------------------------------
+
+
+[module/xwindow]
+y-offset = 10
+type = internal/xwindow
+label = %title:0:120:...%
+label-padding = 2 
+label-foreground = #4A484B
+
+[module/date]
+type = internal/date
+
+; Seconds to sleep between updates
+interval = 1.0
+
+; See "man date" for details on how to format the date string
+; NOTE: if you want to use syntax tags here you need to use %%{...}
+date = %a %b %d, 
+
+; Optional time format
+time = %H:%M
+
+; if `date-alt` or `time-alt` is defined, clicking
+; the module will toggle between formats
+date-alt = %A, %d %B %Y
+time-alt = %H:%M:%S
+
+label = %date% %time%
+format = <label>
+;format-background = #ddffffff
+;format-background = #272C33
+;format-foreground = #333
+format-padding = 0 
+label-background=${colors.white}
+label-foreground=${colors.black}
+label-padding= 2
+
+[module/padding]
+type = custom/text
+content = | 
+content-foreground = #5a5a5a
+
+[module/battery]
+spacing=0
+type = internal/battery
+
+full-at = 99
+
+battery = BAT0
+adapter = AC0
+
+poll-interval = 5
+
+format-charging =<animation-charging><label-charging>
+format-discharging =<ramp-capacity><label-discharging>
+format-full =<ramp-capacity><label-full>
+label-charging = %percentage%
+label-discharging = %percentage%
+label-discharging-background=${colors.black}
+label-discharging-padding=1
+label-full = %percentage%
+animation-charging-background=${colors.white}
+animation-charging-foreground=${colors.black}
+animation-charging-padding=1
+format-charging-padding = 0 
+format-discharging-padding = 1 
+format-full-padding = 1 
+ramp-capacity-padding=1
+ramp-capacity-background=${colors.white}
+ramp-capacity-foreground=${colors.black}
+
+;ramp-capacity-0 = 
+;ramp-capacity-1 = 
+;ramp-capacity-2 = 
+;ramp-capacity-3 = 
+;ramp-capacity-4 = 
+
+ramp-capacity-0 = bat
+ramp-capacity-1 = bat
+ramp-capacity-2 = bat
+ramp-capacity-3 = bat
+ramp-capacity-4 = bat
+
+animation-charging-0 = bat
+animation-charging-1 = bat 
+animation-charging-2 = bat
+animation-charging-3 = bat
+animation-charging-4 = bat
+animation-charging-framerate = 750
+
+[module/backlight]
+type = internal/backlight
+
+card = intel_backlight
+enable-scroll = true
+
+format = <ramp><label>
+label = %percentage%
+
+ramp-0 = 🌕
+ramp-1 = 🌔
+ramp-2 = 🌓
+ramp-3 = 🌒
+ramp-4 = 🌑
+
+[module/volume]
+type = internal/volume
+
+format-volume =<ramp-volume><label-volume>
+format-muted =<label-muted>
+ramp-volume-background=${colors.white}
+ramp-volume-foreground=${colors.black}
+ramp-volume-padding=1
+label-volume = %percentage%
+label-volume-background=${colors.black}
+label-volume-padding=1
+label-muted =muted
+label-muted-foreground = #aaa
+format-volume-padding = 0 
+format-muted-padding = 0 
+
+ramp-volume-0 = vol 
+ramp-volume-1 = vol 
+ramp-volume-2 = vol 
+ramp-headphones-0 = vol  
+
+[module/spotify]
+type = custom/script
+
+exec = /home/joshuaervin/scripts/spotify.sh
+interval = 1
+
+format = <label>   
+;format-background = #dd00c6e0
+;format-foreground = #fff
+;format-padding = 4
+
+label = %output%
+
+[module/powermenu]
+type = custom/menu
+
+label-open =   
+;label-open-background = #dd0000
+;label-open-foreground = #fff
+label-close = cancel
+;label-close-background = #dd0000
+;label-close-foreground = #fff
+label-open-padding = 4 
+label-close-padding = 3 
+
+menu-0-0 = reboot
+menu-0-0-exec = menu-open-1
+menu-0-1 = power off
+menu-0-1-exec = menu-open-2
+menu-0-0-padding = 3
+menu-0-1-padding = 3
+
+menu-1-0 = reboot?  
+menu-1-0-exec = sudo reboot
+menu-1-0-padding = 3
+
+menu-2-0 = power off?  
+menu-2-0-exec = sudo poweroff
+menu-2-0-padding = 3
+
+[module/mpd]
+type = internal/mpd
+
+host = 127.0.0.1
+port = 6600
+password = 
+
+; Seconds to sleep between progressbar/song timer sync
+; Default: 1
+interval = 2
+
+; Available tags:
+;   <label-song> (default)
+;   <label-time>
+;   <bar-progress>
+;   <toggle> - gets replaced with <icon-(pause|play)>
+;   <toggle-stop> - gets replaced with <icon-(stop|play)>
+;   <icon-random>
+;   <icon-repeat>
+;   <icon-repeatone>
+;   <icon-prev>
+;   <icon-stop>
+;   <icon-play>
+;   <icon-pause>
+;   <icon-next>
+;   <icon-seekb>
+;   <icon-seekf>
+format-online =    <label-song>
+
+; Available tokens:
+;   %artist%
+;   %album%
+;   %date%
+;   %title%
+; Default: %artist% - %title%
+label-song = %title%
+format-online-padding = 3
+
+[module/temperature]
+
+type = internal/temperature
+
+; Seconds to sleep between updates
+; Default: 1
+interval = 0.5
+
+; Thermal zone to use
+; To list all the zone types, run 
+; $ for i in /sys/class/thermal/thermal_zone*; do echo "$i: $(<$i/type)"; done
+; Default: 0
+thermal-zone = 0
+
+; Threshold 0temperature to display warning label
+; Default: 80
+warn-temperature = 60
+
+ Available tags:
+;   <label> (default)
+;   <ramp>
+format = <label>
+
+; Available tags:
+;   <label-warn> (default)
+;   <ramp>
+format-warn = <ramp> <label-warn>
+
+; Available tokens:
+;   %temperature% (default)
+;label = %temperature%
+label =temp %temperature%
+
+; Available tokens:
+;   %temperature% (default)
+label-warn = TEMP %temperature%
+label-warn-foreground = #f00
+
+; Requires the <ramp> tag
+; The icon selection will range from 0 to `warn-temperature`
+; with the current temperature as index.
+ramp-0 = A
+ramp-1 = B
+ramp-2 = C
+ramp-foreground = #55
+
+[module/cpu]
+type = internal/cpu
+
+; Seconds to sleep between updates
+; Default: 1
+interval = 0.5
+
+; Available tags:
+;   <label> (default)
+;   <bar-load>
+;   <ramp-load>
+;   <ramp-coreload>
+format = <label> 
+
+; Available tokens:
+;   %percentage% (default) - total cpu load
+;   %percentage-cores% - load percentage for each core
+;   %percentage-core[1-9]% - load percentage for specific core
+;label = %percentage%%
+label =cpu %percentage%%
+
+ramp-coreload-0 = ▁
+ramp-coreload-1 = ▂
+ramp-coreload-2 = ▃
+ramp-coreload-3 = ▄
+ramp-coreload-4 = ▅
+ramp-coreload-5 = ▆
+ramp-coreload-6 = ▇
+ramp-coreload-7 = █
+
+; vim:ft=dosini
