@@ -6,9 +6,15 @@
 
 
 [colors]
-background = #363334
-black = #4A484B
-white = #EAEAED
+;background = #272725
+;black = #404040
+;grey = #302c2c
+;white = #EAEAED
+
+background=${xrdb:background:#ffffff}
+black=${xrdb:color8:#ffffff}
+grey=${xrdb:color4:#ffffff}
+white=${xrdb:color7:#ffffff}
 
 
 ;---------------------------------------------
@@ -107,7 +113,7 @@ label-focused-padding = 1
 
 label-occupied = %icon%
 label-occupied-foreground = ${colors.white}
-label-occupied-background = ${colors.black}
+label-occupied-background = ${colors.grey}
 label-occupied-padding = 1 
 
 label-urgent = %icon%
@@ -178,19 +184,20 @@ format-charging =<animation-charging><label-charging>
 format-discharging =<ramp-capacity><label-discharging>
 format-full =<ramp-capacity><label-full>
 label-charging = %percentage%
+label-charging-padding=1
 label-discharging = %percentage%
-label-discharging-background=${colors.black}
+label-discharging-background=${colors.grey}
 label-discharging-padding=1
 label-full = %percentage%
-animation-charging-background=${colors.white}
-animation-charging-foreground=${colors.black}
+animation-charging-background=${colors.black}
+animation-charging-foreground=${colors.white}
 animation-charging-padding=1
-format-charging-padding = 0 
+format-charging-padding = 1 
 format-discharging-padding = 1 
 format-full-padding = 1 
 ramp-capacity-padding=1
-ramp-capacity-background=${colors.white}
-ramp-capacity-foreground=${colors.black}
+ramp-capacity-background=${colors.black}
+ramp-capacity-foreground=${colors.white}
 
 ;ramp-capacity-0 = 
 ;ramp-capacity-1 = 
@@ -230,15 +237,17 @@ ramp-4 = 🌑
 type = internal/volume
 
 format-volume =<ramp-volume><label-volume>
-format-muted =<label-muted>
-ramp-volume-background=${colors.white}
-ramp-volume-foreground=${colors.black}
+format-muted =<ramp-volume><label-muted>
+ramp-volume-background=${colors.black}
+ramp-volume-foreground=${colors.white}
 ramp-volume-padding=1
 label-volume = %percentage%
-label-volume-background=${colors.black}
+label-volume-background=${colors.grey}
 label-volume-padding=1
-label-muted =muted
-label-muted-foreground = #aaa
+label-muted =0
+label-muted-foreground = ${colors.white} 
+label-muted-background=${colors.grey}
+label-muted-padding = 1
 format-volume-padding = 0 
 format-muted-padding = 0 
 
@@ -400,5 +409,28 @@ ramp-coreload-4 = ▅
 ramp-coreload-5 = ▆
 ramp-coreload-6 = ▇
 ramp-coreload-7 = █
+
+[module/network]
+type = internal/network
+interface = wlp58s0 
+interval = 3.0
+
+format-connected = <ramp-signal> <label-connected>
+format-connected-underline = #9f78e1
+label-connected = %essid%
+
+format-disconnected =
+;format-disconnected = <label-disconnected>
+;format-disconnected-underline = ${self.format-connected-underline}
+;label-disconnected = %ifname% disconnected
+;label-disconnected-foreground = ${colors.foreground-alt}
+
+ramp-signal-0 = net
+ramp-signal-1 = net 
+ramp-signal-2 = net
+ramp-signal-3 = net
+ramp-signal-4 = net
+ramp-signal-foreground = ${colors.white}
+
 
 ; vim:ft=dosini

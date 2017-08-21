@@ -1,0 +1,134 @@
+#include </home/jlervin/.config/crayolo/traffic>
+
+!------------------------------------------------------------------------------
+! Xft settings
+!-------------------------------------------------------------------------------
+
+Xft.dpi:                    96
+Xft.antialias:              false
+Xft.rgba:                   rgb
+Xft.hinting:                false
+Xft.hintstyle:              hintslight
+
+!-------------------------------------------------------------------------------
+! URxvt settings
+!-------------------------------------------------------------------------------
+
+URxvt.depth:                32
+URxvt.geometry:             90x30
+URxvt.transparent:          false
+URxvt.fading:               0
+! URxvt.urgentOnBell:         true
+! URxvt.visualBell:           true
+URxvt.loginShell:           true
+URxvt.saveLines:            50
+URxvt.lineSpace:            0
+
+! Fonts
+URxvt.allow_bold:           false
+/* URxvt.font:                 -*-terminus-medium-r-normal-*-12-120-72-72-c-60-iso8859-1 */
+!URxvt*font:xft:lucy tewi:pixelsize=15
+URxvt*font:xft:GohuFont:pixelsize=15
+URxvt*boldFont:xft:GohuFont:size=10
+
+! Fix font space
+URxvt*letterSpace:0 
+
+! Scrollbar
+URxvt.scrollStyle:          rxvt
+URxvt.scrollBar:            false
+
+! Add padding
+URxvt.internalBorder: 30 
+
+! Perl extensions
+URxvt.perl-ext-common:      default,matcher
+URxvt.matcher.button:       1
+URxvt.urlLauncher:          firefox
+
+! Cursor
+URxvt.cursorBlink:          true
+URxvt.cursorColor:          #657b83
+URxvt.cursorUnderline:      false
+
+! Pointer
+URxvt.pointerBlank:         true
+
+! ------------------------------------------------------------------------------
+! Monochrome w/ highlight colorscheme
+! ------------------------------------------------------------------------------
+
+!*background: #272725 
+!*foreground: #DEDEDE
+!!!*fading: 40
+!*fadeColor: #073642
+!*cursorColor: #93a1a1
+!*pointerColorBackground: #586e75
+!*pointerColorForeground: #93a1a1
+
+!!! black dark/light
+!*color0: #302C2C 
+!*color8: #404040 
+
+!!! red dark/light
+!*color1: #5A5A5A 
+!*color9: #404040 
+
+!!! green dark/light
+!*color2: #F9C168 
+!*color10: #989898  
+
+!!! yellow dark/light
+!*color3: #CACACA 
+!*color11: #CACACA
+
+!!! blue dark/light
+!*color4: #B1B1B1 
+!*color12: #B1B1B1 
+
+!!! magenta dark/light
+!*color5: #7A6054 
+!*color13: #7A6054
+
+!!! cyan dark/light
+!*color6: #7F7F7F 
+!*color14: #7F7F7F 
+
+!!! white dark/light
+!*color7: #DEDEDE
+!*color15: #C3C1B8 
+
+! ------------------------------------------------------------------------------
+! go dawgs 
+! ------------------------------------------------------------------------------
+
+! Colors  
+*background:   bg  
+*foreground:   fg  
+*color0:      blk  
+*color8:      bblk  
+*color1:      red  
+*color9:      bred  
+*color2:      grn  
+*color10:     bgrn  
+*color3:      ylw  
+*color11:     bylw  
+*color4:      blu  
+*color12:     bblu  
+*color5:      mag  
+*color13:     bmag  
+*color6:      cyn  
+*color14:     bcyn  
+*color7:      wht  
+*color15:     bwht 
+
+! ------------------------------------------------------------------------------
+! ROFI Color theme
+! ------------------------------------------------------------------------------
+rofi.color-enabled: true
+rofi.color-window: #eaeaed, #eaeaed, #eaeaed
+rofi.color-normal: #eaeaed, #4a484b, #eaeaed, #4a484b, #eaeaed
+rofi.color-active: #fdf6e3, #268bd2, #eee8d5, #268bd2, #fdf6e3
+rofi.color-urgent: #fdf6e3, #dc322f, #eee8d5, #dc322f, #fdf6e3
+rofi.width: 50 
+rofi.font: GohuFont 12
