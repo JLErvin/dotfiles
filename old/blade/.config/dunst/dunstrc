@@ -8,7 +8,7 @@
 #  ░░░░░░  ░░░░░░ ░░░   ░░ ░░░░░░     ░░  ░░░     ░░░░░  
 #
 [global]
-font = lemon 12  
+font = GohuFont 10  
 allow_markup = yes
 format = "%s %b"
 sort = yes

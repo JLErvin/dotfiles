@@ -21,7 +21,7 @@ export ZSH=$HOME/.oh-my-zsh
 #    source ~/.local/lib/python2.7/site-packages/powerline/bindings/zsh/powerline.zsh
 #fi
 
-source ~/antigen/antigen.zsh
+source ~/antigen.zsh
 
 # Load the oh-my-zsh's library.
 antigen use oh-my-zsh
