@@ -1,6 +1,6 @@
 # Josh's dotfiles
 
-Welcome to my dotfiles. You can usually find my stuff over on /r/unixporn. If you have any questions, feel free to shoot me a pm over there. 
+Welcome to my dotfiles. You can usually find my stuff over on /r/unixporn. If you have any questions, feel free to shoot me a [pm](reddit.com/u/fatal_squash) over there. 
 
 * os: `Arch Linux`
 * model: `xps 13 9360 (3200x1800)`
