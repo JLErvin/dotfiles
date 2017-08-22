@@ -14,7 +14,7 @@ Welcome to my dotfiles. You can usually find my stuff over on /r/unixporn. If yo
 * browser: `firefox`
 * text-editor: `neovim`
 
-!screenshot(http://i.imgur.com/bZmR48X.png)
+![screenshot](http://i.imgur.com/bZmR48X.png)
 
 Credit for my colorschemes goes to dkeg. Go check out his [github](https://github.com/dkeg/crayolo) for some great colorscheme 
 
