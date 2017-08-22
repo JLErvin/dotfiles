@@ -185,6 +185,7 @@ format-discharging =<ramp-capacity><label-discharging>
 format-full =<ramp-capacity><label-full>
 label-charging = %percentage%
 label-charging-padding=1
+label-charging-background=${colors.grey}
 label-discharging = %percentage%
 label-discharging-background=${colors.grey}
 label-discharging-padding=1

@@ -11,7 +11,7 @@ sxhkd &
 pbar &
 xrdb ~/.Xresources &
 bash ~/scripts/res &
-bash ~/scripts/pbar &
+bash ~/scripts/end &
 nitrogen --set-tiled ~/wallpapers/small_steps.png &
 pkill -x xfce4-notify &
 dunst /home/jlervin/.config/dunst/dunstrc &
