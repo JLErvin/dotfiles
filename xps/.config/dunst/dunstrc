@@ -48,7 +48,7 @@ history = ctrl+grave
 context = ctrl+shift+period
 
 [urgency_low]
-background = "#EAEAED"
+background = "#bab7b5"
 foreground = "#4A484B"
 timeout = 20
 
@@ -58,8 +58,8 @@ foreground = "#4A484B"
 timeout = 20
 
 [urgency_critical]
-background = "#EAEAED"
+background = "#bab7b5"
 foreground = "#4A484B"
-timeout = 30
+timeout = 20
 
 # vim: ft=cfg

@@ -64,7 +64,7 @@ font-N = <fontconfig pattern>;<vertical offset>
 font-0 = GohuFont:pixelsize=10;2
 font-1 = FontAwesome:size=8;0
 font-2 = GohuFont:pixelsize=10;0
-modules-left = bspwm 
+modules-left = bspwm
 modules-center = 
 modules-right = volume battery date 
 wm-restack = bspwm
@@ -186,10 +186,13 @@ format-full =<ramp-capacity><label-full>
 label-charging = %percentage%
 label-charging-padding=1
 label-charging-background=${colors.grey}
+label-charging-foreground=${colors.white}
 label-discharging = %percentage%
 label-discharging-background=${colors.grey}
+label-discharging-foreground=${colors.white}
 label-discharging-padding=1
 label-full = %percentage%
+label-full-foreground=${colors.black}
 animation-charging-background=${colors.black}
 animation-charging-foreground=${colors.white}
 animation-charging-padding=1
@@ -244,6 +247,7 @@ ramp-volume-foreground=${colors.white}
 ramp-volume-padding=1
 label-volume = %percentage%
 label-volume-background=${colors.grey}
+label-volume-foreground=${colors.white}
 label-volume-padding=1
 label-muted =0
 label-muted-foreground = ${colors.white} 
@@ -324,8 +328,9 @@ interval = 2
 ;   <icon-next>
 ;   <icon-seekb>
 ;   <icon-seekf>
-format-online =    <label-song>
+format-online =<label-song>
 
+name-music = mpd
 ; Available tokens:
 ;   %artist%
 ;   %album%
