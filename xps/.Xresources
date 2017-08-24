@@ -28,8 +28,8 @@ URxvt.lineSpace:            0
 URxvt.allow_bold:           false
 /* URxvt.font:                 -*-terminus-medium-r-normal-*-12-120-72-72-c-60-iso8859-1 */
 !URxvt*font:xft:lucy tewi:pixelsize=15
-URxvt*font:xft:GohuFont:pixelsize=15
-URxvt*boldFont:xft:GohuFont:size=10
+URxvt*font:xft:UW ttyp0:pixelsize=15
+URxvt*boldFont:xft:UW ttyp0:size=10
 
 ! Fix font space
 URxvt*letterSpace:0 

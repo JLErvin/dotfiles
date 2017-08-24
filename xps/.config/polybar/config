@@ -6,84 +6,51 @@
 
 
 [colors]
-;background = #272725
-;black = #404040
-;grey = #302c2c
-;white = #EAEAED
 
 background=${xrdb:background:#ffffff}
 black=${xrdb:color8:#ffffff}
 grey=${xrdb:color4:#ffffff}
 white=${xrdb:color7:#ffffff}
 
-
-;---------------------------------------------
-;                 B A R S                    ;
-;     temp, volume, middle, battery, cpu     ;
-;                 bottom                     ;
-;---------------------------------------------
-
-;---------------------------------------------
-[bar/top]
-width = 100%
-height = 30 
-offset-x = 0 
-offset-y = 0 
-background = ${colors.background}
-foreground = ${colors.white}
-spacing = 0 
-padding-left = 10 
-padding-right = 5 
-module-margin-left = 0 
-module-margin-right = 0  
-font-N = <fontconfig pattern>;<vertical offset>
-font-0 = GohuFont:pixelsize=10;0
-font-1 = FontAwesome:size=8;0
-font-2 = lemon:pixelsize=10;0
-modules-left = padding 
-modules-center =
-modules-right =   
-wm-restack = bspwm
-scroll-up = bspwm-desknext
-scroll-down = bspwm-deskprev
-
-
+;--------------------------------------------
+; bars                                      ; 
+; draws simple bar w/ small modules at top  ;
+;--------------------------------------------
 
 [bar/base]
 width = 100%
 height = 20 
 offset-x = 0 
-offset-y = 5 
+offset-y = 0 
 foreground = ${colors.white} 
+background = ${colors.background}
+border-top-size=5
+border-top-color= ${colors.background}
+border-bottom-size=5
+border-bottom-color= ${colors.background}
 spacing = 0 
 padding-left = 1 
 padding-right = 1 
 module-margin-left = 0 
 module-margin-right = 0  
 font-N = <fontconfig pattern>;<vertical offset>
-font-0 = GohuFont:pixelsize=10;2
-font-1 = FontAwesome:size=8;0
+font-0 = UW ttyp0:pixelsize=10;2
+font-1 = FontAwesome:size=8;2
 font-2 = GohuFont:pixelsize=10;0
-modules-left = bspwm
-modules-center = 
+modules-left = bspwm padding mpd
+modules-center =  
 modules-right = volume battery date 
 wm-restack = bspwm
 scroll-up = bspwm-desknext
 scroll-down = bspwm-deskprev
-inherit = bar/top
 
-[bar/volfix]
-inherit=bar/top
-height=20
-background=${colors.black}
-width=30
-offset-x=1650
-offset-y=5
+;--------------------------------------------
+; modules                                   ;
+;--------------------------------------------
 
-;---------------------------------------------
-;        B S P W M   M O D U L E             ; 
-;---------------------------------------------
-
+; bspwm module
+; draws active workspaces and highlights current workspace
+; empty workspaces are not shown
 [module/bspwm]
 type = internal/bspwm
 
@@ -123,12 +90,8 @@ label-empty =
 label-empty-foreground = #4A484B 
 label-empty-padding = 1 
 
-
-;---------------------------------------------
-;        O T H E R   M O D U L E S           ;
-;---------------------------------------------
-
-
+; xwindow module
+; prints the current active window
 [module/xwindow]
 y-offset = 10
 type = internal/xwindow
@@ -136,41 +99,31 @@ label = %title:0:120:...%
 label-padding = 2 
 label-foreground = #4A484B
 
+; date module
+; prints out day of week, date, and current time
+; click to change betwen formats
 [module/date]
 type = internal/date
 
-; Seconds to sleep between updates
 interval = 1.0
 
-; See "man date" for details on how to format the date string
-; NOTE: if you want to use syntax tags here you need to use %%{...}
 date = %a %b %d, 
 
-; Optional time format
 time = %H:%M
 
-; if `date-alt` or `time-alt` is defined, clicking
-; the module will toggle between formats
-date-alt = %A, %d %B %Y
 time-alt = %H:%M:%S
 
 label = %date% %time%
 format = <label>
-;format-background = #ddffffff
-;format-background = #272C33
-;format-foreground = #333
 format-padding = 0 
 label-background=${colors.white}
 label-foreground=${colors.black}
-label-padding= 2
+label-padding= 1 
 
-[module/padding]
-type = custom/text
-content = | 
-content-foreground = #5a5a5a
-
+; battery module
+; displays current battery percentage
 [module/battery]
-spacing=0
+;spacing=0
 type = internal/battery
 
 full-at = 99
@@ -209,34 +162,21 @@ ramp-capacity-foreground=${colors.white}
 ;ramp-capacity-3 = 
 ;ramp-capacity-4 = 
 
-ramp-capacity-0 = bat
-ramp-capacity-1 = bat
-ramp-capacity-2 = bat
-ramp-capacity-3 = bat
-ramp-capacity-4 = bat
+ramp-capacity-0 = 
+ramp-capacity-1 = 
+ramp-capacity-2 = 
+ramp-capacity-3 = 
+ramp-capacity-4 = 
 
-animation-charging-0 = bat
-animation-charging-1 = bat 
-animation-charging-2 = bat
-animation-charging-3 = bat
-animation-charging-4 = bat
+animation-charging-0 = 
+animation-charging-1 = 
+animation-charging-2 = 
+animation-charging-3 = 
+animation-charging-4 = 
 animation-charging-framerate = 750
 
-[module/backlight]
-type = internal/backlight
-
-card = intel_backlight
-enable-scroll = true
-
-format = <ramp><label>
-label = %percentage%
-
-ramp-0 = 🌕
-ramp-1 = 🌔
-ramp-2 = 🌓
-ramp-3 = 🌒
-ramp-4 = 🌑
-
+; volume module
+; displays current volume
 [module/volume]
 type = internal/volume
 
@@ -256,51 +196,13 @@ label-muted-padding = 1
 format-volume-padding = 0 
 format-muted-padding = 0 
 
-ramp-volume-0 = vol 
-ramp-volume-1 = vol 
-ramp-volume-2 = vol 
-ramp-headphones-0 = vol  
+ramp-volume-0 =  
+ramp-volume-1 =  
+ramp-volume-2 =  
+ramp-headphones-0 =  
 
-[module/spotify]
-type = custom/script
-
-exec = /home/joshuaervin/scripts/spotify.sh
-interval = 1
-
-format = <label>   
-;format-background = #dd00c6e0
-;format-foreground = #fff
-;format-padding = 4
-
-label = %output%
-
-[module/powermenu]
-type = custom/menu
-
-label-open =   
-;label-open-background = #dd0000
-;label-open-foreground = #fff
-label-close = cancel
-;label-close-background = #dd0000
-;label-close-foreground = #fff
-label-open-padding = 4 
-label-close-padding = 3 
-
-menu-0-0 = reboot
-menu-0-0-exec = menu-open-1
-menu-0-1 = power off
-menu-0-1-exec = menu-open-2
-menu-0-0-padding = 3
-menu-0-1-padding = 3
-
-menu-1-0 = reboot?  
-menu-1-0-exec = sudo reboot
-menu-1-0-padding = 3
-
-menu-2-0 = power off?  
-menu-2-0-exec = sudo poweroff
-menu-2-0-padding = 3
-
+; mpd module
+; prints current song
 [module/mpd]
 type = internal/mpd
 
@@ -323,12 +225,14 @@ interval = 2
 ;   <icon-repeatone>
 ;   <icon-prev>
 ;   <icon-stop>
-;   <icon-play>
 ;   <icon-pause>
 ;   <icon-next>
 ;   <icon-seekb>
 ;   <icon-seekf>
-format-online =<label-song>
+format-online =<label-time><label-song>
+label-time=
+label-time-background=${colors.black}
+label-time-padding=1
 
 name-music = mpd
 ; Available tokens:
@@ -337,9 +241,13 @@ name-music = mpd
 ;   %date%
 ;   %title%
 ; Default: %artist% - %title%
-label-song = %title%
+label-song = %artist% - %title%
+label-song-padding = 1
+label-song-background=${colors.grey}
 format-online-padding = 3
 
+; temperature module
+; prints out system temps
 [module/temperature]
 
 type = internal/temperature
@@ -386,6 +294,8 @@ ramp-1 = B
 ramp-2 = C
 ramp-foreground = #55
 
+; cpu module
+; prints current cpu usage
 [module/cpu]
 type = internal/cpu
 
@@ -416,6 +326,8 @@ ramp-coreload-5 = ▆
 ramp-coreload-6 = ▇
 ramp-coreload-7 = █
 
+; network module
+; prints current network
 [module/network]
 type = internal/network
 interface = wlp58s0 
@@ -438,5 +350,10 @@ ramp-signal-3 = net
 ramp-signal-4 = net
 ramp-signal-foreground = ${colors.white}
 
+[module/padding]
+type = custom/text
+content = | 
+content-foreground = ${colors.background}
+content-background = ${colors.background}
 
 ; vim:ft=dosini
