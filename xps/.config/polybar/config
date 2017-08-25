@@ -8,8 +8,8 @@
 [colors]
 
 background=${xrdb:background:#ffffff}
-black=${xrdb:color8:#ffffff}
-grey=${xrdb:color4:#ffffff}
+black=${xrdb:color0:#ffffff}
+grey=${xrdb:color8:#ffffff}
 white=${xrdb:color7:#ffffff}
 
 ;--------------------------------------------
@@ -38,8 +38,8 @@ font-0 = UW ttyp0:pixelsize=10;2
 font-1 = FontAwesome:size=8;2
 font-2 = GohuFont:pixelsize=10;0
 modules-left = bspwm padding mpd
-modules-center =  
-modules-right = volume battery date 
+modules-center = 
+modules-right = network padding volume padding battery padding date 
 wm-restack = bspwm
 scroll-up = bspwm-desknext
 scroll-down = bspwm-deskprev
@@ -149,9 +149,6 @@ label-full-foreground=${colors.black}
 animation-charging-background=${colors.black}
 animation-charging-foreground=${colors.white}
 animation-charging-padding=1
-format-charging-padding = 1 
-format-discharging-padding = 1 
-format-full-padding = 1 
 ramp-capacity-padding=1
 ramp-capacity-background=${colors.black}
 ramp-capacity-foreground=${colors.white}
@@ -230,9 +227,13 @@ interval = 2
 ;   <icon-seekb>
 ;   <icon-seekf>
 format-online =<label-time><label-song>
+format-offline=<label-offline>
 label-time=
 label-time-background=${colors.black}
 label-time-padding=1
+
+label-offline = ... 
+label-asdf = ...
 
 name-music = mpd
 ; Available tokens:
@@ -329,25 +330,32 @@ ramp-coreload-7 = █
 ; network module
 ; prints current network
 [module/network]
+spacing=0
 type = internal/network
 interface = wlp58s0 
 interval = 3.0
 
-format-connected = <ramp-signal> <label-connected>
+format-connected = <ramp-signal><label-connected>
 format-connected-underline = #9f78e1
-label-connected = %essid%
+label-connected = %local_ip%
+label-connected-background=${colors.grey}
+label-connected-padding=1
+ramp-signal-background=${colors.black}
+ramp-signal-padding=1
 
-format-disconnected =
+format-disconnected = <label-disconnected>
 ;format-disconnected = <label-disconnected>
 ;format-disconnected-underline = ${self.format-connected-underline}
 ;label-disconnected = %ifname% disconnected
 ;label-disconnected-foreground = ${colors.foreground-alt}
+label-disconnected-background=${colors.grey}
+label-disconnected-padding=1
 
-ramp-signal-0 = net
-ramp-signal-1 = net 
-ramp-signal-2 = net
-ramp-signal-3 = net
-ramp-signal-4 = net
+ramp-signal-0 =  
+ramp-signal-1 =  
+ramp-signal-2 = 
+ramp-signal-3 = 
+ramp-signal-4 = 
 ramp-signal-foreground = ${colors.white}
 
 [module/padding]
@@ -355,5 +363,38 @@ type = custom/text
 content = | 
 content-foreground = ${colors.background}
 content-background = ${colors.background}
+
+[module/menu-apps]
+type = custom/menu
+
+; "menu-LEVEL-N" has the same properties as "label-NAME" with
+; the additional "exec" property
+;
+; Available exec commands:
+;   menu-open-LEVEL
+;   menu-close
+; Other commands will be executed using "/usr/bin/env sh -c $COMMAND"
+
+menu-0-0 = Browsers
+menu-0-0-exec = menu-open-1
+menu-0-2 = Multimedia
+menu-0-2-exec = menu-open-2
+
+menu-1-0 = Firefox
+menu-1-0-exec = firefox &
+menu-1-1 = Chromium
+menu-1-1-exec = chromium &
+
+menu-2-0 = Gimp
+menu-2-0-exec = gimp &
+menu-2-1 = Scrot
+menu-2-1-exec = scrot &
+
+label-open = Apps
+label-close = x
+
+; Optional item separator
+; Default: none
+label-separator = |
 
 ; vim:ft=dosini

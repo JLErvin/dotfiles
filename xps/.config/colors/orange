@@ -1,0 +1,22 @@
+! -- Title:     leaf 
+! -- Author:    dkeg
+! -- Created:   2015 (revised 2016)
+
+#define bg    #261d18
+#define fg    #b39a8f
+#define blk   #3b2d26
+#define bblk  #30251f
+#define red   #975542
+#define grn   #b3725a
+#define ylw   #66493d
+#define blu   #ad795c
+#define mag   #965744
+#define cyn   #4d372e
+#define wht   #a37a68
+#define bred  #975542
+#define bgrn  #b3725a
+#define bylw  #66493d
+#define bblu  #ad795c
+#define bmag  #965744
+#define bcyn  #4d372e
+#define bwht  #a37a68
