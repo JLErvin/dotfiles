@@ -11,9 +11,8 @@ sxhkd &
 pbar &
 xrdb ~/.Xresources &
 bash ~/scripts/res &
-bash ~/scripts/end &
-nitrogen --set-tiled ~/wallpapers/small_steps.png &
-pkill -x xfce4-notify &
+polybar base -q &
+#nitrogen --set-tiled ~/wallpapers/small_steps.png &
 dunst /home/jlervin/.config/dunst/dunstrc &
 
 bspc monitor -d I II III IV V VI VII VIII IX X
@@ -34,8 +33,8 @@ bspc config bottom_padding 0
 
 bspc config normal_frame_opacity 1.0
 bspc config focused_frame_opacity 0.05
-bspc config focused_border_color "#3b2d26" 
-bspc config normal_border_color "#30251f"
+#bspc config focused_border_color "#3b2d26" 
+#bspc config normal_border_color "#30251f"
 bspc config presel_border_color "#8F3724"
 bspc config urgent_border_color "#504339"
 bspc config focused_private_border_color "#35BF5C"

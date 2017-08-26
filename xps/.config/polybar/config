@@ -18,6 +18,7 @@ white=${xrdb:color7:#ffffff}
 ;--------------------------------------------
 
 [bar/base]
+dpi = 192
 width = 100%
 height = 20 
 offset-x = 0 
@@ -35,9 +36,9 @@ module-margin-left = 0
 module-margin-right = 0  
 font-N = <fontconfig pattern>;<vertical offset>
 font-0 = UW ttyp0:pixelsize=10;2
-font-1 = FontAwesome:size=8;2
+font-1 = FontAwesome:size=4;2
 font-2 = GohuFont:pixelsize=10;0
-modules-left = bspwm padding mpd
+modules-left = openbox bspwm padding mpd
 modules-center = 
 modules-right = network padding volume padding battery padding date 
 wm-restack = bspwm
@@ -396,5 +397,87 @@ label-close = x
 ; Optional item separator
 ; Default: none
 label-separator = |
+
+[module/openbox]
+
+type = internal/xworkspaces
+
+; Only show workspaces defined on the same output as the bar
+;
+; Useful if you want to show monitor specific workspaces
+; on different bars
+;
+; Default: false
+pin-workspaces = true
+
+; Create click handler used to focus desktop
+; Default: true
+enable-click = false
+
+; Create scroll handlers used to cycle desktops
+; Default: true
+enable-scroll = false
+
+; icon-[0-9]+ = <desktop-name>;<icon>
+; NOTE: The desktop name needs to match the name configured by the WM
+; You can get a list of the defined desktops using:
+; $ xprop -root _NET_DESKTOP_NAMES
+icon-0 = code;♚
+icon-1 = office;♛
+icon-2 = graphics;♜
+icon-3 = mail;♝
+icon-4 = web;♞
+icon-default = ♟
+
+; Available tags:
+;   <label-monitor>
+;   <label-state> - gets replaced with <label-(active|urgent|occupied|empty)>
+; Default: <label-state>
+format = <label-state>
+
+; Available tokens:
+;   %name%
+; Default: %name%
+label-monitor = %name%
+
+; Available tokens:
+;   %name%
+;   %icon%
+;   %index%
+; Default: %icon%  %name%
+label-active =%icon%%name%
+label-active-foreground = #ffffff
+label-active-background =${colors.black} 
+label-active-underline = #fba922
+label-active-padding=1
+
+; Available tokens:
+;   %name%
+;   %icon%
+;   %index%
+; Default: %icon%  %name%
+label-occupied =%name%
+label-occupied-background=${colors.grey}
+label-occupied-padding=1
+
+; Available tokens:
+;   %name%
+;   %icon%
+;   %index%
+; Default: %icon%  %name%
+label-urgent = %index%
+label-urgent-foreground = #000000
+label-urgent-background = #bd2c40
+label-urgent-underline = #9b0a20
+
+; Available tokens:
+;   %name%
+;   %icon%
+;   %index%
+; Default: %icon%  %name%
+label-empty =%name%
+label-empty-padding=1
+label-empty-background=${colors.black}
+
 
 ; vim:ft=dosini
