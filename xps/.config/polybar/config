@@ -10,7 +10,7 @@
 background=${xrdb:background:#ffffff}
 black=${xrdb:color0:#ffffff}
 grey=${xrdb:color8:#ffffff}
-white=${xrdb:color7:#ffffff}
+white=${xrdb:color2:#ffffff}
 
 ;--------------------------------------------
 ; bars                                      ; 
@@ -446,8 +446,8 @@ label-monitor = %name%
 ;   %index%
 ; Default: %icon%  %name%
 label-active =%icon%%name%
-label-active-foreground = #ffffff
-label-active-background =${colors.black} 
+label-active-foreground =${colors.black} 
+label-active-background =${colors.white} 
 label-active-underline = #fba922
 label-active-padding=1
 
