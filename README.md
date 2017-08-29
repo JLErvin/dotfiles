@@ -4,17 +4,17 @@ Welcome to my dotfiles. You can usually find my stuff over on /r/unixporn. If yo
 
 * os: `Arch Linux`
 * model: `xps 13 9360 (3200x1800)`
-* wm: `bspwm`
+* wm: `openbox/bspwm`
 * shell: `fish`
 * terminal: `urxvt`
-* terminal font: `GohuFont`
-* colorscheme: `skigh`
+* terminal font: `UW ttyp0`
+* colorscheme: `diner`
 * notifications: `dunst`
 * bar: `polybar`
 * browser: `firefox`
 * text-editor: `neovim`
 
-![screenshot](http://i.imgur.com/bZmR48X.png)
+![Screenshot](http://i.imgur.com/GULkGbv.jpg)
 
 ![screenshot](http://imgur.com/u4azWIR.png)
 
