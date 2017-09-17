@@ -24,7 +24,7 @@
     <animateIconify>no</animateIconify>
     <font place="ActiveWindow">
       <name>UW Ttyp0</name>
-      <size>12</size>
+      <size>8</size>
       <weight>Normal</weight>
       <slant>Normal</slant>
     </font>
@@ -101,14 +101,18 @@
   </dock>
   <keyboard>
     <!-- tiling keybinds -->
-    <keybind key="C-W-c">
+    <keybind key="W-f">
+      <action name="ToggleMaximize"/>
+      <action name="ToggleDecorations"/>
+    </keybind>
+    <keybind key="W-c">
       <action name="Execute">
-        <command>center.sh</command>
+        <command>rtile c</command>
       </action>
     </keybind>
-    <keybind key="C-W-x">
+    <keybind key="W-x">
       <action name="Execute">
-        <command>rtile.rb --cycle</command>
+        <command>rtile --all-auto</command>
       </action>
     </keybind>
     <keybind key="C-W-z">
@@ -166,6 +170,31 @@
     <keybind key="W-l">
       <action name="GoToDesktop">
         <to>Next</to>
+      </action>
+    </keybind>
+    <keybind key="W-1">
+      <action name="GoToDesktop">
+        <to>1</to>
+      </action>
+    </keybind>
+    <keybind key="W-2">
+      <action name="GoToDesktop">
+        <to>2</to>
+      </action>
+    </keybind>
+    <keybind key="W-3">
+      <action name="GoToDesktop">
+        <to>3</to>
+      </action>
+    </keybind>
+    <keybind key="W-4">
+      <action name="GoToDesktop">
+        <to>4</to>
+      </action>
+    </keybind>
+    <keybind key="W-0">
+      <action name="GoToDesktop">
+        <to>0</to>
       </action>
     </keybind>
     <keybind key="W-Right">

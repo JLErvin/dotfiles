@@ -4,13 +4,13 @@
 ;           github.com/JLErvin               ;
 ;---------------------------------------------
 
-
 [colors]
 
 background=${xrdb:background:#ffffff}
 black=${xrdb:color0:#ffffff}
 grey=${xrdb:color8:#ffffff}
-white=${xrdb:color2:#ffffff}
+;white=${xrdb:color4:#ffffff}
+white=#EAEAED
 
 ;--------------------------------------------
 ; bars                                      ; 
@@ -20,7 +20,7 @@ white=${xrdb:color2:#ffffff}
 [bar/base]
 dpi = 192
 width = 100%
-height = 20 
+height = 11 
 offset-x = 0 
 offset-y = 0 
 foreground = ${colors.white} 
@@ -35,137 +35,94 @@ padding-right = 1
 module-margin-left = 0 
 module-margin-right = 0  
 font-N = <fontconfig pattern>;<vertical offset>
-font-0 = UW ttyp0:pixelsize=10;2
+font-0 = UW Ttyp0:pixelsize=8;2
 font-1 = FontAwesome:size=4;2
 font-2 = GohuFont:pixelsize=10;0
-modules-left = openbox bspwm padding mpd
+modules-left =xwindow
 modules-center = 
-modules-right = network padding volume padding battery padding date 
-wm-restack = bspwm
-scroll-up = bspwm-desknext
-scroll-down = bspwm-deskprev
+modules-right = network battery date
 
 ;--------------------------------------------
 ; modules                                   ;
 ;--------------------------------------------
 
-; bspwm module
-; draws active workspaces and highlights current workspace
-; empty workspaces are not shown
-[module/bspwm]
-type = internal/bspwm
-
-pin-workspaces = true
-
-ws-icon-1 = I;1
-ws-icon-2 = II;2
-ws-icon-3 = III;3
-ws-icon-4 = IV;4
-ws-icon-5 = V;5
-ws-icon-6 = VI;6
-ws-icon-7 = VII;7
-ws-icon-8 = VIII;8
-ws-icon-9 = IX;9
-ws-icon-10 = X;0
-ws-icon-11 = 11;
-ws-icon-12 = 12;
-ws-icon-0 = 0:
-ws-icon-default = 
-
-format =<label-state><label-mode>
-
-label-focused = %icon%
-label-focused-foreground = ${colors.black}
-label-focused-background = ${colors.white} 
-label-focused-padding = 1 
-
-label-occupied = %icon%
-label-occupied-foreground = ${colors.white}
-label-occupied-background = ${colors.grey}
-label-occupied-padding = 1 
-
-label-urgent = %icon%
-label-urgent-padding = 1 
-
-label-empty = 
-label-empty-foreground = #4A484B 
-label-empty-padding = 1 
-
-; xwindow module
-; prints the current active window
 [module/xwindow]
-y-offset = 10
+;y-offset = 8 
 type = internal/xwindow
-label = %title:0:120:...%
+label =    %title:0:120:...%
 label-padding = 2 
-label-foreground = #4A484B
+;label-foreground = %{colors.white} 
+foreground = ${colors.white} 
 
-; date module
-; prints out day of week, date, and current time
-; click to change betwen formats
+[module/network]
+spacing=0
+type = internal/network
+interface = wlp58s0 
+interval = 3.0
+format-connected = <ramp-signal>
+format-connected-underline = #9f78e1
+label-connected = %local_ip%
+;label-connected-background=${colors.grey}
+label-connected-padding=1
+;ramp-signal-background=${colors.black}
+ramp-signal-padding=1
+format-disconnected = <label-disconnected>
+label-disconnected-background=${colors.grey}
+label-disconnected-padding=1
+ramp-signal-0 =  
+ramp-signal-1 = 
+ramp-signal-2 = 
+ramp-signal-3 = 
+ramp-signal-4 = 
+ramp-signal-foreground = ${colors.white}
+
+
 [module/date]
 type = internal/date
-
 interval = 1.0
-
-date = %a %b %d, 
-
+date =  
 time = %H:%M
-
 time-alt = %H:%M:%S
-
-label = %date% %time%
+label = %time%
 format = <label>
 format-padding = 0 
-label-background=${colors.white}
-label-foreground=${colors.black}
+;label-background=${colors.white}
+label-foreground=${colors.white}
 label-padding= 1 
 
-; battery module
-; displays current battery percentage
+
 [module/battery]
 ;spacing=0
 type = internal/battery
-
 full-at = 99
-
 battery = BAT0
 adapter = AC0
-
 poll-interval = 5
-
-format-charging =<animation-charging><label-charging>
-format-discharging =<ramp-capacity><label-discharging>
+format-charging =<animation-charging>
+format-discharging =<ramp-capacity>
 format-full =<ramp-capacity><label-full>
 label-charging = %percentage%
 label-charging-padding=1
-label-charging-background=${colors.grey}
 label-charging-foreground=${colors.white}
 label-discharging = %percentage%
-label-discharging-background=${colors.grey}
 label-discharging-foreground=${colors.white}
 label-discharging-padding=1
 label-full = %percentage%
 label-full-foreground=${colors.black}
-animation-charging-background=${colors.black}
 animation-charging-foreground=${colors.white}
 animation-charging-padding=1
 ramp-capacity-padding=1
-ramp-capacity-background=${colors.black}
 ramp-capacity-foreground=${colors.white}
-
 ;ramp-capacity-0 = 
 ;ramp-capacity-1 = 
 ;ramp-capacity-2 = 
 ;ramp-capacity-3 = 
 ;ramp-capacity-4 = 
-
 ramp-capacity-0 = 
 ramp-capacity-1 = 
 ramp-capacity-2 = 
 ramp-capacity-3 = 
 ramp-capacity-4 = 
-
 animation-charging-0 = 
 animation-charging-1 = 
 animation-charging-2 = 
@@ -173,311 +130,6 @@ animation-charging-3 = 
 animation-charging-4 = 
 animation-charging-framerate = 750
 
-; volume module
-; displays current volume
-[module/volume]
-type = internal/volume
-
-format-volume =<ramp-volume><label-volume>
-format-muted =<ramp-volume><label-muted>
-ramp-volume-background=${colors.black}
-ramp-volume-foreground=${colors.white}
-ramp-volume-padding=1
-label-volume = %percentage%
-label-volume-background=${colors.grey}
-label-volume-foreground=${colors.white}
-label-volume-padding=1
-label-muted =0
-label-muted-foreground = ${colors.white} 
-label-muted-background=${colors.grey}
-label-muted-padding = 1
-format-volume-padding = 0 
-format-muted-padding = 0 
-
-ramp-volume-0 =  
-ramp-volume-1 =  
-ramp-volume-2 =  
-ramp-headphones-0 =  
-
-; mpd module
-; prints current song
-[module/mpd]
-type = internal/mpd
-
-host = 127.0.0.1
-port = 6600
-password = 
-
-; Seconds to sleep between progressbar/song timer sync
-; Default: 1
-interval = 2
-
-; Available tags:
-;   <label-song> (default)
-;   <label-time>
-;   <bar-progress>
-;   <toggle> - gets replaced with <icon-(pause|play)>
-;   <toggle-stop> - gets replaced with <icon-(stop|play)>
-;   <icon-random>
-;   <icon-repeat>
-;   <icon-repeatone>
-;   <icon-prev>
-;   <icon-stop>
-;   <icon-pause>
-;   <icon-next>
-;   <icon-seekb>
-;   <icon-seekf>
-format-online =<label-time><label-song>
-format-offline=<label-offline>
-label-time=
-label-time-background=${colors.black}
-label-time-padding=1
-
-label-offline = ... 
-label-asdf = ...
-
-name-music = mpd
-; Available tokens:
-;   %artist%
-;   %album%
-;   %date%
-;   %title%
-; Default: %artist% - %title%
-label-song = %artist% - %title%
-label-song-padding = 1
-label-song-background=${colors.grey}
-format-online-padding = 3
-
-; temperature module
-; prints out system temps
-[module/temperature]
-
-type = internal/temperature
-
-; Seconds to sleep between updates
-; Default: 1
-interval = 0.5
-
-; Thermal zone to use
-; To list all the zone types, run 
-; $ for i in /sys/class/thermal/thermal_zone*; do echo "$i: $(<$i/type)"; done
-; Default: 0
-thermal-zone = 0
-
-; Threshold 0temperature to display warning label
-; Default: 80
-warn-temperature = 60
-
- Available tags:
-;   <label> (default)
-;   <ramp>
-format = <label>
-
-; Available tags:
-;   <label-warn> (default)
-;   <ramp>
-format-warn = <ramp> <label-warn>
-
-; Available tokens:
-;   %temperature% (default)
-;label = %temperature%
-label =temp %temperature%
-
-; Available tokens:
-;   %temperature% (default)
-label-warn = TEMP %temperature%
-label-warn-foreground = #f00
-
-; Requires the <ramp> tag
-; The icon selection will range from 0 to `warn-temperature`
-; with the current temperature as index.
-ramp-0 = A
-ramp-1 = B
-ramp-2 = C
-ramp-foreground = #55
-
-; cpu module
-; prints current cpu usage
-[module/cpu]
-type = internal/cpu
-
-; Seconds to sleep between updates
-; Default: 1
-interval = 0.5
-
-; Available tags:
-;   <label> (default)
-;   <bar-load>
-;   <ramp-load>
-;   <ramp-coreload>
-format = <label> 
-
-; Available tokens:
-;   %percentage% (default) - total cpu load
-;   %percentage-cores% - load percentage for each core
-;   %percentage-core[1-9]% - load percentage for specific core
-;label = %percentage%%
-label =cpu %percentage%%
-
-ramp-coreload-0 = ▁
-ramp-coreload-1 = ▂
-ramp-coreload-2 = ▃
-ramp-coreload-3 = ▄
-ramp-coreload-4 = ▅
-ramp-coreload-5 = ▆
-ramp-coreload-6 = ▇
-ramp-coreload-7 = █
-
-; network module
-; prints current network
-[module/network]
-spacing=0
-type = internal/network
-interface = wlp58s0 
-interval = 3.0
-
-format-connected = <ramp-signal><label-connected>
-format-connected-underline = #9f78e1
-label-connected = %local_ip%
-label-connected-background=${colors.grey}
-label-connected-padding=1
-ramp-signal-background=${colors.black}
-ramp-signal-padding=1
-
-format-disconnected = <label-disconnected>
-;format-disconnected = <label-disconnected>
-;format-disconnected-underline = ${self.format-connected-underline}
-;label-disconnected = %ifname% disconnected
-;label-disconnected-foreground = ${colors.foreground-alt}
-label-disconnected-background=${colors.grey}
-label-disconnected-padding=1
-
-ramp-signal-0 =  
-ramp-signal-1 =  
-ramp-signal-2 = 
-ramp-signal-3 = 
-ramp-signal-4 = 
-ramp-signal-foreground = ${colors.white}
-
-[module/padding]
-type = custom/text
-content = | 
-content-foreground = ${colors.background}
-content-background = ${colors.background}
-
-[module/menu-apps]
-type = custom/menu
-
-; "menu-LEVEL-N" has the same properties as "label-NAME" with
-; the additional "exec" property
-;
-; Available exec commands:
-;   menu-open-LEVEL
-;   menu-close
-; Other commands will be executed using "/usr/bin/env sh -c $COMMAND"
-
-menu-0-0 = Browsers
-menu-0-0-exec = menu-open-1
-menu-0-2 = Multimedia
-menu-0-2-exec = menu-open-2
-
-menu-1-0 = Firefox
-menu-1-0-exec = firefox &
-menu-1-1 = Chromium
-menu-1-1-exec = chromium &
-
-menu-2-0 = Gimp
-menu-2-0-exec = gimp &
-menu-2-1 = Scrot
-menu-2-1-exec = scrot &
-
-label-open = Apps
-label-close = x
-
-; Optional item separator
-; Default: none
-label-separator = |
-
-[module/openbox]
-
-type = internal/xworkspaces
-
-; Only show workspaces defined on the same output as the bar
-;
-; Useful if you want to show monitor specific workspaces
-; on different bars
-;
-; Default: false
-pin-workspaces = true
-
-; Create click handler used to focus desktop
-; Default: true
-enable-click = false
-
-; Create scroll handlers used to cycle desktops
-; Default: true
-enable-scroll = false
-
-; icon-[0-9]+ = <desktop-name>;<icon>
-; NOTE: The desktop name needs to match the name configured by the WM
-; You can get a list of the defined desktops using:
-; $ xprop -root _NET_DESKTOP_NAMES
-icon-0 = code;♚
-icon-1 = office;♛
-icon-2 = graphics;♜
-icon-3 = mail;♝
-icon-4 = web;♞
-icon-default = ♟
-
-; Available tags:
-;   <label-monitor>
-;   <label-state> - gets replaced with <label-(active|urgent|occupied|empty)>
-; Default: <label-state>
-format = <label-state>
-
-; Available tokens:
-;   %name%
-; Default: %name%
-label-monitor = %name%
-
-; Available tokens:
-;   %name%
-;   %icon%
-;   %index%
-; Default: %icon%  %name%
-label-active =%icon%%name%
-label-active-foreground =${colors.black} 
-label-active-background =${colors.white} 
-label-active-underline = #fba922
-label-active-padding=1
-
-; Available tokens:
-;   %name%
-;   %icon%
-;   %index%
-; Default: %icon%  %name%
-label-occupied =%name%
-label-occupied-background=${colors.grey}
-label-occupied-padding=1
-
-; Available tokens:
-;   %name%
-;   %icon%
-;   %index%
-; Default: %icon%  %name%
-label-urgent = %index%
-label-urgent-foreground = #000000
-label-urgent-background = #bd2c40
-label-urgent-underline = #9b0a20
-
-; Available tokens:
-;   %name%
-;   %icon%
-;   %index%
-; Default: %icon%  %name%
-label-empty =%name%
-label-empty-padding=1
-label-empty-background=${colors.black}
 
 
 ; vim:ft=dosini
