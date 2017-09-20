@@ -73,12 +73,12 @@ colorscheme solarized
 syntax enable
 "highlight LineNr ctermfg=yellow ctermbg=black
 "highlight VertSplit ctermfg=black ctermbg=none
-"highlight Pmenu ctermfg=15 ctermbg=0 guifg=#ffffff guibg=#000000   
+"highlight Pmenu ctermfg=15 ctermbg=0 guifg=#ffffff guibg=#000000
 "highlight CursorLine cterm=None ctermbg=black ctermfg=none
 "highlight CursorLineNr term=bold ctermbg=black guifg=White
 "highlight Normal ctermfg=None ctermbg=none
 
-set fillchars+=vert:\ 
+set fillchars+=vert:\
 set guifont=Sauce\ Code\ Pro\ Nerd\ Font\ Complete:h10
 set nowrap
 set number
@@ -96,8 +96,7 @@ noremap <Down> <NOP>
 noremap <Left> <NOP>
 noremap <Right> <NOP>
 
-vnoremap <silent> s //e<C-r>=&selection=='exclusive'?'+1':''<CR><CR>
-    \:<C-u>call histdel('search',-1)<Bar>let @/=histget('search',-1)<CR>gv
+vnoremap <silent> s //e<C-r>=&selection=='exclusive'?'+1':''<CR><CR>:<C-u>call histdel('search',-1)<Bar>let @/=histget('search',-1)<CR>gv
 omap s :normal vs<CR>
 
 inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
@@ -111,41 +110,41 @@ set backspace=indent,eol,start
 " }}}
 " Configure Airline Plugin {{{
 
-" air-line
-let g:airline_powerline_fonts = 1
-"let g:airline#extensions#tabline#enabled=1
+"" air-line
+"let g:airline_powerline_fonts = 1
+""let g:airline#extensions#tabline#enabled=1
 
-if !exists('g:airline_symbols')
-		let g:airline_symbols = {}
-endif
+"if !exists('g:airline_symbols')
+		"let g:airline_symbols = {}
+"endif
 
-" unicode symbols
-let g:airline_left_sep = '»'
-let g:airline_left_sep = '▶'
-let g:airline_right_sep = '«'
-let g:airline_right_sep = '◀'
-let g:airline_symbols.linenr = '␊'
-let g:airline_symbols.linenr = '␤'
-let g:airline_symbols.linenr = '¶'
-let g:airline_symbols.branch = '⎇'
-let g:airline_symbols.paste = 'ρ'
-let g:airline_symbols.paste = 'Þ'
-let g:airline_symbols.paste = '∥'
-let g:airline_symbols.whitespace = 'Ξ'
+"" unicode symbols
+"let g:airline_left_sep = '»'
+"let g:airline_left_sep = '▶'
+"let g:airline_right_sep = '«'
+"let g:airline_right_sep = '◀'
+"let g:airline_symbols.linenr = '␊'
+"let g:airline_symbols.linenr = '␤'
+"let g:airline_symbols.linenr = '¶'
+"let g:airline_symbols.branch = '⎇'
+"let g:airline_symbols.paste = 'ρ'
+"let g:airline_symbols.paste = 'Þ'
+"let g:airline_symbols.paste = '∥'
+"let g:airline_symbols.whitespace = 'Ξ'
 
-" airline symbols
-let g:airline_left_sep = ''
-let g:airline_left_alt_sep = ''
-let g:airline_right_sep = ''
-let g:airline_right_alt_sep = ''
-let g:airline_symbols.branch = ''
-let g:airline_symbols.readonly = ''
-let g:airline_symbols.linenr = ''
+"" airline symbols
+"let g:airline_left_sep = ''
+"let g:airline_left_alt_sep = ''
+"let g:airline_right_sep = ''
+"let g:airline_right_alt_sep = ''
+"let g:airline_symbols.branch = ''
+"let g:airline_symbols.readonly = ''
+"let g:airline_symbols.linenr = ''
 
-if !exists('g:airline_symbols')
-	let g:airline_symbols = {}
-endif
-let g:airline_symbols.space = "\ua0"
+"if !exists('g:airline_symbols')
+	"let g:airline_symbols = {}
+"endif
+"let g:airline_symbols.space = "\ua0"
 
 let g:airline_theme='base16'
 " }}}
@@ -166,6 +165,6 @@ endfunction
 
 " }}}
 " Misc {{{
-	let g:goyo_width=100
-	let g:goyo_height=100
+let g:goyo_width=100
+let g:goyo_height=100
 " }}}
