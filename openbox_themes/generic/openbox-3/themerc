@@ -1,0 +1,65 @@
+# titlebars
+border.width: 0
+padding.height: 10
+padding.width: 7
+
+# menu
+menu.items.active.bg: Solid Flat
+menu.items.active.bg.color: #fdf6e3
+menu.items.active.text.color: #268bd2
+menu.items.bg: Flat Solid
+menu.items.bg.color: #fdf6e3
+menu.items.disabled.text.color: #666
+menu.items.text.color: #eee
+menu.border.width: 15
+menu.border.color: #fdf6e3
+menu.separator.color: #fdf6e3
+menu.title.bg: Solid Flat
+menu.title.bg.color: #fdf6e3 
+menu.title.text.color: #eee
+menu.title.text.justify: Center
+
+# osd
+osd.bg: Solid Flat
+osd.bg.color: #fdf6e3
+osd.label.text.color: #fdf6e3
+ 
+# windows
+window.client.padding.width: 0
+window.handle.width: 0
+ 
+# active window
+window.active.button.disabled.bg: Solid Flat
+window.active.button.disabled.bg.color: #268bd2
+window.active.button.disabled.image.color: ?
+window.active.button.hover.bg: Solid Flat
+window.active.button.hover.bg.color: #fdf6e3
+window.active.button.hover.image.color: ?
+window.active.button.pressed.bg: Solid Flat
+window.active.button.pressed.bg.color: #268bd2
+window.active.button.pressed.image.color: ?
+window.active.button.toggled.bg: Solid Flat
+window.active.button.toggled.bg.color: #268bd2
+window.active.button.toggled.image.color: #ffffff
+window.active.button.unpressed.bg: Solid Flat
+window.active.button.unpressed.bg.color: #268bd2
+window.active.button.unpressed.image.color: #ffffff
+window.active.client.color: #268bd2
+window.active.grip.bg: Solid flat
+window.active.grip.bg.color: #268bd2
+window.active.handle.bg: Solid Flat
+window.active.handle.bg.color: #268bd2
+window.active.label.bg: Parentrelative
+window.active.label.text.color: #fdf6e3
+window.active.label.text.font: shadow=n
+window.active.title.bg: Solid Flat
+window.active.title.bg.color: #268bd2
+
+ 
+# inactive window
+window.inactive.*.bg: Solid Flat
+window.inactive.*.bg.color: #fdf6e3
+window.inactive.button.*.bg.color: #fdf6e3
+window.inactive.button.hover.image.color: #268bd2
+window.inactive.button.toggled.image.color: #fdf6e3
+window.inactive.button.unpressed.image.color: #fdf6e3
