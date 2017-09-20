@@ -6,8 +6,7 @@
 
 [colors]
 
-;background=${xrdb:background:#ffffff}
-background=${xrdb:color8:#ffffff}
+background=${xrdb:background:#ffffff}
 black=${xrdb:color0:#ffffff}
 grey=${xrdb:color8:#ffffff}
 ;white=${xrdb:color4:#ffffff}
