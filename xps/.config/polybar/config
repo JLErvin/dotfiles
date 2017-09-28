@@ -6,42 +6,62 @@
 
 [colors]
 
-;background=${xrdb:background:#ffffff}
-background=${xrdb:color8:#ffffff}
+background=${xrdb:background:#ffffff00a}
+foreground=${xrdb:foreground:#ffffff}
+
+red=${xrdb:color1:#ffffff}
+bred=${xrdb:color9:#ffffff}
+
+grn=${xrdb:color2:#ffffff}
+bgrn=${xrdb:color10:#ffffff}
+
+ylw=${xrdb:color3:#ffffff}
+bylw=${xrdb:color11:#ffffff}
+
+blu=${xrdb:color4:#ffffff}
+bblu=${xrdb:color12:#ffffff}
+
+mag=${xrdb:color5:#ffffff}
+bmag=${xrdb:color13:#ffffff}
+
+cyn=${xrdb:color6:#ffffff}
+bcyn=${xrdb:color14:#ffffff}
+
 black=${xrdb:color0:#ffffff}
 grey=${xrdb:color8:#ffffff}
-;white=${xrdb:color4:#ffffff}
+
 white=#EAEAED
 
 ;--------------------------------------------
-; bars                                      ; 
+; bars                                      ;
 ; draws simple bar w/ small modules at top  ;
 ;--------------------------------------------
 
 [bar/base]
 dpi = 192
 width = 100%
-height = 20 
-offset-x = 0 
-offset-y = 0 
-foreground = ${colors.white} 
+height = 30
+offset-x = 0
+offset-y = 0
+bottom=true
+foreground = ${colors.foreground}
 background = ${colors.background}
-border-top-size=5
+border-top-size=0
 border-top-color= ${colors.background}
-border-bottom-size=5
+border-bottom-size=0
 border-bottom-color= ${colors.background}
-spacing = 0 
+spacing = 0
 padding-left = 1 
-padding-right = 1 
+padding-right = 1
 module-margin-left = 0 
-module-margin-right = 0  
+module-margin-right = 0
 font-N = <fontconfig pattern>;<vertical offset>
 font-0 = UW ttyp0:pixelsize=10;2
-font-1 = FontAwesome:size=4;2
+font-1 = Wuncon Siji:pixelsize=10;2
 font-2 = GohuFont:pixelsize=10;0
-modules-left = bspwm openbox padding mpd
-modules-center = 
-modules-right = network padding volume padding battery padding date 
+modules-left = openbox mpd
+modules-center = date
+modules-right = network padding padding volume padding battery
 wm-restack = bspwm
 scroll-up = bspwm-desknext
 scroll-down = bspwm-deskprev
@@ -71,26 +91,26 @@ ws-icon-10 = X;0
 ws-icon-11 = 11;
 ws-icon-12 = 12;
 ws-icon-0 = 0:
-ws-icon-default = 
+ws-icon-default =
 
 format =<label-state><label-mode>
 
 label-focused = %icon%
 label-focused-foreground = ${colors.black}
-label-focused-background = ${colors.white} 
-label-focused-padding = 1 
+label-focused-background = ${colors.white}
+label-focused-padding = 1
 
 label-occupied = %icon%
 label-occupied-foreground = ${colors.white}
 label-occupied-background = ${colors.grey}
-label-occupied-padding = 1 
+label-occupied-padding = 1
 
 label-urgent = %icon%
-label-urgent-padding = 1 
+label-urgent-padding = 1
 
-label-empty = 
-label-empty-foreground = #4A484B 
-label-empty-padding = 1 
+label-empty =
+label-empty-foreground = #4A484B
+label-empty-padding = 1
 
 ; xwindow module
 ; prints the current active window
@@ -98,7 +118,7 @@ label-empty-padding = 1
 y-offset = 10
 type = internal/xwindow
 label = %title:0:120:...%
-label-padding = 2 
+label-padding = 2
 label-foreground = #4A484B
 
 ; date module
@@ -109,7 +129,7 @@ type = internal/date
 
 interval = 1.0
 
-date = %a %b %d, 
+date = %a %b %d,
 
 time = %H:%M
 
@@ -117,10 +137,9 @@ time-alt = %H:%M:%S
 
 label = %date% %time%
 format = <label>
-format-padding = 0 
-label-background=${colors.white}
-label-foreground=${colors.black}
-label-padding= 1 
+format-padding = 0
+label-foreground=${colors.foreground}
+label-padding= 1
 
 ; battery module
 ; displays current battery percentage
@@ -139,21 +158,21 @@ format-charging =<animation-charging><label-charging>
 format-discharging =<ramp-capacity><label-discharging>
 format-full =<ramp-capacity><label-full>
 label-charging = %percentage%
-label-charging-padding=1
-label-charging-background=${colors.grey}
-label-charging-foreground=${colors.white}
+label-charging-padding=0
+label-charging-background=${colors.background}
+label-charging-foreground=${colors.grn}
 label-discharging = %percentage%
-label-discharging-background=${colors.grey}
-label-discharging-foreground=${colors.white}
-label-discharging-padding=1
+label-discharging-background=${colors.background}
+label-discharging-foreground=${colors.grn}
+label-discharging-padding=0
 label-full = %percentage%
 label-full-foreground=${colors.black}
-animation-charging-background=${colors.black}
-animation-charging-foreground=${colors.white}
+animation-charging-background=${colors.background}
+animation-charging-foreground=${colors.grn}
 animation-charging-padding=1
 ramp-capacity-padding=1
-ramp-capacity-background=${colors.black}
-ramp-capacity-foreground=${colors.white}
+ramp-capacity-background=${colors.background}
+ramp-capacity-foreground=${colors.grn}
 
 ;ramp-capacity-0 = 
 ;ramp-capacity-1 = 
@@ -161,17 +180,17 @@ ramp-capacity-foreground=${colors.white}
 ;ramp-capacity-3 = 
 ;ramp-capacity-4 = 
 
-ramp-capacity-0 = 
-ramp-capacity-1 = 
-ramp-capacity-2 = 
-ramp-capacity-3 = 
-ramp-capacity-4 = 
+ramp-capacity-0 = bat
+ramp-capacity-1 = bat
+ramp-capacity-2 = bat
+ramp-capacity-3 = bat
+ramp-capacity-4 = bat
 
-animation-charging-0 = 
-animation-charging-1 = 
-animation-charging-2 = 
-animation-charging-3 = 
-animation-charging-4 = 
+animation-charging-0 = bat
+animation-charging-1 = bat
+animation-charging-2 = bat
+animation-charging-3 = bat
+animation-charging-4 = bat
 animation-charging-framerate = 750
 
 ; volume module
@@ -181,24 +200,22 @@ type = internal/volume
 
 format-volume =<ramp-volume><label-volume>
 format-muted =<ramp-volume><label-muted>
-ramp-volume-background=${colors.black}
-ramp-volume-foreground=${colors.white}
-ramp-volume-padding=1
+ramp-volume-foreground=${colors.cyn}
+ramp-volume-padding=0
 label-volume = %percentage%
-label-volume-background=${colors.grey}
-label-volume-foreground=${colors.white}
+label-volume-foreground=${colors.cyn}
 label-volume-padding=1
 label-muted =0
-label-muted-foreground = ${colors.white} 
-label-muted-background=${colors.grey}
+label-muted-foreground = ${colors.cyn}
+label-muted-background=${colors.black}
 label-muted-padding = 1
-format-volume-padding = 0 
-format-muted-padding = 0 
+format-volume-padding = 0
+format-muted-padding = 0
 
-ramp-volume-0 =  
-ramp-volume-1 =  
-ramp-volume-2 =  
-ramp-headphones-0 =  
+ramp-volume-0 = vol
+ramp-volume-1 = vol
+ramp-volume-2 = vol
+ramp-headphones-0 = vol
 
 ; mpd module
 ; prints current song
@@ -207,7 +224,7 @@ type = internal/mpd
 
 host = 127.0.0.1
 port = 6600
-password = 
+password =
 
 ; Seconds to sleep between progressbar/song timer sync
 ; Default: 1
@@ -234,7 +251,7 @@ label-time=
 label-time-background=${colors.black}
 label-time-padding=1
 
-label-offline = ... 
+label-offline = ...
 label-asdf = ...
 
 name-music = mpd
@@ -260,7 +277,7 @@ type = internal/temperature
 interval = 0.5
 
 ; Thermal zone to use
-; To list all the zone types, run 
+; To list all the zone types, run
 ; $ for i in /sys/class/thermal/thermal_zone*; do echo "$i: $(<$i/type)"; done
 ; Default: 0
 thermal-zone = 0
@@ -311,7 +328,7 @@ interval = 0.5
 ;   <bar-load>
 ;   <ramp-load>
 ;   <ramp-coreload>
-format = <label> 
+format = <label>
 
 ; Available tokens:
 ;   %percentage% (default) - total cpu load
@@ -334,15 +351,14 @@ ramp-coreload-7 = █
 [module/network]
 spacing=0
 type = internal/network
-interface = wlp58s0 
+interface = wlp58s0
 interval = 3.0
 
 format-connected = <ramp-signal><label-connected>
 format-connected-underline = #9f78e1
 label-connected = %local_ip%
-label-connected-background=${colors.grey}
-label-connected-padding=1
-ramp-signal-background=${colors.black}
+label-connected-padding=0
+label-connected-foreground = ${colors.mag}
 ramp-signal-padding=1
 
 format-disconnected = <label-disconnected>
@@ -350,19 +366,18 @@ format-disconnected = <label-disconnected>
 ;format-disconnected-underline = ${self.format-connected-underline}
 ;label-disconnected = %ifname% disconnected
 ;label-disconnected-foreground = ${colors.foreground-alt}
-label-disconnected-background=${colors.grey}
 label-disconnected-padding=1
 
-ramp-signal-0 =  
-ramp-signal-1 =  
-ramp-signal-2 = 
-ramp-signal-3 = 
-ramp-signal-4 = 
-ramp-signal-foreground = ${colors.white}
+ramp-signal-0 = net
+ramp-signal-1 = net
+ramp-signal-2 = net
+ramp-signal-3 = net
+ramp-signal-4 = net
+ramp-signal-foreground = ${colors.mag}
 
 [module/padding]
 type = custom/text
-content = | 
+content = |
 content-foreground = ${colors.background}
 content-background = ${colors.background}
 
@@ -402,6 +417,7 @@ label-separator = |
 [module/openbox]
 
 type = internal/xworkspaces
+width = 200
 
 ; Only show workspaces defined on the same output as the bar
 ;
@@ -413,7 +429,7 @@ pin-workspaces = true
 
 ; Create click handler used to focus desktop
 ; Default: true
-enable-click = false
+enable-click = true
 
 ; Create scroll handlers used to cycle desktops
 ; Default: true
@@ -434,7 +450,7 @@ icon-default = ♟
 ;   <label-monitor>
 ;   <label-state> - gets replaced with <label-(active|urgent|occupied|empty)>
 ; Default: <label-state>
-format = <label-state>
+format =<label-state>  
 
 ; Available tokens:
 ;   %name%
@@ -446,11 +462,12 @@ label-monitor = %name%
 ;   %icon%
 ;   %index%
 ; Default: %icon%  %name%
-label-active =%icon%%name%
-label-active-foreground =${colors.black} 
-label-active-background =${colors.white} 
+;label-active =%icon%%name%
+label-active = 
+label-active-foreground =${colors.white}
+label-active-background = ${colors.red}
 label-active-underline = #fba922
-label-active-padding=1
+label-active-padding=0
 
 ; Available tokens:
 ;   %name%
@@ -458,8 +475,8 @@ label-active-padding=1
 ;   %index%
 ; Default: %icon%  %name%
 label-occupied =%name%
-label-occupied-background=${colors.grey}
-label-occupied-padding=1
+label-occupied-padding=0
+label-occupied-foreground =${colors.blu}
 
 ; Available tokens:
 ;   %name%
@@ -476,9 +493,11 @@ label-urgent-underline = #9b0a20
 ;   %icon%
 ;   %index%
 ; Default: %icon%  %name%
-label-empty =%name%
-label-empty-padding=1
-label-empty-background=${colors.black}
+;label-empty =%name%
+label-empty = 
+label-empty-padding=0
+label-empty-foreground=${colors.white}
+label-empty-background=${colors.red}
 
 
 ; vim:ft=dosini

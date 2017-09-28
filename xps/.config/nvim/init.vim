@@ -62,21 +62,21 @@ filetype plugin indent on
 
 
 syntax enable
-set background=light
+set background=dark
 set cursorline
-set background=light
-colorscheme solarized
+"set background=light
+"colorscheme solarized
 "colorscheme developer
-"colorscheme OceanicNext
+colorscheme OceanicNext
 
 " Use Pmenu to configure drop-down menu for YouCompleteMe
 syntax enable
-"highlight LineNr ctermfg=yellow ctermbg=black
-"highlight VertSplit ctermfg=black ctermbg=none
-"highlight Pmenu ctermfg=15 ctermbg=0 guifg=#ffffff guibg=#000000
-"highlight CursorLine cterm=None ctermbg=black ctermfg=none
-"highlight CursorLineNr term=bold ctermbg=black guifg=White
-"highlight Normal ctermfg=None ctermbg=none
+highlight LineNr ctermfg=yellow ctermbg=black
+highlight VertSplit ctermfg=black ctermbg=none
+highlight Pmenu ctermfg=15 ctermbg=0 guifg=#ffffff guibg=#000000
+highlight CursorLine cterm=None ctermbg=black ctermfg=none
+highlight CursorLineNr term=bold ctermbg=black guifg=White
+highlight Normal ctermfg=None ctermbg=none
 
 set fillchars+=vert:\
 set guifont=Sauce\ Code\ Pro\ Nerd\ Font\ Complete:h10

@@ -8,7 +8,7 @@
 #  ░░░░░░  ░░░░░░ ░░░   ░░ ░░░░░░     ░░  ░░░     ░░░░░  
 #
 [global]
-font = GohuFont 8 
+font = UW Ttyp0 8 
 markup = yes
 format = "%s %b"
 sort = yes
@@ -48,18 +48,18 @@ history = ctrl+grave
 context = ctrl+shift+period
 
 [urgency_low]
-background = "#bab7b5"
-foreground = "#4A484B"
+background = "#1a2b34"
+foreground = "#dbdee9"
 timeout = 20
 
 [urgency_normal]
-background = "#bab7b5"
-foreground = "#4A484B"
+background = "#1a2b34"
+foreground = "#dbdee9"
 timeout = 20
 
 [urgency_critical]
-background = "#bab7b5"
-foreground = "#4A484B"
+background = "#1a2b34"
+foreground = "#dbdee9"
 timeout = 20
 
 # vim: ft=cfg
