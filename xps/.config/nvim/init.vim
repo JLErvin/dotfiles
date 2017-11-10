@@ -48,8 +48,8 @@ Plugin 'tiagofumo/vim-nerdtree-syntax-highlight'
 Plugin 'scrooloose/nerdtree'
 Plugin 'junegunn/goyo.vim'
 Plugin 'chrisbra/csv.vim'
-Plugin 'vim-airline/vim-airline-themes'
-Plugin 'vim-airline/vim-airline'
+"Plugin 'vim-airline/vim-airline-themes'
+"Plugin 'vim-airline/vim-airline'
 Plugin 'kh3phr3n/python-syntax'
 Plugin 'roxma/nvim-completion-manager'
 Plugin 'joshdick/onedark.vim'
@@ -68,17 +68,15 @@ filetype plugin indent on
 " }}}
 " Customize Appearance {{{
 
-
 syntax enable
 "set background=dark
 set cursorline
-"colorscheme solarized
-"colorscheme OceanicNext
-colorscheme gruvbox
+"colorscheme gruvbox
+colorscheme gotham
 set background=dark
-"colorscheme developer
-"colorscheme OceanicNext
-"colorscheme onedark
+
+"hide annoying status line
+set laststatus=0
 
 " Use Pmenu to configure drop-down menu for YouCompleteMe
 syntax enable
@@ -94,9 +92,6 @@ set guifont=Sauce\ Code\ Pro\ Nerd\ Font\ Complete:h10
 set nowrap
 set number
 set relativenumber
-
-
-
 
 " }}}
 " Key Bindings {{{
@@ -123,7 +118,7 @@ set backspace=indent,eol,start
 
 " air-line
 "let g:airline_powerline_fonts = 1
-let g:airline#extensions#tabline#enabled=1
+"let g:airline#extensions#tabline#enabled=1
 
 "if !exists('g:airline_symbols')
 		"let g:airline_symbols = {}
@@ -157,7 +152,7 @@ let g:airline#extensions#tabline#enabled=1
 "endif
 "let g:airline_symbols.space = "\ua0"
 
-let g:airline_theme='gruvbox'
+"let g:airline_theme='gruvbox'
 " }}}
 " Run Current File {{{
 
