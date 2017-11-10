@@ -19,19 +19,19 @@ foreground=${xrdb:foreground:#ffffff}
 
 ; Define colors for each module
 ; Easier to change here for each module
-obbg=${self.grn}
+obbg=${self.red}
 obibg=${self.foreground}
-cpubg=${self.grn}
-winbg=${self.grn}
-netbg=${self.grn}
+cpubg=${self.red}
+winbg=${self.ylw}
+netbg=${self.ylw}
 volbg=${self.grn}
-batbg=${self.grn}
+batbg=${self.blu}
 
 obfg=${self.foreground}
 obifg=${self.background}
 cpufg=${self.foreground}
-winfg=${self.foreground}
-netfg=${self.foreground}
+winfg=${self.background}
+netfg=${self.background}
 volfg=${self.foreground}
 batfg=${self.foreground}
 
@@ -62,7 +62,7 @@ font-1=UW ttyp0:pixelsize=10;2
 font-2=GohuFont:pixelsize=10;0
 modules-left=openbox  padding xwindow padding backlight 
 modules-center= 
-modules-right=cpu padding network padding volume padding battery padding date padding
+modules-right=emails padding network padding volume padding battery padding date padding
 
 ;--------------------------------------------
 ; modules                                   ;
@@ -98,15 +98,15 @@ poll-interval=5
 format-charging =<label-charging>
 format-discharging =<label-discharging>
 format-full =<label-full>
-label-charging= %percentage%
+label-charging= %percentage%
 label-charging-padding=1
 label-charging-background=${colors.batbg}
 label-charging-foreground=${colors.batfg}
-label-discharging= %percentage%
+label-discharging= %percentage%
 label-discharging-background=${colors.batbg}
 label-discharging-foreground=${colors.batfg}
 label-discharging-padding=1
-label-full= %percentage%
+label-full= %percentage%
 label-full-foreground=${colors.black}
 animation-charging-background=${colors.batbg}
 animation-charging-foreground=${colors.batfg}
@@ -160,6 +160,7 @@ ramp-signal-padding=1
 format-disconnected= <label-disconnected>
 label-disconnected-background=${colors.netbg}
 label-disconnected-padding=1
+label-disconnected=DISCONNECTED
 ramp-signal-foreground=${colors.netfg}
 
 [module/padding]
@@ -207,5 +208,16 @@ bar-width = 10
 bar-indicator = |
 bar-fill = ─
 bar-empty = ─
+
+[module/emails]
+type = custom/script
+exec = python /home/jlervin/.scripts/email.py
+tail = true
+interval = 90
+format = <label>
+format-background = ${colors.obbg}
+format-foreground = ${colors.foreground}
+format-padding = 1 
+label =  %output% 
 
 ; vim:ft=dosini
