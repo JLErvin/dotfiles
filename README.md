@@ -14,7 +14,7 @@ Welcome to my dotfiles. You can usually find my stuff over on /r/unixporn. If yo
 * browser: `firefox`
 * text-editor: `neovim`
 
-![Screenshot](https://i.imgur.com/ABX69pR.jpg)
+![Screenshot](https://imgur.com/HAvLH9z.jpg)
 
 
 
