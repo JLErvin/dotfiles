@@ -25,7 +25,8 @@ cpubg=${self.red}
 winbg=${self.ylw}
 netbg=${self.ylw}
 volbg=${self.grn}
-batbg=${self.blu}
+batbg=${self.mag}
+malbg=${self.red}
 
 obfg=${self.foreground}
 obifg=${self.background}
@@ -34,6 +35,7 @@ winfg=${self.background}
 netfg=${self.background}
 volfg=${self.foreground}
 batfg=${self.foreground}
+malfg=${self.foreground}
 
 ;--------------------------------------------
 ; bars                                      ; 
@@ -215,8 +217,8 @@ exec = python /home/jlervin/.scripts/email.py
 tail = true
 interval = 90
 format = <label>
-format-background = ${colors.obbg}
-format-foreground = ${colors.foreground}
+format-background = ${colors.malbg}
+format-foreground = ${colors.malfg}
 format-padding = 1 
 label =  %output% 
 
