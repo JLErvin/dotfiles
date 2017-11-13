@@ -51,7 +51,8 @@ filetype plugin indent on
 
 syntax enable
 set cursorline
-colorscheme gotham
+"colorscheme gotham
+colorscheme noct
 set background=dark
 set laststatus=0
 syntax enable
@@ -59,6 +60,8 @@ set fillchars+=vert:\
 set nowrap
 set number
 set relativenumber
+hi ModeMsg ctermbg=1
+hi Visual ctermbg=10
 
 " }}}
 " Key Bindings {{{
