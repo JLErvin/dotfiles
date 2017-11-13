@@ -13,7 +13,7 @@ static const float    resize_keep_aspect_ratio= 1.03;
 ///---Offsets---///
 /*0)offsetx          1)offsety
  *2)maxwidth         3)maxheight */
-static const uint8_t offsets[] = {0,0,0,0};
+static const uint8_t offsets[] = {0,34,0,34};
 ///---Colors---///
 /*0)focuscol         1)unfocuscol
  *2)fixedcol         3)unkilcol
@@ -32,7 +32,7 @@ static const bool inverted_colors = true;
 /*0) Outer border size. If you put this negative it will be a square.
  *1) Full borderwidth    2) Magnet border size
  *3) Resize border size  */
-static const uint8_t borders[] = {5,7,5,30};
+static const uint8_t borders[] = {5,7,5,10};
 /* Windows that won't have a border.
  * It uses substring comparison with what is found in the WM_NAME
  * attribute of the window. You can test this using `xprop WM_NAME`
@@ -42,7 +42,7 @@ static const char *ignore_names[] = {"bar", "xclock"};
 ///--Menus and Programs---///
 static const char *menucmd[]   = { "", NULL };
 static const char *terminal[] = {"urxvt", NULL};
-static const char *rofi[] = {"rofi -show run", NULL};
+static const char *rofi[] = {"/home/jlervin/.scripts/rofi_run", NULL};
 ///--Custom foo---///
 static void halfandcentered(const Arg *arg)
 {
@@ -109,7 +109,7 @@ static key keys[] = {
     {  MOD |CONTROL,      XK_h,          movestep,          {.i=TWOBWM_MOVE_LEFT_SLOW}},
     // Teleport the window to an area of the screen.
     // Center:
-    {  MOD ,              XK_g,          teleport,          {.i=TWOBWM_TELEPORT_CENTER}},
+    {  MOD ,              XK_c,          teleport,          {.i=TWOBWM_TELEPORT_CENTER}},
     // Center y:
     {  MOD |SHIFT,        XK_g,          teleport,          {.i=TWOBWM_TELEPORT_CENTER_Y}},
     // Center x:
@@ -135,9 +135,9 @@ static key keys[] = {
     {  MOD |SHIFT,        XK_m,          maxvert_hor,       {.i=TWOBWM_MAXIMIZE_HORIZONTALLY}},
     // Maximize and move
     // vertically left
-    {  MOD |SHIFT,        XK_y,          maxhalf,           {.i=TWOBWM_MAXHALF_VERTICAL_LEFT}},
+    {  MOD ,              XK_o,          maxhalf,           {.i=TWOBWM_MAXHALF_VERTICAL_LEFT}},
     // vertically right
-    {  MOD |SHIFT,        XK_u,          maxhalf,           {.i=TWOBWM_MAXHALF_VERTICAL_RIGHT}},
+    {  MOD ,              XK_p,          maxhalf,           {.i=TWOBWM_MAXHALF_VERTICAL_RIGHT}},
     // horizontally left
     {  MOD |SHIFT,        XK_b,          maxhalf,           {.i=TWOBWM_MAXHALF_HORIZONTAL_BOTTOM}},
     // horizontally right
@@ -157,7 +157,7 @@ static key keys[] = {
     {  MOD ,              XK_r,          raiseorlower,      {}},
     // Next/Previous workspace
     {  MOD ,              XK_v,          nextworkspace,     {}},
-    {  MOD ,              XK_c,          prevworkspace,     {}},
+    {  MOD ,              XK_j,          prevworkspace,     {}},
     // Move to Next/Previous workspace
     {  MOD |SHIFT ,       XK_v,          sendtonextworkspace,{}},
     {  MOD |SHIFT ,       XK_c,          sendtoprevworkspace,{}},
@@ -182,6 +182,7 @@ static key keys[] = {
     // Start programs
     {  MOD ,              XK_w,          start,             {.com = menucmd}},
     {  MOD ,              XK_Return,     start,             {.com = terminal}},
+    {  MOD ,              XK_d,          start,             {.com = rofi}},
     // Exit or restart 2bwm
     {  MOD |CONTROL,      XK_q,          twobwm_exit,       {.i=0}},
     {  MOD |CONTROL,      XK_r,          twobwm_restart,    {.i=0}},
