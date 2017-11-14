@@ -5,6 +5,13 @@
 /____/\____/ /_/ /_/ /___/____/___/___/  
                                          
 ```
+## Window Managers
+
+* 2bwm
+* openbox
+* bspwm
+
+## System Configuration
 
 Welcome to my dotfiles. You can usually find my stuff over on /r/unixporn. If you have any questions, feel free to shoot me a [pm](https://reddit.com/u/fatal_squash) over there. 
 
@@ -21,7 +28,3 @@ Welcome to my dotfiles. You can usually find my stuff over on /r/unixporn. If yo
 * text-editor: `neovim`
 
 ![Screenshot](https://imgur.com/HAvLH9z.jpg)
-
-
-
-
