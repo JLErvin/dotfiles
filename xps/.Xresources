@@ -52,49 +52,6 @@ URxvt.cursorUnderline:      false
 ! Pointer
 URxvt.pointerBlank:         true
 
-! ------------------------------------------------------------------------------
-! Monochrome w/ highlight colorscheme
-! ------------------------------------------------------------------------------
-
-!*background: #272725
-!*foreground: #DEDEDE
-!!!*fading: 40
-!*fadeColor: #073642
-!*cursorColor: #93a1a1
-!*pointerColorBackground: #586e75
-!*pointerColorForeground: #93a1a1
-
-!!! black dark/light
-!*color0: #302C2C
-!*color8: #404040
-
-!!! red dark/light
-!*color1: #5A5A5A
-!*color9: #404040
-
-!!! green dark/light
-!*color2: #F9C168
-!*color10: #989898
-
-!!! yellow dark/light
-!*color3: #CACACA
-!*color11: #CACACA
-
-!!! blue dark/light
-!*color4: #B1B1B1
-!*color12: #B1B1B1
-
-!!! magenta dark/light
-!*color5: #7A6054
-!*color13: #7A6054
-
-!!! cyan dark/light
-!*color6: #7F7F7F
-!*color14: #7F7F7F
-
-!!! white dark/light
-!*color7: #DEDEDE
-!*color15: #C3C1B8
 
 ! ------------------------------------------------------------------------------
 ! go dawgs

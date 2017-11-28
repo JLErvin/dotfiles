@@ -8,8 +8,9 @@ filetype plugin on
 set nocp
 syntax on
 filetype plugin indent on
-set tabstop=2
-set shiftwidth=2
+set tabstop=3
+set shiftwidth=3
+set expandtab
 set nobackup
 set noswapfile
 

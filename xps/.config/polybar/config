@@ -5,9 +5,10 @@ l;---------------------------------------------
 ;---------------------------------------------
 
 [colors]
+
 ; Define System colors from .Xresources
-background=${xrdb:background:#ffffff}
-black=${xrdb:color0:#ffffff}
+bg=${xrdb:background:#ffffff}
+blk=${xrdb:color0:#ffffff}
 red=${xrdb:color1:#ffffff}
 grn=${xrdb:color2:#ffffff}
 ylw=${xrdb:color3:#ffffff}
@@ -15,27 +16,37 @@ blu=${xrdb:color4:#ffffff}
 mag=${xrdb:color5:#ffffff}
 cyn=${xrdb:color6:#ffffff}
 wht=${xrdb:color7:#ffffff}
-foreground=${xrdb:foreground:#ffffff}
+fg=${xrdb:foreground:#ffffff}
 
 ; Define colors for each module
 ; Easier to change here for each module
-obbg=${self.red}
-obibg=${self.foreground}
-cpubg=${self.red}
-winbg=${self.ylw}
-netbg=${self.ylw}
-volbg=${self.grn}
-batbg=${self.mag}
-malbg=${self.red}
+;obbg=${self.red}
+;obibg=${self.fg}
+;cpubg=${self.red}
+;winbg=${self.ylw}
+;netbg=${self.ylw}
+;volbg=${self.grn}
+;batbg=${self.mag}
+;malbg=${self.red}
+;
+obbg=${self.fg}
+obibg=${self.fg}
+cpubg=${self.fg}
+winbg=${self.fg}
+netbg=${self.fg}
+volbg=${self.fg}
+batbg=${self.fg}
+malbg=${self.fg}
 
-obfg=${self.foreground}
-obifg=${self.background}
-cpufg=${self.foreground}
-winfg=${self.background}
-netfg=${self.background}
-volfg=${self.foreground}
-batfg=${self.foreground}
-malfg=${self.foreground}
+obfg=${self.bg}
+obifg=${self.bg}
+cpufg=${self.bg}
+winfg=${self.bg}
+netfg=${self.bg}
+volfg=${self.bg}
+batfg=${self.bg}
+malfg=${self.bg}
+
 
 ;--------------------------------------------
 ; bars                                      ; 
@@ -47,12 +58,12 @@ width=100%
 height=20 
 offset-x=0 
 offset-y=0 
-foreground=${colors.foreground} 
-background=${colors.background}
+foreground=${colors.fg} 
+background=${colors.bg}
 border-top-size=7
-border-top-color= ${colors.background}
+border-top-color= ${colors.bg}
 border-bottom-size=7
-border-bottom-color= ${colors.background}
+border-bottom-color= ${colors.bg}
 spacing=0 
 padding-left=1 
 padding-right=0 
@@ -87,8 +98,8 @@ time-alt=%H:%M:%S
 label=%date% %time%
 format=<label>
 format-padding=0 
-label-background=${colors.foreground}
-label-foreground=${colors.black}
+label-background=${colors.fg}
+label-foreground=${colors.bg}
 label-padding= 1 
 
 [module/battery]
@@ -109,7 +120,7 @@ label-discharging-background=${colors.batbg}
 label-discharging-foreground=${colors.batfg}
 label-discharging-padding=1
 label-full= %percentage%
-label-full-foreground=${colors.black}
+label-full-foreground=${colors.bg}
 animation-charging-background=${colors.batbg}
 animation-charging-foreground=${colors.batfg}
 animation-charging-padding=1
@@ -168,8 +179,8 @@ ramp-signal-foreground=${colors.netfg}
 [module/padding]
 type=custom/text
 content=| 
-content-foreground=${colors.background}
-content-background=${colors.background}
+content-foreground=${colors.bg}
+content-background=${colors.bg}
 
 [module/openbox]
 type=internal/xworkspaces
