@@ -43,6 +43,7 @@ Plugin 'roxma/nvim-completion-manager'
 Plugin 'lazywei/vim-matlab'
 Plugin 'jalvesaq/Nvim-R'
 Plugin 'ajpaulson/julia-syntax.vim'
+Plugin 'tmhedberg/SimpylFold'
 
 call vundle#end()
 filetype plugin indent on
@@ -72,6 +73,8 @@ noremap <Up> <NOP>
 noremap <Down> <NOP>
 noremap <Left> <NOP>
 noremap <Right> <NOP>
+noremap <space> za
+vnoremap <space> zf
 vnoremap <silent> s //e<C-r>=&selection=='exclusive'?'+1':''<CR><CR>:<C-u>call histdel('search',-1)<Bar>let @/=histget('search',-1)<CR>gv
 omap s :normal vs<CR>
 inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"

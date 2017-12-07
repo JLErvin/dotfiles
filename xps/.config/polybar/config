@@ -33,10 +33,10 @@ obbg=${self.fg}
 obibg=${self.fg}
 cpubg=${self.fg}
 winbg=${self.fg}
-netbg=${self.fg}
-volbg=${self.fg}
-batbg=${self.fg}
-malbg=${self.fg}
+netbg=${self.ylw}
+volbg=${self.grn}
+batbg=${self.cyn}
+malbg=${self.red}
 
 obfg=${self.bg}
 obifg=${self.bg}
@@ -44,8 +44,8 @@ cpufg=${self.bg}
 winfg=${self.bg}
 netfg=${self.bg}
 volfg=${self.bg}
-batfg=${self.bg}
-malfg=${self.bg}
+batfg=${self.fg}
+malfg=${self.fg}
 
 
 ;--------------------------------------------

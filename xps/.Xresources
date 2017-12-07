@@ -95,11 +95,19 @@ rofi.font: UW ttyp0 12
 
 twobwm.border_width: 5 
 twobwm.outer_border: 3 
-twobwm.focus_color: red
-twobwm.unfocus_color: wht
+twobwm.focus_color: wht 
+twobwm.unfocus_color: blu 
 twobwm.fixed_color: wht
 twobwm.unkill_color: wht
 twobwm.outer_border_color: bg 
 twobwm.fixed_unkill_color: cyn
 twobwm.inverted_colors: false
 twobwm.enable_compton: true
+
+
+! ------------------------------------------------------------------------------
+! Qutebrowser 
+! ------------------------------------------------------------------------------
+
+qutebrowser.tabs.bg.selected.odd: bg
+qutebrowser.tabs.bg.selected.even: bg
