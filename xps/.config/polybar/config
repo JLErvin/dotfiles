@@ -73,9 +73,18 @@ font-N=<fontconfig pattern>;<vertical offset>
 font-0=WunconSiji:size=4;2
 font-1=UW ttyp0:pixelsize=10;2
 font-2=GohuFont:pixelsize=10;0
-modules-left=openbox  padding xwindow padding backlight 
+modules-left= xwindow padding backlight 
 modules-center= 
 modules-right=emails padding network padding volume padding battery padding date padding
+
+[bar/lite]
+inherit=bar/base
+background=#000f0f0f
+border-top-color=#000f0f0f
+border-bottom-color=#000f0f0f
+modules-left= xwindow paddinglite backlight 
+modules-center= 
+modules-right=emails paddinglite network paddinglite volume paddinglite battery paddinglite date paddinglite
 
 ;--------------------------------------------
 ; modules                                   ;
@@ -181,6 +190,12 @@ type=custom/text
 content=| 
 content-foreground=${colors.bg}
 content-background=${colors.bg}
+
+[module/paddinglite]
+type=custom/text
+content=| 
+content-foreground=#000f0f0f
+content-background=#000f0f0f
 
 [module/openbox]
 type=internal/xworkspaces

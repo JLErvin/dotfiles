@@ -53,8 +53,8 @@ filetype plugin indent on
 
 syntax enable
 set cursorline
-"colorscheme gotham
-colorscheme noct
+colorscheme gotham
+"colorscheme noct
 set background=dark
 set laststatus=0
 syntax enable
@@ -64,6 +64,10 @@ set number
 set relativenumber
 hi ModeMsg ctermbg=1
 hi Visual ctermbg=10
+
+hi LineNr ctermbg=NONE
+hi Normal ctermbg=NONE
+hi Folded ctermbg=black ctermfg=yellow
 
 " }}}
 " Key Bindings {{{
