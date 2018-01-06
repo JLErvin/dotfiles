@@ -1,113 +1,120 @@
 #include </home/jlervin/.cache/squash/colors>
+#include </home/jlervin/.xres/urxvt>
+#include </home/jlervin/.xres/xft>
+#include </home/jlervin/.xres/urxvt>
+#include </home/jlervin/.xres/rofi>
+#include </home/jlervin/.xres/twobwm>
 
-!------------------------------------------------------------------------------
-! Xft settings
-!-------------------------------------------------------------------------------
+!!------------------------------------------------------------------------------
+!! Xft settings
+!!-------------------------------------------------------------------------------
 
-Xft.dpi:                    96
-Xft.antialias:              true
-Xft.rgba:                   rgb
-Xft.hinting:                true
-Xft.hintstyle:              hintslight
-
-!-------------------------------------------------------------------------------
-! URxvt settings
-!-------------------------------------------------------------------------------
-
-!URxvt.depth:                32
-URxvt.geometry:             90x30
-URxvt.transparent:          false
-URxvt.fading:               0
-! URxvt.urgentOnBell:         true
-! URxvt.visualBell:           true
-URxvt.loginShell:           true
-URxvt.saveLines:            50
-URxvt.lineSpace:            0
-
-! Fonts
-URxvt.allow_bold:           false
-URxvt*font:xft:UW ttyp0:pixelsize=15, xft:Wuncon Siji:pixelsize=15
-URxvt*boldFont:xft:UW ttyp0:size=10
-
-! Fix font space
-URxvt*letterSpace:0
-
-! Scrollbar
-URxvt.scrollStyle:          rxvt
-URxvt.scrollBar:            false
-
-! Add padding
-URxvt.internalBorder: 15 
-
-! Perl extensions
-URxvt.perl-ext-common:      default,matcher
-URxvt.matcher.button:       1
-URxvt.urlLauncher:          firefox
-
-! Cursor
-URxvt.cursorBlink:          true
-URxvt.cursorColor:          #657b83
-URxvt.cursorUnderline:      false
-
-! Pointer
-URxvt.pointerBlank:         true
+!Xft.dpi:                    96
+!Xft.antialias:              true
+!Xft.rgba:                   rgb
+!Xft.hinting:                false
+!Xft.hintstyle:              hintslight
 
 
-! ------------------------------------------------------------------------------
-! go dawgs
-! ------------------------------------------------------------------------------
+!! ------------------------------------------------------------------------------
+!! go dawgs
+!! ------------------------------------------------------------------------------
 
-! Colors
-*background:   bg
-*foreground:   fg
-*color0:      blk
-*color8:      bblk
-*color1:      red
-*color9:      bred
-*color2:      grn
-*color10:     bgrn
-*color3:      ylw
-*color11:     bylw
-*color4:      blu
-*color12:     bblu
-*color5:      mag
-*color13:     bmag
-*color6:      cyn
-*color14:     bcyn
-*color7:      wht
-*color15:     bwht
-
-! ------------------------------------------------------------------------------
-! ROFI Color theme
-! ------------------------------------------------------------------------------
-rofi.color-enabled: true
-rofi.color-window: bg, cyn, bg
-rofi.color-normal: bg, fg, bg, cyn, fg
-rofi.color-active: #fdf6e3, #268bd2, #eee8d5, #268bd2, #fdf6e3
-rofi.color-urgent: #fdf6e3, #dc322f, #eee8d5, #dc322f, #fdf6e3
-rofi.width: 10
-rofi.font: UW ttyp0 12
+!! Colors
+!*background:   bg
+!*foreground:   fg
+!*color0:      blk
+!*color8:      bblk
+!*color1:      red
+!*color9:      bred
+!*color2:      grn
+!*color10:     bgrn
+!*color3:      ylw
+!*color11:     bylw
+!*color4:      blu
+!*color12:     bblu
+!*color5:      mag
+!*color13:     bmag
+!*color6:      cyn
+!*color14:     bcyn
+!*color7:      wht
+!*color15:     bwht
 
 
-! ------------------------------------------------------------------------------
-! 2BWM 
-! ------------------------------------------------------------------------------
+!!-------------------------------------------------------------------------------
+!! URxvt settings
+!!-------------------------------------------------------------------------------
 
-twobwm.border_width: 5 
-twobwm.outer_border: 3 
-twobwm.focus_color: wht 
-twobwm.unfocus_color: blu 
-twobwm.fixed_color: wht
-twobwm.unkill_color: wht
-twobwm.outer_border_color: bg 
-twobwm.fixed_unkill_color: cyn
-twobwm.inverted_colors: false
-twobwm.enable_compton: true
+!!URxvt.depth:                32
+!URxvt.geometry:             70x40
+!URxvt.transparent:          false
+!URxvt.fading:               0
+!! URxvt.urgentOnBell:         true
+!! URxvt.visualBell:           true
+!URxvt.loginShell:           true
+!URxvt.saveLines:            50
+!URxvt.lineSpace:            0
 
+!! Fonts
+!URxvt.allow_bold:           true 
+!URxvt*font:xft:UW ttyp0:pixelsize=15, xft:Wuncon Siji:pixelsize=15
+!URxvt*boldFont:xft:UW ttyp0:pixelsize=15
 
-! ------------------------------------------------------------------------------
-! Qutebrowser 
-! ------------------------------------------------------------------------------
+!! Fix font space
+!URxvt*letterSpace:0 
 
-qutebrowser.tabs.bg.selected.odd: bg
-qutebrowser.tabs.bg.selected.even: bg
+!! Scrollbar
+!URxvt.scrollStyle:          rxvt
+!URxvt.scrollBar:            false
+
+!! Add padding
+!URxvt.internalBorder: 15
+
+!! Perl extensions
+!URxvt.perl-ext-common:      default,matcher,config-reload
+!URxvt.matcher.button:       1
+!URxvt.urlLauncher:          firefox
+
+!URxvt.config-reload:        C-Down-Up 
+
+!! Cursor
+!URxvt.cursorBlink:          true
+!URxvt.cursorColor:          #657b83
+!URxvt.cursorUnderline:      false
+
+!! Pointer
+!URxvt.pointerBlank:         true
+
+!! ------------------------------------------------------------------------------
+!! ROFI Color theme
+!! ------------------------------------------------------------------------------
+
+!rofi.color-enabled: true
+!rofi.color-window: bg, cyn, bg 
+!rofi.color-normal: bg, fg, bg, cyn, fg
+!rofi.color-active: #fdf6e3, #268bd2, #eee8d5, #268bd2, #fdf6e3
+!rofi.color-urgent: #fdf6e3, #dc322f, #eee8d5, #dc322f, #fdf6e3
+!rofi.width: 10
+!rofi.font: UW ttyp0 12
+
+!! ------------------------------------------------------------------------------
+!! 2BWM 
+!! ------------------------------------------------------------------------------
+
+!twobwm.border_width: 5 
+!twobwm.outer_border: 3 
+!twobwm.focus_color: wht 
+!twobwm.unfocus_color: blu 
+!twobwm.fixed_color: wht
+!twobwm.unkill_color: wht
+!twobwm.outer_border_color: bg 
+!twobwm.fixed_unkill_color: cyn
+!twobwm.inverted_colors: false
+!twobwm.enable_compton: true
+
+!! ------------------------------------------------------------------------------
+!! Qutebrowser 
+!! ------------------------------------------------------------------------------
+
+!qutebrowser.tabs.background.selected.odd: background
+!qutebrowser.tabs.background.selected.even: background
