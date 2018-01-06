@@ -1,0 +1,43 @@
+!-------------------------------------------------------------------------------
+! URxvt settings
+!-------------------------------------------------------------------------------
+
+!URxvt.depth:                32
+URxvt.geometry:             70x40
+URxvt.transparent:          false
+URxvt.fading:               0
+! URxvt.urgentOnBell:         true
+! URxvt.visualBell:           true
+URxvt.loginShell:           true
+URxvt.saveLines:            50
+URxvt.lineSpace:            0
+
+! Fonts
+URxvt.allow_bold:           true 
+URxvt*font:xft:UW ttyp0:pixelsize=15, xft:Wuncon Siji:pixelsize=15
+URxvt*boldFont:xft:UW ttyp0:pixelsize=15
+
+! Fix font space
+URxvt*letterSpace:0 
+
+! Scrollbar
+URxvt.scrollStyle:          rxvt
+URxvt.scrollBar:            false
+
+! Add padding
+URxvt.internalBorder: 15
+
+! Perl extensions
+URxvt.perl-ext-common:      default,matcher,config-reload
+URxvt.matcher.button:       1
+URxvt.urlLauncher:          firefox
+
+URxvt.config-reload:        C-Down-Up 
+
+! Cursor
+URxvt.cursorBlink:          true
+URxvt.cursorColor:          #657b83
+URxvt.cursorUnderline:      false
+
+! Pointer
+URxvt.pointerBlank:         true

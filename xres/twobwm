@@ -1,0 +1,14 @@
+! ------------------------------------------------------------------------------
+! 2BWM 
+! ------------------------------------------------------------------------------
+
+twobwm.border_width: 5 
+twobwm.outer_border: 3 
+twobwm.focus_color: wht 
+twobwm.unfocus_color: blu 
+twobwm.fixed_color: wht
+twobwm.unkill_color: wht
+twobwm.outer_border_color: bg 
+twobwm.fixed_unkill_color: cyn
+twobwm.inverted_colors: false
+twobwm.enable_compton: true

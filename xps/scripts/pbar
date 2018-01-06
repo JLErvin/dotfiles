@@ -1,7 +1,0 @@
-#! /bin/sh
-
-polybar base &
-sleep .1
-polybar top &
-sleep .1
-notify-send "polybar started successfully"

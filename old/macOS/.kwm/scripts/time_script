@@ -1,5 +1,0 @@
-#!/usr/bin/bash
-
-date +%l:%M%p
-
-# @$(date +%d%b%y)

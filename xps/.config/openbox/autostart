@@ -1,8 +1,0 @@
-xrdb ~/.Xresources &
-
-res &
-
-polybar base &
-
-
-urxvt &

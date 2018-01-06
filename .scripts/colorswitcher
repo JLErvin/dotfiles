@@ -1,0 +1,53 @@
+#!/bin/sh
+
+usage() {
+	echo "Usage: $(basename "$0") <color scheme>" >&2
+	exit 1
+}
+
+test -f "$1" || usage
+
+sequences=""
+
+set_color() {
+	sequences+="\033]4;${1};${2}\007"
+}
+
+set_special() {
+	sequences+="\033]${1};${2}\007"
+}
+
+# colorcolumns is a script that takes colors from an X resources file
+# and prints them by key and by color
+IFS=$'\n'
+for line in $(colorcolumns "$1"); do
+	key="$(echo $line | awk '{print $1}' | tr -d ':')"
+	color="$(echo $line | awk '{print $2}')"
+
+	case "$key" in
+		color*)
+			colorcode="$(echo "$key" | grep -o '[0-9]\+')"
+			set_color "$colorcode" "$color"
+			;;
+		foreground)
+			set_special 10 "$color"
+			set_special 12 "$color"
+			set_special 13 "$color"
+			;;
+		background)
+			set_special 11 "$color"
+			set_special 14 "$color"
+			set_special 708 "$color"
+			;;
+	esac
+done
+
+# send codes to all terminals
+for term in /dev/pts/[0-9]*; do
+	printf "%b" "$sequences" > "$term"
+done
+
+# save changes for future instances
+xrdb -merge "$1"
+
+
