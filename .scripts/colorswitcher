@@ -42,12 +42,14 @@ for line in $(colorcolumns "$1"); do
 	esac
 done
 
+echo $sequences
+
 # send codes to all terminals
 for term in /dev/pts/[0-9]*; do
 	printf "%b" "$sequences" > "$term"
 done
 
+echo $sequences
+
 # save changes for future instances
 xrdb -merge "$1"
-
-
