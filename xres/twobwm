@@ -3,6 +3,6 @@
 ! ------------------------------------------------------------------------------
 
 twobwm.border_width: 5 
-twobwm.outer_border: 3 
+twobwm.outer_border: 0 
 twobwm.inverted_colors: false
 twobwm.enable_compton: true

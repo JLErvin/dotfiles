@@ -36,9 +36,9 @@ obifg=${self.bg}
 cpufg=${self.bg}
 winfg=${self.bg}
 netfg=${self.bg}
-volfg=${self.fg}
-batfg=${self.fg}
-malfg=${self.fg}
+volfg=${self.bg}
+batfg=${self.bg}
+malfg=${self.bg}
 datfg=${self.bg}
 
 
@@ -58,6 +58,7 @@ border-top-size=10
 border-top-color= ${colors.bg}
 border-bottom-size=10
 border-bottom-color= ${colors.bg}
+bottom=True
 spacing=0 
 padding-left=1 
 padding-right=0 
