@@ -1,17 +1,4 @@
-#!/bin/bash
-# -- Title:   infobar
-# -- Author:  dkeg
-# -- Created: 2017
-
-#################################################
-# system information bar using lemonbar \
-# RAG color values to display info state \
-# determine geometry and parameter output \
-# base on current wm
-# FYI - I souce external files for geometry\
-# , colors, and glyphs/icons. \
-# I included within the script for simplicity\
-#################################################
+#!/usr/bin/env bash
 
 ## glyphs
 glymem=""
@@ -49,19 +36,8 @@ a="#FF"
 
 ## colors
 source $HOME/.cache/squash/colors
-#bg=$(xrdb -query|awk '/\*background/ {print $2}'|cut -d '#' -f2)
-#fg=$(xrdb -query|awk '/\*foreground/ {print $2}'|cut -d '#' -f2)
-#blk=$(xrdb -query|awk '/\*color0:/ {print $2}'|cut -d '#' -f2)
-#bblk=$(xrdb -query|awk '/\*color8:/ {print $2}'|cut -d '#' -f2)
-#red=$(xrdb -query|awk '/\*color1:/ {print $2}'|cut -d '#' -f2)
-#grn=$(xrdb -query|awk '/\*color2:/ {print $2}'|cut -d '#' -f2)
-#ylw=$(xrdb -query|awk '/\*color3:/ {print $2}'|cut -d '#' -f2)
-#blu=$(xrdb -query|awk '/\*color4:/ {print $2}'|cut -d '#' -f2)
-#mag=$(xrdb -query|awk '/\*color5:/ {print $2}'|cut -d '#' -f2)
-#cyn=$(xrdb -query|awk '/\*color6:/ {print $2}'|cut -d '#' -f2)
-#wht=$(xrdb -query|awk '/\*color7:/ {print $2}'|cut -d '#' -f2)
 
-
+# Remove hash from colors (stupid that I have to do this)
 bg=${bg#"#"}
 fg=${fg#"#"}
 blk=${blk#"#"}
@@ -73,18 +49,6 @@ blu=${blu#"#"}
 mag=${mag#"#"}
 cyn=${cyn#"#"}
 wht=${wht#"#"}
-
-echo $bg
-echo $fg
-echo $blk
-echo $bblk
-echo $red
-echo $grn
-echo $ylw
-echo $blu
-echo $cyn
-echo $mag
-
 
 ## set RAG values for color output based on state
 PANIC="%{B$a$mag}%{F$a$wht}$SEP"
@@ -98,19 +62,6 @@ PLAIN="%{B$a$wht}%{F$a$bblk}$SEP"
 GEN="%{B$a$bblk}%{F$a$wht}$SEP"
 BLACK="%{B$a$blk}%{F$a$wht}$SEP"
 CLR="$SEP%{F-}%{B-}"
-
-echo $PANIC
-echo $ALERT
-echo $WARN
-echo $GOOD
-echo $HOT
-echo $WARM
-echo $NORM
-echo $PLAIN
-echo $GEN
-echo $BLACK
-echo $CLR
-
 
 ## which wm?
 ## add others as needed
@@ -254,9 +205,14 @@ function status {
           cur=$(xprop -root _NET_CURRENT_DESKTOP | awk '{print $3}')
           total=$(xprop -root _NET_NUMBER_OF_DESKTOPS | awk '{print $3}')
 
-           for w in `seq 0 $((cur- 1))`; do line="$line"$SE2P"%{F$a$wht}$gnc"$SE2P""; done
-           line="$line%{F$a$red}$glycrnt"$SE2P""
-           for w in `seq $((cur + 2)) $total`; do line="$line"$SE2P"%{F$a$wht}$glycrnt"$SE2P""; done
+           for w in `seq 0 $((cur- 1))`; do line="$line"$SE2P"%{B$a$wht}%{F$a$blk}"$SE2P"$((w+1))"$SE2P""; done
+           if [ $cur == 0 ]
+           then
+              line="$line%{B$a$red}%{F$a$wht}"$SE2P"$((cur+1))"$SE2P""
+           else
+              line="$line%{B$a$red}%{F$a$wht}"$SE2P"$((cur+1))"$SE2P""
+           fi
+           for w in `seq $((cur + 2)) $total`; do line="$line%{B$a$wht}%{F$a$blk}"$SE2P"$w"$SE2P""; done
       fi
        echo $line%{F-}
     }
@@ -285,14 +241,15 @@ function status {
 
     ## different outputs per wm
     ## separate by left and right side
-    left="$(memory)"$SE2P"$(temperature)"$SE2P"$(battery)"$SE2P""
+    left="$(groups)$CLR"$SE2P"$(temperature)"$SE2P"$(battery)"$SE2P""
     right="$(music)"$SE2P"$(vol)"$SE2P"$(wireless)"$SE2P"$(clocktime) "
     id="$PLAIN$(pfw)$CLR"
 
     xwait="$left$id%{r}$right"
     wchf="$left$(windowname)%{r}$right"
     herbst="$left$(windowname)%{r}$(tags)"$SE2P"$right"
-    bspwm="$left$(windowname)%{c}$(groups)%{r}$right"
+    #bspwm="$left$(windowname)%{c}$(groups)%{r}$right"
+    bspwm="$left$(windowname)%{r}$right"
 
     case $mywm in
       xwait)
@@ -312,7 +269,7 @@ function status {
 ## NOTE: I use lemonbar fork with borders (https://github.com/dark-yux/bar)
 ## adjust accordingly!
 
-fonts="-o 1 -f -uw-ttyp0-medium-r-normal-*-12-*-*-*-*-*-*-* -o -1 -f -wuncon-siji-medium-r-normal--10-100-75-75-c-80-iso10646-1"
+fonts="-o 1 -f -uw-ttyp0-medium-r-normal-*-12-*-*-*-*-*-*-* -o -0.5 -f -wuncon-siji-medium-r-normal--10-100-75-75-c-80-iso10646-1"
 width="1920"
 bs=6
 bc=$a$bblk
