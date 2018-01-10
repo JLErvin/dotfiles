@@ -1,7 +1,13 @@
 ! ------------------------------------------------------------------------------
-! ROFI Color theme
+! ROFI 
 ! ------------------------------------------------------------------------------
 
 rofi.color-enabled: true
-rofi.width: 30
+rofi.width: 20
 rofi.font: UW ttyp0 12
+rofi.location: 1
+rofi.yoffset: 32
+rofi.xoffset: 1540 
+rofi.padding: 40
+rofi.lines: 5
+rofi.seperator-style:none

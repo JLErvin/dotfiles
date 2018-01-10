@@ -274,7 +274,7 @@ width="1920"
 bs=6
 bc=$a$bblk
 ## Long width specs
-lh=18
+lh=20
 lw=$(( $width - 2*bs ))
 lx=0
 ly=0
