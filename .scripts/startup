@@ -1,7 +1,5 @@
 #!/usr/bin/env bash
 
-#nitrogen --set-zoom-fill ~/wallpapers/thomas-griesbeck-341965.jpg &
-nitrogen --set-tiled ~/wallpapers/designrlighter.png &
-compton --config ~/.config/compton/compton.conf &
-squash skigh &
-dunst ~/.config/dunst/dunstrc & notify-send "Welcome Josh!"
+#compton --config ~/.config/compton/compton.conf &
+#squash skigh &
+#dunst ~/.config/dunst/dunstrc & notify-send "Welcome Josh!"

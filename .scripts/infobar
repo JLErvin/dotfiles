@@ -206,12 +206,7 @@ function status {
           total=$(xprop -root _NET_NUMBER_OF_DESKTOPS | awk '{print $3}')
 
            for w in `seq 0 $((cur- 1))`; do line="$line"$SE2P"%{B$a$wht}%{F$a$blk}"$SE2P"$((w+1))"$SE2P""; done
-           if [ $cur == 0 ]
-           then
-              line="$line%{B$a$red}%{F$a$wht}"$SE2P"$((cur+1))"$SE2P""
-           else
-              line="$line%{B$a$red}%{F$a$wht}"$SE2P"$((cur+1))"$SE2P""
-           fi
+           line="$line%{B$a$red}%{F$a$wht}"$SE2P"$((cur+1))"$SE2P""
            for w in `seq $((cur + 2)) $total`; do line="$line%{B$a$wht}%{F$a$blk}"$SE2P"$w"$SE2P""; done
       fi
        echo $line%{F-}

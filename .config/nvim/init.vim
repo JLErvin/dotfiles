@@ -48,13 +48,15 @@ Plugin 'tpope/vim-fugitive'
 Plugin 'tiagofumo/vim-nerdtree-syntax-highlight'
 Plugin 'scrooloose/nerdtree'
 Plugin 'kh3phr3n/python-syntax'
-Plugin 'roxma/nvim-completion-manager'
 Plugin 'Shougo/vimproc.vim'
 Plugin 'yuratomo/gmail.vim'
 Plugin 'lazywei/vim-matlab'
-Plugin 'jalvesaq/Nvim-R'
-Plugin 'ajpaulson/julia-syntax.vim'
+"Plugin 'sirver/UltiSnips'
 Plugin 'tmhedberg/SimpylFold'
+
+Plugin 'roxma/nvim-completion-manager'
+Plugin 'jalvesaq/Nvim-R'
+Plugin 'gaalcaras/ncm-R'
 
 call vundle#end()
 filetype plugin indent on
@@ -118,10 +120,27 @@ function! CompileFile()
 endfunction
 
 " }}}
-" Autocomplete {{{
+" Gmail {{{
 
 let g:gmail_imap = 'imap.gmail.com:993'
 let g:gmail_smtp = 'smtp.gmail.com:465'
 let g:gmail_user_name = 'ervin.josh17@gmail.com'
+
+" }}}
+" Autocomplete {{{
+"
+inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
+inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+
+" }}}
+" Configure R Plugin {{{
+
+let g:rout_follow_colorscheme = 1
+let g_Rout_more_colors = 1
+let R_start_libs = "base,stats,graphics,grDevices,utils,methods"
+let R_objbr_place = "console,top"
+let R_objbr_h = 30
+inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
+inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 
 " }}}
