@@ -73,7 +73,7 @@
 	/* Selected Tab */
 	#TabsToolbar .tabbrowser-tab[selected] {
 		background: var(--color0) !important;
-		color: var(--white) !important;
+		color: var(--color2) !important;
 	}
 
 	/* Background behind Tabs */
