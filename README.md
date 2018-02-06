@@ -21,10 +21,10 @@ Welcome to my dotfiles. You can usually find my stuff over on /r/unixporn. If yo
 * shell: `zsh`
 * terminal: `urxvt`
 * terminal font: `UW ttyp0`
-* colorscheme: `lava`
+* colorscheme: `android`
 * notifications: `dunst`
-* bar: `polybar`
+* bar: `lemonbar`
 * browser: `firefox`
 * text-editor: `neovim`
 
-![Screenshot](https://i.imgur.com/aKmPE3B.jpg)
+![Screenshot](https://i.imgur.com/e6eIOwe.jpg)
