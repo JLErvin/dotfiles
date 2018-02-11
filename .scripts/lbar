@@ -1,0 +1,88 @@
+#!/usr/bin/env bash
+
+source $HOME/.cache/squash/colors
+SEP="  "
+SPC="%{B$bg}$SEP%{B-}"
+
+content() 
+{
+    workspaces()
+    {
+       cur=$(xprop -root _NET_CURRENT_DESKTOP | awk '{print $3}')
+       total=$(xprop -root _NET_NUMBER_OF_DESKTOPS | awk '{print $3}')
+
+       seq=""
+       for ((i=0; i<$cur; i++)); do seq+="%{B$blk}${SEP}-${SEP}%{B-}"; done
+       seq+="%{B$grn}${SEP}x${SEP}%{B-}"
+       for ((i=$cur; i<$total; i++)); do seq+="%{B$blk}${SEP}-${SEP}%{B-}"; done
+
+       echo $seq
+    }
+
+    date-time() 
+    {
+        clock=$(date +'%a %m/%d/%g %I:%M')
+		label=$(echo -e "\ue015")
+        echo %{B$grn}$SEP$label$SEP%{B-}%{B$blk}$SEP$clock$SEP%{B-}
+    }
+
+    volume() 
+    {
+        vol=$(amixer get Master|awk 'NR==5 {print $4}'|cut -d '%' -f1 | cut -d '[' -f2)
+		label=$(echo -e "\ue053")
+        echo %{B$grn}$SEP$label$SEP%{B-}%{B$blk}$SEP$vol$SEP%{B-}
+    }
+
+    battery()
+    {
+        state=$(cat /sys/class/power_supply/BAT0/status)
+        cap=$(cat /sys/class/power_supply/BAT0/capacity)
+
+        label=$(echo -e "\ue037")
+        echo %{B$grn}$SEP$label$SEP%{B-}%{B$blk}$SEP$cap$SEP%{B-}
+    }
+
+    windowname()
+    {
+        title=$(xprop -id $(xprop -root _NET_ACTIVE_WINDOW | cut -d ' ' -f 5) WM_NAME | awk '{$1=$2="";print}' | tr -d '"' | cut -c 1-80)
+        echo %{B$bblk}$SEP$title$SEP%{B-}
+    }
+
+    wireless()
+    {
+        wifi=$(iwgetid -r)
+		label=$(echo -e "\ue048")
+        echo %{B$grn}$SEP$label$SEP%{B-}%{B$blk}$SEP$wifi$SEP%{B-}
+    }
+
+
+    left=$(workspaces)${SPC}$(windowname)
+    right=$(volume)${SPC}$(battery)${SPC}$(wireless)${SPC}$(date-time)${SCP}
+
+    output=$left%{r}$right
+    echo $output
+}
+
+content
+
+fonts="-o 1 -f -windows-dina-medium-r-*-*-10-*-*-*-*-*-*-* -o -0.5 -f -wuncon-siji-medium-r-normal--10-100-75-75-c-80-iso10646-1"
+width=1920
+heigth=20
+offx=0
+offy=0
+brdr=5
+brdrc=${bg}
+bbg=${bg}
+
+options="-d ${fonts} ${width}x${height}+${xoff}+${yoff} -r ${brdr} -R ${brdrc} -B ${bbg}"
+
+
+while true; do
+    echo $(content)
+    sleep .5
+done | lemonbar ${options}
+
+
+
+
+
