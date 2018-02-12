@@ -33,9 +33,15 @@ content()
        empty=$(echo -e "\ue000")
 
        seq=""
-       for ((i=0; i<$cur; i++)); do seq+="%{B$blk}%{F$bblk}+%{B-}%{F-}"; done
-       seq+="%{B$blk}%{F$fg}+%{B-}%{F-}"
-       for ((i=$cur; i<$total; i++)); do seq+="%{B$blk}%{F$bblk}+%{B-}%{F-}"; done
+       if [[ $cur -ge "1" ]]; then
+           seq+=%{B$blk}%{F$fg}${SEPS}%{B-}%{F-}
+       fi
+       for ((i=0; i<$cur; i++)); do seq+="%{B$blk}%{F$bblk}$i${SEPS}%{B-}%{F-}"; done
+       if [[ $cur -le "0" ]]; then
+           seq+=%{B$blk}%{F$fg}${SEPS}%{B-}%{F-}
+       fi
+       seq+="%{B$blk}%{F$fg}$cur${SEPS}%{B-}%{F-}"
+       for ((i=$cur; i<$total; i++)); do seq+="%{B$blk}%{F$bblk}$(($i +1))${SEPS}%{B-}%{F-}"; done
 
        echo $seq
     }
@@ -96,10 +102,11 @@ content()
 
 
     # Bar contents left/right
-    left=$(workspaces)${SPC}$(windowname)
+    left=$(windowname)
+    center=$(workspaces)
     right=$(volume)${SPC}$(battery)${SPC}$(wireless)${SPC}$(date-time)${SCP}
 
-    output=$left%{r}$right
+    output=$left%{c}$center%{r}$right
     echo $output
 }
 
