@@ -1,61 +1,101 @@
 #!/usr/bin/env bash
+#
+# Configuration for lemonbar
+#
+# Inspired by dkeg :)
 
+# Get colors and defind spacing
 source $HOME/.cache/squash/colors
 SEP="  "
+SEPS=" "
 SPC="%{B$bg}$SEP%{B-}"
 
+# Get glyphs from siji
+# Using queries is easier than c/p
+glydate=$(echo -e "\ue015")
+glyvol=$(echo -e "\ue053")
+glyvoloff=$(echo -e "\ue052")
+glybatlow=$(echo -e "\ue035")
+glybat=$(echo -e "\ue037")
+glybatmax=$(echo -e "\ue09e")
+glywlanhigh=$(echo -e "\ue048")
+glywlanlow=$(echo -e "\ue047")
+
+# Bar contents
 content() 
 {
+    # Get current workspaces
     workspaces()
     {
        cur=$(xprop -root _NET_CURRENT_DESKTOP | awk '{print $3}')
        total=$(xprop -root _NET_NUMBER_OF_DESKTOPS | awk '{print $3}')
 
+       empty=$(echo -e "\ue000")
+
        seq=""
-       for ((i=0; i<$cur; i++)); do seq+="%{B$blk}${SEP}-${SEP}%{B-}"; done
-       seq+="%{B$grn}${SEP}x${SEP}%{B-}"
-       for ((i=$cur; i<$total; i++)); do seq+="%{B$blk}${SEP}-${SEP}%{B-}"; done
+       for ((i=0; i<$cur; i++)); do seq+="%{B$blk}%{F$bblk}+%{B-}%{F-}"; done
+       seq+="%{B$blk}%{F$fg}+%{B-}%{F-}"
+       for ((i=$cur; i<$total; i++)); do seq+="%{B$blk}%{F$bblk}+%{B-}%{F-}"; done
 
        echo $seq
     }
 
+    # Clock
     date-time() 
     {
         clock=$(date +'%a %m/%d/%g %I:%M')
-		label=$(echo -e "\ue015")
+        label=$glydate
         echo %{B$grn}$SEP$label$SEP%{B-}%{B$blk}$SEP$clock$SEP%{B-}
     }
 
+    # Volume 0-100
     volume() 
     {
         vol=$(amixer get Master|awk 'NR==5 {print $4}'|cut -d '%' -f1 | cut -d '[' -f2)
-		label=$(echo -e "\ue053")
+        
+        if [[ $vol -ge "1" ]]; then
+            label=$glyvol
+        else
+            label=$glyvoloff
+        fi
+
         echo %{B$grn}$SEP$label$SEP%{B-}%{B$blk}$SEP$vol$SEP%{B-}
     }
 
+    # Battery 0-100
     battery()
     {
         state=$(cat /sys/class/power_supply/BAT0/status)
         cap=$(cat /sys/class/power_supply/BAT0/capacity)
 
-        label=$(echo -e "\ue037")
+        if [[ cap -ge "98" ]]; then
+            label=$glybatmax
+        elif [[ cap -ge 20 ]]; then
+            label=$glybat
+        else
+            label=$glybatlow
+        fi
+
         echo %{B$grn}$SEP$label$SEP%{B-}%{B$blk}$SEP$cap$SEP%{B-}
     }
 
+    # Actice window from X
     windowname()
     {
         title=$(xprop -id $(xprop -root _NET_ACTIVE_WINDOW | cut -d ' ' -f 5) WM_NAME | awk '{$1=$2="";print}' | tr -d '"' | cut -c 1-80)
         echo %{B$bblk}$SEP$title$SEP%{B-}
     }
 
+    # Get SSID
     wireless()
     {
         wifi=$(iwgetid -r)
-		label=$(echo -e "\ue048")
+        label=$glywlanhigh
         echo %{B$grn}$SEP$label$SEP%{B-}%{B$blk}$SEP$wifi$SEP%{B-}
     }
 
 
+    # Bar contents left/right
     left=$(workspaces)${SPC}$(windowname)
     right=$(volume)${SPC}$(battery)${SPC}$(wireless)${SPC}$(date-time)${SCP}
 
@@ -65,6 +105,7 @@ content()
 
 content
 
+# Formatting options
 fonts="-o 1 -f -windows-dina-medium-r-*-*-10-*-*-*-*-*-*-* -o -0.5 -f -wuncon-siji-medium-r-normal--10-100-75-75-c-80-iso10646-1"
 width=1920
 heigth=20
@@ -74,15 +115,11 @@ brdr=5
 brdrc=${bg}
 bbg=${bg}
 
+# Final output formatting
 options="-d ${fonts} ${width}x${height}+${xoff}+${yoff} -r ${brdr} -R ${brdrc} -B ${bbg}"
 
-
+# Main loop
 while true; do
     echo $(content)
     sleep .5
 done | lemonbar ${options}
-
-
-
-
-
