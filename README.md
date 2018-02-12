@@ -29,9 +29,9 @@ Welcome to my dotfiles. You can usually find my stuff over on /r/unixporn. If yo
 
 ## Resource Usage
 
-Mem Light: 1 Terminal + lemonbar
-Mem Normal: 3 Terminals + chromium + lemonbar
-Mem High: 3 Terminals + a fuck ton of chromium tabs + lemonbar
+* Mem Light: 1 Terminal + lemonbar
+* Mem Normal: 3 Terminals + chromium + lemonbar
+* Mem High: 3 Terminals + a fuck ton of chromium tabs + lemonbar
 
 | WM | Mem Light | Mem Light| Mem High|
 |----|----------:|---------:|--------:|
