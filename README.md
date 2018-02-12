@@ -27,16 +27,5 @@ Welcome to my dotfiles. You can usually find my stuff over on /r/unixporn. If yo
 * browser: `firefox`
 * text-editor: `neovim`
 
-## Resource Usage
-
-* Mem Light: 1 Terminal + lemonbar
-* Mem Normal: 3 Terminals + chromium + lemonbar
-* Mem High: 3 Terminals + a fuck ton of chromium tabs + lemonbar
-
-| WM | Mem Light | Mem Light| Mem High|
-|----|----------:|---------:|--------:|
-|2bwm|        282|       761|     1221|
-
-
 
 ![Screenshot](https://i.imgur.com/e6eIOwe.jpg)
