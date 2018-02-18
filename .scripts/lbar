@@ -8,7 +8,7 @@
 source $HOME/.cache/squash/colors
 SEP="  "
 SEPS=" "
-SPC="%{B$bg}$SEP%{B-}"
+SPC="%{B$blk}$SEP%{B-}"
 
 # Get glyphs from siji
 # Using queries is easier than c/p
@@ -34,14 +34,14 @@ content()
 
        seq=""
        if [[ $cur -ge "1" ]]; then
-           seq+=%{B$blk}%{F$fg}${SEPS}%{B-}%{F-}
+           seq+=%{B$bblk}%{F$red}${SEPS}%{B-}%{F-}
        fi
-       for ((i=0; i<$cur; i++)); do seq+="%{B$blk}%{F$bblk}$i${SEPS}%{B-}%{F-}"; done
+       for ((i=0; i<$cur; i++)); do seq+="%{B$bblk}%{F$fg}$i${SEPS}%{B-}%{F-}"; done
        if [[ $cur -le "0" ]]; then
-           seq+=%{B$blk}%{F$fg}${SEPS}%{B-}%{F-}
+           seq+=%{B$bblk}%{F$red}${SEPS}%{B-}%{F-}
        fi
-       seq+="%{B$blk}%{F$fg}$cur${SEPS}%{B-}%{F-}"
-       for ((i=$cur; i<$total; i++)); do seq+="%{B$blk}%{F$bblk}$(($i +1))${SEPS}%{B-}%{F-}"; done
+       seq+="%{B$bblk}%{F$red}$cur${SEPS}%{B-}%{F-}"
+       for ((i=$cur; i<$(($total -1)); i++)); do seq+="%{B$bblk}%{F$fg}$(($i +1))${SEPS}%{B-}%{F-}"; done
 
        echo $seq
     }
@@ -51,7 +51,7 @@ content()
     {
         clock=$(date +'%a %m/%d/%g %I:%M')
         label=$glydate
-        echo %{B$grn}$SEP$label$SEP%{B-}%{B$blk}$SEP$clock$SEP%{B-}
+        echo %{B$grn}$SEP$label$SEP%{B-}%{B$bblk}$SEP$clock$SEP%{B-}
     }
 
     # Volume 0-100
@@ -65,7 +65,7 @@ content()
             label=$glyvoloff
         fi
 
-        echo %{B$grn}$SEP$label$SEP%{B-}%{B$blk}$SEP$vol$SEP%{B-}
+        echo %{B$blu}$SEP$label$SEP%{B-}%{B$bblk}$SEP$vol$SEP%{B-}
     }
 
     # Battery 0-100
@@ -82,7 +82,7 @@ content()
             label=$glybatlow
         fi
 
-        echo %{B$grn}$SEP$label$SEP%{B-}%{B$blk}$SEP$cap$SEP%{B-}
+        echo %{B$ylw}$SEP$label$SEP%{B-}%{B$bblk}$SEP$cap$SEP%{B-}
     }
 
     # Actice window from X
@@ -97,13 +97,13 @@ content()
     {
         wifi=$(iwgetid -r)
         label=$glywlanhigh
-        echo %{B$grn}$SEP$label$SEP%{B-}%{B$blk}$SEP$wifi$SEP%{B-}
+        echo %{B$red}$SEP$label$SEP%{B-}%{B$bblk}$SEP$wifi$SEP%{B-}
     }
 
 
     # Bar contents left/right
-    left=$(windowname)
-    center=$(workspaces)
+    left=$(workspaces)${SPC}$(windowname)
+    center=
     right=$(volume)${SPC}$(battery)${SPC}$(wireless)${SPC}$(date-time)${SCP}
 
     output=$left%{c}$center%{r}$right
@@ -119,11 +119,12 @@ heigth=20
 offx=0
 offy=0
 brdr=5
-brdrc=${bg}
-bbg=${bg}
+brdrc=${blk}
+bbg=${blk}
+bfg=${fg}
 
 # Final output formatting
-options="-d ${fonts} ${width}x${height}+${xoff}+${yoff} -r ${brdr} -R ${brdrc} -B ${bbg}"
+options="-d ${fonts} ${width}x${height}+${xoff}+${yoff} -r ${brdr} -R ${brdrc} -B ${bbg} -F ${bfg}"
 
 # Main loop
 while true; do
