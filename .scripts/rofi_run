@@ -1,1 +1,0 @@
-rofi -show run -lines 7 -bw 3 -line-margin 8 -padding 10 -scrollbar-width 0 -separator-style "none"

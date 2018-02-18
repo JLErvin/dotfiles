@@ -1,0 +1,241 @@
+#!/usr/bin/env bash
+
+# Get command line arguments
+COLOR_SCHEME="$1"
+
+# Define location of cache and themes
+CACHE_DIR=$HOME/.cache/squash
+THEME_DIR=$HOME/.config/squash
+
+# Make newlines easier, and define sequence
+NEWLINE=$'\n'
+sequence=""
+
+# remove old cache files
+cleanup() 
+{
+   rm -f $CACHE_DIR/x_colors
+}
+
+# reloads xterminals in place
+reload_x() 
+{
+   for term in /dev/pts/[0-9]*; do
+      printf "%b" "$sequence" > "$term"
+   done
+}
+
+merge_x() 
+{
+   xrdb ${HOME}/.Xresources
+}
+
+# kills old polybar and reloads
+reload_polybar() 
+{
+   pkill -x polybar
+   polybar base &
+}
+
+reload_lemonbar() 
+{
+   pkill -x lemonbar
+   lbar &
+}
+
+# Credit for this method goes to dkeg
+# github.com/dkeg
+reload_2bwm() 
+{
+   foc=$ylw
+   unfoc=$blu
+   fixc=$red
+   unkil=$cyn
+   fixunk=$mag
+   outr=$bg
+   emp=$bg
+
+   dir=$HOME/2bwm
+   file=$dir/config.h
+
+   printf "${NEWLINE}"
+   printf "${dir}${NEWLINE}"
+   printf "${file}${NEWLINE}"
+
+   wmcol=$(cat $file|awk '/\*colors/ {print $6}'|cut -d '}' -f1|awk '{gsub(/"/," ");print $2,$4,$6,$8,$10,$12,$14}') 
+   arr=($wmcol)
+
+    sed -i "s/${arr[0]}/"$foc"/;
+            s/${arr[1]}/"$unfoc"/;
+            s/${arr[2]}/"$fixc"/;
+            s/${arr[3]}/"$unkil"/;
+            s/${arr[4]}/"$fixunk"/;
+            s/${arr[5]}/"$outr"/;
+            s/${arr[6]}/"$emp"/" $file 
+
+   cd $dir && make && sudo make install && cd
+
+   xdotool key "super+ctrl+r"
+}
+
+set_wallpaper() 
+{
+   pkill -x nitrogen
+   hsetroot -fill ${wallpaper}
+}
+
+# builds an array of all necessary colors
+# the last three elements of the array are
+# the bg, fg, and cursor color
+get_colors() 
+{
+   . $THEME_DIR/$COLOR_SCHEME
+   COLOR_ARRAY=($blk $red $grn $ylw $blu $mag $cyn $wht \
+                $bblk $bred $bgrn $bylw $bblu $bmag $bcyn $bwht)
+}
+
+# adds main colors to sequence 0-15. Colors are defined in the 
+# COLOR_ARRAY
+create_main_sequence() 
+{
+   for i in {0..15}
+   do
+      sequence+="\033]4;${i};${COLOR_ARRAY[${i}]}\007"
+   done
+}
+
+# adds background and foreground colors to sequence
+# does not rely on array, uses sourced variables
+create_secondary_sequence() 
+{
+   # add foreground
+   for i in 10 12 13; do
+      sequence+="\033]${i};${fg}\007"
+   done
+
+   # add background
+   for i in 11 14 708; do
+      sequence+="\033]${i};${bg}\007"
+   done
+}
+
+write_x_source() 
+{
+   x_output=""
+   x_output+="*.foreground:   ${fg}${NEWLINE}"
+   x_output+="*.background:   ${bg}${NEWLINE}"
+   x_output+="*.cursorColor:  ${fg}${NEWLINE}"
+
+   for i in {0..15}; do
+      x_output+="*.color${i}: ${COLOR_ARRAY[${i}]}${NEWLINE}"
+   done
+}
+
+write_rofi() 
+{
+   rofi_output=""
+   rofi_output+="rofi.color-enaled: true${NEWLINE}"
+   rofi_output+="rofi.color-window: ${wht}, ${wht}, ${cyn}${NEWLINE}"
+   rofi_output+="rofi.color-normal: ${wht}, ${bg}, ${wht}, ${cyn}, ${fg}${NEWLINE}"
+}
+
+write_2bwm() 
+{
+   twobwm_output=""
+   twobwm_output+="twobwm.focus_color: ${wht}${NEWLINE}"
+   twobwm_output+="twobwm.unfocus_color: ${blu}${NEWLINE}"
+   twobwm_output+="twobwm.fixed_color: ${wht}${NEWLINE}"
+   twobwm_output+="twobwm.unkill_color: ${wht}${NEWLINE}"
+   twobwm_output+="twobwm.outer_border_color: ${bg}${NEWLINE}"
+   twobwm_output+="twobwm.fixed_unkill_color: ${cyn}${NEWLINE}"
+}
+
+# Writes CSS colors for use with programs such as firefox to 
+# $CACHE_DIR/colors.css
+write_css() 
+{
+   css_output=""
+   css_output+=":root {${NEWLINE}"
+   css_output+="\t--background: ${bg};${NEWLINE}"
+   css_output+="\t--foreground: ${fg};${NEWLINE}"
+   for i in {0..15}; do
+      css_output+="\t--color${i}: ${COLOR_ARRAY[${i}]};${NEWLINE}"
+   done
+   css_output+="}"
+   printf "${css_output}" > "${CACHE_DIR}/colors.css"
+}
+
+# Writes SH Colors for use with programs such as lemonbar
+# to $CACHE_DIR/colors
+write_sh() 
+{
+   rm -f $CACHE_DIR/colors
+   cp $THEME_DIR/$COLOR_SCHEME $CACHE_DIR/colors
+}
+
+# Writes X Output, Rofi output, and 2bwm output to x_colors
+# in $CACHE_DIR
+write_all_x() 
+{
+   output=${x_output}${rofi_output}${twobwm_output}
+   echo $output
+   printf "${output}" > "${CACHE_DIR}/x_colors"
+}
+
+write_x_define() 
+{
+   xd_output=""
+   xd_output+="#define bg   ${bg}${NEWLINE}"
+   xd_output+="#define blk   ${blk}${NEWLINE}"
+   xd_output+="#define bblk   ${bblk}${NEWLINE}"
+   xd_output+="#define fg   ${fg}${NEWLINE}"
+   xd_output+="#define red   ${red}${NEWLINE}"
+   xd_output+="#define bred   ${bred}${NEWLINE}"
+   xd_output+="#define grn   ${grn}${NEWLINE}"
+   xd_output+="#define bgrn   ${bgrn}${NEWLINE}"
+   xd_output+="#define ylw   ${ylw}${NEWLINE}"
+   xd_output+="#define bylw   ${bylw}${NEWLINE}"
+   xd_output+="#define blu   ${blu}${NEWLINE}"
+   xd_output+="#define bblu   ${bblu}${NEWLINE}"
+   xd_output+="#define mag   ${mag}${NEWLINE}"
+   xd_output+="#define bmag   ${bmag}${NEWLINE}"
+   xd_output+="#define cyn   ${cyn}${NEWLINE}"
+   xd_output+="#define bcyn   ${bcyn}${NEWLINE}"
+   xd_output+="#define wht   ${wht}${NEWLINE}"
+   xd_output+="#define bwht   ${bwht}${NEWLINE}"
+
+   printf "${xd_output}" > "$CACHE_DIR/xd_colors"
+}
+
+# Remove old colors
+cleanup
+
+# Source color directory
+get_colors
+
+# Create sequence to reload opened terminals
+create_main_sequence
+create_secondary_sequence
+
+# Reload all x terminals
+reload_x
+
+# Write all colors files to .cahe
+write_x_source
+write_rofi
+write_2bwm
+write_all_x
+write_css
+write_sh
+write_x_define
+
+# Merge x colors
+merge_x
+
+# Recompile and reload 2bwm
+# Reload bar
+reload_2bwm
+reload_lemonbar
+
+# Set wallpaper
+set_wallpaper

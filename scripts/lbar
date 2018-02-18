@@ -113,7 +113,7 @@ content()
 content
 
 # Formatting options
-fonts="-o 1 -f -windows-dina-medium-r-*-*-10-*-*-*-*-*-*-* -o -0.5 -f -wuncon-siji-medium-r-normal--10-100-75-75-c-80-iso10646-1"
+fonts="-o 1 -f -kakwa-curie-Medium-R-Normal--12-120-72-72-C-60-ISO10646-1 -o -0.5 -f -wuncon-siji-medium-r-normal--10-100-75-75-c-80-iso10646-1"
 width=1920
 heigth=20
 offx=0

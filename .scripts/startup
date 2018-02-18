@@ -1,5 +1,0 @@
-#!/usr/bin/env bash
-
-#compton --config ~/.config/compton/compton.conf &
-#squash skigh &
-#dunst ~/.config/dunst/dunstrc & notify-send "Welcome Josh!"

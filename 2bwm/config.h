@@ -13,13 +13,13 @@ static const float    resize_keep_aspect_ratio= 1.03;
 ///---Offsets---///
 /*0)offsetx          1)offsety
  *2)maxwidth         3)maxheight */
-static const uint8_t offsets[] = {0,32,0,32};
+static const uint8_t offsets[] = {0,25,0,25};
 ///---Colors---///
 /*0)focuscol         1)unfocuscol
  *2)fixedcol         3)unkilcol
  *4)fixedunkilcol    5)outerbordercol
  *6)emptycol         */
-static const char *colors[] = {"#FAc863","#5FB3B3","#EC5f67","#5FB3b3","#C594c5","#1A2B34","#1A2B34"};
+static const char *colors[] = {"#d79921","#458588","#cc241d","#689d6a","#b16286","#282828","#282828"};
 /* if this is set to true the inner border and outer borders colors will be swapped */
 static const bool inverted_colors = true;
 ///---Cursor---///
@@ -42,7 +42,7 @@ static const char *ignore_names[] = {"bar", "xclock"};
 ///--Menus and Programs---///
 static const char *menucmd[]   = { "", NULL };
 static const char *terminal[] = {"urxvt", NULL};
-static const char *rofi[] = {"/home/jlervin/.scripts/rofi_run", NULL};
+static const char *rofi[] = {"/home/void/.scripts/rofi_run", NULL};
 ///--Custom foo---///
 static void halfandcentered(const Arg *arg)
 {

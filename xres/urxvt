@@ -14,8 +14,8 @@ URxvt.lineSpace:            0
 
 ! Fonts
 URxvt.allow_bold:           true 
-URxvt*font:xft:UW Ttyp0:pixelsize=15, xft:Wuncon Siji:pixelsize=15*/
-URxvt*boldFont:xft:UW ttyp0:pixelsize=15
+URxvt*font:xft:Curie:pixelsize=12, xft:Wuncon Siji:pixelsize=15*/
+URxvt*boldFont:xft:Curie:pixelsize=12
 
 ! Fix font space
 URxvt*letterSpace:0 
