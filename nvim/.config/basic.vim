@@ -1,5 +1,5 @@
 set nocompatible              
-filetype on
+filetype off
 filetype plugin on
 set nocp
 syntax on

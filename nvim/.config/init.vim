@@ -9,7 +9,7 @@
                                       
 
 source ~/.config/nvim/basic.vim
-source ~/.config/nvim/syn.vim
 source ~/.config/nvim/plugins.vim
 source ~/.config/nvim/appearance.vim
 source ~/.config/nvim/mapping.vim
+source ~/.config/nvim/syn.vim
