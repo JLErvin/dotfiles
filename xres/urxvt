@@ -25,7 +25,7 @@ URxvt.scrollStyle:          rxvt
 URxvt.scrollBar:            false
 
 ! Add padding
-URxvt.internalBorder: 15
+URxvt.internalBorder: 30
 
 ! Perl extensions
 URxvt.perl-ext-common:      default,matcher,config-reload
