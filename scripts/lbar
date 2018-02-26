@@ -108,7 +108,7 @@ content()
     {
         wifi=$(iwgetid -r)
 
-        if [ wifi="" ]; then
+        if [ -z $wifi ]; then
             wifi="DISCONNECTED"
         fi
 
