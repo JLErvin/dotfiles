@@ -8,7 +8,7 @@
 source $HOME/.cache/squash/colors
 SEP="  "
 SEPS=" "
-SPC="%{B$blk}$SEP%{B-}"
+SPC="%{B$bg}$SEP%{B-}"
 
 # Get glyphs from siji
 # Using queries is easier than c/p
@@ -34,21 +34,9 @@ content()
 
        seq=""
 
-       # Need to add seperation if the current window is at not at position 1
-       if [[ $cur -ge "1" ]]; then
-           seq+=%{B$bblk}%{F$ylw}${SEPS}%{B-}%{F-}
-       fi
-
-       for ((i=0; i<$cur; i++)); do seq+="%{B$bblk}%{F$fg}$i${SEPS}%{B-}%{F-}"; done
-
-       # Ad padding here as well 
-       if [[ $cur -le "0" ]]; then
-           seq+=%{B$bblk}%{F$ylw}${SEPS}%{B-}%{F-}
-       fi
-
-       seq+="%{B$bblk}%{F$ylw}$cur${SEPS}%{B-}%{F-}"
-
-       for ((i=$cur; i<$(($total -1)); i++)); do seq+="%{B$bblk}%{F$fg}$(($i +1))${SEPS}%{B-}%{F-}"; done
+       for ((i=0; i<$cur; i++)); do seq+="%{B$blk}%{F$fg}${SEPS}$i${SEPS}%{B-}%{F-}"; done
+       seq+="%{B$ylw}%{F$blk}${SEPS}$cur${SEPS}%{B-}%{F-}"
+       for ((i=$(($cur+1)); i<$total; i++)); do seq+="%{B$blk}%{F$fg}${SEPS}$i${SEPS}%{B-}%{F-}"; done
 
        echo $seq
     }
@@ -58,7 +46,7 @@ content()
     {
         clock=$(date +'%a %m/%d/%g %I:%M')
         label=$glydate
-        echo %{B$grn}$SEP$label$SEP%{B-}%{B$bblk}$SEP$clock$SEP%{B-}
+        echo %{B$ylw}%{F$blk}$SEP$label$SEP%{B-}%{F-}%{B$ylw}%{F$blk}$SEP$clock$SEP%{B-}%{F-}
     }
 
     # Volume 0-100
@@ -73,7 +61,7 @@ content()
             label=$glyvoloff
         fi
 
-        echo %{B$blu}$SEP$label$SEP%{B-}%{B$bblk}$SEP$vol$SEP%{B-}
+        echo %{B$bblk}%{F$fg}$SEP$label$SEP%{B-}%{F-}%{B$blk}$SEP$vol$SEP%{B-}
     }
 
     # Battery 0-100
@@ -92,14 +80,14 @@ content()
             label=$glybatlow
         fi
 
-        echo %{B$ylw}$SEP$label$SEP%{B-}%{B$bblk}$SEP$cap$SEP%{B-}
+        echo %{B$bblk}%{F$fg}$SEP$label$SEP%{B-}%{F-}%{B$blk}$SEP$cap$SEP%{B-}
     }
 
     # Actice window from X
     windowname()
     {
         title=$(xprop -id $(xprop -root _NET_ACTIVE_WINDOW | cut -d ' ' -f 5) WM_NAME | awk '{$1=$2="";print}' | tr -d '"' | cut -c 1-80)
-        echo %{B$bblk}$SEP$title$SEP%{B-}
+        echo %{B$blk}$SEP$title$SEP%{B-}
     }
 
     # Get SSID using iwgetid
@@ -108,12 +96,12 @@ content()
     {
         wifi=$(iwgetid -r)
 
-        if [ -z $wifi ]; then
+        if [[ -z $wifi ]]; then
             wifi="DISCONNECTED"
         fi
 
         label=$glywlanhigh
-        echo %{B$red}$SEP$label$SEP%{B-}%{B$bblk}$SEP$wifi$SEP%{B-}
+        echo %{B$bblk}%{F$fg}$SEP$label$SEP%{B-}%{F-}%{B$blk}$SEP$wifi$SEP%{B-}
     }
 
 
@@ -138,9 +126,9 @@ offy=0
 # Border width
 brdr=5
 # Border color
-brdrc=${blk}
+brdrc=${bg}
 # Bar background color
-bbg=${blk}
+bbg=${bg}
 # Bar foreground color
 bfg=${fg}
 
