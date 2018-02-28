@@ -8,18 +8,27 @@
 source $HOME/.cache/squash/colors
 SEP="  "
 SEPS=" "
-SPC="%{B$bg}$SEP%{B-}"
+SPC="%{B$bg}"$SEP"%{B-}"
 
 # Get glyphs from siji
 # Using queries is easier than c/p
 glydate=$(echo -e "\ue015")
-glyvol=$(echo -e "\ue053")
+glyvol=$(echo -e "\ue050")
 glyvoloff=$(echo -e "\ue052")
 glybatlow=$(echo -e "\ue035")
 glybat=$(echo -e "\ue037")
 glybatmax=$(echo -e "\ue09e")
 glywlanhigh=$(echo -e "\ue048")
 glywlanlow=$(echo -e "\ue047")
+
+# Create template for colors
+good="%{B$grn}%{F$blk}"
+warn="%{B$ylw}%{F$blk}"
+bad="%{B$red}%{F$blk}"
+gen="%{B$bblk}%{F$fg}"
+gend="%{B$blk}%{F$fg}"
+acc="%{B$acc}%{F$blk}"
+clr="%{B-}%{F-}"
 
 # Bar contents
 content() 
@@ -34,19 +43,18 @@ content()
 
        seq=""
 
-       for ((i=0; i<$cur; i++)); do seq+="%{B$blk}%{F$fg}${SEPS}$i${SEPS}%{B-}%{F-}"; done
-       seq+="%{B$ylw}%{F$blk}${SEPS}$cur${SEPS}%{B-}%{F-}"
-       for ((i=$(($cur+1)); i<$total; i++)); do seq+="%{B$blk}%{F$fg}${SEPS}$i${SEPS}%{B-}%{F-}"; done
+       for ((i=0; i<$cur; i++)); do seq+="$gend$SEPS$i$SEPS$clr"; done
+       seq+="$acc$SEPS$cur$SEPS$clr"
+       for ((i=$(($cur+1)); i<$total; i++)); do seq+="$gend$SEPS$i$SEPS$clr"; done
 
-       echo $seq
+       echo "$seq"
     }
 
     # Clock
     date-time() 
     {
-        clock=$(date +'%a %m/%d/%g %I:%M')
-        label=$glydate
-        echo %{B$ylw}%{F$blk}$SEP$label$SEP%{B-}%{F-}%{B$ylw}%{F$blk}$SEP$clock$SEP%{B-}%{F-}
+        clock="$acc$SEP$(date +'%a %m/%d/%g %I:%M')$SEP$clr"
+        echo "$clock"
     }
 
     # Volume 0-100
@@ -55,13 +63,15 @@ content()
     {
         vol=$(amixer get Master|awk 'NR==5 {print $4}'|cut -d '%' -f1 | cut -d '[' -f2)
         
-        if [[ $vol -ge "1" ]]; then
-            label=$glyvol
+        if [[ "$vol" -ge "1" ]]; then
+            label=$good$SEP$glyvol$SEP$clr
         else
-            label=$glyvoloff
+            label=$bad$SEP$glyvoloff$SEP$clr
         fi
 
-        echo %{B$bblk}%{F$fg}$SEP$label$SEP%{B-}%{F-}%{B$blk}$SEP$vol$SEP%{B-}
+        vol=$gen$SEP$vol$SEP$clr
+
+        echo $label$vol
     }
 
     # Battery 0-100
@@ -72,22 +82,23 @@ content()
         state=$(cat /sys/class/power_supply/BAT0/status)
         cap=$(cat /sys/class/power_supply/BAT0/capacity)
 
-        if [[ cap -ge "98" ]]; then
-            label=$glybatmax
-        elif [[ cap -ge 20 ]]; then
-            label=$glybat
+        if [[ "$cap" -ge "98" ]] || [[ $state == "Charging" ]]; then
+            label="$good$SEP$glybatmax$SEP$clr"
+        elif [[ "$cap" -ge "20" ]]; then
+            label="$warn$SEP$glybat$SEP$clr"
         else
-            label=$glybatlow
+            label="$bad$SEP$glybatlow$SEP$clr"
         fi
 
-        echo %{B$bblk}%{F$fg}$SEP$label$SEP%{B-}%{F-}%{B$blk}$SEP$cap$SEP%{B-}
+        cap=$gen$SEP$cap$SEP$clr
+        echo $label$cap
     }
 
     # Actice window from X
     windowname()
     {
-        title=$(xprop -id $(xprop -root _NET_ACTIVE_WINDOW | cut -d ' ' -f 5) WM_NAME | awk '{$1=$2="";print}' | tr -d '"' | cut -c 1-80)
-        echo %{B$blk}$SEP$title$SEP%{B-}
+        title=$gen$SEP$(xprop -id $(xprop -root _NET_ACTIVE_WINDOW | cut -d ' ' -f 5) WM_NAME | awk '{$1=$2="";print}' | tr -d '"' | cut -c 1-80)$SEP$clr
+        echo $title
     }
 
     # Get SSID using iwgetid
@@ -100,24 +111,31 @@ content()
             wifi="DISCONNECTED"
         fi
 
-        label=$glywlanhigh
-        echo %{B$bblk}%{F$fg}$SEP$label$SEP%{B-}%{F-}%{B$blk}$SEP$wifi$SEP%{B-}
+        if [[ $wifi == "DISCONNECTED" ]]; then
+            label=$bad$SEP$glywlanhigh$SEP$clr
+        else
+            label=$good$SEP$glywlanhigh$SEP$clr
+        fi
+
+        wifi=$gen$SEP$wifi$SEP$clr
+
+        echo $label$wifi
     }
 
 
     # Bar contents left/right
-    left=$(workspaces)${SPC}$(windowname)
+    left="$(workspaces)${SPC}$(windowname)"
     center=
-    right=$(volume)${SPC}$(battery)${SPC}$(wireless)${SPC}$(date-time)${SCP}
+    right="$(volume)${SPC}$(battery)${SPC}$(wireless)${SPC}$(date-time)${SCP}"
 
-    output=$left%{c}$center%{r}$right
-    echo $output
+    output="$left%{c}$center%{r}$right"
+    echo -n "$output"
 }
 
 content
 
 # Formatting options
-fonts="-o 1 -f -kakwa-curie-Medium-R-Normal--12-120-72-72-C-60-ISO10646-1 -o -0.5 -f -wuncon-siji-medium-r-normal--10-100-75-75-c-80-iso10646-1"
+fonts="-o 1 -f -uw-ttyp0-medium-r-normal-*-14-*-*-*-*-*-*-* -o -0.5 -f -wuncon-siji-medium-r-normal--10-100-75-75-c-80-iso10646-1"
 width=1920
 heigth=20
 # x - y offsets
@@ -133,7 +151,7 @@ bbg=${bg}
 bfg=${fg}
 
 # Final output formatting
-options="-d ${fonts} ${width}x${height}+${xoff}+${yoff} -r ${brdr} -R ${brdrc} -B ${bbg} -F ${bfg}"
+options="-d ${fonts} -g ${width}x${height}+${xoff}+${yoff} -r ${brdr} -R ${brdrc} -B ${bbg} -F ${bfg}"
 
 # Main loop
 while true; do
