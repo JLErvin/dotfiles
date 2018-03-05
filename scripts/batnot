@@ -1,0 +1,14 @@
+#!/bin/sh
+#PATH=/home/void/.scripts:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+
+export DISPLAY=:0
+
+#cap=$(cat /sys/class/power_supply/BAT0/capacity)
+cap=50
+if [ $cap -le 20 ]; then
+    notify-send "Battery low"
+else
+    notify-send "Battery fine"
+fi
+
+echo "SENT" > /tmp/batnot.output
