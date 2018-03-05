@@ -1,0 +1,65 @@
+#       ██                            ██                 
+#      ░██                           ░██                 
+#      ░██ ██   ██ ███████   ██████ ██████ ██████  █████ 
+#   ██████░██  ░██░░██░░░██ ██░░░░ ░░░██░ ░░██░░█ ██░░░██
+#  ██░░░██░██  ░██ ░██  ░██░░█████   ░██   ░██ ░ ░██  ░░ 
+# ░██  ░██░██  ░██ ░██  ░██ ░░░░░██  ░██   ░██   ░██   ██
+# ░░██████░░██████ ███  ░██ ██████   ░░██ ░███   ░░█████ 
+#  ░░░░░░  ░░░░░░ ░░░   ░░ ░░░░░░     ░░  ░░░     ░░░░░  
+#
+[global]
+font = Ttyp0 14 
+markup = yes
+format = "%s %b"
+sort = yes
+indicate_hidden = no 
+alignment = center 
+bounce_freq = 0
+show_age_threshold = 60
+word_wrap = no
+ignore_newline = yes
+geometry = "1200x18-30+30"
+shrink = yes 
+transparency = 0
+idle_threshold = 120
+monitor = 0
+follow = mouse
+sticky_history = yes
+history_length = 100
+show_indicators = yes
+line_height = 20
+separator_height = 0
+padding = 10  
+horizontal_padding = 10 
+separator_color = frame
+startup_notification = false
+dmenu = /home/nxll/menu -p dunst:
+browser = /usr/bin/firefox
+icon_position = off
+icon_folders = /usr/share/icons/gnome/16x16/status/:/usr/share/icons/gnome/16x16/devices/
+frame_width = 0
+frame_color = "#121c21"
+
+
+[shortcuts]
+close = ctrl+space
+close_all = ctrl+shift+space
+history = ctrl+grave
+context = ctrl+shift+period
+
+[urgency_low]
+background = "#121c21"
+foreground = "#aaafb2"
+timeout = 20
+
+[urgency_normal]
+background = "#121c21"
+foreground = "#aaafb2"
+timeout = 20
+
+[urgency_critical]
+background = "#121c21"
+foreground = "#aaafb2"
+timeout = 30
+
+# vim: ft=cfg
