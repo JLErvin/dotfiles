@@ -1,0 +1,38 @@
+#!/usr/bin/env bash
+#
+# Description: Blur and lock the screen
+# Dependencies: imagemagick and i3lock
+
+tmp="/tmp/screen.png"
+tmp2="/tmp/lock.png"
+tmp3="/tmp/bg.png"
+lock="${HOME}/scrots/lock.png"
+colr="${HOME}/.cache/squash/colors"
+source $colr
+
+letters=6
+fontHeight=7
+fontWidth=5
+padding=64
+height=$(( $fontHeight + $padding ))
+width=$(( ( ( $fontWidth * $letters ) - 1 ) + $padding )) 
+
+# Take a screenshot
+import -window root "$tmp"
+
+# Blur it
+convert "$tmp" -scale 10% -scale 1000% "$tmp"
+convert "$tmp" -fill "$wht" -colorize 10% "$tmp"
+
+# Change label's color
+convert "$lock" -fill $wht -opaque '#ffffff' "$tmp2"
+
+# Create label's background
+convert -size ${width}x${height} xc:$blk "$tmp3"
+
+# Merge
+convert "$tmp3" "$tmp2" -gravity center -composite "$tmp2"
+convert "$tmp" "$tmp2" -gravity center -composite "$tmp"
+
+# Lock the screen
+i3lock -u -i "$tmp"
