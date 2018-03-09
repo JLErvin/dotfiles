@@ -28,4 +28,4 @@ Welcome to my dotfiles. You can usually find my stuff over on /r/unixporn. If yo
 
 
 ![Screenshot](https://i.imgur.com/6iSvDQk.jpg)
-![Screenshot](https://i.imgur.com/ay2xysJ.jpg)
+![Screenshot](https://i.imgur.com/LVgrviY.jpg)
