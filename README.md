@@ -8,24 +8,24 @@
 ## Window Managers
 
 * 2bwm
-* openbox
 * bspwm
 
 ## System Configuration
 
 Welcome to my dotfiles. You can usually find my stuff over on /r/unixporn. If you have any questions, feel free to shoot me a [pm](https://reddit.com/u/fatal_squash) over there. 
 
-* os: `Arch Linux`
-* model: `xps 13 9360 (3200x1800)`
-* wm: `openbox/2bwm`
+* os: `Void Linux`
+* model: `ThinkPad X1 Carbon 5th Gen`
+* wm: `2bwm`
 * shell: `zsh`
 * terminal: `urxvt`
 * terminal font: `UW ttyp0`
 * colorscheme: `android`
 * notifications: `dunst`
 * bar: `lemonbar`
-* browser: `firefox`
+* browser: `chromium`
 * text-editor: `neovim`
 
 
-![Screenshot](https://i.imgur.com/e6eIOwe.jpg)
+![Screenshot](https://i.imgur.com/6iSvDQk.jpg)
+![Screenshot](https://i.imgur.com/LVgrviY.jpg)
