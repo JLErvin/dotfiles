@@ -19,7 +19,7 @@
     <primaryMonitor>1</primaryMonitor>
   </placement>
   <theme>
-    <name>pinkstuff</name>
+    <name>agila</name>
     <titleLayout>IMC</titleLayout>
     <animateIconify>no</animateIconify>
     <font place="ActiveWindow">
@@ -102,26 +102,26 @@
   <keyboard>
     <keybind key="W-h">
       <action name="MoveRelative">
-          <x>-40</x>
-          <y>0</y>
+        <x>-40</x>
+        <y>0</y>
       </action>
     </keybind>
     <keybind key="W-l">
       <action name="MoveRelative">
-          <x>40</x>
-          <y>0</y>
+        <x>40</x>
+        <y>0</y>
       </action>
-  </keybind>
+    </keybind>
     <keybind key="W-k">
       <action name="MoveRelative">
-          <x>0</x>
-          <y>-40</y>
+        <x>0</x>
+        <y>-40</y>
       </action>
     </keybind>
     <keybind key="W-j">
       <action name="MoveRelative">
-          <x>0</x>
-          <y>40</y>
+        <x>0</x>
+        <y>40</y>
       </action>
     </keybind>
     <keybind key="W-Return">
@@ -159,10 +159,10 @@
     <keybind key="W-q">
       <action name="Close"/>
     </keybind>
-    <keybind key="W-f">
-      <action name="ToggleFullscreen"/>
-    </keybind>
     <keybind key="W-x">
+      <action name="ToggleMaximize"/>
+    </keybind>
+    <keybind key="W-c">
       <action name="ToggleDecorations">
       </action>
     </keybind>

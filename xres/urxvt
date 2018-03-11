@@ -2,20 +2,20 @@
 ! URxvt settings
 !-------------------------------------------------------------------------------
 
-!URxvt.depth:                32
 URxvt.geometry:             70x40
 URxvt.transparent:          false
 URxvt.fading:               0
-! URxvt.urgentOnBell:         true
-! URxvt.visualBell:           true
 URxvt.loginShell:           true
-URxvt.saveLines:            50
+URxvt.saveLines:            400
 URxvt.lineSpace:            0
 
 ! Fonts
 URxvt.allow_bold:           true 
-URxvt*font:xft:Curie:pixelsize=12, xft:Wuncon Siji:pixelsize=15*/
-URxvt*boldFont:xft:Curie:pixelsize=12
+URxvt*font:xft:Ttyp0:pixelsize=14, xft:Wuncon Siji:pixelsize=15
+URxvt*boldFont:xft:Ttyp0:pixelsize=14
+
+!URxvt*font:xft:curie:pixelsize=12, xft:Wuncon Siji:pixelsize=15
+!URxvt*boldFont:xft:curie:pixelsize=12
 
 ! Fix font space
 URxvt*letterSpace:0 
@@ -25,10 +25,10 @@ URxvt.scrollStyle:          rxvt
 URxvt.scrollBar:            false
 
 ! Add padding
-URxvt.internalBorder: 30
+URxvt.internalBorder: 20
 
 ! Perl extensions
-URxvt.perl-ext-common:      default,matcher,config-reload
+URxvt.perl-ext-common:      default,matcher
 URxvt.matcher.button:       1
 URxvt.urlLauncher:          firefox
 

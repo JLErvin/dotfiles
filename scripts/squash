@@ -6,6 +6,7 @@ COLOR_SCHEME="$1"
 # Define location of cache and themes
 CACHE_DIR=$HOME/.cache/squash
 THEME_DIR=$HOME/.config/squash
+WM=$(head -n 1 $CACHE_DIR/wm)
 
 # Make newlines easier, and define sequence
 NEWLINE=$'\n'
@@ -82,6 +83,7 @@ set_wallpaper()
 {
    pkill -x nitrogen
    hsetroot -fill ${wallpaper}
+   cp ${wallpaper} "/tmp/screen.png"
 }
 
 # builds an array of all necessary colors
@@ -135,8 +137,8 @@ write_rofi()
 {
    rofi_output=""
    rofi_output+="rofi.color-enaled: true${NEWLINE}"
-   rofi_output+="rofi.color-window: ${wht}, ${wht}, ${cyn}${NEWLINE}"
-   rofi_output+="rofi.color-normal: ${wht}, ${bg}, ${wht}, ${cyn}, ${fg}${NEWLINE}"
+   rofi_output+="rofi.color-window: ${bg}, ${bg}, ${blk}${NEWLINE}"
+   rofi_output+="rofi.color-normal: ${bg}, ${fg}, ${bg}, ${blk}, ${acc}${NEWLINE}"
 }
 
 write_2bwm() 
@@ -156,6 +158,7 @@ write_css()
 {
    css_output=""
    css_output+=":root {${NEWLINE}"
+   css_output+="\t--wallpaper: url("${wallpaper}");${NEWLINE}"
    css_output+="\t--background: ${bg};${NEWLINE}"
    css_output+="\t--foreground: ${fg};${NEWLINE}"
    for i in {0..15}; do
@@ -207,35 +210,41 @@ write_x_define()
    printf "${xd_output}" > "$CACHE_DIR/xd_colors"
 }
 
-# Remove old colors
-cleanup
+if [ -f $THEME_DIR/$COLOR_SCHEME ]; then
+    # Remove old colors
+    cleanup
 
-# Source color directory
-get_colors
+    # Source color directory
+    get_colors
 
-# Create sequence to reload opened terminals
-create_main_sequence
-create_secondary_sequence
+    # Create sequence to reload opened terminals
+    create_main_sequence
+    create_secondary_sequence
 
-# Reload all x terminals
-reload_x
+    # Reload all x terminals
+    reload_x
 
-# Write all colors files to .cahe
-write_x_source
-write_rofi
-write_2bwm
-write_all_x
-write_css
-write_sh
-write_x_define
+    # Write all colors files to .cahe
+    write_x_source
+    write_rofi
+    write_2bwm
+    write_all_x
+    write_css
+    write_sh
+    write_x_define
 
-# Merge x colors
-merge_x
+    # Merge x colors
+    merge_x
 
-# Recompile and reload 2bwm
-# Reload bar
-reload_2bwm
-reload_lemonbar
+    # Recompile and reload 2bwm
+    # Reload bar
+    if [[ $WM == "2bwm" ]]; then
+        reload_2bwm
+    fi
+    reload_lemonbar
 
-# Set wallpaper
-set_wallpaper
+    # Set wallpaper
+    set_wallpaper
+else
+    printf "ERROR : THEME FILE NOT FOUND"
+fi

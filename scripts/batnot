@@ -1,14 +1,14 @@
 #!/bin/sh
-#PATH=/home/void/.scripts:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
 
+# This is needed for notify-send
+# to work right
 export DISPLAY=:0
 
-#cap=$(cat /sys/class/power_supply/BAT0/capacity)
-cap=50
+cap=$(cat /sys/class/power_supply/BAT0/capacity)
 if [ $cap -le 20 ]; then
-    notify-send "Battery low"
-else
-    notify-send "Battery fine"
+    notify-send -u critical "Battery low"
+elif [ $cap -ge 99 ]; then
+    notify-send -u normal "Battery charged"
 fi
 
-echo "SENT" > /tmp/batnot.output
+echo "SENT"

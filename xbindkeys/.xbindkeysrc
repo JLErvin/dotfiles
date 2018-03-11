@@ -29,3 +29,7 @@
 
 "xbacklight -dec 10"
   XF86MonBrightnessDown
+
+# Lock this shit
+"lock"
+  control+p

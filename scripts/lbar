@@ -38,12 +38,13 @@ content()
     {
        cur=$(xprop -root _NET_CURRENT_DESKTOP | awk '{print $3}')
        total=$(xprop -root _NET_NUMBER_OF_DESKTOPS | awk '{print $3}')
+       total=5
 
        empty=$(echo -e "\ue000")
 
        seq=""
 
-       for ((i=0; i<$cur; i++)); do seq+="$gend$SEPS$i$SEPS$clr"; done
+       for ((i=0; i<$cur && i<$((total-1)); i++)); do seq+="$gend$SEPS$i$SEPS$clr"; done
        seq+="$acc$SEPS$cur$SEPS$clr"
        for ((i=$(($cur+1)); i<$total; i++)); do seq+="$gend$SEPS$i$SEPS$clr"; done
 
@@ -136,8 +137,8 @@ content
 
 # Formatting options
 fonts="-o 1 -f -uw-ttyp0-medium-r-normal-*-14-*-*-*-*-*-*-* -o -0.5 -f -wuncon-siji-medium-r-normal--10-100-75-75-c-80-iso10646-1"
-width=1920
-heigth=20
+width=1910
+height=20
 # x - y offsets
 offx=0
 offy=0
