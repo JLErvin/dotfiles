@@ -17,6 +17,9 @@ URxvt*boldFont:xft:Ttyp0:pixelsize=14
 !URxvt*font:xft:curie:pixelsize=12, xft:Wuncon Siji:pixelsize=15
 !URxvt*boldFont:xft:curie:pixelsize=12
 
+!URxvt*font:xft:Haxor:pixelsize=14, xft:Wuncon Siji:pixelsize=15
+!URxvt*boldFont:xft:Haxor:pixelsize=14
+
 ! Fix font space
 URxvt*letterSpace:0 
 
@@ -25,7 +28,7 @@ URxvt.scrollStyle:          rxvt
 URxvt.scrollBar:            false
 
 ! Add padding
-URxvt.internalBorder: 20
+URxvt.internalBorder: 40
 
 ! Perl extensions
 URxvt.perl-ext-common:      default,matcher

@@ -33,7 +33,7 @@ content()
     {
         clock="$(date +'%a %d %I:%M')"
         label="$glydate"
-        echo "%{B$#ffffff}%{F$blk}${clock}%{B-}%{F-}"
+        echo "%{B#ffffff}%{F$blk}${clock}%{B-}%{F-}"
     }
 
     # Volume 0-100

@@ -3,6 +3,14 @@
 <openbox_menu xmlns="http://openbox.org/3.4/menu">
 
 <menu id="apps-accessories-menu" label="Accessories">
+  <item label="VirtualBox">
+    <action name="Execute">
+      <command>VirtualBox</command>
+      <startupnotify>
+        <enabled>yes</enabled>
+      </startupnotify>
+    </action>
+  </item>
 </menu>
 
 <menu id="apps-editors-menu" label="Editors">
@@ -17,6 +25,14 @@
   <item label="IDEA">
     <action name="Execute">
       <command>idea</command>
+      <startupnotify>
+        <enabled>yes</enabled>
+      </startupnotify>
+    </action>
+  </item>
+  <item label="jGRASP">
+    <action name="Execute">
+      <command>jgrasp</command>
       <startupnotify>
         <enabled>yes</enabled>
       </startupnotify>
@@ -62,6 +78,15 @@
       </startupnotify>
     </action>
   </item>
+  <item label="Firefox">
+    <action name="Execute">
+      <command>firefox</command>
+      <startupnotify>
+        <enabled>yes</enabled>
+        <wmclass>chromium</wmclass>
+      </startupnotify>
+    </action>
+  </item>
 </menu>
 
 <menu id="apps-office-menu" label="Office">
@@ -86,6 +111,14 @@
   <item label="Spotify">
     <action name="Execute">
       <command>spotify</command>
+      <startupnotify>
+        <enabled>yes</enabled>
+      </startupnotify>
+    </action>
+  </item>
+  <item label="Steam">
+    <action name="Execute">
+      <command>steam</command>
       <startupnotify>
         <enabled>yes</enabled>
       </startupnotify>

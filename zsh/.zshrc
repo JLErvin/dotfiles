@@ -1,4 +1,5 @@
 export PATH=/home/void/.scripts:$PATH
+export PATH=/opt/jgrasp/bin:$PATH
 export EDITOR=nvim
 export _JAVA_AWT_WM_NONREPARENTING=1
 JAVA_HOME="/usr/lib/jvm/openjdk"

@@ -8,31 +8,32 @@
 #  ░░░░░░  ░░░░░░ ░░░   ░░ ░░░░░░     ░░  ░░░     ░░░░░  
 #
 [global]
-font = Ttyp0 12
+#font = Ttyp0 12
+font = curie 10
 markup = yes
 format = "%s %b"
 sort = yes
 indicate_hidden = no 
-alignment = right 
+alignment = center
 bounce_freq = 0
-show_age_threshold = 60
+show_age_threshold = 1000
 word_wrap = no
 ignore_newline = yes
-geometry = "1200x18-0+30"
+geometry = "1200x18-20+20"
 shrink = yes 
 transparency = 0
-idle_threshold = 120
+idle_threshold = 10
 monitor = 0
 follow = mouse
 sticky_history = yes
-history_length = 100
+history_length = 2 
 show_indicators = yes
 line_height = 20
-separator_height = 0
-padding = 2 
-horizontal_padding = 2
+separator_height = 5
+padding = 10 
+horizontal_padding = 10
 separator_color = frame
-startup_notification = true
+startup_notification = false
 icon_position = off
 icon_folders = /usr/share/icons/gnome/16x16/status/:/usr/share/icons/gnome/16x16/devices/
 frame_width = 0
@@ -45,13 +46,13 @@ history = ctrl+grave
 context = ctrl+shift+period
 
 [urgency_low]
-background = "#121c21"
-foreground = "#aaafb2"
+background = "#ffffff"
+foreground = "#121c21"
 timeout = 20
 
 [urgency_normal]
-background = "#121c21"
-foreground = "#aaafb2"
+background = "#ffffff"
+foreground = "#121c21"
 timeout = 20
 
 [urgency_critical]

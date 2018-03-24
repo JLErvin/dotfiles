@@ -6,9 +6,11 @@ export DISPLAY=:0
 
 cap=$(cat /sys/class/power_supply/BAT0/capacity)
 if [ $cap -le 20 ]; then
-    notify-send -u critical "Battery low"
+    notify-send -u critical "BAT LOW"
 elif [ $cap -ge 99 ]; then
-    notify-send -u normal "Battery charged"
+    notify-send -u normal "BAT CHARGED"
+else
+    notify-send -u normal "BAT @ $cap"
 fi
 
 echo "SENT"

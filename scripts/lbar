@@ -140,8 +140,8 @@ fonts="-o 1 -f -uw-ttyp0-medium-r-normal-*-14-*-*-*-*-*-*-* -o -0.5 -f -wuncon-s
 width=1910
 height=20
 # x - y offsets
-offx=0
-offy=0
+offx=40
+offy=20
 # Border width
 brdr=5
 # Border color

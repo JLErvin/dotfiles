@@ -41,7 +41,7 @@ reload_polybar()
 reload_lemonbar() 
 {
    pkill -x lemonbar
-   lbar &
+   teny &
 }
 
 # Credit for this method goes to dkeg
@@ -81,7 +81,6 @@ reload_2bwm()
 
 set_wallpaper() 
 {
-   pkill -x nitrogen
    hsetroot -fill ${wallpaper}
    cp ${wallpaper} "/tmp/screen.png"
 }
@@ -181,7 +180,6 @@ write_sh()
 write_all_x() 
 {
    output=${x_output}${rofi_output}${twobwm_output}
-   echo $output
    printf "${output}" > "${CACHE_DIR}/x_colors"
 }
 

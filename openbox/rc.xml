@@ -19,41 +19,41 @@
     <primaryMonitor>1</primaryMonitor>
   </placement>
   <theme>
-    <name>agila</name>
-    <titleLayout>IMC</titleLayout>
+    <name>ags</name>
+    <titleLayout>LIMC</titleLayout>
     <animateIconify>no</animateIconify>
     <font place="ActiveWindow">
-      <name>Ttyp0</name>
-      <size>12</size>
+      <name>curie</name>
+      <size>10</size>
       <weight>Normal</weight>
       <slant>Normal</slant>
     </font>
     <font place="InactiveWindow">
-      <name>Ttyp0</name>
-      <size>8</size>
+      <name>curie</name>
+      <size>9</size>
       <weight>Normal</weight>
       <slant>Normal</slant>
     </font>
     <font place="MenuHeader">
-      <name>Ttyp0</name>
-      <size>8</size>
+      <name>curie</name>
+      <size>9</size>
       <weight>Normal</weight>
       <slant>Normal</slant>
     </font>
     <font place="MenuItem">
-      <name>Ttyp0</name>
+      <name>curie</name>
       <size>12</size>
       <weight>Normal</weight>
       <slant>Normal</slant>
     </font>
     <font place="ActiveOnScreenDisplay">
-      <name>Ttyp0</name>
+      <name>curie</name>
       <size>8</size>
       <weight>Normal</weight>
       <slant>Normal</slant>
     </font>
     <font place="InactiveOnScreenDisplay">
-      <name>Ttyp0</name>
+      <name>curie</name>
       <size>8</size>
       <weight>Normal</weight>
       <slant>Normal</slant>
@@ -82,7 +82,7 @@
     </popupFixedPosition>
   </resize>
   <margins>
-    <top>30</top>
+    <top>0</top>
     <bottom>0</bottom>
     <left>0</left>
     <right>0</right>
@@ -134,6 +134,12 @@
       <action name="Execute">
         <name>Run</name>
         <command>rofi_run</command>
+      </action>
+    </keybind>
+    <keybind key="W-p">
+      <action name="Execute">
+        <name>Run</name>
+        <command>lock</command>
       </action>
     </keybind>
     <keybind key="W-1">

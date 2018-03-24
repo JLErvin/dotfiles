@@ -33,3 +33,7 @@
 # Lock this shit
 "lock"
   control+p
+
+"toggle"
+  XF86Tools
+

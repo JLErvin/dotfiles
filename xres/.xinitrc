@@ -8,8 +8,9 @@
 # Find fonts correctly
 xset +fp /home/void/.fonts
 xset +fp /usr/share/fonts/bit
+xset +fp /usr/share/fonts/bitmap
 xset +fp /usr/share/fonts/misc
-xset fp rehash
+xset +fp rehash
 
 # Start xbindkeys
 xbindkeys &
