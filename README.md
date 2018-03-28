@@ -20,10 +20,10 @@ Welcome to my dotfiles. You can usually find my stuff over on /r/unixporn. If yo
 * shell: `zsh`
 * terminal: `urxvt`
 * terminal font: `UW ttyp0`
-* colorscheme: `android`
+* colorscheme: `agila`
 * notifications: `dunst`
 * bar: `lemonbar`
-* browser: `chromium`
+* browser: `firefox`
 * text-editor: `neovim`
 
 # 2bwm
