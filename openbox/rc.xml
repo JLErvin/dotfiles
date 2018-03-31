@@ -23,38 +23,38 @@
     <titleLayout>LIMC</titleLayout>
     <animateIconify>no</animateIconify>
     <font place="ActiveWindow">
-      <name>curie</name>
-      <size>10</size>
+      <name>Ttyp0</name>
+      <size>11</size>
       <weight>Normal</weight>
       <slant>Normal</slant>
     </font>
     <font place="InactiveWindow">
-      <name>curie</name>
-      <size>9</size>
+      <name>Ttyp0</name>
+      <size>11</size>
       <weight>Normal</weight>
       <slant>Normal</slant>
     </font>
     <font place="MenuHeader">
-      <name>curie</name>
-      <size>9</size>
+      <name>Ttyp0</name>
+      <size>11</size>
       <weight>Normal</weight>
       <slant>Normal</slant>
     </font>
     <font place="MenuItem">
-      <name>curie</name>
-      <size>12</size>
+      <name>Ttyp0</name>
+      <size>11</size>
       <weight>Normal</weight>
       <slant>Normal</slant>
     </font>
     <font place="ActiveOnScreenDisplay">
-      <name>curie</name>
-      <size>8</size>
+      <name>Ttyp0</name>
+      <size>10</size>
       <weight>Normal</weight>
       <slant>Normal</slant>
     </font>
     <font place="InactiveOnScreenDisplay">
-      <name>curie</name>
-      <size>8</size>
+      <name>Ttyp0</name>
+      <size>10</size>
       <weight>Normal</weight>
       <slant>Normal</slant>
     </font>

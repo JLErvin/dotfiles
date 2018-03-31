@@ -24,6 +24,9 @@ redshift -l 47.6062:122.3321 &
 # Start network manager applet
 nm-applet &
 
+# Fix this FUCKING STUPID firefox bug
+pulseaudio --start --exit-idle-time=-1
+
 twobwm() {
     echo "2bwm" > "/home/void/.cache/squash/wm"
     2bwm &

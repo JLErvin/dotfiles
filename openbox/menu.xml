@@ -3,9 +3,28 @@
 <openbox_menu xmlns="http://openbox.org/3.4/menu">
 
 <menu id="apps-accessories-menu" label="Accessories">
+</menu>
+
+<menu id="virtual-menu" label="Virtual">
   <item label="VirtualBox">
     <action name="Execute">
       <command>VirtualBox</command>
+      <startupnotify>
+        <enabled>yes</enabled>
+      </startupnotify>
+    </action>
+  </item>
+  <item label="Steam Win">
+    <action name="Execute">
+      <command>win_steam</command>
+      <startupnotify>
+        <enabled>yes</enabled>
+      </startupnotify>
+    </action>
+  </item>
+  <item label="Flawless Win">
+    <action name="Execute">
+      <command>win_flawless</command>
       <startupnotify>
         <enabled>yes</enabled>
       </startupnotify>
@@ -60,18 +79,18 @@
 </menu>
 
 <menu id="apps-net-menu" label="Internet">
-  <item label="Chromium">
+  <item label="Google Chrome">
     <action name="Execute">
-      <command>chromium</command>
+      <command>google-chrome-stable</command>
       <startupnotify>
         <enabled>yes</enabled>
         <wmclass>chromium</wmclass>
       </startupnotify>
     </action>
   </item>
-  <item label="Google Chrome">
+  <item label="Chromium">
     <action name="Execute">
-      <command>google-chrome-stable</command>
+      <command>chromium</command>
       <startupnotify>
         <enabled>yes</enabled>
         <wmclass>chromium</wmclass>
@@ -90,6 +109,11 @@
 </menu>
 
 <menu id="apps-office-menu" label="Office">
+  <item label="Evolution">
+    <action name="Execute">
+      <command>evolution</command>
+    </action>
+  </item>
   <item label="LibreOffice Writer">
     <action name="Execute">
       <command>lowriter</command>
@@ -124,6 +148,14 @@
       </startupnotify>
     </action>
   </item>
+  <item label="Steam Wine">
+    <action name="Execute">
+      <command>win_steam</command>
+      <startupnotify>
+        <enabled>yes</enabled>
+      </startupnotify>
+    </action>
+  </item>
 </menu>
 
 <menu id="apps-fileman-menu" label="File Managers">
@@ -152,14 +184,13 @@
 
 <menu id="root-menu" label="Openbox 3">
   <separator label="Applications" />
-  <menu id="apps-accessories-menu"/>
   <menu id="apps-editors-menu"/>
-  <menu id="apps-graphics-menu"/>
-  <menu id="apps-net-menu"/>
-  <menu id="apps-office-menu"/>
-  <menu id="apps-multimedia-menu"/>
-  <menu id="apps-term-menu"/>
   <menu id="apps-fileman-menu"/>
+  <menu id="apps-net-menu"/>
+  <menu id="apps-multimedia-menu"/>
+  <menu id="apps-office-menu"/>
+  <menu id="apps-term-menu"/>
+  <menu id="virtual-menu"/>
   <separator label="System" />
   <menu id="system-menu"/>
   <separator />
