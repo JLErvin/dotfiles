@@ -99,7 +99,7 @@ static key keys[] = {
     {  MOD |CONTROL,      XK_h,          movestep,          {.i=4}},
     // Teleport the window to an area of the screen.
     // Center:
-    {  MOD ,              XK_g,          teleport,          {.i=0}},
+    {  MOD ,              XK_c,          teleport,          {.i=0}},
     // Center y:
     {  MOD |SHIFT,        XK_g,          teleport,          {.i=3}},
     // Center x:
@@ -116,9 +116,9 @@ static key keys[] = {
     {  MOD ,              XK_Home,       resizestep_aspect, {.i=0}},
     {  MOD ,              XK_End,        resizestep_aspect, {.i=1}},
     // Full screen window without borders
-    {  MOD ,              XK_x,         maximize,          {.i=0}},
+    {  MOD |SHIFT,        XK_x,         maximize,          {.i=0}},
     //Full screen window without borders overiding offsets
-    {  MOD |SHIFT ,       XK_x,          maximize,          {.i=1}},
+    {  MOD ,              XK_x,          maximize,          {.i=1}},
     // Maximize vertically
     {  MOD ,              XK_m,          maxvert_hor,       {.i=1}},
     // Maximize horizontally
@@ -149,7 +149,7 @@ static key keys[] = {
     {  MOD ,              XK_r,          raiseorlower,      {.i=0}},
     // Next/Previous workspace
     {  MOD ,              XK_v,          nextworkspace,     {.i=0}},
-    {  MOD ,              XK_c,          prevworkspace,     {.i=0}},
+    {  MOD ,              XK_g,          prevworkspace,     {.i=0}},
     // Move to Next/Previous workspace
     {  MOD |SHIFT ,       XK_v,          sendtonextworkspace,{.i=0}},
     {  MOD |SHIFT ,       XK_c,          sendtoprevworkspace,{.i=0}},
