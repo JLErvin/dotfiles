@@ -8,8 +8,7 @@
 #  ░░░░░░  ░░░░░░ ░░░   ░░ ░░░░░░     ░░  ░░░     ░░░░░  
 #
 [global]
-#font = Ttyp0 12
-font = curie 10
+font = UW Ttyp0 10
 markup = yes
 format = "%s %b"
 sort = yes
@@ -19,7 +18,7 @@ bounce_freq = 0
 show_age_threshold = 1000
 word_wrap = no
 ignore_newline = yes
-geometry = "1200x18-20+20"
+geometry = "1200x18-0+0"
 shrink = yes 
 transparency = 0
 idle_threshold = 10
@@ -34,8 +33,6 @@ padding = 10
 horizontal_padding = 10
 separator_color = frame
 startup_notification = false
-icon_position = off
-icon_folders = /usr/share/icons/gnome/16x16/status/:/usr/share/icons/gnome/16x16/devices/
 frame_width = 0
 frame_color = "#121c21"
 
