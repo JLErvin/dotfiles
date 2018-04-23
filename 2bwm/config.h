@@ -13,13 +13,13 @@ static const float    resize_keep_aspect_ratio= 1.03;
 ///---Offsets---///
 /*0)offsetx          1)offsety
  *2)maxwidth         3)maxheight */
-static const uint8_t offsets[] = {0,0,0,20};
+static const uint8_t offsets[] = {0,30,0,0};
 ///---Colors---///
 /*0)focuscol         1)unfocuscol
  *2)fixedcol         3)unkilcol
  *4)fixedunkilcol    5)outerbordercol
  *6)emptycol         */
-static const char *colors[] = {"#f7cca1","#718c97","#f0696f","#5f9993","#ceb5ce","#121c21","#121c21"};
+static const char *colors[] = {"#ac8d6e","#607a86","#a66959","#60867f","#8a757e","#20292d","#20292d"};
 /* if this is set to true the inner border and outer borders colors will be swapped */
 static const bool inverted_colors = false;
 ///---Cursor---///
