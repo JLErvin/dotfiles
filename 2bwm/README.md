@@ -32,7 +32,7 @@ twobwm.inverted_colors: true|false
 twobwm.enable_compton: true|false
 ```
 
-For examples on how I set these values, check my `$HOME/.Xresources'
+For examples on how I set these values, check my `$HOME/.Xresources`
 
 Additionally, I wrote a shell script called `squash` which will
 manage colors systemwide. This includes the ability to change values
