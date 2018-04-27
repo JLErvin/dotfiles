@@ -20,17 +20,16 @@ It is possible for 2bwm to source values from `$HOME/.Xresources`
 The available options are:
 
 ```xdefaults
-twobwm.border_width: 
-twobwm.outer_border:
-twobwm.inverted_colors:
-twobwm.enable_compton:
-
-twobwm.focus.color:
-twobwm.unfocus_color
-twobwm.fixed_color:
-twobwm.unkill_color:
-twobwm.outer_border_color:
-twobwm.fixed_unkill_color:
+twobwm.border_width: number
+twobwm.outer_border: number
+twobwm.focus_color: #RRGGBB
+twobwm.unfocus_color: #RRGGBB
+twobwm.fixed_color: #RRGGBB
+twobwm.unkill_color: #RRGGBB
+twobwm.outer_border_color: #RRGGBB
+twobwm.fixed_unkill_color: #RRGGBB
+twobwm.inverted_colors: true|false
+twobwm.enable_compton: true|false
 ```
 
 For examples on how I set these values, check my `$HOME/.Xresources'
