@@ -1,4 +1,10 @@
 #!/usr/bin/env bash
+#
+# Simple statusbar for use with squash
+#
+# Designed by Joshua Ervin @ University of Washington
+# jlervin@posteo.net
+# github.com/JLErvin
 
 source $HOME/.cache/squash/colors
 SEP="  "
@@ -52,16 +58,16 @@ content() {
         seq=""
 
         for ((i=0; i<$cur && i<$(($total-1)); i++)); do 
-            seq+="${fg}${glyem}${clr}"
+            seq+="${GEN}${i}"
         done
 
-        seq+="${ylw}${glycur}${clr}"
+        seq+="${SEP}${BLACK}${cur}${SEP}"
 
         for ((i=$(($cur+1)); i<$total; i++)); do
-            seq+="${fg}${glyem}${clr}"
+            seq+="${GEN}${i}"
         done
 
-        echo "$seq"
+        echo "${seq}${CLR}"
     }
 
     # Clock
@@ -115,7 +121,7 @@ content() {
     }
 
     # Bar contents left/right
-    left=""
+    left="$(workspaces)"
     center=
     #right="$(volume)${SPC}$(battery)${SPC}$(wireless)${SPC}$(date-time)${SCP}"
     right="$(wireless)"${SEP2}"$(battery)"$SEP2"$(volume)"$SEP2"$(date-time)"
@@ -132,21 +138,25 @@ width=1910
 height=20
 # x - y offsets
 xoff=0
-yoff=5
+yoff=0
 # Border width
-# Only works with patched lemonbar:w
+# Only works with patched lemonbar
 brdr=5
 # Border color
-brdrc=${bg}
+# Only works with patched lemonbar
+brdrc=${BG}
 # Bar background color
 #bbg=${wht}
-bbg=#00000000
+# Non-transparent
+bbg=${BG}
+# Transparent, requires compton
+#bbg=#00000000
 #Bar foreground color
-bfg=${fg}
+bfg=${FG}
 
 # Final output formatting
 #options="-d ${fonts} -g ${width}x${height}+${xoff}+${yoff} -B ${bbg} -F ${bfg} -b -r ${brdr}" 
-options="-d ${fonts} -g ${width}x${height}+${xoff}+${yoff} -B ${bbg} -F ${bfg} -r 5" 
+options="-d ${fonts} -g ${width}x${height}+${xoff}+${yoff} -B ${bbg} -F ${bfg} -r 5 -R ${brdrc}" 
 
 # Main loop
 while true; do
