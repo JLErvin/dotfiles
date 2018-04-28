@@ -5,6 +5,9 @@ SEP="  "
 SEPB="__"
 SPC="%{B$bg}%{F$bg}$SEPB%{B-}%{F-}"
 
+# Generate glyphs for Siji using echos
+# Seems more consistent to me than copy/pasting
+# the characters themselves
 glycur=$(echo -e "\ue000")
 glyem=$(echo -e "\ue001")
 glydate=$(echo -e "\ue015")
@@ -16,6 +19,8 @@ glybatmax=$(echo -e "\ue09e")
 glywlanhigh=$(echo -e "\ue048")
 glywlanlow=$(echo -e "\ue047")
 
+# Create formatting colors using color codes
+# from cache file
 grn="%{B$bg}%{F$grn}"
 red="%{B$bg}%{F$red}"
 blu="%{B$bg}%{F$blu}"
@@ -105,13 +110,14 @@ content()
 content
 
 # Formatting options
-fonts="-f -uw-ttyp0-medium-r-normal-*-14-*-*-*-*-*-*-* -f -wuncon-siji-medium-r-normal--10-100-75-75-c-80-iso10646-1"
+fonts="-f -uw-ttyp0-medium-r-normal-*-14-*-*-*-*-*-*-* -f -*-siji-*"
 width=1920
-height=20
+height=30
 # x - y offsets
 xoff=0
 yoff=0
 # Border width
+# Only works with patched lemonbar:w
 brdr=0
 # Border color
 brdrc=${bg}
@@ -121,7 +127,7 @@ bbg=${bg}
 bfg=${fg}
 
 # Final output formatting
-options="-d ${fonts} -g ${width}x${height}+${xoff}+${yoff} -B ${bbg} -F ${bfg} -b" 
+options="-d ${fonts} -g ${width}x${height}+${xoff}+${yoff} -B ${bbg} -F ${bfg}" 
 
 # Main loop
 while true; do

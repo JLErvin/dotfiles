@@ -1,7 +1,8 @@
 export PATH=/home/jlervin/.scripts:$PATH
+export PATH=/home/jlervin/squash:$PATH
 export _JAVA_AWT_WM_NONREPARENTING=1
 
-alias n="nvim"
+#alias n="nvim"
 alias pac="pacman -Qq | wc -l"
 alias space="df -h"
 alias rmorphans="pacman -Rns $(pacman -Qtdq)"
@@ -9,9 +10,8 @@ alias projector="xrandr --output HDMI-1 --same-as eDP-1"
 alias zzz="systemctl suspend"
 
 nvim() {
-	# Set the name of neovim's socket
-	local fn="$(mktemp -u "/tmp/nvimsocket-XXXXXXX")"
-	NVIM_LISTEN_ADDRESS=$fn /usr/bin/nvim $@
+    local fn="$(mktemp -u "/tmp/nvimsocket-XXXXXXX")"
+    NVIM_LISTEN_ADDRESS=$fn /usr/bin/nvim $@
 }
 
 source /home/jlervin/.antigen.zsh

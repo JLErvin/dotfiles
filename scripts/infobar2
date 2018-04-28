@@ -1,30 +1,28 @@
 #!/usr/bin/env bash
 #
-# Simple statusbar for use with squash
-#
-# Designed by Joshua Ervin @ University of Washington
-# jlervin@posteo.net
-# github.com/JLErvin
+# -- infobar2: minimal block-style bar for use with lemonbar
+# -- Author  : Joshua L Ervin @ Unversity of Washington
+# -- Contant : jlervin@posteo.net
 
-source $HOME/.cache/squash/colors
+source "${HOME}/.cache/squash/colors"
 SEP="  "
 SEP2="    "
 SEPB="__"
-SPC="%{B$bg}%{F$bg}$SEPB%{B-}%{F-}"
+SPC="%{B$BG}%{F$BG}$SEPB%{B-}%{F-}"
 
 # Generate glyphs for Siji using echos
 # Seems more consistent to me than copy/pasting
 # the characters themselves
-glycur=$(echo -e "\ue000")
-glyem=$(echo -e "\ue001")
-glydate=$(echo -e "\ue015")
-glyvol=$(echo -e "\ue050")
-glyvoloff=$(echo -e "\ue052")
-glybatlow=$(echo -e "\ue035")
-glybat=$(echo -e "\ue037")
-glybatmax=$(echo -e "\ue09e")
-glywlanhigh=$(echo -e "\ue048")
-glywlanlow=$(echo -e "\ue047")
+GLYCUR=$(echo -e "\ue000")
+GLYEM=$(echo -e "\ue001")
+GLYDATE=$(echo -e "\ue015")
+GLYVOL=$(echo -e "\ue050")
+GLYVOLoff=$(echo -e "\ue052")
+GLYBATLOW=$(echo -e "\ue035")
+GLYBAT=$(echo -e "\ue037")
+GLYBATMAX=$(echo -e "\ue09e")
+GLYWLANHIGH=$(echo -e "\ue048")
+GLYWLANLOW=$(echo -e "\ue047")
 
 # Status colors w/ formatting
 PANIC="%{F$MAG}%{B$BBLK}${SEP}"
@@ -47,87 +45,94 @@ if [ ! -z ${LMNBAR_DARK} ]; then
 fi
 
 # Bar contents
-content() {
+function content() 
+{
     # Get current workspaces
-    workspaces() {
-        cur=$(xprop -root _NET_CURRENT_DESKTOP | awk '{print $3}')
-        total=5
+    # Displays the active workspace using a 0 index
+    # Notes:
+    #   Requires xprop to get current desktop
+    function workspaces() {
+        local cur=$(xprop -root _NET_CURRENT_DESKTOP | awk '{print $3}')
+        local total=5
+        local seq=""
 
-        empty=$(echo -e "\ue000")
-
-        seq=""
-
-        for ((i=0; i<$cur && i<$(($total-1)); i++)); do 
+        for ((i=0; i<${cur} && i<$((${total}-1)); i++)); do 
             seq+="${GEN}${i}"
         done
 
         seq+="${SEP}${BLACK}${cur}${SEP}"
 
-        for ((i=$(($cur+1)); i<$total; i++)); do
+        for ((i=$((${cur}+1)); i<$total; i++)); do
             seq+="${GEN}${i}"
         done
 
         echo "${seq}${CLR}"
     }
 
-    # Clock
-    date-time() {
-        clock="$(date +'%a %d %I:%M')"
-        echo "${GEN}${glydate}${SEP}${BLACK}${clock}${CLR}"
+    # Clock function gets current time and displays
+    # Day of week, date, and time
+    function date-time() 
+    {
+        local clock="$(date +'%a %d %I:%M')"
+        echo "${GEN}${GLYDATE}${SEP}${BLACK}${clock}${CLR}"
     }
 
     # Volume 0-100
     # Glyph will change when volume is muted
-    volume() {
-        vol="$(amixer get Master|awk 'NR==5 {print $4}'|cut -d '%' -f1 | cut -d '[' -f2)"
-        mut="$(amixer get Master| awk 'NR==5 {print $6}')"
+    # Notes:
+    #   Requires amixer to get volume
+    function volume() 
+    {
+        local vol="$(amixer get Master|awk 'NR==5 {print $4}'|cut -d '%' -f1 | cut -d '[' -f2)"
+        local mut="$(amixer get Master| awk 'NR==5 {print $6}')"
 
         if [[ ${mut} = "[off]" ]]; then
-            echo "${ALERT}${glyvol}${SEP}${BLACK}${vol}${CLR}"
+            echo "${ALERT}${GLYVOL}${SEP}${BLACK}${vol}${CLR}"
         elif [[ ${vol} = 0 ]]; then
-            echo "${WARN}${glyvol}${SEP}${BLACK}${vol}${CLR}"
+            echo "${WARN}${GLYVOL}${SEP}${BLACK}${vol}${CLR}"
         else
-            echo "${GOOD}${glyvol}${SEP}${BLACK}${vol}${CLR}"
+            echo "${GOOD}${GLYVOL}${SEP}${BLACK}${vol}${CLR}"
         fi
     }
 
     # Battery 0-100
     # Battery considered charged at 98%
     # Glyph changes below 20 %
-    battery() {
-        cap="$(cat /sys/class/power_supply/BAT0/capacity)"
-        stat="$(cat /sys/class/power_supply/BAT0/status)"
+    function battery() 
+    {
+        local cap="$(cat /sys/class/power_supply/BAT0/capacity)"
+        local stat="$(cat /sys/class/power_supply/BAT0/status)"
 
         if [[ ${cap} -ge 98 || ${stat} = "Charging" ]]; then
-            echo "${GOOD}${glybatmax}${SEP}${BLACK}${cap}${CLR}"
+            echo "${GOOD}${GLYBATMAX}${SEP}${BLACK}${cap}${CLR}"
         elif [[ ${cap} -ge 50 ]]; then
-            echo "${WARN}${glybat}${SEP}${BLACK}${cap}${CLR}"
+            echo "${WARN}${GLYBAT}${SEP}${BLACK}${cap}${CLR}"
         else 
-            echo "${ALERT}${glybatlow}${SEP}${BLACK}${cap}${CLR}"
+            echo "${ALERT}${GLYBATLOW}${SEP}${BLACK}${cap}${CLR}"
         fi
     }
 
     # Get SSID using iwgetid
     # If iwgetid is not found, then DISCONNECTED will be displayed
-    wireless() {
-        wifi=$(iwgetid -r)
+    function wireless() 
+    {
+        local wifi=$(iwgetid -r)
 
         if [[ -z $wifi ]]; then
-            wifi="DISCONNECTED"
-            echo "${ALERT}${glywlanlow}${SEP}${BLACK}${wifi}${CLR}"
+            local wifi="DISCONNECTED"
+            echo "${ALERT}${GLYWLANLOW}${SEP}${BLACK}${wifi}${CLR}"
         else
-            echo "${GOOD}${glywlanhigh}${SEP}${BLACK}${wifi}${CLR}"
+            echo "${GOOD}${GLYWLANHIGH}${SEP}${BLACK}${wifi}${CLR}"
         fi
     }
 
     # Bar contents left/right
-    left="$(workspaces)"
-    center=
-    #right="$(volume)${SPC}$(battery)${SPC}$(wireless)${SPC}$(date-time)${SCP}"
-    right="$(wireless)"${SEP2}"$(battery)"$SEP2"$(volume)"$SEP2"$(date-time)"
+    local left="$(workspaces)"
+    local center=
+    local right="$(wireless)"${SEP2}"$(battery)"$SEP2"$(volume)"$SEP2"$(date-time)"
+    local output="${left}%{c}${center}%{r}${right}"
 
-    output="$left%{c}$center%{r}$right"
-    echo -n "$output"
+    echo -n "${output}"
 }
 
 content
@@ -155,7 +160,6 @@ bbg=${BG}
 bfg=${FG}
 
 # Final output formatting
-#options="-d ${fonts} -g ${width}x${height}+${xoff}+${yoff} -B ${bbg} -F ${bfg} -b -r ${brdr}" 
 options="-d ${fonts} -g ${width}x${height}+${xoff}+${yoff} -B ${bbg} -F ${bfg} -r 5 -R ${brdrc}" 
 
 # Main loop

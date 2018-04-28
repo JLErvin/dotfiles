@@ -1,6 +1,13 @@
 #!/usr/bin/env bash
+#
+# Simple Statusbar for use with squash
+#
+# Designed by Joshua Ervin @ University of Washington
+# jlervin@posteo.net
+# github.com/JLErvin
 
 source $HOME/.cache/squash/colors
+
 SEP="  "
 SEP2="    "
 SEPB="__"
