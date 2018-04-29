@@ -1,9 +1,7 @@
-```
-╺┳┓ ┏━┓ ╺┳╸ ┏━┓
- ┃┃ ┃ ┃  ┃  ┗━┓
-╺┻┛ ┗━┛  ╹  ┗━┛
-                                                                                
-```
+<div align='center'>
+    <h1>dotfiles</h1><br>
+</div>
+
 ## Window Managers
 
 * 2bwm
@@ -20,7 +18,7 @@ Welcome to my dotfiles. You can usually find my stuff over on /r/unixporn. If yo
 * shell: `zsh`
 * terminal: `urxvt`
 * terminal font: `UW ttyp0`
-* colorscheme: `agila`
+* colorscheme: `designr`
 * notifications: `dunst`
 * bar: `lemonbar`
 * browser: `firefox`
@@ -28,4 +26,4 @@ Welcome to my dotfiles. You can usually find my stuff over on /r/unixporn. If yo
 
 # 2bwm
 
-![Screenshot](https://i.imgur.com/lpqaDh0.jpg)
+![Screenshot](https://i.imgur.com/ehRgYt1.png)
