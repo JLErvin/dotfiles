@@ -1,9 +1,7 @@
-```
-╺┳┓ ┏━┓ ╺┳╸ ┏━┓
- ┃┃ ┃ ┃  ┃  ┗━┓
-╺┻┛ ┗━┛  ╹  ┗━┛
-                                                                                
-```
+<div align='center'>
+    <h1>dotfiles</h1><br>
+</div>
+
 ## Window Managers
 
 * 2bwm
