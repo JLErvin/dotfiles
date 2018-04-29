@@ -8,7 +8,7 @@ super + Return
 
 # program launcher
 super + d
-    rofi_run	
+    rofi_run &
 
 # make sxhkd reload its configuration files:
 super + Escape
@@ -98,4 +98,4 @@ super + ctrl + {1-9}
 
 # cancel the preselection for the focused node
 super + ctrl + space
-	bspc node -p cancel
+bspc node -p cancel
