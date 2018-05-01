@@ -45,18 +45,17 @@ using `tmux`. However, if I need to multitask with another application, like `fi
 I need to view two windows at once. The simplest way to do this is have `firefox`
 take up half the screen (horizontally) and the terminal take up the other half. 
 
-`windowchef` comes with grids out of the box, but you can achieve the same results
-without using them. I simply added the following to my `sxhkdrc` to achieve the same 
-results.
+Windowchef comes with something called grids, which allows you to segment the screen
+into equal sections and move windows to them. This is exacly what I need, 
+and I can emulate my `2bwm` configuration with the following commands in my
+`sxhkdr`.
 
 ```bash
-super + 0
-    waitron window_move_absolute 0 30; waitron window_resize_absolute 950 1040
+super + o
+    waitron window_put_in_grid 2 1 0 0 
+
+super + p 
+    waitron window_put_in_grid 2 1 1 0
     
-super + p
-    waitron window_move_absolute 960 30; waitron window_resize_absolute 950 1040
 ```
-
-Getting these geometry values correct took me longer to figure out than I would like to admit.
-
 
