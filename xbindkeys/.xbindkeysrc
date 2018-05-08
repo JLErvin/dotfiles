@@ -22,7 +22,7 @@
 
 # mute/unmute
 #"amixer -q sset Master toggle"
-"amixer sset Master toggle"
+"toggle_mute"
   XF86AudioMute
 
 "xbacklight -inc 10"

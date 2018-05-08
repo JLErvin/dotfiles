@@ -7,7 +7,7 @@ bspc config bottom_padding       0
 bspc config left_padding         0
 bspc config right_padding        0
 bspc config border_width         4
-bspc config window_gap           12
+bspc config window_gap           0
 
 bspc config borderless_monocle   false 
 bspc config gapless_monocle      true

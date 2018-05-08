@@ -10,6 +10,9 @@ alt + {h,j,k,l}
 super + alt + Escape
 	waitron wm_quit 0
 
+super + shift + {1-9}
+    cur=xprop -root WINDOWCHEF_ACTIVE_GROUPS | cut -d '= ' -f2 | cut -d ' ' -f2 && waitron group_add_window {1 - 9} && waitron group_activate_specific $cur
+
 super + f
 	waitron window_maximize
 
@@ -26,10 +29,13 @@ super + v
 	waitron window_ver_maximize
 
 super + o
-    waitron window_move_absolute 0 30; waitron window_resize_absolute 955 1040
+    waitron window_put_in_grid 2 1 0 0 
 
 super + p 
-    waitron window_move_absolute 965 30; waitron window_resize_absolute 955 1040
+    waitron window_put_in_grid 2 1 1 0
+
+super + c
+    waitron window_snap middle
 
 super + d
     rofi_run &
@@ -37,8 +43,8 @@ super + d
 super + Tab
 	waitron window_cycle
 
-super + {_,shift +}{1-9}
-	waitron {group_toggle,group_add_window} {1-9}
+super + {1-9} 
+    waitron group_activate_specific {1-9}
 
 super + ctrl + r
 	waitron group_remove_window

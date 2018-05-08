@@ -268,7 +268,8 @@ c.colors.statusbar.progress.bg = xresources['*.color7']
 
 ## Default foreground color of the URL in the statusbar.
 ## Type: QssColor
-c.colors.statusbar.url.fg = xresources['*.color7']
+# c.colors.statusbar.url.fg = xresources['*.color7']
+c.colors.statusbar.url.fg = xresources['*.foreground']
 
 ## Foreground color of the URL in the statusbar for hove.color1 links.
 ## Type: QssColor

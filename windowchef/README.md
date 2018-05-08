@@ -56,6 +56,5 @@ super + o
 
 super + p 
     waitron window_put_in_grid 2 1 1 0
-    
 ```
 

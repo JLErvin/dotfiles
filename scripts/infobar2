@@ -31,7 +31,10 @@ WARN="%{F$YLW}%{B$BBLK}${SEP}"
 GOOD="%{F$GRN}%{B$BBLK}${SEP}"
 PLAIN="%{F$WHT}%{B$BBLK}${SEP}"
 GEN="%{F$FG}%{B$BBLK}${SEP}"
+EMPTY="%{F$FG}%{B$BBLK}${SEP}"
 BLACK="%{F$FG}%{B$BLK}${SEP}"
+#FULL="%{F$RED}%{B$BLK}${SEP}"
+FULL="%{F$BLK}%{B$ACC}${SEP}"
 CLR="${SEP}%{B-}${F-}"
 
 if [ ! -z ${LMNBAR_DARK} ]; then
@@ -41,7 +44,10 @@ if [ ! -z ${LMNBAR_DARK} ]; then
     GOOD="%{F$GRN}%{B$LMNBAR_DARK}${SEP}"
     PLAIN="%{F$WHT}%{B$LMNBAR_DARK}${SEP}"
     GEN="%{F$FG}%{B$LMNBAR_DARK}${SEP}"
+    EMPTY="%{F$FG}%{B$LMNBAR_DARK}${SEP}"
     BLACK="%{F$FG}%{B$LMNBAR_DARKER}${SEP}"
+    #FULL="%{F$RED}%{B$LMNBAR_DARKER}${SEP}"
+    FULL="%{F$BLK}%{B$ACC}${SEP}"
 fi
 
 # Bar contents
@@ -51,19 +57,25 @@ function content()
     # Displays the active workspace using a 0 index
     # Notes:
     #   Requires xprop to get current desktop
+    #   For windochef to function properly, 
+    #   windows must be assigned to groups
     function workspaces() {
         local cur=$(xprop -root _NET_CURRENT_DESKTOP | awk '{print $3}')
         local total=5
         local seq=""
 
         for ((i=0; i<${cur} && i<$((${total}-1)); i++)); do 
-            seq+="${GEN}${i}"
+            #seq+="${GEN}${i}"
+            seq+="${EMPTY}${i}"
         done
 
-        seq+="${SEP}${BLACK}${cur}${SEP}"
+        #seq+="${SEP}${BLACK}${cur}${SEP}"
+        #seq+="${SEP}%{!u$GRN}${FULL}${cur}${SEP}%{-u}"
+        seq+="${SEP}${FULL}${cur}${SEP}"
 
         for ((i=$((${cur}+1)); i<$total; i++)); do
-            seq+="${GEN}${i}"
+            #seq+="${GEN}${i}"
+            seq+="${EMPTY}${i}"
         done
 
         echo "${seq}${CLR}"
@@ -166,4 +178,4 @@ options="-d ${fonts} -g ${width}x${height}+${xoff}+${yoff} -B ${bbg} -F ${bfg} -
 while true; do
     echo $(content)
     sleep .5
-done | lemonbar ${options}
+done | lemonbar ${options} | sh > /dev/null 2>&1
