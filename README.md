@@ -14,7 +14,7 @@ Welcome to my dotfiles. You can usually find my stuff over on /r/unixporn. If yo
 
 * os: `Arch Linux`
 * model: `ThinkPad X1 Carbon 5th Gen`
-* wm: `2bwm/Openbox/bspwm`
+* wm: `2bwm/windowchef/bspwm`
 * shell: `zsh`
 * terminal: `urxvt`
 * terminal font: `UW ttyp0`
