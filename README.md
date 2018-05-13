@@ -4,7 +4,7 @@
 
 ![Screenshot](https://i.imgur.com/F6C5dSe.png)
 
-![Screenshot](https://i.imgur.com/W0vdiHi.png)
+![Screenshot](https://i.imgur.com/3quO6ig.png)
 
 ## Window Managers
 
