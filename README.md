@@ -2,6 +2,8 @@
     <h1>dotfiles</h1><br>
 </div>
 
+![Screenshot](https://i.imgur.com/F6C5dSe.png)
+
 ## Window Managers
 
 * 2bwm
