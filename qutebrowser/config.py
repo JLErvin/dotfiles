@@ -299,7 +299,7 @@ c.colors.tabs.even.bg = xresources['*.background']
 
 ## Foreground color of unselected even tabs.
 ## Type: QtColor
-c.colors.tabs.even.fg = xresources['*.color7']
+c.colors.tabs.even.fg = xresources['*.foreground']
 
 ## Color for the tab indicator on errors.
 ## Type: QtColor
@@ -328,23 +328,23 @@ c.colors.tabs.odd.bg = xresources['*.background']
 
 ## Foreground color of unselected odd tabs.
 ## Type: QtColor
-c.colors.tabs.odd.fg = xresources['*.color7']
+c.colors.tabs.odd.fg = xresources['*.foreground']
 
 ## Background color of selected even tabs.
 ## Type: QtColor
-c.colors.tabs.selected.even.bg = xresources['*.color0']
+c.colors.tabs.selected.even.bg = xresources['*.background']
 
 ## Foreground color of selected even tabs.
 ## Type: QtColor
-c.colors.tabs.selected.even.fg = xresources['*.color7']
+c.colors.tabs.selected.even.fg = xresources['*.color4']
 
 ## Background color of selected odd tabs.
 ## Type: QtColor
-c.colors.tabs.selected.odd.bg = xresources['*.color0']
+c.colors.tabs.selected.odd.bg = xresources['*.background']
 
 ## Foreground color of selected odd tabs.
 ## Type: QtColor
-c.colors.tabs.selected.odd.fg = xresources['*.color7']
+c.colors.tabs.selected.odd.fg = xresources['*.color4']
 
 ## Background color for webpages if unset (or empty to use the theme's
 ## color).

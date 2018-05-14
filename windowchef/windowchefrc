@@ -2,13 +2,16 @@
 
 source "${HOME}/.cache/squash/colors"
 
-waitron wm_config internal_border_width 5 
-waitron wm_config internal_color_focused "${TWOBWM_FOCUS:1:7}"
-waitron wm_config internal_color_unfocused "${TWOBWM_UNFOCUS:1:7}"
+#waitron wm_config internal_border_width 5 
+#waitron wm_config internal_color_focused "${TWOBWM_FOCUS:1:7}"
+#waitron wm_config internal_color_unfocused "${TWOBWM_UNFOCUS:1:7}"
 
-waitron wm_config border_width 10
-waitron wm_config color_focused "${BG:1:7}"
-waitron wm_config color_unfocused "${BG:1:7}" 
+#waitron wm_config border_width 10
+waitron wm_config border_width 5
+#waitron wm_config color_focused "${BG:1:7}"
+#waitron wm_config color_unfocused "${BG:1:7}" 
+waitron wm_config color_focused "${TWOBWM_FOCUS:1:7}"
+waitron wm_config color_unfocused "${TWOBWM_UNFOCUS:1:7}" 
 
 waitron wm_config gap_width all 0
 waitron wm_config grid_gap_width 0

@@ -7,7 +7,7 @@ distro="$(cat /etc/*-release | grep PRETTY_NAME | cut -d '=' -f2 | tr -d '"')"
 kernel="$(uname -mrs | tr -d 'Linux ')"
 packages="$(pacman -Qq | wc -l)"
 font="UW Ttyp0"
-colors="lava"
+colors="Material Pale"
 
 printf " \e[0m\n"
 printf " \e[1;34m      distro \e[0m$distro\n"

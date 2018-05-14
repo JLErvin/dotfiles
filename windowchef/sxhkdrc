@@ -17,7 +17,7 @@ super + f
 	waitron window_maximize
 
 super + x
-	waitron window_monocle
+    max
 
 super + q
 	waitron window_close
