@@ -5,67 +5,6 @@
 <menu id="apps-accessories-menu" label="Accessories">
 </menu>
 
-<menu id="virtual-menu" label="Virtual">
-  <item label="VirtualBox">
-    <action name="Execute">
-      <command>VirtualBox</command>
-      <startupnotify>
-        <enabled>yes</enabled>
-      </startupnotify>
-    </action>
-  </item>
-  <item label="Steam Win">
-    <action name="Execute">
-      <command>win_steam</command>
-      <startupnotify>
-        <enabled>yes</enabled>
-      </startupnotify>
-    </action>
-  </item>
-  <item label="Flawless Win">
-    <action name="Execute">
-      <command>win_flawless</command>
-      <startupnotify>
-        <enabled>yes</enabled>
-      </startupnotify>
-    </action>
-  </item>
-</menu>
-
-<menu id="apps-editors-menu" label="Editors">
-  <item label="RStudio">
-    <action name="Execute">
-      <command>rstudio</command>
-      <startupnotify>
-        <enabled>yes</enabled>
-      </startupnotify>
-    </action>
-  </item>
-  <item label="IDEA">
-    <action name="Execute">
-      <command>idea</command>
-      <startupnotify>
-        <enabled>yes</enabled>
-      </startupnotify>
-    </action>
-  </item>
-  <item label="jGRASP">
-    <action name="Execute">
-      <command>jgrasp</command>
-      <startupnotify>
-        <enabled>yes</enabled>
-      </startupnotify>
-    </action>
-  </item>
-  <item label="MATLAB">
-    <action name="Execute">
-      <command>run_matlab</command>
-      <startupnotify>
-        <enabled>yes</enabled>
-      </startupnotify>
-    </action>
-  </item>
-</menu>
 
 <menu id="apps-term-menu" label="Terminals">
   <item label="Rxvt Unicode">
@@ -73,86 +12,15 @@
       <command>urxvt</command>
     </action>
   </item>
-  <item label="Xterm">
-    <action name="Execute"><command>xterm</command></action>
-  </item>
 </menu>
 
 <menu id="apps-net-menu" label="Internet">
-  <item label="Google Chrome">
-    <action name="Execute">
-      <command>google-chrome-stable</command>
-      <startupnotify>
-        <enabled>yes</enabled>
-        <wmclass>chromium</wmclass>
-      </startupnotify>
-    </action>
-  </item>
-  <item label="Chromium">
-    <action name="Execute">
-      <command>chromium</command>
-      <startupnotify>
-        <enabled>yes</enabled>
-        <wmclass>chromium</wmclass>
-      </startupnotify>
-    </action>
-  </item>
   <item label="Firefox">
     <action name="Execute">
       <command>firefox</command>
       <startupnotify>
         <enabled>yes</enabled>
         <wmclass>chromium</wmclass>
-      </startupnotify>
-    </action>
-  </item>
-</menu>
-
-<menu id="apps-office-menu" label="Office">
-  <item label="Evolution">
-    <action name="Execute">
-      <command>evolution</command>
-    </action>
-  </item>
-  <item label="LibreOffice Writer">
-    <action name="Execute">
-      <command>lowriter</command>
-    </action>
-  </item>
-  <item label="LibreOffice Calc">
-    <action name="Execute">
-      <command>localc</command>
-    </action>
-  </item>
-  <item label="LibreOffice Math">
-    <action name="Execute">
-      <command>lomath</command>
-    </action>
-  </item>
-</menu>
-
-<menu id="apps-multimedia-menu" label="Multimedia">
-  <item label="Spotify">
-    <action name="Execute">
-      <command>spotify</command>
-      <startupnotify>
-        <enabled>yes</enabled>
-      </startupnotify>
-    </action>
-  </item>
-  <item label="Steam">
-    <action name="Execute">
-      <command>steam</command>
-      <startupnotify>
-        <enabled>yes</enabled>
-      </startupnotify>
-    </action>
-  </item>
-  <item label="Steam Wine">
-    <action name="Execute">
-      <command>win_steam</command>
-      <startupnotify>
-        <enabled>yes</enabled>
       </startupnotify>
     </action>
   </item>
@@ -184,13 +52,9 @@
 
 <menu id="root-menu" label="Openbox 3">
   <separator label="Applications" />
-  <menu id="apps-editors-menu"/>
   <menu id="apps-fileman-menu"/>
   <menu id="apps-net-menu"/>
-  <menu id="apps-multimedia-menu"/>
-  <menu id="apps-office-menu"/>
   <menu id="apps-term-menu"/>
-  <menu id="virtual-menu"/>
   <separator label="System" />
   <menu id="system-menu"/>
   <separator />

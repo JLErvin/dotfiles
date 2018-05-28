@@ -19,41 +19,41 @@
     <primaryMonitor>1</primaryMonitor>
   </placement>
   <theme>
-    <name>ags</name>
-    <titleLayout>LIMC</titleLayout>
+    <name>nordic</name>
+    <titleLayout>L</titleLayout>
     <animateIconify>no</animateIconify>
     <font place="ActiveWindow">
-      <name>Ttyp0</name>
-      <size>11</size>
+      <name>UW Ttyp0</name>
+      <size>10</size>
       <weight>Normal</weight>
       <slant>Normal</slant>
     </font>
     <font place="InactiveWindow">
-      <name>Ttyp0</name>
-      <size>11</size>
+      <name>UW Ttyp0</name>
+      <size>10</size>
       <weight>Normal</weight>
       <slant>Normal</slant>
     </font>
     <font place="MenuHeader">
-      <name>Ttyp0</name>
-      <size>11</size>
+      <name>UW Ttyp0</name>
+      <size>10</size>
       <weight>Normal</weight>
       <slant>Normal</slant>
     </font>
     <font place="MenuItem">
-      <name>Ttyp0</name>
-      <size>11</size>
+      <name>UW Ttyp0</name>
+      <size>10</size>
       <weight>Normal</weight>
       <slant>Normal</slant>
     </font>
     <font place="ActiveOnScreenDisplay">
-      <name>Ttyp0</name>
+      <name>UW Ttyp0</name>
       <size>10</size>
       <weight>Normal</weight>
       <slant>Normal</slant>
     </font>
     <font place="InactiveOnScreenDisplay">
-      <name>Ttyp0</name>
+      <name>UW Ttyp0</name>
       <size>10</size>
       <weight>Normal</weight>
       <slant>Normal</slant>
@@ -82,7 +82,7 @@
     </popupFixedPosition>
   </resize>
   <margins>
-    <top>0</top>
+    <top>30</top>
     <bottom>0</bottom>
     <left>0</left>
     <right>0</right>
@@ -100,6 +100,38 @@
     <showDelay>300</showDelay>
   </dock>
   <keyboard>
+    <keybind key="W-S-h">
+      <action name="ResizeRelative">
+        <left>0</left>
+        <right>-30</right>
+        <top>0</top>
+        <bottom>0</bottom>
+      </action>
+    </keybind>
+    <keybind key="W-S-l">
+      <action name="ResizeRelative">
+        <left>0</left>
+        <right>30</right>
+        <top>0</top>
+        <bottom>0</bottom>
+      </action>
+    </keybind>
+    <keybind key="W-S-k">
+      <action name="ResizeRelative">
+        <left>0</left>
+        <right>0</right>
+        <top>0</top>
+        <bottom>-30</bottom>
+      </action>
+    </keybind>
+    <keybind key="W-S-j">
+      <action name="ResizeRelative">
+        <left>0</left>
+        <right>0</right>
+        <top>0</top>
+        <bottom>30</bottom>
+      </action>
+    </keybind>
     <keybind key="W-h">
       <action name="MoveRelative">
         <x>-40</x>
@@ -124,6 +156,24 @@
         <y>40</y>
       </action>
     </keybind>
+    <keybind key="W-o">
+      <action name="MoveResizeTo">
+        <x>0</x>
+        <y>0</y>
+        <width>50%</width>
+        <height>100%</height>
+        <monitor>current%</monitor>
+      </action>
+    </keybind>
+    <keybind key="W-p">
+      <action name="MoveResizeTo">
+        <x>50%</x>
+        <y>0</y>
+        <width>50%</width>
+        <height>100%</height>
+        <monitor>current</monitor>
+      </action>
+    </keybind>
     <keybind key="W-Return">
       <action name="Execute">
         <name>Terminal</name>
@@ -134,12 +184,6 @@
       <action name="Execute">
         <name>Run</name>
         <command>rofi_run</command>
-      </action>
-    </keybind>
-    <keybind key="W-p">
-      <action name="Execute">
-        <name>Run</name>
-        <command>lock</command>
       </action>
     </keybind>
     <keybind key="W-1">
