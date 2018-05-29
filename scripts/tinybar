@@ -1,0 +1,126 @@
+#!/usr/bin/env bash
+
+BAR_NAME="blockbar"
+source "${HOME}/squash/bar/bar_defaults" "${BAR_NAME}"
+
+PANEL_FIFO=/tmp/panel-fifo
+OPTIONS="-d ${FONTS} -g ${WIDTH}x${HEIGHT}+${XOFF}+${YOFF} -B ${BBG} -F ${BFG} -r 5 -R ${BRDRC}" 
+
+[ -e "${PANEL_FIFO}" ] && rm "${PANEL_FIFO}"
+mkfifo "${PANEL_FIFO}"
+
+workspaces() {
+    while true; do
+        local cur=$(xprop -root _NET_CURRENT_DESKTOP | awk '{print $3}')
+        local total=5
+        local seq=""
+
+        for ((i=0; i<${cur} && i<$((${total}-1)); i++)); do 
+            seq+="${EMPTY}${i}"
+        done
+
+        seq+="${SEP}${FULL}${cur}${SEP}"
+
+        for ((i=$((${cur}+1)); i<$total; i++)); do
+            seq+="${EMPTY}${i}"
+        done
+
+        echo "WORKSPACES ${seq}${CLR}"
+
+        sleep 3
+    done
+}
+
+workspaces > "${PANEL_FIFO}" &
+
+clock() 
+{
+    while true; do
+        local clock="$(date +'%a %d %I:%M')"
+        echo "CLOCK ${GEN}${GLYDATE}${SEP}${BLACK}${clock}${CLR}"
+
+        sleep 5
+    done
+}
+
+clock > "${PANEL_FIFO}" &
+
+volume()
+{
+    while true; do
+        local vol="$(amixer get Master|awk 'NR==5 {print $4}'|cut -d '%' -f1 | cut -d '[' -f2)"
+        local mut="$(amixer get Master| awk 'NR==5 {print $6}')"
+
+        if [[ ${mut} = "[off]" ]]; then
+            echo "VOLUME ${ALERT}${GLYVOL}${SEP}${BLACK}${vol}${CLR}"
+        elif [[ ${vol} = 0 ]]; then
+            echo "VOLUME ${WARN}${GLYVOL}${SEP}${BLACK}${vol}${CLR}"
+        else
+            echo "VOLUME ${GOOD}${GLYVOL}${SEP}${BLACK}${vol}${CLR}"
+        fi
+
+        sleep 1
+    done
+}
+
+volume > "${PANEL_FIFO}" &
+
+battery() 
+{
+    while true; do
+        local cap="$(cat /sys/class/power_supply/BAT0/capacity)"
+        local stat="$(cat /sys/class/power_supply/BAT0/status)"
+
+        if [[ ${cap} -ge 98 || ${stat} = "Charging" ]]; then
+            echo "BATTERY ${GOOD}${GLYBATMAX}${SEP}${BLACK}${cap}${CLR}"
+        elif [[ ${cap} -ge 50 ]]; then
+            echo "BATTERY ${WARN}${GLYBAT}${SEP}${BLACK}${cap}${CLR}"
+        else 
+            echo "BATTERY ${ALERT}${GLYBATLOW}${SEP}${BLACK}${cap}${CLR}"
+        fi
+
+        sleep 10
+    done
+}
+
+battery > "${PANEL_FIFO}" &
+
+wireless() 
+{
+    while true; do
+        local wifi=$(iwgetid -r)
+
+        if [[ -z $wifi ]]; then
+            local wifi="DISCONNECTED"
+            echo "WIRELESS ${ALERT}${GLYWLANLOW}${SEP}${BLACK}${wifi}${CLR}"
+        else
+            echo "WIRELESS ${GOOD}${GLYWLANHIGH}${SEP}${BLACK}${wifi}${CLR}"
+        fi
+
+        sleep 10
+    done
+}
+
+wireless > "${PANEL_FIFO}" &
+
+while read -r line; do
+    case $line in
+        CLOCK*)
+            fn_time="${line#CLOCK }"
+            ;;
+        VOLUME*)
+            fn_vol="${line#VOLUME }"
+            ;;
+        BATTERY*)
+            fn_bat="${line#BATTERY }"
+            ;;
+        WORKSPACES*)
+            fn_work="${line#WORKSPACES }"
+            ;;
+        WIRELESS*)
+            fn_wire="${line#WIRELESS }"
+            ;;
+    esac
+    #printf "%s\n" "%{l}${fn_time}%{c}${fn_vol}%{r}${fn_bat}${fn_work}${fn_wire}"
+    printf "%s\n" "%{l}${fn_work}%{r}${fn_bat}${SEP}${fn_wire}${SEP}${fn_vol}${SEP}${fn_time}"
+done < "${PANEL_FIFO}" | lemonbar ${OPTIONS} | sh > /dev/null
