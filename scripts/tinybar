@@ -1,7 +1,83 @@
 #!/usr/bin/env bash
+#
+# A simple block-style bar using lemonbar
+# and named pipes to reduce resource footprint
+#
+# Normally, this file is split into seperate files
+# for colors and bar defaults, I have included them
+# all together here for simplicity
+#
+# Bar created by Joshua Ervin @ University of Washington
+# Contact: jlervin@posteo.net
 
-BAR_NAME="blockbar"
-source "${HOME}/squash/bar/bar_defaults" "${BAR_NAME}"
+source "${HOME}/.cache/squash/colors"
+
+FONTS="-f -uw-ttyp0-medium-r-normal-*-14-*-*-*-*-*-*-* -f -*-siji-*"
+WIDTH=1910 # bar width
+HEIGHT=20 # bar height
+XOFF=0 # x offset
+YOFF=0 # y offset
+BRDR=5 # border width
+BRDRC=${BG} # border color
+BBG=${BG} # bar background color
+#BBG=#00000000 #back background transparent
+BFG=${FG}
+
+# Status constants
+# Change these to modify bar behavior
+DESKTOP_COUNT=5 
+BATTERY_FULL=98
+BATTERY_MID=50
+BATTERY_LOW=20
+
+# Sleep constnats
+WORKSPACE_SLEEP=0.5
+BATTERY_SLEEP=10
+WIRELESS_SLEEP=10
+VOLUME_SLEEP=1
+DATE_SLEEP=5
+
+# Formatting Strings
+# I would reccomend not touching these :D
+SEP=" "
+SEP2="    "
+SEPB="__"
+SPC="%{B$BG}%{F$BG}$SEPB%{B-}%{F-}"
+
+# Glyphs used for both bars
+GLYCUR=$(echo -e "\ue000")
+GLYEM=$(echo -e "\ue001")
+GLYDATE=$(echo -e "\ue015")
+GLYVOL=$(echo -e "\ue050")
+GLYVOLoff=$(echo -e "\ue052")
+GLYBATLOW=$(echo -e "\ue035")
+GLYBAT=$(echo -e "\ue037")
+GLYBATMAX=$(echo -e "\ue09e")
+GLYWLANHIGH=$(echo -e "\ue048")
+GLYWLANLOW=$(echo -e "\ue047")
+
+PANIC="%{F$MAG}%{B$BBLK}${SEP}"
+ALERT="%{F$RED}%{B$BBLK}${SEP}"
+WARN="%{F$YLW}%{B$BBLK}${SEP}"
+GOOD="%{F$GRN}%{B$BBLK}${SEP}"
+PLAIN="%{F$WHT}%{B$BBLK}${SEP}"
+GEN="%{F$FG}%{B$BBLK}${SEP}"
+EMPTY="%{F$FG}%{B$BBLK}${SEP}"
+BLACK="%{F$FG}%{B$BLK}${SEP}"
+FULL="%{F$BLK}%{B$ACC}${SEP}"
+CLR="${SEP}%{B-}${F-}"
+
+if [ ! -z ${LMNBAR_DARK} ]; then
+    PANIC="%{F$MAG}%{B$LMNBAR_DARK}${SEP}"
+    ALERT="%{F$RED}%{B$LMNBAR_DARK}${SEP}"
+    WARN="%{F$YLW}%{B$LMNBAR_DARK}${SEP}"
+    GOOD="%{F$GRN}%{B$LMNBAR_DARK}${SEP}"
+    PLAIN="%{F$WHT}%{B$LMNBAR_DARK}${SEP}"
+    GEN="%{F$FG}%{B$LMNBAR_DARK}${SEP}"
+    EMPTY="%{F$FG}%{B$LMNBAR_DARK}${SEP}"
+    BLACK="%{F$FG}%{B$LMNBAR_DARKER}${SEP}"
+    FULL="%{F$BLK}%{B$ACC}${SEP}"
+fi
 
 PANEL_FIFO=/tmp/panel-fifo
 OPTIONS="-d ${FONTS} -g ${WIDTH}x${HEIGHT}+${XOFF}+${YOFF} -B ${BBG} -F ${BFG} -r 5 -R ${BRDRC}" 
@@ -12,7 +88,7 @@ mkfifo "${PANEL_FIFO}"
 workspaces() {
     while true; do
         local cur=$(xprop -root _NET_CURRENT_DESKTOP | awk '{print $3}')
-        local total=5
+        local total=${DESKTOP_COUNT}
         local seq=""
 
         for ((i=0; i<${cur} && i<$((${total}-1)); i++)); do 
@@ -27,7 +103,7 @@ workspaces() {
 
         echo "WORKSPACES ${seq}${CLR}"
 
-        sleep 3
+        sleep ${WORKSPACE_SLEEP}
     done
 }
 
@@ -39,7 +115,7 @@ clock()
         local clock="$(date +'%a %d %I:%M')"
         echo "CLOCK ${GEN}${GLYDATE}${SEP}${BLACK}${clock}${CLR}"
 
-        sleep 5
+        sleep ${DATE_SLEEP}
     done
 }
 
@@ -59,7 +135,7 @@ volume()
             echo "VOLUME ${GOOD}${GLYVOL}${SEP}${BLACK}${vol}${CLR}"
         fi
 
-        sleep 1
+        sleep ${VOLUME_SLEEP} 
     done
 }
 
@@ -71,15 +147,15 @@ battery()
         local cap="$(cat /sys/class/power_supply/BAT0/capacity)"
         local stat="$(cat /sys/class/power_supply/BAT0/status)"
 
-        if [[ ${cap} -ge 98 || ${stat} = "Charging" ]]; then
+        if [[ ${cap} -ge ${BATTERY_FULL} || ${stat} = "Charging" ]]; then
             echo "BATTERY ${GOOD}${GLYBATMAX}${SEP}${BLACK}${cap}${CLR}"
-        elif [[ ${cap} -ge 50 ]]; then
+        elif [[ ${cap} -ge ${BATTERY_MID} ]]; then
             echo "BATTERY ${WARN}${GLYBAT}${SEP}${BLACK}${cap}${CLR}"
         else 
             echo "BATTERY ${ALERT}${GLYBATLOW}${SEP}${BLACK}${cap}${CLR}"
         fi
 
-        sleep 10
+        sleep ${BATTERY_SLEEP}
     done
 }
 
@@ -97,7 +173,7 @@ wireless()
             echo "WIRELESS ${GOOD}${GLYWLANHIGH}${SEP}${BLACK}${wifi}${CLR}"
         fi
 
-        sleep 10
+        sleep ${WIRELESS_SLEEP}
     done
 }
 
@@ -121,6 +197,5 @@ while read -r line; do
             fn_wire="${line#WIRELESS }"
             ;;
     esac
-    #printf "%s\n" "%{l}${fn_time}%{c}${fn_vol}%{r}${fn_bat}${fn_work}${fn_wire}"
     printf "%s\n" "%{l}${fn_work}%{r}${fn_bat}${SEP}${fn_wire}${SEP}${fn_vol}${SEP}${fn_time}"
 done < "${PANEL_FIFO}" | lemonbar ${OPTIONS} | sh > /dev/null
