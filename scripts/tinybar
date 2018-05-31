@@ -14,13 +14,14 @@ source "${HOME}/.cache/squash/colors"
 
 FONTS="-f -uw-ttyp0-medium-r-normal-*-14-*-*-*-*-*-*-* -f -*-siji-*"
 WIDTH=1910 # bar width
-HEIGHT=20 # bar height
+HEIGHT=25 # bar height
 XOFF=0 # x offset
 YOFF=0 # y offset
 BRDR=5 # border width
-BRDRC=${BG} # border color
-BBG=${BG} # bar background color
-#BBG=#00000000 #back background transparent
+#BRDRC=${BG} # border color
+BRDRC=#00000000 #back background transparent
+#BBG=${BG} # bar background color
+BBG=#00000000 #back background transparent
 BFG=${FG}
 
 # Status constants
@@ -55,6 +56,7 @@ GLYBAT=$(echo -e "\ue037")
 GLYBATMAX=$(echo -e "\ue09e")
 GLYWLANHIGH=$(echo -e "\ue048")
 GLYWLANLOW=$(echo -e "\ue047")
+GLYMUSIC=$(echo -e "\ue0fe")
 
 PANIC="%{F$MAG}%{B$BBLK}${SEP}"
 ALERT="%{F$RED}%{B$BBLK}${SEP}"
@@ -80,7 +82,7 @@ if [ ! -z ${LMNBAR_DARK} ]; then
 fi
 
 PANEL_FIFO=/tmp/panel-fifo
-OPTIONS="-d ${FONTS} -g ${WIDTH}x${HEIGHT}+${XOFF}+${YOFF} -B ${BBG} -F ${BFG} -r 5 -R ${BRDRC}" 
+OPTIONS="-d ${FONTS} -g ${WIDTH}x${HEIGHT}+${XOFF}+${YOFF} -B ${BBG} -F ${BFG} -r 5 -R ${BRDRC} -u 2" 
 
 [ -e "${PANEL_FIFO}" ] && rm "${PANEL_FIFO}"
 mkfifo "${PANEL_FIFO}"
@@ -95,7 +97,8 @@ workspaces() {
             seq+="${EMPTY}${i}"
         done
 
-        seq+="${SEP}${FULL}${cur}${SEP}"
+        #seq+="${SEP}${FULL}${cur}${SEP}"
+        seq+="%{U$YLW}${SEP}%{+u}${BLACK}${cur}${SEP}%{-u}"
 
         for ((i=$((${cur}+1)); i<$total; i++)); do
             seq+="${EMPTY}${i}"
@@ -179,6 +182,18 @@ wireless()
 
 wireless > "${PANEL_FIFO}" &
 
+sptfy()
+{
+    while true; do
+        title=$(music)
+
+        echo "MUSIC ${GEN}${GLYMUSIC}${SEP}${BLACK}${title}${CLR}"
+        sleep 5
+    done
+}
+
+sptfy > "${PANEL_FIFO}" &
+
 while read -r line; do
     case $line in
         CLOCK*)
@@ -196,6 +211,9 @@ while read -r line; do
         WIRELESS*)
             fn_wire="${line#WIRELESS }"
             ;;
+        MUSIC*)
+            fn_music="${line#MUSIC }"
+            ;;
     esac
-    printf "%s\n" "%{l}${fn_work}%{r}${fn_bat}${SEP}${fn_wire}${SEP}${fn_vol}${SEP}${fn_time}"
+    printf "%s\n" "%{l}${fn_work}${SEP}${fn_music}%{r}${fn_bat}${SEP}${fn_wire}${SEP}${fn_vol}${SEP}${fn_time}${fn_back}"
 done < "${PANEL_FIFO}" | lemonbar ${OPTIONS} | sh > /dev/null
