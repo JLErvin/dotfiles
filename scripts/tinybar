@@ -94,17 +94,19 @@ workspaces() {
         local seq=""
 
         for ((i=0; i<${cur} && i<$((${total}-1)); i++)); do 
-            seq+="${EMPTY}${i}"
+            seq+="${EMPTY}${i}${CLR}"
         done
 
         #seq+="${SEP}${FULL}${cur}${SEP}"
-        seq+="%{U$YLW}${SEP}%{+u}${BLACK}${cur}${SEP}%{-u}"
+        seq+="%{U$YLW}%{+u}${BLACK}${cur}${SEP}%{-u}"
+        #seq+="%{U$YLW}%{+u}${BLACK}${cur}%{-u}"
 
         for ((i=$((${cur}+1)); i<$total; i++)); do
-            seq+="${EMPTY}${i}"
+            seq+="${EMPTY}${i}${CLR}"
         done
 
-        echo "WORKSPACES ${seq}${CLR}"
+        #echo "WORKSPACES ${seq}${CLR}"
+        echo "WORKSPACES ${seq}"
 
         sleep ${WORKSPACE_SLEEP}
     done
@@ -187,7 +189,12 @@ sptfy()
     while true; do
         title=$(music)
 
-        echo "MUSIC ${GEN}${GLYMUSIC}${SEP}${BLACK}${title}${CLR}"
+        if [[ -z $(music) ]]; then
+            echo "MUSIC ${GEN}${GLYMUSIC}${SEP}${BLACK}..${CLR}"
+        else
+            echo "MUSIC ${GEN}${GLYMUSIC}${SEP}${BLACK}${title}${CLR}"
+        fi
+
         sleep 5
     done
 }
