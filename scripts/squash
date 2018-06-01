@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 #
 # -- squash : simple bash script to apply color themes to unix systems
-# -- Author : Joshua L Ervin @ University of Washinton
+# -- Author : Joshua L Ervin @ University of Washington
 # -- Contact: jlervin@posteo.net 
 
 COLOR_SCHEME="${1}"
