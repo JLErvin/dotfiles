@@ -28,4 +28,4 @@ waitron wm_config pointer_actions move resize_side resize_corner
 waitron wm_config pointer_modifier super
 waitron wm_config click_to_focus any
 
-waitron wm_config gap_width top 30
+waitron wm_config gap_width top 35

@@ -18,10 +18,10 @@ HEIGHT=25 # bar height
 XOFF=0 # x offset
 YOFF=0 # y offset
 BRDR=5 # border width
-#BRDRC=${BG} # border color
-BRDRC=#00000000 #back background transparent
-#BBG=${BG} # bar background color
-BBG=#00000000 #back background transparent
+BRDRC=${BG} # border color
+#BRDRC=#00000000 #back background transparent
+BBG=${BG} # bar background color
+#BBG=#00000000 #back background transparent
 BFG=${FG}
 
 # Status constants
@@ -37,6 +37,7 @@ BATTERY_SLEEP=10
 WIRELESS_SLEEP=10
 VOLUME_SLEEP=1
 DATE_SLEEP=5
+MUSIC_SLEEP=5
 
 # Formatting Strings
 # I would reccomend not touching these :D
@@ -105,7 +106,7 @@ workspaces() {
             seq+="${EMPTY}${i}${CLR}"
         done
 
-        #echo "WORKSPACES ${seq}${CLR}"
+        echo "WORKSPACES ${seq}${CLR}"
         echo "WORKSPACES ${seq}"
 
         sleep ${WORKSPACE_SLEEP}
@@ -195,11 +196,11 @@ sptfy()
             echo "MUSIC ${GEN}${GLYMUSIC}${SEP}${BLACK}${title}${CLR}"
         fi
 
-        sleep 5
+        sleep ${MUSIC_SLEEP}
     done
 }
 
-sptfy > "${PANEL_FIFO}" &
+#sptfy > "${PANEL_FIFO}" &
 
 while read -r line; do
     case $line in

@@ -47,7 +47,7 @@
     text-align: center;
     background: transparent !important;
     font-family: sans-serif !important;
-    font-size: 12px !important;
+    font-size: 14px !important;
 }
 
 #back-button, #forward-button {
@@ -154,7 +154,8 @@
     font-family: kakwafont, Zpix !important;
     font-size: 14px !important;
     /*color: #cab870!important;*/
-    color: var(--color8) !important;
+    /*color: var(--color8) !important;*/
+    color: var(--foreground) !important;
     border: none !important;
     padding: 0 0 0 0 !important;
 }
@@ -213,11 +214,12 @@
         /*background: #1F2235 !important; color: #a87c4b !important;*/
         background: var(--background) !important; color: var(--color4) !important;
         border-radius: 0px !important; position: relative !important;
-        /*border-top: 1px solid #dc52a5 !important;/**/
+        /*border-top: 1px solid var(--background) !important;/**/
     }
 
-
-
+    .tabbrowser-line[selected="true"] {
+        opacity: 1 !important;
+    }
 
 
 
@@ -312,7 +314,8 @@ toolbarbutton#new-tab-button {
 .tabbrowser-tab:hover,
 #TabsToolbar toolbarbutton:hover,
 .browserContainer findbar toolbarbutton:hover {
-    background: #818A96 !important;
+    /*background: #818A96 !important;*/
+    background: var(--color0) !important;
     opacity: 1 !important;
     box-shadow: none !important;
     transition-duration: 1ms !important;
