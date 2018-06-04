@@ -1,4 +1,4 @@
-#WARNING DEPRECIATED# 
+# WARNING DEPRECIATED
 
 Active development has moved to gitlab. [new repo](https://gitlab.com/JLErvin/dotfiles)
 
