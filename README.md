@@ -1,3 +1,7 @@
+#WARNING DEPRECIATED# 
+
+Active development has moved to gitlab. [new repo](https://gitlab.com/JLErvin/dotfiles)
+
 <div align='center'>
     <h1>dotfiles</h1><br>
 </div>
