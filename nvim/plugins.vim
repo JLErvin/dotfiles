@@ -4,7 +4,7 @@ if &compatible
   set nocompatible               " Be iMproved
 endif
 
-set runtimepath+=~/.vim/bundle/neobundle.vim/
+set runtimepath+=$HOME/.vim/bundle/neobundle.vim/
 
 call neobundle#begin(expand('~/.vim/bundle/'))
 

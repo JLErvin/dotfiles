@@ -1,5 +1,5 @@
 syntax enable
-colorscheme agila
+colorscheme base16-material-palenight
 set background=dark
 set laststatus=2
 syntax enable
@@ -10,54 +10,57 @@ set relativenumber
 set noshowmode
 hi Folded ctermbg=NONE ctermfg=yellow
 hi CursorLine ctermbg=black ctermfg=NONE
-hi CursorLineNr ctermbg=black ctermfg=yellow
+hi CursorLineNr ctermbg=NONE ctermfg=yellow
 hi LineNr ctermbg=NONE
+
+"Menu highlighting for deoplete
+hi Pmenu ctermbg=0
+hi PmenuSel ctermbg=7 ctermfg=0
 
 let g:gruvbox_contrast_dark='hard'
 hi Normal ctermbg=NONE
 
 let g:currentmode={
-    \ 'n'  : 'NORMAL ',
-    \ 'no' : 'N·OPERATOR PENDING ',
-    \ 'v'  : 'VISUAL ',
-    \ 'V'  : 'V·LINE ',
-    \ '' : 'V·BLOCK ',
-    \ 's'  : 'SELECT ',
-    \ 'S'  : 'S·LINE ',
-    \ '' : 'S·BLOCK ',
-    \ 'i'  : 'INSERT ',
-    \ 'R'  : 'REPLACE ',
-    \ 'Rv' : 'V·REPLACE ',
-    \ 'c'  : 'COMMAND ',
-    \ 'cv' : 'VIM EX ',
-    \ 'ce' : 'EX ',
-    \ 'r'  : 'PROMPT ',
-    \ 'rm' : 'MORE ',
-    \ 'r?' : 'CONFIRM ',
-    \ '!'  : 'SHELL ',
-    \ 't'  : 'TERMINAL '}
+    \ 'n'  : 'N ',
+    \ 'no' : 'N',
+    \ 'v'  : 'V ',
+    \ 'V'  : 'V ',
+    \ '' : 'V ',
+    \ 's'  : 'S ',
+    \ 'S'  : 'S ',
+    \ '' : 'S ',
+    \ 'i'  : 'I ',
+    \ 'R'  : 'R ',
+    \ 'Rv' : 'V ',
+    \ 'c'  : 'C ',
+    \ 'cv' : 'V EX ',
+    \ 'ce' : 'E ',
+    \ 'r'  : 'P ',
+    \ 'rm' : 'M ',
+    \ 'r?' : 'C ',
+    \ '!'  : 'S ',
+    \ 't'  : 'T '}
 
+hi PrimaryBlock ctermbg=8 ctermfg=7
+hi ModeBlock ctermbg=8 ctermfg=3
+hi SecondaryBlock ctermbg=0 ctermfg=7
+hi TeritaryBlock ctermbg=0 ctermfg=7
+hi Blanks ctermbg=NONE
+hi statusline ctermbg=NONE
 
 set statusline=
-set statusline+=%#PrimaryBlock#
+set statusline+=%#ModeBlock#
 set statusline+=\ %{g:currentmode[mode()]}
-set statusline+=%#SecondaryBlock#
-set statusline+=%{StatuslineGit()}
 set statusline+=%#TeritaryBlock#
 set statusline+=\ %f\ 
 set statusline+=%M\ 
 set statusline+=%#Blanks#
 set statusline+=%=
-set statusline+=%#SecondaryBlock#
-set statusline+=\ %Y\ 
 set statusline+=%#PrimaryBlock#
+set statusline+=\ %Y\ 
+set statusline+=%#SecondaryBlock#
 set statusline+=\ %P\ 
 
-function! GitBranch()
-	return system("git rev-parse --abbrev-ref HEAD 2>/dev/null | tr -d '\n'")
-endfunction
-
-function! StatuslineGit()
-	let l:branchname = GitBranch()
-	return strlen(l:branchname) > 0?'  '.l:branchname.' ':''
-endfunction
+let g:goyo_width='80%'
+let g:goyo_height='80%'
+let g:limelight_conceal_ctermfg=8
