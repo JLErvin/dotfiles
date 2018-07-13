@@ -12,7 +12,8 @@
 
 source "${HOME}/.cache/squash/colors"
 
-FONTS="-f -uw-ttyp0-medium-r-normal-*-14-*-*-*-*-*-*-* -f -*-siji-*"
+#FONTS="-f -uw-ttyp0-medium-r-normal-*-14-*-*-*-*-*-*-* -f -*-siji-*"
+FONTS="-o 2 -f -*-dina-medium-r-*-*-12-*-*-*-*-*-*-* -o 0 -f -*-siji-*"
 WIDTH=1910 # bar width
 HEIGHT=25 # bar height
 XOFF=0 # x offset
@@ -94,20 +95,19 @@ workspaces() {
         local total=${DESKTOP_COUNT}
         local seq=""
 
-        for ((i=0; i<${cur} && i<$((${total}-1)); i++)); do 
+        for ((i=0;i<cur;i++)); do 
             seq+="${EMPTY}${i}${CLR}"
         done
 
-        #seq+="${SEP}${FULL}${cur}${SEP}"
         seq+="%{U$YLW}%{+u}${BLACK}${cur}${SEP}%{-u}"
-        #seq+="%{U$YLW}%{+u}${BLACK}${cur}%{-u}"
 
-        for ((i=$((${cur}+1)); i<$total; i++)); do
+        min=$cur+1
+        for ((i=min;i<total;i++)); do
             seq+="${EMPTY}${i}${CLR}"
         done
 
         echo "WORKSPACES ${seq}${CLR}"
-        echo "WORKSPACES ${seq}"
+        #echo "WORKSPACES ${seq}"
 
         sleep ${WORKSPACE_SLEEP}
     done
