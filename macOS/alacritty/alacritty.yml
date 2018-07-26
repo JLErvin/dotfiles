@@ -41,19 +41,19 @@ draw_bold_text_with_bright_colors: true
 font:
   # The normal (roman) font face to use.
   normal:
-    family: Menlo
+    family: Roboto Mono
     # Style can be specified to pick a specific face.
     # style: Regular
 
   # The bold font face
   bold:
-    family: Menlo
+    family: Roboto Mono
     # Style can be specified to pick a specific face.
     # style: Bold
 
   # The italic font face
   italic:
-    family: Menlo
+    family: Roboto Mono
     # Style can be specified to pick a specific face.
     # style: Italic
 
@@ -237,7 +237,7 @@ live_config_reload: true
 # Entries in shell.args are passed unmodified as arguments to the shell.
 #
 shell:
- program: /usr/local/bin/zsh
+ program: /bin/zsh
  args:
    - --login
 
