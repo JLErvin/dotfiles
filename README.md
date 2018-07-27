@@ -1,7 +1,3 @@
-**WARNING DEPRECIATED**
-
-Active development has moved to gitlab. [new repo](https://gitlab.com/JLErvin/dotfiles)
-
 <div align='center'>
     <h1>dotfiles</h1><br>
 </div>
@@ -31,3 +27,6 @@ Welcome to my dotfiles. You can usually find my stuff over on /r/unixporn. If yo
 * bar: `lemonbar`
 * browser: `firefox`
 * text-editor: `neovim`
+
+I have also recently setup a hackintosh on an old laptop.
+Config files are in the `macOS` directory.
