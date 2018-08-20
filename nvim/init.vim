@@ -1,7 +1,8 @@
 " vim:fdm=marker
 
-source $HOME/.config/nvim/basic.vim
-source $HOME/.config/nvim/plugins.vim
-source $HOME/.config/nvim/appearance.vim
-source $HOME/.config/nvim/mapping.vim
+source $HOME/.config/nvim/base.vim
+source $HOME/.config/nvim/plug.vim
+source $HOME/.config/nvim/app.vim
+source $HOME/.config/nvim/map.vim
 source $HOME/.config/nvim/syn.vim
+source $HOME/.config/nvim/auto.vim
