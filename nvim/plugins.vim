@@ -13,18 +13,23 @@ NeoBundleFetch 'Shougo/neobundle.vim'
 NeoBundle 'flazz/vim-colorschemes'
 NeoBundle 'scrooloose/nerdcommenter'
 NeoBundle 'vim-syntastic/syntastic'
-NeoBundle 'kh3phr3n/python-syntax'
 NeoBundle 'tmhedberg/SimpylFold'
+NeoBundle 'chriskempson/base16-vim'
 
-NeoBundle 'mhartington/oceanic-next'
-
-NeoBundle 'roxma/nvim-completion-manager'
-NeoBundle 'jalvesaq/Nvim-R'
-NeoBundle 'gaalcaras/ncm-R'
-NeoBundle 'roxma/ncm-clang'
+NeoBundle 'ncm2/ncm2'
+NeoBundle 'roxma/nvim-yarp'
+NeoBundle 'ncm2/ncm2-tmux'
+NeoBundle 'ncm2/ncm2-pyclang'
+NeoBundle 'ncm2/ncm2-path'
 
 call neobundle#end()
 
 filetype plugin indent on
 
 NeoBundleCheck
+
+" enable ncm2 for all buffers
+autocmd BufEnter * call ncm2#enable_for_buffer()
+
+" IMPORTANTE: :help Ncm2PopupOpen for more information
+set completeopt=noinsert,menuone,noselect

@@ -12,16 +12,3 @@ inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 nnoremap <F3> :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar><CR>
 autocmd filetype cpp nnoremap <F10> :w <bar> exec '!g++ '.shellescape('%').' -o '.shellescape('%:r').' && ./'.shellescape('%:r')<CR>
 set backspace=indent,eol,start
-
-map <F10> :call CompileFile()<CR>
-function! CompileFile()
-	let current_filetype = &filetype
-	if current_filetype == 'python'
-		:!python %:t
-	endif
-	if current_filetype == 'java'
-		:w
-		:!javac "%"
-		:!java -cp "%:p:h" "%:t:r"
-	endif
-endfunction
