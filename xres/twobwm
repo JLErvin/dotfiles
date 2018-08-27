@@ -1,8 +1,0 @@
-! ------------------------------------------------------------------------------
-! 2BWM 
-! ------------------------------------------------------------------------------
-
-twobwm.border_width: 8 
-twobwm.outer_border: 7
-twobwm.inverted_colors: false
-twobwm.enable_compton: true
