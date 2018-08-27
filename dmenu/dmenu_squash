@@ -1,1 +1,10 @@
-/home/jle/.scripts/dmenu_squash
+#!/usr/bin/env bash
+
+source ${HOME}/.cache/squash/colors
+
+BACKGROUND="${DMENU_BG:-$BG}"
+FOREGROUND="${DMENU_FG:-$FG}"
+BACKGROUND_FOCUSED="${DMENU_BG_FOCUSED:-$BLK}"
+FOREGROUND_FOCUSED="${DMENU_FG_FOCUSED:-$GRN}"
+
+dmenu_run -nb $BACKGROUND -nf $FOREGROUND -sb $BACKGROUND_FOCUSED -sf $FOREGROUND_FOCUSED -b

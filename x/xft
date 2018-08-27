@@ -1,1 +1,11 @@
-/home/jle/.xres/xft
+!------------------------------------------------------------------------------
+! Xft settings
+!-------------------------------------------------------------------------------
+
+Xft.dpi:                    96
+Xft.antialias:              true
+Xft.rgba:                   rgb
+Xft.hinting:                false
+Xft.hintstyle:              hintslight
+
+
