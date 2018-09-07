@@ -12,3 +12,5 @@ alias tmux="tmux -2"
 ```
 
 This will eliminate the second of lag when switiching between modes in `vim`. 
+
+![Imgur](https://i.imgur.com/POGEbst.png)
