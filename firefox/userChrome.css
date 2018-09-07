@@ -1,0 +1,322 @@
+/* AGENT_SHEET */
+@import "file:///home/jlervin/.cache/squash/colors.css";
+
+@namespace url(http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul);
+@namespace html url("http://www.w3.org/1999/xhtml");
+
+
+/* Place menu button and panel ui button at the left. Can't do this in customize mode. */
+#TabsToolbar > * { -moz-box-ordinal-group: 4 !important; }
+#tabbrowser-tabs { -moz-box-ordinal-group: 2 !important; }
+#new-tab-button { -moz-box-ordinal-group: 3 !important;  }
+#tabGroups-tabview-button { -moz-box-ordinal-group: 5 !important; }
+#ctraddon_appbutton,
+#ctraddon_panelui-button { -moz-box-ordinal-group: 1 !important; }
+
+/* Anonymous elements that do nothing. */
+#navigator-toolbox::after, #tabbrowser-tabs::before, .tabbrowser-tab::after, .tabbrowser-tab::before, .toolbar-primary::after {
+    display: none !important;
+}
+
+#page-proxy-favicon {
+    -moz-image-region: rect(0px, 14px, 14px, 0px) !important;
+    width: 14px !important;
+    height: 14px !important;
+ }
+
+/*
+ *  Urlbar
+ */
+
+
+#urlbar-container {
+    min-width: 250px !important;
+    background: inherit !important;
+}
+
+#urlbar-wrapper {
+    margin: 0 !important;
+    padding: 0 !important;
+    background: transparent !important;
+}
+
+#urlbar {
+    margin: 0 !important;
+    padding: 0 0 0 0 !important;
+    border: none !important;
+    text-align: center;
+    background: transparent !important;
+    font-family: Dina !important;
+    font-size: 14px !important;
+}
+
+#back-button, #forward-button {
+    display: none !important;
+}
+
+#reader-mode-button[readeractive="true"] {
+    filter: grayscale(100%) brightness(30) !important;
+}
+
+#identity-icon {
+    filter: grayscale(100%) !important;
+}
+
+/* Hiding this in customize mode breaks that mode. */ 
+#main-window:not([customizing]) #nav-bar {
+    /*display: none !important;*/
+}
+
+#ctraddon_extra-bar, #customToolbars, #PersonalToolbar,
+#addon-bar, #nav-bar, #toolbar-menubar {
+    padding: 0 !important;
+    
+}
+
+.urlbar-history-dropmarker, #urlbar-go-button, 
+#urlbar-reload-button, #urlbar-stop-button {
+    display: none !important;
+}
+
+#identity-icon-labels { 
+    display: none !important; 
+}
+
+#identity-box {
+    width: 23px !important; 
+    height: inherit !important;
+    min-width: 0 !important;  
+    min-height: 0 !important;
+    border: 0 !important;
+    border-radius: 0px !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    background: transparent !important;
+}
+
+#tracking-protection-icon, #connection-icon {
+    display: none !important;
+}
+
+#notification-popup-box {
+    position: static !important;
+    background: #ffffff !important;
+    padding: 0 !important;
+    border-radius: 0 !important;
+    border: none !important;
+    margin: 0 !important;
+}
+
+#identity-icon {
+    display: none;
+}
+
+#page-proxy-favicon[pageproxystate="invalid"] {
+    opacity: 0.3 !important;
+}
+
+
+
+/*
+ *  Toolbars
+ */
+
+.toolbar-primary,
+#TabsToolbar,
+.browserContainer > findbar {
+    height: 18px !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    /*background: #1F2235 !important;*/
+    background: var(--background) !important;
+    -moz-appearance: none !important;
+    transition: none !important;
+}
+
+#tabs-closebutton, #ctraddon_tabs-closebutton, #alltabs-button, 
+#private-browsing-indicator {
+    display: none !important;
+}
+
+/* 
+ *  Tabs
+ */
+
+
+#tabbrowser-tabs {
+    min-height: 0 !important;
+    background: transparent !important;
+
+}
+
+.tabbrowser-tab {
+    background: transparent !important;
+    font-family: Dina !important;
+    font-size: 14px !important;
+    /*color: #cab870!important;*/
+    /*color: var(--color8) !important;*/
+    color: var(--foreground) !important;
+    border: none !important;
+    padding: 0 0 0 0 !important;
+}
+
+.tabbrowser-tab > .tab-stack {
+    padding: 0 0 0 18px !important;
+    text-align: center;
+
+}
+
+.tabbrowser-tab[selected=false] {
+    font-weight: bold !important;
+}
+
+.tab-background-start, .tab-background-end, .tab-icon {
+    display: none !important;
+}
+
+.tab-background-middle, .tab-background, .tab-content, 
+.tab-text-stack, .arrowscrollbox-scrollbox {
+    margin: 0 !important;
+    padding: 0 !important;
+    background: inherit !important;
+}
+/* Progressbar from tab mix plus. */
+.tab-progress {
+    margin: 0 !important;
+}
+
+
+
+
+
+
+.tabbrowser-tab .tab-icon-image {
+    display: none !important;
+}
+
+
+
+  .tabbrowser-tab[fadein]:not([pinned]) { min-width: 100px !important; max-width: /*180px*/ 100% !important; }
+    tab {
+        font-family: var(--tab-fonts) !important;
+        height: var(--tab-height) !important; min-height: var(--tab-height) !important;
+        /*background: var(--bg-dark) !important; color: var(--fg-dark) !important;*/
+        background: var(--background) !important; color: var(--background) !important;
+        font-size: var(--tab-font-size); text-shadow: none !important; text-align: var(--tab-text-align) !important;
+    }
+    
+    .tabbrowser-tab * {
+        background: none !important; list-style-image: none !important;
+        margin: 0 0 0 0 !important; padding: 0 0 0 0 !important;
+        -moz-appearance: none !important;
+    }
+    .tabbrowser-tab[selected="true"] .tab-stack {
+        /*background: #1F2235 !important; color: #a87c4b !important;*/
+        background: var(--background) !important; color: var(--color4) !important;
+        border-radius: 0px !important; position: relative !important;
+        /*border-top: 1px solid var(--background) !important;/**/
+    }
+
+    .tabbrowser-line[selected="true"] {
+        opacity: 1 !important;
+    }
+
+
+
+/* 
+ *  Toolbar buttons
+ */
+
+#TabsToolbar toolbarbutton,
+.browserContainer > findbar toolbarbutton {
+    -moz-appearance: none !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+    padding: 0 1px 0 1px !important;
+    margin: 0 !important;
+    min-height: 0 !important;
+    border: none !important;
+    height: inherit !important;
+}
+
+#TabsToolbar toolbarbutton > label {
+    display: none !important;
+}
+
+#TabsToolbar toolbarbutton > image,
+/* #addon-bar toolbarbutton > image */
+#PanelUI-menu-button > .toolbarbutton-badge-container > image {
+    margin: 0 !important;
+    padding: 0 !important;
+    border: none !important;
+    width: 14px !important;
+    height: 14px !important;
+    min-width: 0 !important;
+    min-height: 0 !important;
+    background: transparent !important;
+    border-radius: 0 !important;
+    box-shadow: none !important; 
+}
+
+#PanelUI-menu-button > .toolbarbutton-badge-stack {
+    margin: 0 !important;
+    padding: 0 !important;
+    border: none !important;
+    background: transparent !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+}
+
+#PanelUI-menu-button > .toolbarbutton-badge-stack > image {
+    /* high-contrast white firefox icon */
+    list-style-image: url('data:image/svg+xml;charset=US-ASCII,<svg xmlns="http://www.w3.org/2000/svg" height="14" width="14"><path fill="%23935641" d="m5.26 13.8c-1.9-0.4-3.51-1.6-4.28-3.2-0.631-1.25-0.952-2.08-0.867-4.06 0.107-2.45 0.819-4.04 1.9-5.25l0.51-0.569 0.07 1.02c0.0669 0.999 0.0773 1.02 0.453 1.07 0.295 0.0341 0.528-0.089 1-0.528 0.656-0.609 1.57-1.1 2.07-1.1 0.298-0.00299 0.296 0.00673-0.0983 0.652-0.22 0.36-0.5 0.89-0.61 1.18-0.21 0.51-0.21 0.52 0.14 0.66 0.195 0.0746 0.619 0.136 0.944 0.136s0.657 0.0809 0.738 0.18c0.23 0.28-0.26 0.94-0.98 1.33-0.63 0.34-0.64 0.36-0.64 1v0.659l-0.41-0.21c-0.76-0.4-0.94 0.11-0.29 0.77 0.52 0.52 1.02 0.52 2.07-0.01 0.94-0.48 1.24-0.51 1.55-0.16 0.33 0.37 0.28 0.69-0.15 0.88-0.21 0.09-0.6 0.36-0.88 0.61-0.45 0.39-0.86 0.57-1.82 0.77-0.53 0.12 0.88 0.67 1.71 0.67 1.26 0 2.62-0.86 3.22-1.96 0.5-0.95 0.4-2.31-0.3-3.33-0.2-0.29-0.3-0.52-0.3-0.52 0.153 0 0.995 0.742 1.27 1.12l0.331 0.452v-0.623c0-1.11-0.662-2.87-1.49-3.98l-0.33-0.472 0.73 0.402c2.3 1.27 3.8 4.26 3.3 6.87-0.4 2.44-2.2 4.64-4.44 5.44-0.97 0.3-2.92 0.4-4.1 0.1z"/></svg>') !important;
+    -moz-image-region: rect(0px, 14px, 14px, 0px) !important;
+}
+
+
+toolbarbutton.tabs-newtab-button,
+toolbarbutton#new-tab-button {
+    
+    display: none !important;
+    
+    /* white plus icon */
+    list-style-image: url('data:image/svg+xml;charset=US-ASCII,<svg xmlns="http://www.w3.org/2000/svg" height="14" width="14"><path fill="%238f9ca8" d="m7 11h-1v-1.5-1.5h-1.5-1.5v-1-1h1.5 1.5v-1.5-1.5h1 1v1.5 1.5h1.5 1.5v1 1h-1.5-1.5v1.5 1.5h-1z"/></svg>') !important;
+    width: 12px !important; 
+} 
+
+.scrollbutton-up, .scrollbutton-down,
+.browserContainer .findbar-find-previous.tabbable,
+.browserContainer .findbar-find-next.tabbable {
+    /* right arrow triangle icon */
+    list-style-image: url('data:image/svg+xml;charset=US-ASCII,<svg xmlns="http://www.w3.org/2000/svg" height="14" width="14"><path fill="%23fff" d="m11.4 1.95 0.000001 5.05v5.05l-4.4-2.48-4.37-2.52 4.37-2.52z"/></svg>') !important;
+}
+
+.browserContainer .findbar-find-previous {
+    transform: rotate(90deg) !important;
+}
+.browserContainer .findbar-find-next {
+    transform: rotate(-90deg) !important;
+}
+
+.scrollbutton-up > .toolbarbutton-icon,
+.scrollbutton-down > .toolbarbutton-icon {
+    -moz-appearance: none !important;
+}
+
+/* Elements adjecent to scroll arrows (overflowing to tab). */
+.arrowscrollbox-overflow-end-indicator,
+.arrowscrollbox-overflow-start-indicator {
+    display: none !important;
+}
+
+/* Hover effect. */
+#identity-box:hover,
+.tabbrowser-tab:hover,
+#TabsToolbar toolbarbutton:hover,
+.browserContainer findbar toolbarbutton:hover {
+    /*background: #818A96 !important;*/
+    background: var(--color0) !important;
+    opacity: 1 !important;
+    box-shadow: none !important;
+    transition-duration: 1ms !important;
+}

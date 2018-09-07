@@ -16,3 +16,5 @@
 * `icon-font`: siji
 * `bar`: lemonbar
 * `launcher`: dmenu
+
+For a better understanding of my dotfiles, I have included a README in each directory explaining my config
