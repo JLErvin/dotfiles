@@ -1,0 +1,227 @@
+#!/usr/bin/env bash
+#
+# A simple block-style bar using lemonbar
+# and named pipes to reduce resource footprint
+#
+# Normally, this file is split into seperate files
+# for colors and bar defaults, I have included them
+# all together here for simplicity
+#
+# Bar created by Joshua Ervin @ University of Washington
+# Contact: jlervin@posteo.net
+
+source "${HOME}/.cache/squash/colors"
+
+#FONTS="-f -uw-ttyp0-medium-r-normal-*-14-*-*-*-*-*-*-* -f -*-siji-*"
+FONTS="-o 2 -f -*-dina-medium-r-*-*-12-*-*-*-*-*-*-* -o 0 -f -*-siji-*"
+WIDTH=1910 # bar width
+HEIGHT=25 # bar height
+XOFF=0 # x offset
+YOFF=0 # y offset
+BRDR=5 # border width
+BRDRC=${BG} # border color
+#BRDRC=#00000000 #back background transparent
+BBG=${BG} # bar background color
+#BBG=#00000000 #back background transparent
+BFG=${FG}
+
+# Status constants
+# Change these to modify bar behavior
+DESKTOP_COUNT=5 
+BATTERY_FULL=98
+BATTERY_MID=50
+BATTERY_LOW=20
+
+# Sleep constnats
+WORKSPACE_SLEEP=0.5
+BATTERY_SLEEP=10
+WIRELESS_SLEEP=10
+VOLUME_SLEEP=1
+DATE_SLEEP=5
+MUSIC_SLEEP=5
+
+# Formatting Strings
+# I would reccomend not touching these :D
+SEP=" "
+SEP2="    "
+SEPB="__"
+SPC="%{B$BG}%{F$BG}$SEPB%{B-}%{F-}"
+
+# Glyphs used for both bars
+GLYCUR=$(echo -e "\ue000")
+GLYEM=$(echo -e "\ue001")
+GLYDATE=$(echo -e "\ue015")
+GLYVOL=$(echo -e "\ue050")
+GLYVOLoff=$(echo -e "\ue052")
+GLYBATLOW=$(echo -e "\ue035")
+GLYBAT=$(echo -e "\ue037")
+GLYBATMAX=$(echo -e "\ue09e")
+GLYWLANHIGH=$(echo -e "\ue048")
+GLYWLANLOW=$(echo -e "\ue047")
+GLYMUSIC=$(echo -e "\ue0fe")
+
+PANIC="%{F$MAG}%{B$BBLK}${SEP}"
+ALERT="%{F$RED}%{B$BBLK}${SEP}"
+WARN="%{F$YLW}%{B$BBLK}${SEP}"
+GOOD="%{F$GRN}%{B$BBLK}${SEP}"
+PLAIN="%{F$WHT}%{B$BBLK}${SEP}"
+GEN="%{F$FG}%{B$BBLK}${SEP}"
+EMPTY="%{F$FG}%{B$BBLK}${SEP}"
+BLACK="%{F$FG}%{B$BLK}${SEP}"
+FULL="%{F$BLK}%{B$ACC}${SEP}"
+CLR="${SEP}%{B-}${F-}"
+
+if [ ! -z ${LMNBAR_DARK} ]; then
+    PANIC="%{F$MAG}%{B$LMNBAR_DARK}${SEP}"
+    ALERT="%{F$RED}%{B$LMNBAR_DARK}${SEP}"
+    WARN="%{F$YLW}%{B$LMNBAR_DARK}${SEP}"
+    GOOD="%{F$GRN}%{B$LMNBAR_DARK}${SEP}"
+    PLAIN="%{F$WHT}%{B$LMNBAR_DARK}${SEP}"
+    GEN="%{F$FG}%{B$LMNBAR_DARK}${SEP}"
+    EMPTY="%{F$FG}%{B$LMNBAR_DARK}${SEP}"
+    BLACK="%{F$FG}%{B$LMNBAR_DARKER}${SEP}"
+    FULL="%{F$BLK}%{B$ACC}${SEP}"
+fi
+
+PANEL_FIFO=/tmp/panel-fifo
+OPTIONS="-d ${FONTS} -g ${WIDTH}x${HEIGHT}+${XOFF}+${YOFF} -B ${BBG} -F ${BFG} -r 5 -R ${BRDRC} -u 2" 
+
+[ -e "${PANEL_FIFO}" ] && rm "${PANEL_FIFO}"
+mkfifo "${PANEL_FIFO}"
+
+workspaces() {
+    while true; do
+        local cur=$(xprop -root _NET_CURRENT_DESKTOP | awk '{print $3}')
+        local total=${DESKTOP_COUNT}
+        local seq=""
+
+        for ((i=0;i<cur;i++)); do 
+            seq+="${EMPTY}${i}${CLR}"
+        done
+
+        seq+="%{U$YLW}%{+u}${BLACK}${cur}${SEP}%{-u}"
+
+        min=$cur+1
+        for ((i=min;i<total;i++)); do
+            seq+="${EMPTY}${i}${CLR}"
+        done
+
+        echo "WORKSPACES ${seq}${CLR}"
+        #echo "WORKSPACES ${seq}"
+
+        sleep ${WORKSPACE_SLEEP}
+    done
+}
+
+workspaces > "${PANEL_FIFO}" &
+
+clock() 
+{
+    while true; do
+        local clock="$(date +'%a %d %I:%M')"
+        echo "CLOCK ${GEN}${GLYDATE}${SEP}${BLACK}${clock}${CLR}"
+
+        sleep ${DATE_SLEEP}
+    done
+}
+
+clock > "${PANEL_FIFO}" &
+
+volume()
+{
+    while true; do
+        local vol="$(amixer get Master|awk 'NR==5 {print $4}'|cut -d '%' -f1 | cut -d '[' -f2)"
+        local mut="$(amixer get Master| awk 'NR==5 {print $6}')"
+
+        if [[ ${mut} = "[off]" ]]; then
+            echo "VOLUME ${ALERT}${GLYVOL}${SEP}${BLACK}${vol}${CLR}"
+        elif [[ ${vol} = 0 ]]; then
+            echo "VOLUME ${WARN}${GLYVOL}${SEP}${BLACK}${vol}${CLR}"
+        else
+            echo "VOLUME ${GOOD}${GLYVOL}${SEP}${BLACK}${vol}${CLR}"
+        fi
+
+        sleep ${VOLUME_SLEEP} 
+    done
+}
+
+volume > "${PANEL_FIFO}" &
+
+battery() 
+{
+    while true; do
+        local cap="$(cat /sys/class/power_supply/BAT0/capacity)"
+        local stat="$(cat /sys/class/power_supply/BAT0/status)"
+
+        if [[ ${cap} -ge ${BATTERY_FULL} || ${stat} = "Charging" ]]; then
+            echo "BATTERY ${GOOD}${GLYBATMAX}${SEP}${BLACK}${cap}${CLR}"
+        elif [[ ${cap} -ge ${BATTERY_MID} ]]; then
+            echo "BATTERY ${WARN}${GLYBAT}${SEP}${BLACK}${cap}${CLR}"
+        else 
+            echo "BATTERY ${ALERT}${GLYBATLOW}${SEP}${BLACK}${cap}${CLR}"
+        fi
+
+        sleep ${BATTERY_SLEEP}
+    done
+}
+
+battery > "${PANEL_FIFO}" &
+
+wireless() 
+{
+    while true; do
+        local wifi=$(iwgetid -r)
+
+        if [[ -z $wifi ]]; then
+            local wifi="DISCONNECTED"
+            echo "WIRELESS ${ALERT}${GLYWLANLOW}${SEP}${BLACK}${wifi}${CLR}"
+        else
+            echo "WIRELESS ${GOOD}${GLYWLANHIGH}${SEP}${BLACK}${wifi}${CLR}"
+        fi
+
+        sleep ${WIRELESS_SLEEP}
+    done
+}
+
+wireless > "${PANEL_FIFO}" &
+
+sptfy()
+{
+    while true; do
+        title=$(music)
+
+        if [[ -z $(music) ]]; then
+            echo "MUSIC ${GEN}${GLYMUSIC}${SEP}${BLACK}..${CLR}"
+        else
+            echo "MUSIC ${GEN}${GLYMUSIC}${SEP}${BLACK}${title}${CLR}"
+        fi
+
+        sleep ${MUSIC_SLEEP}
+    done
+}
+
+#sptfy > "${PANEL_FIFO}" &
+
+while read -r line; do
+    case $line in
+        CLOCK*)
+            fn_time="${line#CLOCK }"
+            ;;
+        VOLUME*)
+            fn_vol="${line#VOLUME }"
+            ;;
+        BATTERY*)
+            fn_bat="${line#BATTERY }"
+            ;;
+        WORKSPACES*)
+            fn_work="${line#WORKSPACES }"
+            ;;
+        WIRELESS*)
+            fn_wire="${line#WIRELESS }"
+            ;;
+        MUSIC*)
+            fn_music="${line#MUSIC }"
+            ;;
+    esac
+    printf "%s\n" "%{l}${fn_work}${SEP}${fn_music}%{r}${fn_bat}${SEP}${fn_wire}${SEP}${fn_vol}${SEP}${fn_time}${fn_back}"
+done < "${PANEL_FIFO}" | lemonbar ${OPTIONS} | sh > /dev/null
