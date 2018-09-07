@@ -12,7 +12,7 @@
 
 source "${HOME}/.cache/squash/colors"
 
-FONTS="-o 0 -f -*-dina-medium-r-*-*-12-*-*-*-*-*-*-* -o -2 -f -*-siji-*"
+FONTS="-o 2 -f -*-dina-medium-r-*-*-12-*-*-*-*-*-*-* -o 0 -f -*-siji-*"
 WIDTH=1910 # bar width
 HEIGHT=20 # bar height
 XOFF=0 # x offset
@@ -117,7 +117,7 @@ clock > "${PANEL_FIFO}" &
 volume()
 {
     while true; do
-        local vol="$(amixer get Master|awk 'NR==5 {print $4}'|cut -d '%' -f1 | cut -d '[' -f2)"
+        local vol="$(amixer sget Master | grep 'Right:' | awk -F'[][]' '{ print $2 }' | cut -d '%' -f1)"
         local mut="$(amixer get Master| awk 'NR==5 {print $6}')"
 
         if [[ ${mut} = "[off]" ]]; then
