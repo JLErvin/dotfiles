@@ -25,3 +25,5 @@ nvim() {
 This redefines `nvim` to always start on a socket, allowing me to use `nvr-remote` and reload all active
 instaces of `nvim` at once. 
 
+
+![Imgur](https://i.imgur.com/UwKN3Fr.png)
