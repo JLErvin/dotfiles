@@ -1,0 +1,14 @@
+#!/bin/sh
+exec tail -n +3 $0
+# This file provides an easy way to add custom menu entries.  Simply type the
+# menu entries you want to add after this comment.  Be careful not to change
+# the 'exec tail' line above.
+
+menuentry 'macOS' {
+	insmod fat
+	insmod part_gpt
+	insmod chain
+	insmod search_fs_uuid
+	search --fs-uuid --no-floppy --set=root 67E3-17ED
+	chainloader /EFI/BOOT/BOOTX64.efi
+}
