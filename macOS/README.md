@@ -14,10 +14,10 @@ My system specs are as follows:
 * `Wifi-Card`: Broadcom BCM94352Z DW1560
 
 I use arch linux as my main OS and reserve macOS for compatibilty tasks such as 
-microsoft office, XCode, and presentations.
+Microsoft Office, XCode, and presentations.
 
 To achieve this dual boot, I am using a dual EFI System partition setup.
-I use Clover to launch macOS and GRUB to launch arch linux.
+I use [Clover](https://clover-wiki.zetam.org/home) to launch macOS and GRUB to launch arch linux.
 The system defaults to launching GRUB, where I can boot into either arch linux directly
 or into Clover, from where I can then launch macOS.
 
