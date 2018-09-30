@@ -1,6 +1,8 @@
 source $HOME/.antigen.zsh
 
 export PATH=/usr/local/bin:$PATH
+export PATH=/usr/local/opt/go/libexec/bin:$PATH
+export PATH=/usr/local/opt/coreutils/libexec/gnubin:$PATH
 
 antigen use oh-my-zsh
 
@@ -16,6 +18,7 @@ bindkey -v
 
 alias n="nvim"
 alias e="emacs"
+
 
 antigen apply
 
