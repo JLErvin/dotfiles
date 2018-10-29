@@ -117,7 +117,7 @@ clock > "${PANEL_FIFO}" &
 volume()
 {
     while true; do
-        local vol="$(amixer sget Master | grep 'Right:' | awk -F'[][]' '{ print $2 }' | cut -d '%' -f1)"
+        local vol="$(amixer sget Master | grep 'Mono: Playback' | awk -F'[][]' '{ print $2 }' | cut -d '%' -f1)"
         local mut="$(amixer get Master| awk 'NR==5 {print $6}')"
 
         if [[ ${mut} = "[off]" ]]; then
