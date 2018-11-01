@@ -15,6 +15,7 @@ NeoBundle 'scrooloose/nerdcommenter'
 NeoBundle 'vim-syntastic/syntastic'
 NeoBundle 'tmhedberg/SimpylFold'
 NeoBundle 'chriskempson/base16-vim'
+NeoBundle 'lervag/vimtex'
 
 NeoBundle 'ncm2/ncm2'
 NeoBundle 'roxma/nvim-yarp'
