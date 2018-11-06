@@ -22,6 +22,9 @@ NeoBundle 'roxma/nvim-yarp'
 NeoBundle 'ncm2/ncm2-tmux'
 NeoBundle 'ncm2/ncm2-pyclang'
 NeoBundle 'ncm2/ncm2-path'
+NeoBundle 'ncm2/ncm2-bufword'
+NeoBundle 'ObserverOfTime/ncm2-jc2'
+NeoBundle 'artur-shaik/vim-javacomplete2'
 
 call neobundle#end()
 
