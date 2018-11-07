@@ -1,4 +1,4 @@
-if 0 | endif
+if 1 | endif
 
 if &compatible
   set nocompatible               " Be iMproved
@@ -17,14 +17,12 @@ NeoBundle 'tmhedberg/SimpylFold'
 NeoBundle 'chriskempson/base16-vim'
 NeoBundle 'lervag/vimtex'
 
-NeoBundle 'ncm2/ncm2'
+NeoBundle 'Shougo/deoplete.nvim'
 NeoBundle 'roxma/nvim-yarp'
-NeoBundle 'ncm2/ncm2-tmux'
-NeoBundle 'ncm2/ncm2-pyclang'
-NeoBundle 'ncm2/ncm2-path'
-NeoBundle 'ncm2/ncm2-bufword'
-NeoBundle 'ObserverOfTime/ncm2-jc2'
+NeoBundle 'roxma/vim-hug-neovim-rpc'
 NeoBundle 'artur-shaik/vim-javacomplete2'
+NeoBundle 'zchee/deoplete-jedi'
+NeoBundle 'Shougo/deoplete-clangx'
 
 call neobundle#end()
 

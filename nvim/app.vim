@@ -1,27 +1,27 @@
 syntax enable
-colorscheme base16-material-palenight
+colorscheme base16-default-dark
 set background=dark
 set laststatus=2
 syntax enable
 set fillchars+=vert:\
 set nowrap
 set number
-set relativenumber
 set noshowmode
+set cursorline
 hi Folded ctermbg=NONE ctermfg=yellow
-hi CursorLine ctermbg=black ctermfg=NONE
-hi CursorLineNr ctermbg=NONE ctermfg=yellow
-hi LineNr ctermbg=NONE
+hi LineNr ctermbg=NONE ctermfg=8
+hi Normal ctermbg=NONE
+hi CursorLine ctermbg=0 ctermfg=NONE
+hi CursorLineNr ctermbg=0 ctermfg=3
 
 "Menu highlighting for deoplete
 hi Pmenu ctermbg=0
 hi PmenuSel ctermbg=7 ctermfg=0
 
 let g:gruvbox_contrast_dark='hard'
-hi Normal ctermbg=NONE
 
 let g:currentmode={
-    \ 'n'  : 'N ',
+    \ 'n'  : 'NORMAL ',
     \ 'no' : 'N',
     \ 'v'  : 'V ',
     \ 'V'  : 'V ',
@@ -41,10 +41,10 @@ let g:currentmode={
     \ '!'  : 'S ',
     \ 't'  : 'T '}
 
-hi PrimaryBlock ctermbg=NONE ctermfg=8
-hi ModeBlock ctermbg=NONE ctermfg=3
-hi SecondaryBlock ctermbg=NONE ctermfg=8
-hi TeritaryBlock ctermbg=NONE ctermfg=8
+hi PrimaryBlock ctermbg=8 ctermfg=8
+hi ModeBlock ctermbg=0 ctermfg=3
+hi SecondaryBlock ctermbg=0 ctermfg=8
+hi TeritaryBlock ctermbg=0 ctermfg=5
 hi Blanks ctermbg=NONE
 hi statusline ctermbg=NONE
 
