@@ -17,12 +17,12 @@ NeoBundle 'tmhedberg/SimpylFold'
 NeoBundle 'chriskempson/base16-vim'
 NeoBundle 'lervag/vimtex'
 
-NeoBundle 'Shougo/deoplete.nvim'
+NeoBundle 'ncm2/ncm2'
 NeoBundle 'roxma/nvim-yarp'
-NeoBundle 'roxma/vim-hug-neovim-rpc'
-NeoBundle 'artur-shaik/vim-javacomplete2'
-NeoBundle 'zchee/deoplete-jedi'
-NeoBundle 'Shougo/deoplete-clangx'
+NeoBundle 'ncm2/ncm2-tmux'
+NeoBundle 'ncm2/ncm2-pyclang'
+NeoBundle 'ncm2/ncm2-path'
+NeoBundle 'ncm2/ncm2-bufword'
 
 call neobundle#end()
 
