@@ -1,0 +1,51 @@
+[global]
+font = Dina 10
+markup = yes
+format = "%s %b"
+sort = yes
+indicate_hidden = no 
+alignment = center
+bounce_freq = 0
+show_age_threshold = 1000
+word_wrap = no
+ignore_newline = yes
+geometry = "1200x18-5+40"
+shrink = yes 
+transparency = 0
+idle_threshold = 10
+monitor = 0
+follow = mouse
+sticky_history = yes
+history_length = 2 
+show_indicators = yes
+line_height = 20
+separator_height = 5
+padding = 10 
+horizontal_padding = 10
+separator_color = frame
+startup_notification = false
+frame_width = 0
+frame_color = "#121c21"
+
+[shortcuts]
+close = ctrl+space
+close_all = ctrl+shift+space
+history = ctrl+grave
+context = ctrl+shift+period
+
+[urgency_low]
+background = "#282828"
+foreground = "#ebdbb2"
+timeout = 20
+
+[urgency_normal]
+background = "#282828"
+foreground = "#ebdbb2"
+timeout = 20
+
+[urgency_critical]
+background = "#282828"
+foreground = "#ebdbb2"
+timeout = 30
+
+# vim: ft=cfg
