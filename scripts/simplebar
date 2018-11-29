@@ -12,9 +12,13 @@
 
 source "${HOME}/.cache/squash/colors"
 
-FONTS="-o 2 -f -*-dina-medium-r-*-*-12-*-*-*-*-*-*-* -o 0 -f -*-siji-*"
+#FONTS="-o 2 -f -*-dina-medium-r-*-*-12-*-*-*-*-*-*-* -o 0 -f -*-siji-*"
+#FONTS="-o 2 -f -*-iosevka-*-r-*-*-12-*-*-*-*-*-*-* -o 0 -f -*-siji-*"
+PANEL_FONT="-*-iosevka-*-*-*-*-*-*-*-*-*-*-*-*"
+ICON_FONT="-wuncon-siji-medium-*-*-*-10-*-*-*-*-*-*-*"
+FONTS="-o 2 -f iosevka -o 0 -f ${ICON_FONT}"
 WIDTH=1910 # bar width
-HEIGHT=20 # bar height
+HEIGHT=25 # bar height
 XOFF=0 # x offset
 YOFF=0 # y offset
 BRDR=5 # border width
