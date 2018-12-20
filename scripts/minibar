@@ -1,11 +1,7 @@
 #!/usr/bin/env bash
 #
-# A simple block-style bar using lemonbar
+# A simple toggle-ready bar using lemonbar
 # and named pipes to reduce resource footprint
-#
-# Normally, this file is split into seperate files
-# for colors and bar defaults, I have included them
-# all together here for simplicity
 #
 # Bar created by Joshua Ervin @ University of Washington
 # Contact: jlervin@posteo.net
@@ -13,7 +9,6 @@
 source "${HOME}/.cache/squash/colors"
 
 FONTS="-o 2 -f -*-dina-medium-r-*-*-12-*-*-*-*-*-*-* -o 0 -f -wuncon-siji-medium-*-*-*-10-*-*-*-*-*-*-*"
-ICON_FONT="-wuncon-siji-medium-*-*-*-10-*-*-*-*-*-*-*"
 WIDTH=1890 # bar width
 HEIGHT=35 # bar height
 XOFF=10 # x offset
@@ -60,6 +55,7 @@ GLYWLANHIGH=$(echo -e "\ue048")
 GLYWLANLOW=$(echo -e "\ue047")
 GLYMUSIC=$(echo -e "\ue0fe")
 
+# Uncomment for use with dark background
 #PANIC="%{F$MAG}%{B$BG}${SEP}"
 #ALERT="%{F$RED}%{B$BG}${SEP}"
 #WARN="%{F$YLW}%{B$BG}${SEP}"
@@ -71,6 +67,7 @@ GLYMUSIC=$(echo -e "\ue0fe")
 #FULL="%{F$BLK}%{B$BG}${SEP}"
 #CLR="${SEP}%{B-}${F-}"
 
+# Uncomment for use with light backgrounds
 PANIC="%{F$BLK}%{B$WHT}${SEP}"
 ALERT="%{F$BLK}%{B$WHT}${SEP}"
 WARN="%{F$BLK}%{B$WHT}${SEP}"
