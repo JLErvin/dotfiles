@@ -36,6 +36,6 @@
 "lock"
   control+p
 
-"toggle"
+"toggle_bar"
   XF86Tools
 
