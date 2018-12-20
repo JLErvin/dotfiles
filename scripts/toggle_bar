@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+
+bar_name="minibar"
+pid=$(pidof lemonbar)
+
+if [ -z ${pid} ]; then
+    minibar &
+else
+    killall lemonbar
+fi
