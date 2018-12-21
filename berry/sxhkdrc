@@ -67,4 +67,4 @@ alt + @button1
     berryc pointer_move 2
 
 ~button1
-    berryc pointer_move 0
+    berryc pointer_move 0 0
