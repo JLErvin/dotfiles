@@ -1,0 +1,39 @@
+visualizer_fifo_path = "/tmp/mpd.fifo"
+visualizer_output_name = "my_fifo"
+visualizer_sync_interval = "30" 
+visualizer_in_stereo = "yes"
+visualizer_type = "spectrum"
+visualizer_look = "┃┃"
+
+header_visibility = "yes"
+autocenter_mode = "yes"
+discard_colors_if_item_is_selected = "no"
+search_engine_display_mode = columns 
+
+# Progressbar look
+#progressbar_look = "━■━"
+progressbar_look = "━|━"
+progressbar_elapsed_color = "yellow"
+
+header_window_color                 = "black"
+volume_color                        = "9"
+state_line_color                    = "black"
+state_flags_color                   = "yellow"
+color1                              = "red"
+color2                              = "white"
+main_window_color                   = "white"
+current_item_prefix                 = "$(9)$r"
+current_item_suffix                 = "$/r$(end)"
+current_item_inactive_column_prefix = "$(black)$r"
+current_item_inactive_column_suffix = "$/r$(end)"
+alternative_ui_separator_color      = "black"
+statusbar_color                     = "9"
+empty_tag_color                     = "9"
+player_state_color                  = "white"
+
+playlist_display_mode = "classic"
+song_list_format = "$2{%a}|{%A}$8 $6-$8 $7%t$8"
+song_status_format = "{$2%t $b$1- %a}|{%f}"
+now_playing_prefix = "$b"
+now_playing_suffix = "$/b"
+
