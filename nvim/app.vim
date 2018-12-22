@@ -1,5 +1,5 @@
 syntax enable
-colorscheme base16-default-dark
+colorscheme base16-material
 set background=dark
 set laststatus=2
 syntax enable
@@ -41,12 +41,21 @@ let g:currentmode={
     \ '!'  : 'S ',
     \ 't'  : 'T '}
 
-hi PrimaryBlock ctermbg=8 ctermfg=8
-hi ModeBlock ctermbg=0 ctermfg=3
-hi SecondaryBlock ctermbg=0 ctermfg=8
-hi TeritaryBlock ctermbg=0 ctermfg=5
+hi PrimaryBlock ctermbg=NONE ctermfg=8
+hi ModeBlock ctermbg=NONE ctermfg=3
+hi SecondaryBlock ctermbg=NONE ctermfg=8
+hi TeritaryBlock ctermbg=NONE ctermfg=5
 hi Blanks ctermbg=NONE
 hi statusline ctermbg=NONE
+hi SpellBad ctermfg=0 ctermbg=1
+hi SpellCap ctermfg=0 ctermbg=1
+hi ColorColumn ctermbg=NONE ctermfg=1
+hi PmenuThumb ctermbg=NONE ctermfg=1
+hi SignColumn ctermbg=NONE
+hi link SyntasticWarningSign ColorColumn
+hi link SyntasticErrorSign PmenuThumb
+hi QuickFixLine ctermbg=NONE ctermfg=1
+hi StatusLineNC ctermbg=NONE ctermfg=8
 
 set statusline=
 set statusline+=%#ModeBlock#
