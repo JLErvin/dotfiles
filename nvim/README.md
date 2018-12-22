@@ -8,6 +8,8 @@ a client-server model. This allows one to send commands to all active
 instances of `nvim` without having windows foucsed. To see this in practice,
 look at my themeing application [squash](https://github.com/JLErvin/squash)
 
+![Screenshot](http://vim.wikia.com/wiki/Displaying_the_current_Vim_environment)
+
 ### Plugins
 
 To manage plugins, I use `neobundle`.
