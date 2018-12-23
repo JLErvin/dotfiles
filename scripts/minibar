@@ -6,7 +6,7 @@
 # Bar created by Joshua Ervin @ University of Washington
 # Contact: jlervin@posteo.net
 
-source "${HOME}/.cache/squash/colors"
+. "${HOME}/.cache/squash/colors"
 
 FONTS="-o 2 -f -*-dina-medium-r-*-*-12-*-*-*-*-*-*-* -o 0 -f -wuncon-siji-medium-*-*-*-10-*-*-*-*-*-*-*"
 WIDTH=1890 # bar width
@@ -25,7 +25,6 @@ BFG=${FG}
 DESKTOP_COUNT=5 
 BATTERY_FULL=98
 BATTERY_MID=50
-BATTERY_LOW=20
 
 # Sleep constnats
 WORKSPACE_SLEEP=0.5
@@ -33,27 +32,19 @@ BATTERY_SLEEP=10
 WIRELESS_SLEEP=10
 VOLUME_SLEEP=1
 DATE_SLEEP=5
-MUSIC_SLEEP=5
 
 # Formatting Strings
 # I would reccomend not touching these :D
 SEP=" "
-SEP2="    "
-SEPB="__"
-SPC="%{B$BG}%{F$BG}$SEPB%{B-}%{F-}"
 
 # Glyphs used for both bars
-GLYCUR=$(echo -e "\ue000")
-GLYEM=$(echo -e "\ue001")
 GLYDATE=$(echo -e "\ue015")
 GLYVOL=$(echo -e "\ue050")
-GLYVOLoff=$(echo -e "\ue052")
 GLYBATLOW=$(echo -e "\ue035")
 GLYBAT=$(echo -e "\ue037")
 GLYBATMAX=$(echo -e "\ue09e")
 GLYWLANHIGH=$(echo -e "\ue048")
 GLYWLANLOW=$(echo -e "\ue047")
-GLYMUSIC=$(echo -e "\ue0fe")
 
 # Uncomment for use with dark background
 #PANIC="%{F$MAG}%{B$BG}${SEP}"
@@ -68,30 +59,27 @@ GLYMUSIC=$(echo -e "\ue0fe")
 #CLR="${SEP}%{B-}${F-}"
 
 # Uncomment for use with light backgrounds
-PANIC="%{F$BLK}%{B$WHT}${SEP}"
 ALERT="%{F$BLK}%{B$WHT}${SEP}"
 WARN="%{F$BLK}%{B$WHT}${SEP}"
 GOOD="%{F$BLK}%{B$WHT}${SEP}"
 SEL="%{F$MAG}%{B$WHT}${SEP}"
 UNSEL="%{F$BLK}%{B$WHT}${SEP}"
-PLAIN="%{F$BLK}%{B$WHT}${SEP}"
 GEN="%{F$BLK}%{B$WHT}${SEP}"
-EMPTY="%{F$BLK}%{B$WHT}${SEP}"
 BLACK="%{F$BLK}%{B$WHT}${SEP}"
-FULL="%{F$BLK}%{B$WHT}${SEP}"
 CLR="${SEP}%{B-}${F-}"
 
 PANEL_FIFO=/tmp/panel-fifo
-OPTIONS="-d ${FONTS} -g ${WIDTH}x${HEIGHT}+${XOFF}+${YOFF} -B ${BBG} -F ${BFG} -r 5 -R ${BRDRC} -u 2 -b" 
+OPTIONS="-d ${FONTS} -g ${WIDTH}x${HEIGHT}+${XOFF}+${YOFF} -B ${BBG} -F ${BFG} -r ${BRDR} -R ${BRDRC} -u 2 -b" 
 
 [ -e "${PANEL_FIFO}" ] && rm "${PANEL_FIFO}"
 mkfifo "${PANEL_FIFO}"
 
 workspaces() {
     while true; do
-        local cur=$(xprop -root _NET_CURRENT_DESKTOP | awk '{print $3}')
-        local total=${DESKTOP_COUNT}
-        local seq=""
+        local cur total seq
+        cur=$(xprop -root _NET_CURRENT_DESKTOP | awk '{print $3}')
+        total=${DESKTOP_COUNT}
+        seq=""
 
         for ((i=0;i<cur;i++)); do 
             seq+="${UNSEL}${i}${CLR}"
@@ -116,7 +104,8 @@ workspaces > "${PANEL_FIFO}" &
 clock() 
 {
     while true; do
-        local clock="$(date +'%a %d %I:%M')"
+        local clock
+        clock="$(date +'%a %d %I:%M')"
         echo "CLOCK ${GEN}${GLYDATE}${BLACK}${clock}${CLR}"
 
         sleep ${DATE_SLEEP}
@@ -128,8 +117,9 @@ clock > "${PANEL_FIFO}" &
 volume()
 {
     while true; do
-        local vol="$(amixer sget Master | grep 'Mono: Playback' | awk -F'[][]' '{ print $2 }' | cut -d '%' -f1)"
-        local mut="$(amixer get Master| awk 'NR==5 {print $6}')"
+        local vol mut
+        vol="$(amixer sget Master | grep 'Mono: Playback' | awk -F'[][]' '{ print $2 }' | cut -d '%' -f1)"
+        mut="$(amixer get Master| awk 'NR==5 {print $6}')"
 
         if [[ ${mut} = "[off]" ]]; then
             echo "VOLUME ${ALERT}${GLYVOL}${BLACK}${vol}${CLR}"
@@ -148,8 +138,9 @@ volume > "${PANEL_FIFO}" &
 battery() 
 {
     while true; do
-        local cap="$(cat /sys/class/power_supply/BAT0/capacity)"
-        local stat="$(cat /sys/class/power_supply/BAT0/status)"
+        local cap stat
+        cap="$(cat /sys/class/power_supply/BAT0/capacity)"
+        stat="$(cat /sys/class/power_supply/BAT0/status)"
 
         if [[ ${cap} -ge ${BATTERY_FULL} || ${stat} = "Charging" ]]; then
             echo "BATTERY ${GOOD}${GLYBATMAX}${BLACK}${cap}${CLR}"
@@ -168,7 +159,8 @@ battery > "${PANEL_FIFO}" &
 wireless() 
 {
     while true; do
-        local wifi=$(iwgetid -r)
+        local wifi
+        wifi=$(iwgetid -r)
 
         if [[ -z $wifi ]]; then
             local wifi="DISCONNECTED"
@@ -204,6 +196,5 @@ while read -r line; do
             fn_music="${line#MUSIC }"
             ;;
     esac
-    #printf "%s\n" "%{l}${fn_work}${SEP}${fn_music}%{r}${fn_bat}${SEP}${fn_wire}${SEP}${fn_vol}${SEP}${fn_time}${fn_back}"
-    printf "%s\n" "%{l}${fn_work}${SEP}${fn_music}%{r}${fn_bat}${fn_wire}${fn_vol}${fn_time}${fn_back}"
+    printf "%s\n" "%{l}${fn_work}${SEP}${fn_music}%{r}${fn_bat}${fn_wire}${fn_vol}${fn_time}"
 done < "${PANEL_FIFO}" | lemonbar ${OPTIONS} | sh > /dev/null

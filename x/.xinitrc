@@ -2,12 +2,10 @@
 
 xrdb $HOME/.Xresources
 xbindkeys &
+compton -CGb --config $HOME/.config/compton/compton.conf
 
-# Add fonts
-xset +fp $HOME/.fonts
-xset fp rehash
-
-compton -CGb
+# Fix some display settings
+systemctl --user import-environment DISPLAY
 
 # Start window manager
 sxhkd -c $HOME/.config/berry/sxhkdrc &

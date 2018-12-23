@@ -8,15 +8,30 @@ set nowrap
 set number
 set noshowmode
 set cursorline
-hi Folded ctermbg=NONE ctermfg=yellow
-hi LineNr ctermbg=NONE ctermfg=8
-hi Normal ctermbg=NONE
-hi CursorLine ctermbg=0 ctermfg=NONE
-hi CursorLineNr ctermbg=0 ctermfg=3
 
-"Menu highlighting for deoplete
-hi Pmenu ctermbg=0
-hi PmenuSel ctermbg=7 ctermfg=0
+hi Folded         ctermbg=NONE ctermfg=3
+hi LineNr         ctermbg=NONE ctermfg=8
+hi Normal         ctermbg=NONE
+hi CursorLine     ctermbg=0    ctermfg=NONE
+hi CursorLineNr   ctermbg=0    ctermfg=3
+hi Pmenu          ctermbg=0
+hi PmenuSel       ctermbg=7    ctermfg=0
+hi PrimaryBlock   ctermbg=NONE ctermfg=8
+hi ModeBlock      ctermbg=NONE ctermfg=3
+hi SecondaryBlock ctermbg=NONE ctermfg=8
+hi TeritaryBlock  ctermbg=NONE ctermfg=5
+hi Blanks         ctermbg=NONE
+hi statusline     ctermbg=NONE
+hi SpellBad       ctermbg=1    ctermfg=0
+hi SpellCap       ctermbg=1    ctermfg=0
+hi ColorColumn    ctermbg=NONE ctermfg=1
+hi PmenuThumb     ctermbg=NONE ctermfg=1
+hi SignColumn     ctermbg=NONE
+hi QuickFixLine   ctermbg=NONE ctermfg=1
+hi StatusLineNC   ctermbg=NONE ctermfg=8
+
+hi link SyntasticWarningSign ColorColumn
+hi link SyntasticErrorSign PmenuThumb
 
 let g:gruvbox_contrast_dark='hard'
 
@@ -41,22 +56,6 @@ let g:currentmode={
     \ '!'  : 'S ',
     \ 't'  : 'T '}
 
-hi PrimaryBlock ctermbg=NONE ctermfg=8
-hi ModeBlock ctermbg=NONE ctermfg=3
-hi SecondaryBlock ctermbg=NONE ctermfg=8
-hi TeritaryBlock ctermbg=NONE ctermfg=5
-hi Blanks ctermbg=NONE
-hi statusline ctermbg=NONE
-hi SpellBad ctermfg=0 ctermbg=1
-hi SpellCap ctermfg=0 ctermbg=1
-hi ColorColumn ctermbg=NONE ctermfg=1
-hi PmenuThumb ctermbg=NONE ctermfg=1
-hi SignColumn ctermbg=NONE
-hi link SyntasticWarningSign ColorColumn
-hi link SyntasticErrorSign PmenuThumb
-hi QuickFixLine ctermbg=NONE ctermfg=1
-hi StatusLineNC ctermbg=NONE ctermfg=8
-
 set statusline=
 set statusline+=%#ModeBlock#
 set statusline+=\ %{g:currentmode[mode()]}
@@ -69,7 +68,3 @@ set statusline+=%#PrimaryBlock#
 set statusline+=\ %Y\ 
 set statusline+=%#SecondaryBlock#
 set statusline+=\ %P\ 
-
-let g:goyo_width='80%'
-let g:goyo_height='80%'
-let g:limelight_conceal_ctermfg=8
