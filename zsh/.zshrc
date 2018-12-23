@@ -15,6 +15,7 @@ export _JAVA_AWT_WM_NONREPARENTING=1
 export EDITOR=/usr/bin/nvim
 export VISUAL=/usr/bin/nvim
 export GEM_HOME=$HOME/.gem
+export XDG_MUSIC_DIR=$HOME/music
 
 alias pac="pacman -Qq | wc -l"
 alias space="df -h"
