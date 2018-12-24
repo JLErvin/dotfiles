@@ -21,6 +21,16 @@ NeoBundle 'roxma/nvim-yarp'
 NeoBundle 'roxma/vim-hug-neovim-rpc'
 NeoBundle 'Shougo/deoplete-clangx'
 
+" Haskell Related Plugins
+NeoBundle 'neovimhaskell/haskell-vim'
+NeoBundle 'eagletmt/neco-ghc'
+NeoBundle 'eagletmt/ghcmod-vim'
+NeoBundle 'Shougo/vimproc.vim'
+
+" Better C syntax highlighting
+NeoBundle 'justinmk/vim-syntax-extra'
+
+
 call neobundle#end()
 
 filetype plugin indent on

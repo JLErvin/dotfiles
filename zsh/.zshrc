@@ -9,8 +9,8 @@ antigen bundle command-not-found
 
 antigen bundle zsh-users/zsh-syntax-highlighting
 
-export PATH=/home/jlervin/.scripts:$PATH
-export PATH=/home/jlervin/squash:$PATH
+export PATH=/home/jle/squash:$PATH
+export PATH=/home/jle/.local/bin:$PATH
 export _JAVA_AWT_WM_NONREPARENTING=1
 export EDITOR=/usr/bin/nvim
 export VISUAL=/usr/bin/nvim
