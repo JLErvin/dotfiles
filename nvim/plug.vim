@@ -20,16 +20,19 @@ NeoBundle 'Shougo/deoplete.nvim'
 NeoBundle 'roxma/nvim-yarp'
 NeoBundle 'roxma/vim-hug-neovim-rpc'
 NeoBundle 'Shougo/deoplete-clangx'
+NeoBundle 'godlygeek/tabular'
+NeoBundle 'neomake/neomake'
 
 " Haskell Related Plugins
-NeoBundle 'neovimhaskell/haskell-vim'
 NeoBundle 'eagletmt/neco-ghc'
-NeoBundle 'eagletmt/ghcmod-vim'
-NeoBundle 'Shougo/vimproc.vim'
+NeoBundle 'parsonsmatt/intero-neovim'
+
+" Java Related Plugins
+NeoBundle 'artur-shaik/vim-javacomplete2'
+NeoBundle 'airblade/vim-rooter'
 
 " Better C syntax highlighting
 NeoBundle 'justinmk/vim-syntax-extra'
-
 
 call neobundle#end()
 
