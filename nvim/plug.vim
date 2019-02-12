@@ -29,10 +29,14 @@ NeoBundle 'parsonsmatt/intero-neovim'
 
 " Java Related Plugins
 NeoBundle 'artur-shaik/vim-javacomplete2'
-NeoBundle 'airblade/vim-rooter'
+"NeoBundle 'airblade/vim-rooter'
 
 " Better C syntax highlighting
 NeoBundle 'justinmk/vim-syntax-extra'
+
+" Go autocompletion
+NeoBundle 'deoplete-plugins/deoplete-go'
+NeoBundle 'fatih/vim-go'
 
 call neobundle#end()
 
