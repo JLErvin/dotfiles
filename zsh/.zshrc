@@ -11,6 +11,8 @@ antigen bundle zsh-users/zsh-syntax-highlighting
 
 export PATH=/home/jle/squash:$PATH
 export PATH=/home/jle/.local/bin:$PATH
+export PATH=/home/jle/.jenv/bin:$PATH
+export PATH=/home/jle/go/bin:$PATH
 export _JAVA_AWT_WM_NONREPARENTING=1
 export EDITOR=/usr/bin/nvim
 export VISUAL=/usr/bin/nvim
@@ -32,7 +34,9 @@ nvim() {
 
 alias n="nvim"
 alias e="emacs"
+fignore=(class)
 
 antigen apply
 
 PROMPT="%F{3}%~ %F{5}>%f  "
+eval "$(jenv init -)"
