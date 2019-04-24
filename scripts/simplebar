@@ -8,14 +8,14 @@
 # all together here for simplicity
 #
 # Bar created by Joshua Ervin @ University of Washington
-# Contact: jlervin@posteo.net
+# Contact: joshue@uw.edu
 
-source ${HOME}/.cache/squash/colors
-. $HOME/.cache/squash/colors
+source "${HOME}/.cache/squash/colors"
+. "$HOME/.cache/squash/colors"
 
-FONTS="-o 2 -f -*-dina-medium-r-*-*-12-*-*-*-*-*-*-* -o 0 -f -wuncon-siji-medium-*-*-*-10-*-*-*-*-*-*-*"
+FONTS="-o 0 -f Iosekva-10 -o -2 -f FontAwesome-10"
 WIDTH=1910 # bar width
-HEIGHT=25 # bar height
+HEIGHT=20 # bar height
 XOFF=0 # x offset
 YOFF=0 # y offset
 BRDR=6 # border width
@@ -50,14 +50,15 @@ SPC="%{B$BG}%{F$BG}$SEPB%{B-}%{F-}"
 # Glyphs used for both bars
 GLYCUR=$(echo -e "\ue000")
 GLYEM=$(echo -e "\ue001")
-GLYDATE=$(echo -e "\ue015")
-GLYVOL=$(echo -e "\ue050")
-GLYVOLoff=$(echo -e "\ue052")
-GLYBATLOW=$(echo -e "\ue035")
-GLYBAT=$(echo -e "\ue037")
-GLYBATMAX=$(echo -e "\ue09e")
-GLYWLANHIGH=$(echo -e "\ue048")
-GLYWLANLOW=$(echo -e "\ue047")
+GLYDATE=$(echo -e "\uf017")
+GLYVOLLOW=$(echo -e "\uf027")
+GLYVOLHIGH=$(echo -e "\uf028")
+GLYVOLMUTE=$(echo -e "\uf026")
+GLYBATLOW=$(echo -e "\uf243")
+GLYBAT=$(echo -e "\uf240")
+GLYBATMAX=$(echo -e "\uf0e7")
+GLYWLANHIGH=$(echo -e "\uf012")
+GLYWLANLOW=$(echo -e "\uf2d1")
 GLYMUSIC=$(echo -e "\ue0fe")
 
 PANIC="%{F$MAG}%{B$BG}${SEP}"
@@ -70,6 +71,11 @@ EMPTY="%{F$FG}%{B$BG}${SEP}"
 BLACK="%{F$FG}%{B$BG}${SEP}"
 FULL="%{F$BLK}%{B$BG}${SEP}"
 CLR="${SEP}%{B-}${F-}"
+
+NOR="%{F$FG}%{B$BG}"
+HIRED="%{F$RED}%{B$BG}"
+HIYLW="%{F$YLW}%{B$BG}"
+HIGRN="%{F$GRN}%{B$BG}"
 
 PANEL_FIFO=/tmp/panel-fifo
 OPTIONS="-d ${FONTS} -g ${WIDTH}x${HEIGHT}+${XOFF}+${YOFF} -B ${BBG} -F ${BFG} -r 5 -R ${BRDRC} -u 2" 
@@ -87,7 +93,7 @@ workspaces() {
             seq+="${EMPTY}${i}${CLR}"
         done
 
-        seq+="%{U$YLW}%{+u}${BLACK}${cur}${SEP}%{-u}"
+        seq+="${WARN}${cur}${SEP}"
 
         min=$cur+1
         for ((i=min;i<total;i++)); do
@@ -107,7 +113,7 @@ clock()
 {
     while true; do
         local clock="$(date +'%a %d %I:%M')"
-        echo "CLOCK ${GEN}${GLYDATE}${SEP}${BLACK}${clock}${CLR}"
+        echo "CLOCK ${GEN}${GLYDATE}${BLACK}${clock}${CLR}"
 
         sleep ${DATE_SLEEP}
     done
@@ -120,14 +126,29 @@ volume()
     while true; do
         local vol="$(amixer sget Master | grep 'Mono: Playback' | awk -F'[][]' '{ print $2 }' | cut -d '%' -f1)"
         local mut="$(amixer get Master| awk 'NR==5 {print $6}')"
+        vol=$(( vol/10 ))
+
+        local line=""
+        for ((i=0;i<vol;i+=2)); do
+            line+="-"
+        done
 
         if [[ ${mut} = "[off]" ]]; then
-            echo "VOLUME ${ALERT}${GLYVOL}${SEP}${BLACK}${vol}${CLR}"
-        elif [[ ${vol} = 0 ]]; then
-            echo "VOLUME ${WARN}${GLYVOL}${SEP}${BLACK}${vol}${CLR}"
+            line+=${HIRED}"|"${NOR}
+            label=${HIRED}${GLYVOLMUTE}${CLR}
+        elif [[ "$vol" -lt 5 ]]; then
+            line+=${HIYLW}"|"${NOR}
+            label=${HIYLW}${GLYVOLLOW}${CLR}
         else
-            echo "VOLUME ${GOOD}${GLYVOL}${SEP}${BLACK}${vol}${CLR}"
+            line+=${HIGRN}"|"${NOR}
+            label=${HIGRN}${GLYVOLHIGH}${CLR}
         fi
+
+        for ((i=$((vol+1));i<10;i+=2)); do
+            line+="-"
+        done
+
+        echo "VOLUME ${label}${BLACK}${line}${CLR}"
 
         sleep ${VOLUME_SLEEP} 
     done
@@ -142,11 +163,11 @@ battery()
         local stat="$(cat /sys/class/power_supply/BAT0/status)"
 
         if [[ ${cap} -ge ${BATTERY_FULL} || ${stat} = "Charging" ]]; then
-            echo "BATTERY ${GOOD}${GLYBATMAX}${SEP}${BLACK}${cap}${CLR}"
+            echo "BATTERY ${GOOD}${GLYBATMAX}${BLACK}${cap}${CLR}"
         elif [[ ${cap} -ge ${BATTERY_MID} ]]; then
-            echo "BATTERY ${WARN}${GLYBAT}${SEP}${BLACK}${cap}${CLR}"
+            echo "BATTERY ${WARN}${GLYBAT}${BLACK}${cap}${CLR}"
         else 
-            echo "BATTERY ${ALERT}${GLYBATLOW}${SEP}${BLACK}${cap}${CLR}"
+            echo "BATTERY ${ALERT}${GLYBATLOW}${BLACK}${cap}${CLR}"
         fi
 
         sleep ${BATTERY_SLEEP}
@@ -162,9 +183,9 @@ wireless()
 
         if [[ -z $wifi ]]; then
             local wifi="DISCONNECTED"
-            echo "WIRELESS ${ALERT}${GLYWLANLOW}${SEP}${BLACK}${wifi}${CLR}"
+            echo "WIRELESS ${ALERT}${GLYWLANLOW}${BLACK}${wifi}${CLR}"
         else
-            echo "WIRELESS ${GOOD}${GLYWLANHIGH}${SEP}${BLACK}${wifi}${CLR}"
+            echo "WIRELESS ${GOOD}${GLYWLANHIGH}${BLACK}${wifi}${CLR}"
         fi
 
         sleep ${WIRELESS_SLEEP}
@@ -187,8 +208,6 @@ sptfy()
         sleep ${MUSIC_SLEEP}
     done
 }
-
-#sptfy > "${PANEL_FIFO}" &
 
 while read -r line; do
     case $line in
