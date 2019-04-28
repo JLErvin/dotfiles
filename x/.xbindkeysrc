@@ -14,8 +14,7 @@
   XF86AudioLowerVolume
 
 # mute/unmute
-#"amixer -q sset Master toggle"
-"amixer sset Master toggle"
+"amixer -D pulse set Master 1+ toggle"
   XF86AudioMute
 
 "xbacklight -inc 10"
