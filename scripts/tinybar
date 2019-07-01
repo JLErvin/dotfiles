@@ -37,6 +37,7 @@ WORKSPACE_SLEEP=0.5
 BATTERY_SLEEP=10
 WIRELESS_SLEEP=10
 VOLUME_SLEEP=1
+BACKLIGHT_SLEEP=1
 DATE_SLEEP=5
 MUSIC_SLEEP=5
 
@@ -49,7 +50,7 @@ SPC="%{B$BG}%{F$BG}$SEPB%{B-}%{F-}"
 
 # Glyphs used for both bars
 GLYCUR=$(echo -e "\ue000")
-GLYEM=$(echo -e "\ue001")
+GLYEM=$(echo -e "\ue0de")
 GLYDATE=$(echo -e "\ue015")
 GLYVOL=$(echo -e "\ue050")
 GLYVOLoff=$(echo -e "\ue052")
@@ -147,6 +148,19 @@ volume()
 
 volume > "${PANEL_FIFO}" &
 
+backlight()
+{
+    while true; do
+        local val=$(xbacklight -get | cut -d. -f1)
+
+        echo "BACKLIGHT ${WARN}${GLYEM}${SEP}${BLACK}${val}${CLR}"
+
+        sleep ${BACKLIGHT_SLEEP}
+    done
+}
+
+backlight > "${PANEL_FIFO}" &
+
 battery() 
 {
     while true; do
@@ -213,6 +227,9 @@ while read -r line; do
         BATTERY*)
             fn_bat="${line#BATTERY }"
             ;;
+        BACKLIGHT*)
+            fn_back="${line#BACKLIGHT }"
+            ;;
         WORKSPACES*)
             fn_work="${line#WORKSPACES }"
             ;;
@@ -223,5 +240,5 @@ while read -r line; do
             fn_music="${line#MUSIC }"
             ;;
     esac
-    printf "%s\n" "%{l}${fn_work}${SEP}${fn_music}%{r}${fn_bat}${SEP}${fn_wire}${SEP}${fn_vol}${SEP}${fn_time}${fn_back}"
+    printf "%s\n" "%{l}${fn_work}${SEP}${fn_music}%{r}${fn_back}${SEP}${fn_bat}${SEP}${fn_wire}${SEP}${fn_vol}${SEP}${fn_time}"
 done < "${PANEL_FIFO}" | lemonbar ${OPTIONS} | sh > /dev/null
