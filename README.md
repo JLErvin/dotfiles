@@ -2,17 +2,17 @@
     <h1>dotfiles</h1><br>
 </div>
 
-![Screenshot](https://i.imgur.com/95qhg87.png)
+![Screenshot]()
 
 ## System Configuration
 
-* `distro`: arch linux
+* `distro`: void linux
 * `wm`: berry
 * `terminal`: rxvt-unicode
-* `browser`: firefox
+* `browser`: chromium
 * `shell`: zsh
 * `editor`: neovim
-* `font`: iosevka
+* `font`: dina
 * `icon-font`: siji
 * `bar`: lemonbar
 * `launcher`: dmenu
