@@ -1,31 +1,15 @@
+#!/usr/bin/env zsh
+
 source $HOME/.antigen.zsh
 
 antigen use oh-my-zsh
-
-antigen bundle git
-antigen bundle heroku
-antigen bundle lein
-antigen bundle command-not-found
-
 antigen bundle zsh-users/zsh-syntax-highlighting
+antigen apply
 
-export PATH=/home/jle/squash:$PATH
-export PATH=/home/jle/.local/bin:$PATH
-export PATH=/home/jle/.jenv/bin:$PATH
-export PATH=/home/jle/go/bin:$PATH
-export _JAVA_AWT_WM_NONREPARENTING=1
-export EDITOR=/usr/bin/nvim
-export VISUAL=/usr/bin/nvim
-export GEM_HOME=$HOME/.gem
-export XDG_MUSIC_DIR=$HOME/music
-
-alias pac="pacman -Qq | wc -l"
-alias space="df -h"
-alias projector="xrandr --output HDMI-1 --same-as eDP-1"
-alias zzz="systemctl suspend"
-alias tmux="tmux -2"
-
-bindkey -v
+export PATH=$PATH:$HOME/bin
+export PATH=$PATH:$HOME/.local/bin
+export PATH=$PATH:/usr/local/texlive/2019/bin/x86_64-linux
+export TERM=xterm-256color
 
 nvim() {
     local fn="$(mktemp -u "/tmp/nvimsocket-XXXXXXX")"
@@ -33,10 +17,8 @@ nvim() {
 }
 
 alias n="nvim"
-alias e="emacs"
-fignore=(class)
+alias ls="ls --color -F"
+alias tmux="tmux -2"
 
-antigen apply
+PROMPT="%F{3}%~ %F{5}>%F "
 
-PROMPT="%F{3}%~ %F{5}>%f  "
-eval "$(jenv init -)"
