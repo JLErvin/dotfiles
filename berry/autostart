@@ -2,11 +2,22 @@
 
 source $HOME/.cache/squash/colors
 
-berryc border_width 0 
-berryc inner_border_width 0
-berryc title_height 30
-berryc focus_color "${BG:1:7}"
-berryc unfocus_color "${BG:1:7}"
-berryc inner_focus_color "${BBLK:1:7}"
-berryc inner_unfocus_color "${BLK:1:7}"
-berryc top_gap 0
+# Set decoration geometry
+berryc border_width       5
+berryc inner_border_width 3
+berryc title_height       30
+berryc top_gap            30
+
+# Set decoration colors
+berryc focus_color         ${BG:1:7}
+berryc unfocus_color       ${BG:1:7}
+berryc inner_focus_color   ${BBLK:1:7}
+berryc inner_unfocus_color ${BLK:1:7}
+berryc text_focus_color    ${FG:1:7}
+berryc text_unfocus_color  ${WHT:1:7}
+
+# Other options
+berryc smart_place "true"
+berryc draw_text   "true"
+berryc edge_lock   "true"
+berryc set_font    "Dina-9"

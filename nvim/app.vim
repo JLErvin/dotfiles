@@ -1,5 +1,5 @@
 syntax enable
-colorscheme base16-material
+colorscheme gruvbox
 set background=dark
 set laststatus=2
 syntax enable

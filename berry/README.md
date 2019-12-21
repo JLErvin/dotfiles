@@ -9,6 +9,3 @@ or with your workflow. The full project can be found [here](https://github.com/J
 
 `berry` use a shell script for configuration, similar to `bspwm` or `herbstluftwm`.
 I use my themeing application, `squash`, to generate colors for berry that I source in `autostart`.
-
-Additionally, I use `sxhkd` to handle pointer/keyboard events.
-To use the mouse to move windows, you must use `sxhkd` version `0.5.5` or **earlier**.
