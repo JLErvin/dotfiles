@@ -2,11 +2,11 @@
     <h1>dotfiles</h1><br>
 </div>
 
-![Screenshot](https://i.imgur.com/QLNXesr.png)
+![Screenshot](https://i.imgur.com/tnAbtKk.png)
 
 ## System Configuration
 
-* `distro`: void linux
+* `distro`: arch linux
 * `wm`: berry
 * `terminal`: rxvt-unicode
 * `browser`: chromium
