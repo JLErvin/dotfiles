@@ -6,7 +6,7 @@ source $HOME/.cache/squash/colors
 berryc border_width       5
 berryc inner_border_width 3
 berryc title_height       30
-berryc top_gap            30
+berryc top_gap            35
 
 # Set decoration colors
 berryc focus_color         ${BG:1:7}
