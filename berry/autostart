@@ -20,4 +20,4 @@ berryc text_unfocus_color  ${WHT:1:7}
 berryc smart_place "true"
 berryc draw_text   "true"
 berryc edge_lock   "true"
-berryc set_font    "Dina-9"
+berryc set_font    $BERRY_FONT
