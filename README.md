@@ -2,7 +2,7 @@
     <h1>dotfiles</h1><br>
 </div>
 
-![Screenshot](https://i.imgur.com/tnAbtKk.png)
+![Screenshot](https://i.imgur.com/KqCSbVP.png)
 
 ## System Configuration
 
