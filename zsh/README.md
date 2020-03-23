@@ -4,7 +4,6 @@
 
 `zsh` is a powerful shell that provides lots of modern and useful features.
 I use `antigen` as a plugin manager for oh-my-zsh.
-Most notably, I use `heroku` which provides very powerful and efficient autocompletion. 
 
 Other notable features: 
 
