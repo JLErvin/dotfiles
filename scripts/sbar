@@ -60,7 +60,7 @@ GLYBATCHARGE=$(echo -e "\ue076")
 GLYBATFULL=$(echo -e "\ue02b")
 GLYBATHIGH=$(echo -e "\ue02c")
 GLYBATHALF=$(echo -e "\ue02e")
-GLYBATLOW=$(echo -e "\e02d")
+GLYBATLOW=$(echo -e "\ue02d")
 
 GLYWLANHIGH=$(echo -e "\ue146")
 GLYWLANLOW=$(echo -e "\ue047")
