@@ -22,6 +22,10 @@ NeoBundle 'roxma/nvim-yarp'
 NeoBundle 'roxma/vim-hug-neovim-rpc'
 NeoBundle 'godlygeek/tabular'
 NeoBundle 'scrooloose/nerdtree'
+NeoBundle 'altercation/vim-colors-solarized'
+NeoBundle 'fatih/vim-go'
+NeoBundle 'deoplete-plugins/deoplete-go', {'build': {'unix': 'make'}}
+
 
 " Better C syntax highlighting
 NeoBundle 'justinmk/vim-syntax-extra'
